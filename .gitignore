@@ -348,3 +348,8 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+
+# ANDY RULES :
+/Payments_MVC_472/Scripts
+/Payments_MVC_472/Content
+AssemblyInfo.cs

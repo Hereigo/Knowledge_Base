@@ -21,19 +21,19 @@ namespace DI_Service_Lifetimes
 
             using (IServiceScope scope = serviceProvider.CreateScope())
             {
-                Console.WriteLine("========== Request 3 ============");
+                Console.WriteLine("========== Request 3 Scope 1 ============");
                 scope.ServiceProvider.GetService<IScopedSvc>().Info();
                 scope.ServiceProvider.GetService<ITransientSvc>().Info();
                 scope.ServiceProvider.GetService<ISingletonSvc>().Info();
 
-                Console.WriteLine("========== Request 4 ============");
+                Console.WriteLine("========== Request 4 Scope 1 ============");
                 scope.ServiceProvider.GetService<IScopedSvc>().Info();
                 scope.ServiceProvider.GetService<ISingletonSvc>().Info();
             }
 
             using (IServiceScope scope = serviceProvider.CreateScope())
             {
-                Console.WriteLine("========== Request 5 ============");
+                Console.WriteLine("========== Request 5 Scope 2 ============");
                 scope.ServiceProvider.GetService<IScopedSvc>().Info();
                 scope.ServiceProvider.GetService<ISingletonSvc>().Info();
             }
@@ -71,18 +71,18 @@ namespace DI_Service_Lifetimes
 // Operation - Scoped: 11111111-1111-1111-1111-111111111111
 // Operation - Singleton: 22222222-2222-2222-2222-222222222222
 //
-// ========== Request 3 ============
+// ========== Request 3 Scope 1 ============
 // Operation - Scoped Service Created.
 // Operation - Scoped: 33333333-3333-3333-3333-333333333333
 // Operation - Transient Service Created.
 // Operation - Transient: 67b751d0-d049-4917-b6dc-27e1fe727503
 // Operation - Singleton: 22222222-2222-2222-2222-222222222222
 //
-// ========== Request 4 ============
+// ========== Request 4 Scope 1 ============
 // Operation - Scoped: 33333333-3333-3333-3333-333333333333
 // Operation - Singleton: 22222222-2222-2222-2222-222222222222
 //
-// ========== Request 5 ============
+// ========== Request 5 Scope 2 ============
 // Operation - Scoped Service Created.
 // Operation - Scoped: f935d5fe-b6db-4bda-9ec1-924307009b71
 // Operation - Singleton: 22222222-2222-2222-2222-222222222222
