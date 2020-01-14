@@ -1,0 +1,18 @@
+﻿<!DOCTYPE html>
+<html ng-app>
+<head>
+    <title ng-bind="helloAngular"></title>
+</head>
+<body>
+
+    <h1>Hello, AngularJS!</h1>
+
+    <input type="text" ng-model="helloAngular" />
+    <h1>{{helloAngular}}</h1>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular.min.js"></script>
+
+    @Scripts.Render("~/bundles/MyAngularMVCApp")
+
+</body>
+</html>
