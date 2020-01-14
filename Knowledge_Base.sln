@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Payments_MVC_472", "Payment
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IO_SubDirectories", "IO_SubDirectories\IO_SubDirectories.csproj", "{88E40183-02EB-4B84-9E9D-D0C40DBC8C3B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AngularJS_MVC_Net462", "AngularJS_MVC_Net462\AngularJS_MVC_Net462.csproj", "{EE1084E8-B9D1-40F8-A1AA-CFC41B06EF3C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AngularJS_MVC_Net462", "AngularJS_MVC_Net462\AngularJS_MVC_Net462.csproj", "{C03EF83B-393C-4996-BEDA-B4A7DF77D1A0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,10 +35,10 @@ Global
 		{88E40183-02EB-4B84-9E9D-D0C40DBC8C3B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{88E40183-02EB-4B84-9E9D-D0C40DBC8C3B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{88E40183-02EB-4B84-9E9D-D0C40DBC8C3B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{EE1084E8-B9D1-40F8-A1AA-CFC41B06EF3C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EE1084E8-B9D1-40F8-A1AA-CFC41B06EF3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EE1084E8-B9D1-40F8-A1AA-CFC41B06EF3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EE1084E8-B9D1-40F8-A1AA-CFC41B06EF3C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C03EF83B-393C-4996-BEDA-B4A7DF77D1A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C03EF83B-393C-4996-BEDA-B4A7DF77D1A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C03EF83B-393C-4996-BEDA-B4A7DF77D1A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C03EF83B-393C-4996-BEDA-B4A7DF77D1A0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
