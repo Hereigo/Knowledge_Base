@@ -22,5 +22,5 @@
         });
     }
 }
+ LoginController.$inject = ['$scope', '$routeParams', '$location', 'LoginFactory'];
 
-LoginController.$inject = ['$scope', '$routeParams', '$location', 'LoginFactory'];

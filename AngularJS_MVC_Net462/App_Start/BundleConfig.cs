@@ -12,8 +12,8 @@ namespace AngularJS_MVC_Net462
                 .IncludeDirectory("~/Scripts/Factories", "*.js")
                 .Include("~/Scripts/AwesomeAngularMVCApp.js"));
 
-            bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/site.css"));
+            bundles.Add(new StyleBundle("~/Content/css")
+                .Include("~/Content/site.css"));
 
             BundleTable.EnableOptimizations = true;
         }

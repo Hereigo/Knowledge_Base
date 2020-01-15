@@ -2,6 +2,7 @@
 using System.Web;
 using System.Web.Mvc;
 using AngularJS_MVC_Net462.Models;
+using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 
 namespace AngularJS_MVC_Net462.Controllers
@@ -48,7 +49,7 @@ namespace AngularJS_MVC_Net462.Controllers
         [AllowAnonymous]
         public async Task<bool> Login(LoginViewModel model)
         {
-            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, false);
+            SignInStatus result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, false);
             switch (result)
             {
                 case SignInStatus.Success:
@@ -63,10 +64,14 @@ namespace AngularJS_MVC_Net462.Controllers
         [AllowAnonymous]
         public async Task<bool> Register(RegisterViewModel model)
         {
-            var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
-            var result = await UserManager.CreateAsync(user, model.Password);
+            ApplicationUser user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+
+            IdentityResult result = await UserManager.CreateAsync(user, model.Password);
+
             if (!result.Succeeded) return false;
+
             await SignInManager.SignInAsync(user, false, false);
+
             return true;
         }
     }

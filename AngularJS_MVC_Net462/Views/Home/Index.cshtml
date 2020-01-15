@@ -3,7 +3,10 @@
 <head>
     <title ng-bind="models.helloAngular"></title>
 </head>
+
 <body>
+
+    @Styles.Render("~/Content/css")
 
     <h1>{{models.helloAngular}}</h1>
 
@@ -18,7 +21,7 @@
         <li><a href="/#/register">Register</a></li>
     </ul>
 
-    <div ng-view></div>
+    <div id="main-ng-view" ng-view></div>
 
     <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular-route.min.js"></script>

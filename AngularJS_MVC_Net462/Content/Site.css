@@ -22,3 +22,10 @@ select,
 textarea {
     max-width: 280px;
 }
+
+#main-ng-view {
+    background-color: aquamarine;
+    border: solid 1px red;
+    border-radius: 15px;
+    padding: 1em;
+}
