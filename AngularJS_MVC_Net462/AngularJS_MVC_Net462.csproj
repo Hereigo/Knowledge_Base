@@ -159,6 +159,7 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\RoutesDemoController.cs" />
     <Compile Include="Global.asax.cs">
@@ -175,7 +176,13 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\AwesomeAngularMVCApp.js" />
+    <Content Include="Scripts\Controllers\RegisterController.js" />
     <Content Include="Scripts\Controllers\LandingPageController.js" />
+    <Content Include="Scripts\Controllers\LoginController.js" />
+    <Content Include="Scripts\Factories\AuthHttpResponseInterceptor.js" />
+    <Content Include="Scripts\Factories\RegistrationFactory.js" />
+    <Content Include="Scripts\Factories\LoginFactory.js" />
+    <None Include="Views\Account\Login.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -184,6 +191,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Views\Web.config" />
+    <Content Include="Views\Account\Register.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

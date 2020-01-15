@@ -15,6 +15,7 @@ namespace AngularJS_MVC_Net462.Controllers
             return View();
         }
 
+        [Authorize]
         public ActionResult Three()
         {
             return View();
