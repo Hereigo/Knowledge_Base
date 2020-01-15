@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IO_SubDirectories", "IO_Sub
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AngularJS_MVC_Net462", "AngularJS_MVC_Net462\AngularJS_MVC_Net462.csproj", "{D3861912-CDDE-4A25-B6EE-6134D3D7D611}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SQL_EF_Autofac_Net462", "SQL_EF_Autofac_Net462\SQL_EF_Autofac_Net462.csproj", "{864A7358-5743-4DDF-8930-296C5D8DB6C0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{D3861912-CDDE-4A25-B6EE-6134D3D7D611}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D3861912-CDDE-4A25-B6EE-6134D3D7D611}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D3861912-CDDE-4A25-B6EE-6134D3D7D611}.Release|Any CPU.Build.0 = Release|Any CPU
+		{864A7358-5743-4DDF-8930-296C5D8DB6C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{864A7358-5743-4DDF-8930-296C5D8DB6C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{864A7358-5743-4DDF-8930-296C5D8DB6C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{864A7358-5743-4DDF-8930-296C5D8DB6C0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
