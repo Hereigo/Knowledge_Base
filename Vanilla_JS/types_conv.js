@@ -1,5 +1,3 @@
-import '../styles/index.scss';
-
 console.log(' = = =  TYPEOF & COERCION OF TYPES CONVERTION : = = =  ');
 
 console.log(typeof(null));      // object
@@ -21,6 +19,7 @@ console.log(null == 0); // false
 console.log(NaN == NaN); // false
 console.log(null == undefined); // true
 console.log(null === undefined); // false
+console.log([] == ![]); // true 
 
 let test = null;
 console.log(!test); // true
@@ -44,8 +43,3 @@ console.log(true && false || false); // false
 console.log(false || false && true); // false
 console.log(false && false || true); // true
 
-let uno = 100;
-for (let i = 0; i < 9; i++) {
-    console.log(i + ' - ' + (uno >> i) + ' - ' + (uno << i));
-}
-// x >> i == (x/2) i times, x << i == (x*2) i times
