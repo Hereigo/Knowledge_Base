@@ -4,10 +4,13 @@ namespace Payments_MVC_472.Models
 {
     public class PaymentsDbContext : DbContext
     {
-        public PaymentsDbContext() { }
+        public PaymentsDbContext() : base()
+        {
+            Database.SetInitializer<PaymentsDbContext>(new CreateDatabaseIfNotExists<PaymentsDbContext>());
+        }
 
-        DbSet<Category> Categories { get; set; }
+        public DbSet<Category> Categories { get; set; }
 
-        DbSet<Payment> Payments { get; set; }
+        public DbSet<Payment> Payments { get; set; }
     }
 }
