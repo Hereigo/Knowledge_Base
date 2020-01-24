@@ -1,15 +1,10 @@
 document.addEventListener('DOMContentLoaded', function () {
 
-    // const search = document.querySelectorAll('.search');  
-    const search = document.querySelector('.search');
-    // console.dir(search); // view as object ;
-
-    const cart = document.querySelector('.cart');
-    const cartClose = document.querySelector('.cart-close');
     const cardBtn = document.getElementById('cart');
-    const searchBtn = document.getElementById('wishlist');
-
+    const cart = document.querySelector('.cart');
     const goodsWrapper = document.querySelector('.goods-wrapper');
+    const search = document.querySelector('.search');
+    const searchBtn = document.getElementById('wishlist');
 
     // this function does NOT available until line 13 !
     const createCardGoods = (id, title, price, img) => {
@@ -39,21 +34,24 @@ document.addEventListener('DOMContentLoaded', function () {
     const openCart = () => {
         cart.style.display = 'flex';
     }
+
     const closeCart = (event) => {
-        cart.style.display = '';
+        if (event.target === cart || event.target.classList.contains('cart-close')) {
+            cart.style.display = '';
+        }
     }
 
     cardBtn.addEventListener('click', openCart);
-    cartClose.addEventListener('click', closeCart);
+    cart.addEventListener('click', closeCart);
 
 
 
-    // PAUSED ON PART 1 TIME 1:55:00
+    // PAUSED ON PART 1 TIME 2:10:00
 
 
 
 
     //
-    //
-    // END document.addEventListener('DOMContentLoaded', function() {
+    // END of
+    // document.addEventListener('DOMContentLoaded', function() {
 });
