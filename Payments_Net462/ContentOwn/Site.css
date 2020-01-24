@@ -16,12 +16,6 @@ thead {
     padding-right: 0;
 }
 
-.body-render {
-    margin: 0 1em;
-    max-width: 1078px;
-    margin: auto;
-}
-
 .categor {
     margin-right: 15px;
 }
@@ -61,6 +55,12 @@ thead {
 
 #add-button {
     color: silver;
+}
+
+#body-render {
+    margin: 0 1em;
+    max-width: 1078px;
+    margin: auto;
 }
 
 #by-days {

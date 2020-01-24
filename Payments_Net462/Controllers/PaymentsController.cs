@@ -57,7 +57,7 @@ namespace Payments_Net462.Controllers
             ViewBag.alfa = payments.Where(p => p.CatogoryId == 2).Sum(p => p.Amount);
             ViewBag.prima = payments.Where(p => p.CatogoryId == 3).Sum(p => p.Amount);
 
-            const int categiryBMO = 43;  // in the remote db only!
+            const int categiryBMO = 43;
 
             if (payments.Any(p => p.CatogoryId == categiryBMO))
             {
