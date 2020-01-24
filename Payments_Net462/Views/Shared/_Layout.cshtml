@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body style="padding-top:0">
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                </button>
+
+                <form id="by-days" action="@Url.Action("Index", "Payments")">
+                    <input type="hidden" id="id" name="id" />
+                    <input type="button" value=" 1 " onclick="document.forms['by-days'].id.value = 1; submit()" />
+                    <input type="button" value=" 3 " onclick="document.forms['by-days'].id.value = 3; submit()" />
+                    <input type="button" value=" 5 " onclick="document.forms['by-days'].id.value = 5; submit()" />
+                    <input type="button" value=" 7 " onclick="document.forms['by-days'].id.value = 7; submit()" />
+                    <input type="button" value=" 14 " onclick="document.forms['by-days'].id.value = 14; submit()" />
+                </form>
+
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Payments", "Index", "Payments")</li>
+                    <li>@Html.ActionLink("Categories", "Index", "Categories")</li>
+                    <li><a href="http://somee.com/DOKA/DOU/DOMP/DOWebSites/DOSiteDefault.aspx" target="_blank">Somee</a>
+                    <li>@Html.ActionLink("Stat", "Index", "Statistics")</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div id="body-render">
+
+        @RenderBody()
+
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

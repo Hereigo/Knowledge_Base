@@ -350,6 +350,8 @@ MigrationBackup/
 .ionide/
 
 # ANDY RULES :
-/Payments_MVC_472/Scripts
-/Payments_MVC_472/Content
-AssemblyInfo.cs
+Payments_MVC_472/Content
+Payments_MVC_472/Scripts
+Payments_Net462/Content
+Payments_Net462/Scripts
+Payments_Net462/Web.Release.config
