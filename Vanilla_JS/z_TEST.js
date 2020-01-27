@@ -14,3 +14,15 @@ for (let i = 0; i < 9; i++) {
     console.log(i + ' - ' + (uno >> i) + ' - ' + (uno << i));
 }
 // x >> i == (x/2) i times, x << i == (x*2) i times
+
+// ===========================
+
+let x = 5;
+
+x = (x++ , x = addFive(x), x *= 2, x -= 5, x += 10);
+
+function addFive(num){
+    return num + 5;
+}
+
+console.log(x);
