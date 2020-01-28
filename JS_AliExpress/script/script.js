@@ -31,13 +31,23 @@ document.addEventListener('DOMContentLoaded', function () {
     goodsWrapper.appendChild(createCardGoods(222, 'Dkldhb DIbh', 200000, 'Flamingo.jpg'));
     goodsWrapper.appendChild(createCardGoods(333, 'Dljbhuyobyuo', 300000, 'Socks.jpg'));
 
-    const openCart = () => {
+    const openCart = (event) => {
+
+        // force prevent reference click action :
+        event.preventDefault();
+
         cart.style.display = 'flex';
+        document.addEventListener('keyup', closeCart);
     }
 
     const closeCart = (event) => {
-        if (event.target === cart || event.target.classList.contains('cart-close')) {
+
+        const target = event.target;
+
+        // on Esc key , on Cart click , on cart-close Cross sign :
+        if (event.keyCode === 27 || target === cart || target.classList.contains('cart-close')) {
             cart.style.display = '';
+            document.removeEventListener('keyup', closeCart);
         }
     }
 
@@ -46,7 +56,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
-    // PAUSED ON PART 1 TIME 2:10:00
 
 
 
