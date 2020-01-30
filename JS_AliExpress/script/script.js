@@ -6,6 +6,17 @@ document.addEventListener('DOMContentLoaded', function () {
     const search = document.querySelector('.search');
     const searchBtn = document.getElementById('wishlist');
 
+    fetch('db/db.json').then((rez) => {
+        
+        console.log(rez.json());
+
+    });
+
+
+
+    // ------------ 1:05:00 
+
+
     // this function does NOT available until line 13 !
     const createCardGoods = (id, title, price, img) => {
         const card = document.createElement('div');
