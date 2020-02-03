@@ -1,0 +1,90 @@
+<!doctype html>
+<html ng-app="purchaseApp">
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+    <style>
+        #wrapper {
+            margin: 2em;
+        }
+    </style>
+</head>
+
+<body ng-controller="purchaseController">
+
+    <div id="wrapper">
+
+        <div class="page-header">
+            <h1> Grocery list : </h1>
+        </div>
+        <div class="panel">
+            <div class="form-inline">
+                <div class="form-group">
+                    <div class="col-md-8">
+                        <input class="form-control" ng-model="text" placeholder="grocery name" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-6">
+                        <input type="number" class="form-control" ng-model="price" placeholder="price" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-8">
+                        <button class="btn btn-primary" ng-click="addItem(text, price)">Add</button>
+                    </div>
+                </div>
+            </div>
+            <hr />
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Goods :</th>
+                        <th>Price :</th>
+                        <th>Purchased :</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="item in list.items">
+                        <td>{{item.purchase}}</td>
+                        <td>{{item.price}}</td>
+                        <td><input type="checkbox" ng-model="item.done" /></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        var aNgModel = {
+            items: [
+                { purchase: "Bread", done: false, price: 15.9 },
+                { purchase: "Butter", done: false, price: 60 },
+                { purchase: "Potato", done: true, price: 22.6 },
+                { purchase: "Cheese", done: false, price: 310 }
+            ]
+        };
+
+        // APP MODULE :
+        var purchaseApp = angular.module("purchaseApp", []);
+
+        // CONTROLLER (for business logic) :
+        purchaseApp.controller("purchaseController", function ($scope) {
+
+            $scope.list = aNgModel;
+
+            $scope.addItem = function (text, price) {
+
+                price = parseFloat(price);
+
+                if (text != "" && !isNaN(price)) {
+                    $scope.list.items.push({ purchase: text, price: price, done: false });
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
