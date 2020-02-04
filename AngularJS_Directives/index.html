@@ -1,5 +1,5 @@
 <!doctype html>
-<html ng-app="purchaseApp">
+<html ng-app="myAppModuleTag">
 
 <head>
     <meta charset="utf-8">
@@ -12,7 +12,7 @@
     </style>
 </head>
 
-<body ng-controller="purchaseController">
+<body ng-controller="myNgControllerTag">
 
     <div id="wrapper">
 
@@ -58,6 +58,7 @@
     </div>
 
     <script>
+        // MODEL :
         var aNgModel = {
             items: [
                 { purchase: "Bread", done: false, price: 15.9 },
@@ -67,11 +68,21 @@
             ]
         };
 
-        // APP MODULE :
-        var purchaseApp = angular.module("purchaseApp", []);
+        // APP MODULE (is a storage for Controllers, Directives, Filters data, etc.)
+        var purchaseAppMod = angular.module("myAppModuleTag", [], null);
+        //                angular.module("ModuleName", "[DependModules]", "AdditionalConfigs opt.")
 
-        // CONTROLLER (for business logic) :
-        purchaseApp.controller("purchaseController", function ($scope) {
+        // purchaseAppMod.config(callback);             // register the callback to config module while loading
+        // purchaseAppMod.constant(key, value);         // define service to get constatn
+        // purchaseAppMod.controller(name, constructor); 
+        // purchaseAppMod.directive(name, factory);     // create directive to extend html
+        // purchaseAppMod.factory(name, provider);      // create service
+        // purchaseAppMod.filter(name, factory);        // create filter
+        // purchaseAppMod.provider(name, type);         // create service
+        // purchaseAppMod.service(name, constructor);   // create service
+
+        // CONTROLLER (for business logic) : ($scope is inside Controller only!)
+        purchaseAppMod.controller("myNgControllerTag", function ($scope) {
 
             $scope.list = aNgModel;
 
@@ -84,6 +95,7 @@
                 }
             }
         });
+
     </script>
 </body>
 
