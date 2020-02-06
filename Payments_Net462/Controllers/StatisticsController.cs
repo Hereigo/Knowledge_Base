@@ -20,29 +20,42 @@ namespace Payments_Net462.Controllers
             DateTime startThisMonth = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
             DateTime sixMonthAgo = new DateTime(halfYearAgo.Year, halfYearAgo.Month, 1);
 
+            ViewBag.sixMonthAgo = sixMonthAgo;
+
+            int EnjCatId = 16;
+            int HolCatId = 45;
             int HomCatId = 7;
             int KidCatId = 8;
-            int EnjCatId = 16;
+            int KidExclude = 8680; // cyberBio
 
+            int holThisMonth = db.Payments.Where(p => p.Category.ID == HolCatId && p.PayDate > startThisMonth).Select(p => p.Amount).ToList().Sum();
             int homThisMonth = db.Payments.Where(p => p.Category.ID == HomCatId && p.PayDate > startThisMonth).Select(p => p.Amount).ToList().Sum();
             int kidThisMonth = db.Payments.Where(p => p.Category.ID == KidCatId && p.PayDate > startThisMonth).Select(p => p.Amount).ToList().Sum();
             int enjThisMonth = db.Payments.Where(p => p.Category.ID == EnjCatId && p.PayDate > startThisMonth).Select(p => p.Amount).ToList().Sum();
 
+            int holHalfYear = db.Payments.Where(p => p.Category.ID == HolCatId && p.PayDate > sixMonthAgo).Select(p => p.Amount).ToList().Sum();
             int homHalfYear = db.Payments.Where(p => p.Category.ID == HomCatId && p.PayDate > sixMonthAgo).Select(p => p.Amount).ToList().Sum();
             int kidHalfYear = db.Payments.Where(p => p.Category.ID == KidCatId && p.PayDate > sixMonthAgo).Select(p => p.Amount).ToList().Sum();
             int enjHalfYear = db.Payments.Where(p => p.Category.ID == EnjCatId && p.PayDate > sixMonthAgo).Select(p => p.Amount).ToList().Sum();
 
+            string monthDescrip = DateTime.Now.ToString("MMMMM");
+            string halfYearDescr = "monthly since " + sixMonthAgo.ToString("MM.yyyy");
 
             List<Payment> list = new List<Payment>()
             {
-                new Payment { PayDate = startThisMonth, Amount = homThisMonth, Description = "HOM: " + DateTime.Now.ToString("MMMMM")},
-                new Payment { PayDate = sixMonthAgo, Amount = (homHalfYear - homThisMonth) / 6, Description = "HOM: last 6 m." },
+                new Payment { ID=1, PayDate = startThisMonth, Amount = homThisMonth, Description = "HOM: " + monthDescrip },
+                new Payment { ID=2, PayDate = sixMonthAgo, Amount = (homHalfYear - homThisMonth) / 6, Description = "HOM: " + halfYearDescr },
 
-                new Payment { PayDate = startThisMonth, Amount = kidThisMonth, Description = "KID: " + DateTime.Now.ToString("MMMMM")},
-                new Payment { PayDate = sixMonthAgo, Amount = (kidHalfYear - kidThisMonth) / 6, Description = "KID: last 6 m." },
+                new Payment { ID=3, PayDate = startThisMonth, Amount = holThisMonth, Description = "HOL: " + monthDescrip },
+                new Payment { ID=4, PayDate = sixMonthAgo, Amount = (holHalfYear - holThisMonth) / 6, Description = "HOL: " + halfYearDescr },
 
-                new Payment { PayDate = startThisMonth, Amount = enjThisMonth, Description = "ENJ: " + DateTime.Now.ToString("MMMMM")},
-                new Payment { PayDate = sixMonthAgo, Amount = (enjHalfYear - enjThisMonth) / 6, Description = "ENJ: last 6 m." },
+                new Payment { ID=5, PayDate = startThisMonth, Amount = enjThisMonth, Description = "ENJ: " + monthDescrip },
+                new Payment { ID=6, PayDate = sixMonthAgo, Amount = (enjHalfYear - enjThisMonth) / 6, Description = "ENJ: " + halfYearDescr },
+
+                new Payment { ID=7, PayDate = startThisMonth, Amount = kidThisMonth, Description = "KID: " + monthDescrip },
+                new Payment { ID=8, PayDate = sixMonthAgo, Amount = (sixMonthAgo > new DateTime(2019,11,30))
+                                                            ? (kidHalfYear - kidThisMonth) / 6
+                                                            : (kidHalfYear - kidThisMonth - KidExclude) / 6, Description = "KID: " + halfYearDescr + " (excl.8700)" },
             };
 
             return View(list);

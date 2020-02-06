@@ -25,9 +25,39 @@ function addFive(num) {
   return num + 5;
 }
 
-console.log(x);
+console.log(x); // 27
 
 // ===========================
+console.log('.propertyIsEnumerable()');
 
+let num = 2;
+console.log(num.propertyIsEnumerable(0));    // FALSE
+console.log('2'.propertyIsEnumerable(0));    // TRUE
 console.log([].propertyIsEnumerable(0));     // FALSE
-console.log(['bbb'].propertyIsEnumerable(0)); // TRUE      
+console.log([2].propertyIsEnumerable(0));    // TRUE
+console.log({a:2}.propertyIsEnumerable(0));  // FALSE
+console.log({a:2}.propertyIsEnumerable('a'));// TRUE
+
+
+console.log('======= if ( obj ) ==========');
+// =========== FALSE ================
+let aaa;
+if(aaa) console.log('if (obj) == true');
+else console.log('if (obj) == false');
+aaa = null;
+if(aaa) console.log('if (null) == true');
+else console.log('if (null) == false');
+aaa = undefined;
+if(aaa) console.log('if (undefined) == true');
+else console.log('if (undefined) == false');
+aaa = "";
+if(aaa) console.log('if ("") == true');
+else console.log('if ("") == false');
+
+// =========== TRUE ================
+aaa = [];
+if(aaa) console.log('if ([]) == true');
+else console.log('if ([]) == false');
+aaa = {};
+if(aaa) console.log('if ({}) == true');
+else console.log('if ({}) == false');
