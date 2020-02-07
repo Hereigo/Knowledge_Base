@@ -23,6 +23,7 @@ SELECT
         WHEN [CatogoryId] = 43 THEN 'BMO'
         WHEN [CatogoryId] = 44 THEN 'OLD'
         WHEN [CatogoryId] = 45 THEN 'HOL'
+        WHEN [CatogoryId] = 46 THEN 'TRI'
         ELSE '---'
     END 
     [CatogoryId],

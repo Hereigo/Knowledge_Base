@@ -4,16 +4,19 @@ namespace Payments_Net462.Models
 {
     public class StatistixView
     {
-        [DisplayName("Category")]
+        [DisplayName("Cat")]
         public string CategoryName { get; set; }
 
-        [DisplayName("Curr.Month")]
+        [DisplayName("Curr.M")]
         public int CurrentMonth { get; set; }
 
-        [DisplayName("Prev.Month")]
+        [DisplayName("Prev.M")]
         public int PreviousMonth { get; set; }
 
-        [DisplayName("Avg.Year")]
+        [DisplayName("AVG")]
         public int YearAverage { get; set; }
+
+        [DisplayName("Year")]
+        public int YearSummary { get; set; }
     }
 }
