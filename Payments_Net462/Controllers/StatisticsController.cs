@@ -16,49 +16,55 @@ namespace Payments_Net462.Controllers
 
         public ActionResult Index()
         {
-            DateTime halfYearAgo = DateTime.Now.AddMonths(-6);
-            DateTime startThisMonth = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
-            DateTime sixMonthAgo = new DateTime(halfYearAgo.Year, halfYearAgo.Month, 1);
+            DateTime today = DateTime.Now;
 
-            ViewBag.sixMonthAgo = sixMonthAgo;
+            // 01.02.2019 0:00:00
+            DateTime yearAgo = new DateTime(today.AddYears(-1).Year, today.Month, 1);
 
-            int EnjCatId = 16;
-            int HolCatId = 45;
-            int HomCatId = 7;
-            int KidCatId = 8;
-            int KidExclude = 8680; // cyberBio
+            // 01.02.2020 0:00:00
+            DateTime startPrevMonth = new DateTime(today.Year, today.AddMonths(-1).Month, 1);
 
-            int holThisMonth = db.Payments.Where(p => p.Category.ID == HolCatId && p.PayDate > startThisMonth).Select(p => p.Amount).ToList().Sum();
-            int homThisMonth = db.Payments.Where(p => p.Category.ID == HomCatId && p.PayDate > startThisMonth).Select(p => p.Amount).ToList().Sum();
-            int kidThisMonth = db.Payments.Where(p => p.Category.ID == KidCatId && p.PayDate > startThisMonth).Select(p => p.Amount).ToList().Sum();
-            int enjThisMonth = db.Payments.Where(p => p.Category.ID == EnjCatId && p.PayDate > startThisMonth).Select(p => p.Amount).ToList().Sum();
+            // 01.01.2020 0:00:00
+            DateTime startThisMonth = new DateTime(today.Year, today.Month, 1);
 
-            int holHalfYear = db.Payments.Where(p => p.Category.ID == HolCatId && p.PayDate > sixMonthAgo).Select(p => p.Amount).ToList().Sum();
-            int homHalfYear = db.Payments.Where(p => p.Category.ID == HomCatId && p.PayDate > sixMonthAgo).Select(p => p.Amount).ToList().Sum();
-            int kidHalfYear = db.Payments.Where(p => p.Category.ID == KidCatId && p.PayDate > sixMonthAgo).Select(p => p.Amount).ToList().Sum();
-            int enjHalfYear = db.Payments.Where(p => p.Category.ID == EnjCatId && p.PayDate > sixMonthAgo).Select(p => p.Amount).ToList().Sum();
-
-            string monthDescrip = DateTime.Now.ToString("MMMMM");
-            string halfYearDescr = "monthly since " + sixMonthAgo.ToString("MM.yyyy");
-
-            List<Payment> list = new List<Payment>()
+            var categories = new List<KeyValuePair<int, string>>()
             {
-                new Payment { ID=1, PayDate = startThisMonth, Amount = homThisMonth, Description = "HOM: " + monthDescrip },
-                new Payment { ID=2, PayDate = sixMonthAgo, Amount = (homHalfYear - homThisMonth) / 6, Description = "HOM: " + halfYearDescr },
-
-                new Payment { ID=3, PayDate = startThisMonth, Amount = holThisMonth, Description = "HOL: " + monthDescrip },
-                new Payment { ID=4, PayDate = sixMonthAgo, Amount = (holHalfYear - holThisMonth) / 6, Description = "HOL: " + halfYearDescr },
-
-                new Payment { ID=5, PayDate = startThisMonth, Amount = enjThisMonth, Description = "ENJ: " + monthDescrip },
-                new Payment { ID=6, PayDate = sixMonthAgo, Amount = (enjHalfYear - enjThisMonth) / 6, Description = "ENJ: " + halfYearDescr },
-
-                new Payment { ID=7, PayDate = startThisMonth, Amount = kidThisMonth, Description = "KID: " + monthDescrip },
-                new Payment { ID=8, PayDate = sixMonthAgo, Amount = (sixMonthAgo > new DateTime(2019,11,30))
-                                                            ? (kidHalfYear - kidThisMonth) / 6
-                                                            : (kidHalfYear - kidThisMonth - KidExclude) / 6, Description = "KID: " + halfYearDescr + " (excl.8700)" },
+                new KeyValuePair<int, string>(16,"ENJ"),
+                new KeyValuePair<int, string>(45,"HOL"),
+                new KeyValuePair<int, string>(07,"HOM"),
+                new KeyValuePair<int, string>(10,"QVN"),
+                new KeyValuePair<int, string>(08,"KID"),
             };
 
-            return View(list);
+            List<StatistixView> stats = new List<StatistixView>();
+
+            foreach (KeyValuePair<int, string> categItem in categories)
+            {
+                stats.Add(GetStatsRecord(categItem, yearAgo, startPrevMonth, startThisMonth));
+            }
+
+            return View(stats);
+        }
+
+        private StatistixView GetStatsRecord(KeyValuePair<int, string> category, DateTime yearAgo, DateTime startPrevMonth, DateTime startThisMonth)
+        {
+            // exclude of the single 8680 payment :
+            bool kidExclusion = category.Key == 8 && yearAgo < new DateTime(2019, 11, 30);
+
+            int currMonthSum = db.Payments.Where(p => p.Category.ID == category.Key && p.PayDate > startThisMonth)
+                .Select(p => p.Amount).ToList().Sum();
+            int prevMonthSum = db.Payments.Where(p => p.Category.ID == category.Key && p.PayDate > startPrevMonth && p.PayDate < startThisMonth)
+                .Select(p => p.Amount).ToList().Sum();
+            int prevYearSum = db.Payments.Where(p => p.Category.ID == category.Key && p.PayDate > yearAgo && p.PayDate < startThisMonth)
+                .Select(p => p.Amount).ToList().Sum();
+
+            return new StatistixView
+            {
+                CategoryName = category.Value,
+                CurrentMonth = currMonthSum,
+                PreviousMonth = prevMonthSum,
+                YearAverage = kidExclusion ? (prevYearSum - 8680) / 12 : prevYearSum / 12
+            };
         }
 
         // TEST LINQ DYMANIC (using System.Linq.Dynamic.Core) :

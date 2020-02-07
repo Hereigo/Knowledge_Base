@@ -151,6 +151,7 @@
     <Compile Include="Models\Payment.cs" />
     <Compile Include="Models\PaymentsContext.cs" />
     <Compile Include="Models\PaymentsDbInitializer.cs" />
+    <Compile Include="Models\StatistixView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -302,7 +303,6 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
-    <Content Include="Views\Payments\Index - Old.cshtml" />
     <Content Include="Views\Statistics\Test.cshtml" />
     <Content Include="Views\Statistics\Index.cshtml" />
   </ItemGroup>

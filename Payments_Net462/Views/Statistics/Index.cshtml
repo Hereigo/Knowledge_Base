@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Payments_Net462.Models.Payment>
+﻿@model IEnumerable<Payments_Net462.Models.StatistixView>
 
 @{
     ViewBag.Title = "Index";
@@ -8,29 +8,58 @@
 
 <table class="table table-striped">
     <tr>
+        <th></th>
         <th>
-            @Html.DisplayNameFor(model => model.ID)
+            @Html.DisplayNameFor(model => model.CategoryName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Amount)
+            @Html.DisplayNameFor(model => model.CurrentMonth)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Description)
+            @Html.DisplayNameFor(model => model.PreviousMonth)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.YearAverage)
+        </th>
+        <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.ID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Amount)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-    </tr>
-}
-
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td></td>
+            <!-- TEMPORARY HACK !!!!!!!!! -->
+            @if (item.CategoryName == "ENJ" || item.CategoryName == "KID")
+            {
+                <td>
+                    @Html.DisplayFor(modelItem => item.CategoryName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CurrentMonth)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PreviousMonth)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.YearAverage)
+                </td>
+            }
+            else
+            {
+                <th>
+                    @Html.DisplayFor(modelItem => item.CategoryName)
+                </th>
+                <th>
+                    @Html.DisplayFor(modelItem => item.CurrentMonth)
+                </th>
+                <th>
+                    @Html.DisplayFor(modelItem => item.PreviousMonth)
+                </th>
+                <th>
+                    @Html.DisplayFor(modelItem => item.YearAverage)
+                </th>
+            }
+            <td></td>
+        </tr>
+    }
 </table>

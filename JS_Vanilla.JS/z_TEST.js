@@ -55,9 +55,5 @@ if(aaa) console.log('if ("") == true');
 else console.log('if ("") == false');
 
 // =========== TRUE ================
-aaa = [];
-if(aaa) console.log('if ([]) == true');
-else console.log('if ([]) == false');
-aaa = {};
-if(aaa) console.log('if ({}) == true');
-else console.log('if ({}) == false');
+if([]) console.log('if ([]) == true');
+if({}) console.log('if ({}) == true');
