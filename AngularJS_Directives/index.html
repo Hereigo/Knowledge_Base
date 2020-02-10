@@ -9,6 +9,13 @@
         #wrapper {
             margin: 2em;
         }
+
+        [ng-controller] {
+            border: solid 1px rgb(38, 132, 219);
+            border-radius: 10px;
+            padding: .5em;
+            margin: .5em;
+        }
     </style>
 </head>
 
@@ -16,53 +23,45 @@
     <div id="wrapper">
 
         <div ng-controller="phoneController">
-            <p>Название: {{phone.name}}</p>
-            <p>Цена: {{phone.price}} $</p>
-            <p>Производитель: {{phone.company.name}}</p>
-        </div>
-        <hr>
-
-        <div ng-controller="phoneController">
-            <p>Производитель: {{phone.company.country}}</p>
+            <p>Name: {{phone.name}}</p>
+            <p>Price: $ {{phone.price}}</p>
+            <p>Vendor: {{phone.company.name}}</p>
+            <p>Text: {{TEXT}}</p>
         </div>
 
-        <div ng-controller="myController as myCtrl">
-            <h3>{{myCtrl.message}}</h3>
-            <p>{{myCtrl.text}}</p>
+        <div ng-controller="myController as ctrl">
+            <h3>{{ctrl.message}}</h3>
+            <p>{{ctrl.TEXT}}</p>
         </div>
     </div>
-
-    <script type="text/javascript">
-        angular.module('myApp', []);
-    </script>
 
     <script type="text/javascript">
 
         var myApp = angular.module('myApp', []);
 
-        myApp.controller('myController', function () {
-            this.message = "myController";
-            this.text = "Контроллер без $scope";
+        myApp.run(function ($rootScope) {
+            $rootScope.TEXT = "$rootScope.TEXT";
         });
-    </script>
 
-    <!-- With No $Scope : -->
-    <script src="app/js/phonesController.js"></script>
-    <script>
-        var myApp = angular.module('myApp');
+        // With No $scope :
+        myApp.controller('myController', function () {
+            this.message = "My Controller";
+            this.TEXT = "This Controller with no $scope";
+        });
 
+        // With $scope                      constructur :
         myApp.controller('phoneController', function ($scope) {
-
             $scope.phone = {
                 name: 'Nokia Lumia 630',
                 year: 2014,
-                price: 200,
+                price: 250,
                 company: {
                     name: 'Nokia',
-                    country: 'Финляндия'
+                    country: 'Finland'
                 }
             }
         });
+
     </script>
 
 </body>
