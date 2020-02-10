@@ -2,10 +2,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const cardBtn = document.getElementById('cart');
     const cart = document.querySelector('.cart');
+    const category = document.querySelector('.category');
     const goodsWrapper = document.querySelector('.goods-wrapper');
     const search = document.querySelector('.search');
     const searchBtn = document.getElementById('wishlist');
-    const category = document.querySelector('.category');
 
     const createCardGoods = (id, title, price, img) => {
         const card = document.createElement('div');
@@ -46,26 +46,10 @@ document.addEventListener('DOMContentLoaded', function () {
     const chooseCategory = event => {
         event.preventDefault();
         const target = event.target;
-
         if (target.classList.contains('category-item')) {
-
-            // console.log(target.dataset);
-
-            getGoods(renderCard, goods => {
-
-                //console.log(goods);
-
-                let filtered = [];
-
-                goods.forEach(item => {
-                    if (item.category == target.dataset.category)
-                        filtered.push(item);
-                });
-
-                //console.log('AAA', filtered.length);
-
-                return filtered;
-            });
+            const selectedCat = target.dataset.category;
+            getGoods(renderCard,
+                goods => goods.filter(item => item.category.includes(selectedCat)));
         }
     };
 
@@ -73,14 +57,9 @@ document.addEventListener('DOMContentLoaded', function () {
     cart.addEventListener('click', closeCart);
     category.addEventListener('click', chooseCategory);
 
-    const getGoods = (handler, filter) => {
-        fetch('db/db.json')
-            .then((rez) => { return rez.json(); })
-            .then(filter)
-            .then(handler);
-    }
-
     const renderCard = cardsArray => {
+        // clear before re-render.
+        goodsWrapper.textContent = '';
         cardsArray.forEach((arrayElem) => {
             const { id, title, price, imgMin } = arrayElem;
             goodsWrapper.appendChild(
@@ -89,12 +68,16 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     };
 
+    const getGoods = (handler, filter) => {
+        fetch('db/db.json')
+            .then((rez) => { return rez.json(); })
+            .then(filter)
+            .then(handler);
+    }
+
     const randomSort = (array) => array.sort(() => Math.random() - 0.5);
 
     getGoods(renderCard, randomSort);
-
-
-    // ------------ 2:19:00 
 
 
 
