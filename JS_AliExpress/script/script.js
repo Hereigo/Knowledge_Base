@@ -46,8 +46,26 @@ document.addEventListener('DOMContentLoaded', function () {
     const chooseCategory = event => {
         event.preventDefault();
         const target = event.target;
-        if(target.classList.contains('category-item')){
-            console.log(target.dataset);
+
+        if (target.classList.contains('category-item')) {
+
+            // console.log(target.dataset);
+
+            getGoods(renderCard, goods => {
+
+                //console.log(goods);
+
+                let filtered = [];
+
+                goods.forEach(item => {
+                    if (item.category == target.dataset.category)
+                        filtered.push(item);
+                });
+
+                //console.log('AAA', filtered.length);
+
+                return filtered;
+            });
         }
     };
 
@@ -55,12 +73,9 @@ document.addEventListener('DOMContentLoaded', function () {
     cart.addEventListener('click', closeCart);
     category.addEventListener('click', chooseCategory);
 
-
-
     const getGoods = (handler, filter) => {
         fetch('db/db.json')
             .then((rez) => { return rez.json(); })
-            // .then((goods) => { console.log(goods[3]); })
             .then(filter)
             .then(handler);
     }
@@ -79,7 +94,10 @@ document.addEventListener('DOMContentLoaded', function () {
     getGoods(renderCard, randomSort);
 
 
-    // ------------ 2:11:00 
+    // ------------ 2:19:00 
+
+
+
 
 
     //
