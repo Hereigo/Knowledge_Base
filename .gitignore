@@ -349,12 +349,8 @@ MigrationBackup/
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
 
-# ANDY RULES :
-Payments_MVC_472/Content
-Payments_MVC_472/Scripts
-Payments_Net462/Content
-Payments_Net462/Scripts
-Payments_Net462/Web.Release.config
-/AngularJS_AspNet_MVC4/fonts
-/AngularJS_AspNet_MVC4/Content
-/AngularJS_AspNet_MVC4/Scripts
+# ANDY'S RULES :
+*/Content
+*/Fonts
+*/Scripts
+*/Web.Release.config
