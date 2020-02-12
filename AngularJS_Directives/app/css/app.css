@@ -1,0 +1,10 @@
+#wrapper {
+    margin: 2em;
+}
+
+[ng-controller] {
+    border: solid 1px rgb(38, 132, 219);
+    border-radius: 10px;
+    padding: .5em;
+    margin: .5em;
+}

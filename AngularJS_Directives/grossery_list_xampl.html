@@ -9,6 +9,9 @@
         #wrapper {
             margin: 2em;
         }
+        .odd {
+            color: blue;
+        }
     </style>
 </head>
 
@@ -46,7 +49,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr NG-repeat="item in list.items">
+                    <tr NG-repeat="item in list.items" NG-class="$odd ? 'odd' : 'even'">
                         <td>{{item.purchase}}</td>
                         <td>{{item.price}}</td>
                         <td><input type="checkbox" NG-model="item.done" /></td>
@@ -56,7 +59,8 @@
         </div>
     </div>
 
-    <script>
+    <script type="text/javascript">
+
         // MODEL :
         var aNgModel = {
             items: [
@@ -95,6 +99,7 @@
         });
 
     </script>
+
 </body>
 
 </html>
