@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="app.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-sanitize/1.7.9/angular-sanitize.min.js"></script>
+</head>
+
+<body NG-APP="ngAppModule">
+
+    <div NG-CONTROLLER="noScopeController as ctrl">
+        <h3>{{ctrl.message}}</h3>
+        <p>{{ctrl.TEXT}}</p>
+    </div>
+
+
+    <div NG-CONTROLLER="phonesController">
+        <h3>Phones :</h3>
+        <ul>
+            <!-- DIRECTIVES :               NG-CLASS has built-in ($add, $even, $first, $index, ...) -->
+            <li NG-REPEAT="phone in phones" NG-CLASS="$odd ? 'odd' : 'even'">
+                [{{$index}}] {{phone.company.name}} model {{phone.name}} ({{phone.company.country}}) - $ {{phone.price}}
+            </li>
+        </ul>
+
+        <div ng-repeat="mode in modes">
+            <label>
+                <input type="radio" ng-model="data.mode" value="{{mode.value}}" name="modes" />
+                {{mode.value}}
+            </label>
+        </div>
+        <div ng-include="setNgIncludeTemplate()"></div>
+
+        <p>({{TEXT}})</p>
+    </div>
+
+
+    <div NG-CONTROLLER="ngSanitizeUse">
+        <p>
+            <span NG-BIND-HTML="ngBindHtmlCode"></span>
+        </p>
+    </div>
+
+    <script src="phonesController.js"></script>
+</body>
+
+</html>

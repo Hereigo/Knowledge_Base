@@ -1,5 +1,9 @@
-#wrapper {
-    margin: 2em;
+h2, h3 {
+    margin-top: 0;
+}
+
+.odd {
+    color: blue;
 }
 
 [ng-controller] {
