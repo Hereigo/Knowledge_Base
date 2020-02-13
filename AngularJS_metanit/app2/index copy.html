@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../shared.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+</head>
+
+<body NG-APP="ngAppModule">
+
+    <div ng-controller="QuestionController">
+        <div class="quest" ng-class="questColorClass" ng-mouseenter="changeClass($event)"
+            ng-mouseleave="changeClass($event)">
+            <h3>{{question.text}}</h3>
+            <p>{{question.author}} </p>
+            <p><i>{{question.date}}</i></p>
+        </div>
+        <h3>Ответы</h3>
+        <div class="answers">
+            <div ng-repeat="answer in question.answers" class="answer">
+                <div class="vote">
+                    <a class="vote-up" ng-click="voteUp(answer)"></a>
+                    <span class="rate">{{answer.rate}}</span>
+                    <a class="vote-down" ng-click="voteDown(answer)"></a>
+                </div>
+                <b>{{answer.text}}</b>
+                <p>{{answer.author}}</p>
+                <p><i>{{answer.date}}</i></p>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        var myApp = angular.module('ngAppModule', []);
+    </script>
+    <script src="QuestionController.js"></script>
+
+</body>
+
+</html>
