@@ -18,7 +18,8 @@
 
 
     <div NG-CONTROLLER="phonesController">
-        <h3>Phones :</h3>
+
+        <h4>({{TEXT}})</h4>
         <ul>
             <!-- DIRECTIVES :               NG-CLASS has built-in ($add, $even, $first, $index, ...) -->
             <li NG-REPEAT="phone in phones" NG-CLASS="$odd ? 'odd' : 'even'">
@@ -26,15 +27,20 @@
             </li>
         </ul>
 
-        <div ng-repeat="mode in modes">
+        <div NG-REPEAT="mode in modes">
             <label>
-                <input type="radio" ng-model="data.mode" value="{{mode.value}}" name="modes" />
+                <input type="radio" NG-MODEL="data.mode" value="{{mode.value}}" name="modes" />
                 {{mode.value}}
             </label>
         </div>
-        <div ng-include="setNgIncludeTemplate()"></div>
 
-        <p>({{TEXT}})</p>
+        <div NG-INCLUDE="setNgIncludeTemplate()"></div>
+
+        <div NG-SWITCH ON="data.mode">
+            <div NG-SWITCH-WHEN="ng-Bind partial View">ng-Bind partial View selected!</div>
+            <div NG-SWITCH-WHEN="ng-Model partial View">ng-Model partial View selected!</div>
+            <div NG-SWITCH-DEFAULT>Partial View is not set yet.</div>
+        </div>
     </div>
 
 
