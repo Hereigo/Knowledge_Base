@@ -3,8 +3,7 @@
 
 <head>
     <title>Directive Demo</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"
-        rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.js"></script>
     <style>
         [ng-bind] {
@@ -14,16 +13,18 @@
 </head>
 
 <body class="jumbotron container" ng-app="myApp">
+    <h3>List of Sale Items.</h3>
 
     <div ng-controller="AppController as ctrl">
-        <h3>List of Sale Items.</h3>
-        <div ng-repeat="item in ctrl.items">
-            <item-widget item="item" promo="Christmas-Sale" on-select="ctrl.onItemSelect(selectedItem)"></item-widget>
+
+        <div NG-REPEAT="item in ctrl.items">
+            <!-- processed by Directive 'itemWidget' -->
+            <item-widget ITEM="item" PROMO="Christmas-Sale" ON-SELECT="ctrl.onItemSelect(selectedItem)"></item-widget>
         </div>
+
     </div>
 
     <script type="text/javascript">
-
         angular.module('myApp', [])
             .controller('AppController', [function () {
                 var self = this;
@@ -33,7 +34,7 @@
                     { name: 'Dishwasher', price: 250, condition: 'Second-Hand', brand: 'WhirlPool', published: '01/12/2015' },
                 ];
                 self.onItemSelect = function (name) {
-                    console.log('Congrats. You have just bought a', name);
+                    console.log('Congrats! You have just bought a', name);
                 };
             }])
             .directive('itemWidget', [function () {
@@ -44,20 +45,11 @@
                         promo: '@',
                         pickMe: '&onSelect'
                     },
-                    templateUrl: 'saleItem3.html',
+                    templateUrl: 'saleItemWidget.html',
                     link: function (scope, element, attrs) {
-
-                        console.log('SCOPE : ', scope);
-                        console.log('ELEMENT : ', element);
-                        console.log('ATTRS : ', attrs);
-
-                        //Add event listener for 'click' event
                         element.on('click', function (event) {
-
                             element.html('Thanks for buying this item.');
-                            element.css({
-                                color: 'green'
-                            });
+                            element.css({ color: 'green' });
                         });
                     }
                 }

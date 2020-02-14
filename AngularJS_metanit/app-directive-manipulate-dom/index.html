@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Directive Demo</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.js"></script>
+</head>
+
+<body class="jumbotron container" ng-app="myApp">
+
+    <div ng-controller="Controller">
+        Set Date format: <input ng-model="format">
+        <hr />
+        Current time is: <span my-current-time="format"></span>
+    </div>
+
+    <script type="text/javascript">
+
+        angular.module('myApp', [])
+            .controller('Controller', ['$scope', function ($scope) {
+                $scope.format = 'M/d/yy h:mm:ss a';
+            }])
+            .directive('myCurrentTime', ['$interval', 'dateFilter', function ($interval, dateFilter) {
+
+                // element - JQLite-wrapped "my-current-time"
+                function link(scope, element, attrs) {
+                    var format,
+                        timeoutId;
+
+                    function updateTime() {
+                        element.text(dateFilter(new Date(), format));
+                    }
+
+                    scope.$watch(attrs.myCurrentTime, function (value) {
+                        format = value;
+                        updateTime();
+                    });
+
+                    element.on('$destroy', function () {
+                        $interval.cancel(timeoutId);
+                    });
+
+                    // start the UI update process; save the timeoutId for canceling
+                    timeoutId = $interval(function () {
+                        updateTime(); // update DOM
+                    }, 1000);
+                }
+
+                return {
+                    link: link
+                };
+            }]);
+    </script>
+</body>
+
+</html>
