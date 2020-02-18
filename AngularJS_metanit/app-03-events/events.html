@@ -3,21 +3,18 @@
 
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../shared.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+    <link rel="stylesheet" href="../bootstrap-3.3.7.min.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body NG-APP="ngAppModule">
 
-    <div ng-controller="QuestionController">
+    <div ng-controller="voteController">
         <div class="quest" ng-class="questColorClass" ng-mouseenter="changeClass($event)"
             ng-mouseleave="changeClass($event)">
             <h3>{{question.text}}</h3>
-            <p>{{question.author}} </p>
             <p><i>{{question.date}}</i></p>
         </div>
-        <h3>Ответы</h3>
         <div class="answers">
             <div ng-repeat="answer in question.answers" class="answer">
                 <div class="vote">
@@ -31,11 +28,23 @@
             </div>
         </div>
     </div>
-    <script type="text/javascript">
-        var myApp = angular.module('ngAppModule', []);
-    </script>
-    <script src="QuestionController.js"></script>
-
+    <!-- 
+    NG-BLUR - when focus lost
+    NG-FOCUS - when element in focus
+    NG-CHANGE - when element changed (clicked/selected/etc.)
+    NG-SUBMIT - when form submitted
+    NG-COPY/NG-CUT/NG-PASTE - ...
+    NG-DBLCLICK - ...
+    NG-MOUSEDOWn - mouse button down
+    NG-MOUSEUP - mouse button up
+    NG-MOUSEENTER - mouse cursor over an element
+    NG-MOUSELEAVE - mouse cursor out of an element
+    NG-MOUSEMOVE - when mouse moving
+    NG-KEYDOWN - keyboard down
+    NG-KEYPRESS - keyboard pressed
+    NG-KEYUP - keyboard up -->
+    <script src="../angular-1.7.9.min.js"></script>
+    <script src="voteController.js"></script>
 </body>
 
 </html>

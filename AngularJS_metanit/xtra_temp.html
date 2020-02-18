@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+    <style>
+        .odd {
+            color: rgb(89, 191, 231);
+        }
+    </style>
+</head>
+
+<body NG-APP="myApp" style="margin:2em">
+
+    <div NG-CONTROLLER="myController">
+
+        <h3>{{controllerTitle}}</h3>
+
+        <my-directive>
+            <p>
+                Hello everybody!
+            </p>
+            <p>
+                Hello nobody!
+            </p>
+            
+        </my-directive>
+
+    </div>
+
+    <script type="text/javascript">
+
+        var app = angular.module('myApp', [])
+            .controller('myController', function ($scope) {
+                $scope.controllerTitle = 'Yahooo!';
+            })
+            .directive('myDirective', function () {
+
+                return function (scope, elem, attributes) {
+                    elem[0].children[0].style.backgroundColor = "rgb(89, 191, 231)";
+
+                    // elem[0].onclick = function(xxx){
+                    //     console.log(xxx);
+                    // };
+
+                    console.log(elem);
+                };
+            });
+
+    </script>
+
+</body>
+
+</html>

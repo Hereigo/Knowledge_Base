@@ -3,10 +3,8 @@
 
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../bootstrap-3.3.7.min.css">
     <link rel="stylesheet" href="../shared.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-sanitize/1.7.9/angular-sanitize.min.js"></script>
 </head>
 
 <body NG-APP="ngAppModule">
@@ -16,16 +14,14 @@
         <p>{{ctrl.TEXT}}</p>
     </div>
 
-
     <div NG-CONTROLLER="phonesController">
-
-        <h4>({{TEXT}})</h4>
         <ul>
             <!-- DIRECTIVES :               NG-CLASS has built-in ($add, $even, $first, $index, ...) -->
             <li NG-REPEAT="phone in phones" NG-CLASS="$odd ? 'odd' : 'even'">
                 [{{$index}}] {{phone.company.name}} model {{phone.name}} ({{phone.company.country}}) - $ {{phone.price}}
             </li>
         </ul>
+        <h4>({{TEXT}})</h4>
 
         <div NG-REPEAT="mode in modes">
             <label>
@@ -50,7 +46,10 @@
         </p>
     </div>
 
-    <script src="phonesController.js"></script>
+    <script src="../angular-1.7.9.min.js"></script>
+    <script src="../angular-sanitize-1.7.9.min.js"></script>
+    <script src="phonesModel.js"></script>
+    <script src="index.js"></script>
 </body>
 
 </html>

@@ -10,23 +10,24 @@ var myAppModule = angular.module('ngAppModule', ["ngSanitize"], null);
 //  myAppModule.service(name, constructor);   // create service
 
 myAppModule.run(function ($rootScope) {
-    $rootScope.TEXT = "$rootScope.TEXT";
+    $rootScope.TEXT = '$rootScope.TEXT';
 });
 
 // Controller with 'ngSanitize' :
 myAppModule.controller('ngSanitizeUse', function ($scope) {
-    $scope.ngBindHtmlCode = "Using NG-BIND-HTML with 'ngSanitize' : <b><i>" + $scope.TEXT + "</i></b>";
+    $scope.ngBindHtmlCode = "Using NG-BIND-HTML with <b><i>'ngSanitize' </i></b> & <u>" + $scope.TEXT + "</u>";
 });
 
 // With No $scope :
 myAppModule.controller('noScopeController', function () {
-    this.message = "Simple Controller";
-    this.TEXT = "This Controller with no $scope";
+    this.message = 'just controller message.';
+    this.TEXT = 'noScopeController TEXT';
 });
 
 // With $scope                            constructur :
 myAppModule.controller('phonesController',
     function ($scope) {
+
         $scope.data = {};
 
         $scope.setNgIncludeTemplate = function () {
@@ -40,34 +41,6 @@ myAppModule.controller('phonesController',
             { value: 'ng-Bind partial View' },
             { value: 'ng-Model partial View' }];
 
-        $scope.phones = [{
-            name: 'Lumia 630',
-            price: 250,
-            company: {
-                name: 'Nokia',
-                country: 'Finland'
-            }
-        }, {
-            name: 'Galaxy S 4',
-            price: 400,
-            company: {
-                name: 'Samsung',
-                country: 'Republic of Korea'
-            }
-        }, {
-            name: 'Mi 5',
-            price: 300,
-            company: {
-                name: 'Xiaomi',
-                country: 'China'
-            }
-        }, {
-            name: 'RAZR',
-            price: 500,
-            company: {
-                name: 'Motorola ',
-                country: 'U.S.'
-            }
-        }]
+        $scope.phones = GetPhonesModel();
     }
 );

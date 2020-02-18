@@ -2,22 +2,19 @@
 <html>
 
 <head>
-    <title>Directive Demo</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.js"></script>
+    <script src="angular-1.7.9.min.js"></script>
 </head>
 
-<body class="jumbotron container" ng-app="myApp">
+<body ng-app="myAppModule">
 
     <div ng-controller="Controller">
-        Set Date format: <input ng-model="format">
-        <hr />
+        Set Date format: <input ng-model="format"> <hr>
         Current time is: <span my-current-time="format"></span>
     </div>
 
     <script type="text/javascript">
-
-        angular.module('myApp', [])
+        angular
+            .module('myAppModule', [])
             .controller('Controller', ['$scope', function ($scope) {
                 $scope.format = 'M/d/yy h:mm:ss a';
             }])

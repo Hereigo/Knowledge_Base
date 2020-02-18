@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="shared.css">
+    <style>
+        .myclass {
+            color: rgb(14, 52, 223);
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body NG-APP="ngAppModule">
+
+    <div NG-CONTROLLER="simpleController">
+        <div ng-style="somestyle">ng-style directive</div>
+        <div ng-class="someclass">ng-class directive</div>
+        <hr>
+        <p ng-show="data.visible">Visible if NG-SHOW</p>
+        <p ng-hide="data.visible">Visible if NG-HIDE</p>
+        <input type="checkbox" ng-model="data.visible"> - NG_MODEL="Visible"
+        <p ng-if="data.visible">Visible if NG-IF == true</p>
+        <p ng-if="!data.visible">Visible if NG-IF == false</p>
+    </div>
+
+    <script src="angular-1.7.9.min.js"></script>
+    <script type="text/javascript">
+        angular
+            .module('ngAppModule', [])
+            .controller('simpleController', function ($scope) {
+                $scope.somestyle = { background: '#eee', color: '#333' };
+                $scope.someclass = "myclass";
+                $scope.data = { visible: false };
+            });
+    </script>
+</body>
+
+</html>
