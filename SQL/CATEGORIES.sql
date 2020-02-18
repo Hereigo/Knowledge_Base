@@ -24,6 +24,7 @@ SELECT
         WHEN [CatogoryId] = 44 THEN 'OLD'
         WHEN [CatogoryId] = 45 THEN 'HOL'
         WHEN [CatogoryId] = 46 THEN 'TRI'
+        WHEN [CatogoryId] = 47 THEN 'BKP'
         ELSE '---'
     END 
     [CatogoryId],
@@ -34,6 +35,8 @@ SELECT
 FROM
     [MyExpenses].[dbo].[Payments]
 WHERE
-    [Description] LIKE '%weekend%' AND [CatogoryId] != 8 AND [CatogoryId] != 43
+    [Description] LIKE '%weekend%'
+    AND [CatogoryId] != 8
+    AND [CatogoryId] != 43
 ORDER BY
     [PayDate] DESC

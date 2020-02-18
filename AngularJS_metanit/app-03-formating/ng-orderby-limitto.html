@@ -3,20 +3,21 @@
 
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="../bootstrap-3.3.7.min.css">
 </head>
 
 <body NG-APP="ngAppModule">
 
     <div ng-controller="formatterController">
 
-        <ul ng-repeat="item in collection | orderBy : 'name' ">
-            <li>{{item.name}} (id={{item.id}})</li>
-        </ul>
+        <select ng-model="item">
+
+            <option ng-repeat="item in collection" </select>
+
+                <ul ng-repeat="item in collection | orderBy : 'name' | limitTo : 13 | filter :name "> {{name}}
+                    <li>{{item.name}} ({{item.id}})</li>
+                </ul>
 
     </div>
-
-
 
     <script src="../angular-1.7.9.min.js"></script>
     <script src="ng-orderby-limitto.js"></script>

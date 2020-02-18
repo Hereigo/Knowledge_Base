@@ -1,16 +1,15 @@
-$main-color: #FF4747;
+$main-color: #ff4747;
 $second-color: #ff9a00;
-$blue: #0059FF;
-$pink: #FF63F5;
-
+$blue: #0059ff;
+$pink: #ff63f5;
 
 @keyframes show {
   0% {
-    opacity: 0
+    opacity: 0;
   }
 
   to {
-    opacity: 1
+    opacity: 1;
   }
 }
 
@@ -32,7 +31,6 @@ $pink: #FF63F5;
     border: 3px solid $main-color;
   }
 }
-
 
 body {
   font-family: Open Sans, Arial, Helvetica, sans-serif;
@@ -80,7 +78,7 @@ button {
   text-decoration: none;
   vertical-align: middle;
   border-radius: 2px;
-  transition: all .08s ease-in-out;
+  transition: all 0.08s ease-in-out;
   user-select: none;
   margin-top: auto;
   border: 2px solid $main-color;
@@ -102,7 +100,6 @@ button {
 }
 
 .category {
-
   &-title {
     font-size: 30px;
     font-weight: 400;
@@ -156,7 +153,7 @@ nav {
 
         &:hover {
           background-color: #333;
-          color: #c5c5c5
+          color: #c5c5c5;
         }
       }
     }
@@ -199,7 +196,6 @@ nav {
     flex-grow: 1;
     border: 3px solid $main-color;
 
-
     &-wrapper {
       justify-content: flex-start;
       border-right-width: 0;
@@ -236,8 +232,6 @@ nav {
       border-bottom-right-radius: 3px;
       overflow: hidden;
       background-color: $main-color;
-
-
     }
 
     &-btn {
@@ -255,7 +249,7 @@ nav {
         width: 24px;
         height: 24px;
         color: #fff;
-        background-image: url('../img/icons.png');
+        background-image: url("../img/icons.png");
         background-position: -8px -1328px;
       }
     }
@@ -283,7 +277,7 @@ nav {
     height: 16px;
     border-radius: 8px;
     padding: 0 8px;
-    background-color: #FF4747;
+    background-color: #ff4747;
     color: #fff;
     font-size: 12px;
     line-height: 16px;
@@ -315,18 +309,16 @@ nav {
 }
 
 #wishlist {
-  background-image: url('../img/icons.png');
+  background-image: url("../img/icons.png");
   background-position: 1px -3592px;
 
   &:hover {
     background-position: 1px -3642px;
   }
-
 }
 
 #cart {
-
-  background-image: url('../img/icons.png');
+  background-image: url("../img/icons.png");
   background-position: 0 -2895px;
 
   &:hover {
@@ -360,7 +352,6 @@ nav {
 
     &:hover {
       color: $main-color;
-
     }
 
     &:before {
@@ -368,7 +359,7 @@ nav {
       position: absolute;
       left: -2px;
       top: -2px;
-      content: '';
+      content: "";
       width: 24px;
       height: 24px;
       vertical-align: top;
@@ -415,9 +406,7 @@ nav {
     &__electron:hover:before {
       background-position: 0 -807px;
     }
-
   }
-
 }
 
 .card {
@@ -456,11 +445,10 @@ nav {
       background-size: contain;
       background-repeat: no-repeat;
     }
-
   }
 
   &:hover {
-    box-shadow: 0 1px 8px 0 rgba(0, 0, 0, .08);
+    box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.08);
     position: absolute;
     z-index: 1;
 
@@ -470,14 +458,13 @@ nav {
 
     .card-add-wishlist {
       opacity: 1;
-      animation: show .5s ease-in-out;
+      animation: show 0.5s ease-in-out;
     }
 
     .card-add-cart {
       display: block;
     }
   }
-
 
   &-title {
     overflow: hidden;
@@ -506,7 +493,7 @@ nav {
   &-price {
     font-size: 22px;
     font-weight: 700;
-    letter-spacing: .3px;
+    letter-spacing: 0.3px;
   }
 
   &-add-cart {
@@ -521,7 +508,6 @@ nav {
     border-radius: 8px;
 
     &:hover {
-
     }
   }
 
@@ -538,7 +524,7 @@ nav {
     right: 8px;
     bottom: 8px;
     opacity: 0;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, .08);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.08);
     border: none;
 
     &:hover {
@@ -570,8 +556,6 @@ nav {
       color: $main-color;
     }
   }
-
-
 }
 
 .cart {
@@ -599,7 +583,6 @@ nav {
   &-title {
     font-size: 28px;
     color: #4d5f71;
-
   }
 
   &-wrapper {
@@ -614,15 +597,13 @@ nav {
 
     #cart-empty {
       font-size: 24px;
-      color: #4d5f71
+      color: #4d5f71;
     }
-
   }
 
   &-head {
     display: flex;
     justify-content: space-between;
-
   }
 
   &-close {
@@ -702,7 +683,7 @@ nav {
       border: none;
 
       &.active {
-        background-position: 4px  -2633px;
+        background-position: 4px -2633px;
       }
     }
 
@@ -726,16 +707,15 @@ nav {
     &-count-total {
       width: 32px;
     }
-
   }
 }
 
 @keyframes spinner-loading {
   0% {
-    transform: rotate(0deg)
+    transform: rotate(0deg);
   }
   100% {
-    transform: rotate(360deg)
+    transform: rotate(360deg);
   }
 }
 
@@ -750,7 +730,7 @@ nav {
 .spinner-loading > div > div {
   transform-origin: 100px 100px;
   animation: spinner-loading 3.0303030303030303s linear infinite;
-  opacity: 0.8
+  opacity: 0.8;
 }
 
 .spinner-loading > div > div > div {
@@ -760,11 +740,11 @@ nav {
   width: 70px;
   height: 70px;
   border-radius: 70px 0 0 0;
-  transform-origin: 100px 100px
+  transform-origin: 100px 100px;
 }
 
 .spinner-loading > div div:nth-child(1) {
-  animation-duration: 0.7575757575757576s
+  animation-duration: 0.7575757575757576s;
 }
 
 .spinner-loading > div div:nth-child(1) > div {
@@ -773,16 +753,16 @@ nav {
 }
 
 .spinner-loading > div div:nth-child(2) {
-  animation-duration: 1.0101010101010102s
+  animation-duration: 1.0101010101010102s;
 }
 
 .spinner-loading > div div:nth-child(2) > div {
-  background: #FF43D5;
+  background: #ff43d5;
   transform: rotate(0deg);
 }
 
 .spinner-loading > div div:nth-child(3) {
-  animation-duration: 1.5151515151515151s
+  animation-duration: 1.5151515151515151s;
 }
 
 .spinner-loading > div div:nth-child(3) > div {
@@ -791,14 +771,13 @@ nav {
 }
 
 .spinner-loading > div div:nth-child(4) {
-  animation-duration: 3.0303030303030303s
+  animation-duration: 3.0303030303030303s;
 }
 
 .spinner-loading > div div:nth-child(4) > div {
-  background: #0061FF;
+  background: #0061ff;
   transform: rotate(0deg);
 }
-
 
 .spinner-loading {
   width: 100%;

@@ -1,21 +1,21 @@
 h2, h3 {
-    margin-top: 0;
+  margin-top: 0;
 }
 
 .odd {
-    color: blue;
+  color: blue;
 }
 
 [ng-controller] {
-    border: solid 1px rgb(38, 132, 219);
-    border-radius: 10px;
-    padding: .5em;
-    margin: .5em;
+  border: solid 1px rgb(38, 132, 219);
+  border-radius: 10px;
+  padding: 0.5em;
+  margin: 0.5em;
 }
 
 [ng-include] {
-    border: solid 1px rgb(219, 156, 38);
-    border-radius: 10px;
-    padding: .5em .5em 0 .5em;
-    margin: .5em;
+  border: solid 1px rgb(219, 156, 38);
+  border-radius: 10px;
+  padding: 0.5em 0.5em 0 0.5em;
+  margin: 0.5em;
 }
