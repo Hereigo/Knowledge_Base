@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../bootstrap-3.3.7.min.css">
+</head>
+
+<body NG-APP="ngAppModule">
+
+    <div ng-controller="formatterController">
+
+        <ul ng-repeat="item in collection | orderBy : 'name' ">
+            <li>{{item.name}} (id={{item.id}})</li>
+        </ul>
+
+    </div>
+
+
+
+    <script src="../angular-1.7.9.min.js"></script>
+    <script src="ng-orderby-limitto.js"></script>
+</body>
+
+</html>
