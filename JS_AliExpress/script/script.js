@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const search = document.querySelector('.search');
   const searchBtn = document.getElementById('wishlist');
 
-  const loading = () => {
+  const showLoadingSpinner = () => {
     goodsWrapper.innerHTML = `<div id="spinner"><div class="spinner-loading"><div><div><div></div>
     </div><div><div></div></div><div><div></div></div><div><div></div></div></div></div></div>`;
   };
@@ -33,7 +33,8 @@ document.addEventListener('DOMContentLoaded', function () {
   };
 
   const openCart = event => {
-    // force prevent reference click action :
+    // Set event.defaultPrevented propperty = true.
+    // to force prevent reference click action :
     event.preventDefault();
     cart.style.display = 'flex';
     document.addEventListener('keyup', closeCart);
@@ -53,27 +54,51 @@ document.addEventListener('DOMContentLoaded', function () {
     const target = event.target;
     if (target.classList.contains('category-item')) {
       const selectedCat = target.dataset.category;
-      getGoods(renderCard,
+      getGoodsAndRender(renderCard,
         goods => goods.filter(item => item.category.includes(selectedCat)));
+    }
+  };
+
+  const searchGoods = event => {
+    event.preventDefault();
+    // event.target.elements (is a HTMLFormControlsCollection)
+    const searchValue = event.target.elements.searchGoods.value.trim();
+    if (searchValue === '') {
+      search.classList.add('error');
+      setTimeout(() => {
+        search.classList.remove('error');
+      }, 3000);
+    } else {
+      const search = new RegExp(searchValue, 'i');
+      getGoodsAndRender(renderCard, goods => goods.filter(item => search.test(item.title)));
+      // OR (method 2) :
+      getGoodsAndRender(renderCard, goods => goods.filter(item => item.title.toLowerCase().includes(searchValue.toLowerCase())));
     }
   };
 
   cardBtn.addEventListener('click', openCart);
   cart.addEventListener('click', closeCart);
   category.addEventListener('click', chooseCategory);
+  search.addEventListener('submit', searchGoods);
 
   const renderCard = cardsArray => {
     // clear before re-render.
     goodsWrapper.textContent = '';
-    cardsArray.forEach((arrayElem) => {
-      const { id, title, price, imgMin } = arrayElem;
-      goodsWrapper.appendChild(
-        createCardGoods(id, title, price, imgMin)
-      );
-    });
-  };
+    if (cardsArray.length) {
+      cardsArray.forEach((arrayElem) => {
+        const { id, title, price, imgMin } = arrayElem;
+        goodsWrapper.appendChild(
+          createCardGoods(id, title, price, imgMin)
+        );
+      });
+    } else {
+      goodsWrapper.textContent = '🙁 Sorry, nothing has found.';
+    };
+  }
 
-  const getGoods = (handler, filter) => {
+  //... getGoods = (handler, filter = undefined by default and will be skipped if PROMISES (.then(undefined))
+  const getGoodsAndRender = (handler, filter) => {
+    showLoadingSpinner();
     fetch('db/db.json')
       .then((rez) => { return rez.json(); })
       .then(filter)
@@ -82,12 +107,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
   const randomSort = (array) => array.sort(() => Math.random() - 0.5);
 
-  getGoods(renderCard, randomSort);
+  getGoodsAndRender(renderCard, randomSort);
 
 
 
 
-  // PAUSED ON 23:00
+  // PAUSED ON 1:07:00
 
 
 

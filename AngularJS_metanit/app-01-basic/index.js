@@ -31,9 +31,9 @@ myAppModule.controller('phonesController',
         $scope.data = {};
 
         $scope.setNgIncludeTemplate = function () {
-            if ($scope.data.mode == 'ng-Bind partial View')
+            if ($scope.data.mode === 'ng-Bind partial View')
                 return 'partial-ngBind.html';
-            else if ($scope.data.mode == 'ng-Model partial View')
+            else if ($scope.data.mode === 'ng-Model partial View')
                 return 'partial-ngModel.html';
         };
 

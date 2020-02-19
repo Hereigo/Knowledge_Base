@@ -33,6 +33,6 @@ myApp.controller('voteController', function ($scope) {
     $scope.questColorClass = "questcolor";
     $scope.changeClass = function (e) {
 
-        $scope.questColorClass = e.type == "mouseover" ? "questselectedcolor" : "questcolor";
+        $scope.questColorClass = e.type === "mouseover" ? "questselectedcolor" : "questcolor";
     }
 });
