@@ -7,6 +7,8 @@ document.addEventListener('DOMContentLoaded', function () {
   const search = document.querySelector('.search');
   const searchBtn = document.getElementById('wishlist');
 
+  let wishlist = [];
+
   const showLoadingSpinner = () => {
     goodsWrapper.innerHTML = `<div id="spinner"><div class="spinner-loading"><div><div><div></div>
     </div><div><div></div></div><div><div></div></div><div><div></div></div></div></div></div>`;
@@ -76,10 +78,35 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   };
 
+  const toggleWishList = id => {
+    console.log('A:', wishlist);
+    if (wishlist.indexOf(id) >= 0) {
+
+
+
+      // PAUSED ON 1:21:00
+
+
+
+    } else {
+      wishlist.push(id);
+    }
+    console.log('B:', wishlist);
+  }
+
+  const goodsHandler = event => {
+    event.preventDefault();
+    if (event.target.classList.contains('card-add-wishlist')) {
+      // !!!!!!!!!!!!!!! <button data-goods-id="xxx"
+      toggleWishList(event.target.dataset.goodsId);
+    }
+  }
+
   cardBtn.addEventListener('click', openCart);
   cart.addEventListener('click', closeCart);
   category.addEventListener('click', chooseCategory);
   search.addEventListener('submit', searchGoods);
+  goodsWrapper.addEventListener('click', goodsHandler);
 
   const renderCard = cardsArray => {
     // clear before re-render.
@@ -112,7 +139,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
-  // PAUSED ON 1:07:00
+
 
 
 
