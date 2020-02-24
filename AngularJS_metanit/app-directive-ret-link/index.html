@@ -3,8 +3,8 @@
 
 <head>
     <title>Directive Demo</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.js"></script>
+    <link rel="stylesheet" href="../bootstrap-3.3.7.min.css" />
+    <script src="../angular-1.7.9.min.js"></script>
     <style>
         [ng-bind] {
             font-weight: bold;
@@ -14,12 +14,12 @@
 
 <body class="jumbotron container" ng-app="myApp">
     <h3>List of Sale Items.</h3>
-
     <div ng-controller="AppController as ctrl">
 
         <div NG-REPEAT="item in ctrl.items">
             <!-- processed by Directive 'itemWidget' -->
-            <item-widget ITEM="item" PROMO="Christmas-Sale" ON-SELECT="ctrl.onItemSelect(selectedItem)"></item-widget>
+            <item-widget ITEM="item" PROMO="Christmas-Sale" ON-SELECT-ACT="ctrl.onItemSelect(selectedItem)">
+            </item-widget>
         </div>
 
     </div>
@@ -31,7 +31,7 @@
                 self.items = [
                     { name: 'Computer', price: 500, condition: 'New', brand: 'Lenovo', published: '01/11/2015' },
                     { name: 'Phone', price: 200, condition: 'New', brand: 'Samsung', published: '02/11/2015' },
-                    { name: 'Dishwasher', price: 250, condition: 'Second-Hand', brand: 'WhirlPool', published: '01/12/2015' },
+                    { name: 'Dishwasher', price: 350, condition: 'Second-Hand', brand: 'WhirlPool', published: '01/12/2015' },
                 ];
                 self.onItemSelect = function (name) {
                     console.log('Congrats! You have just bought a', name);
@@ -43,9 +43,18 @@
                     scope: {
                         item: '=',
                         promo: '@',
-                        pickMe: '&onSelect'
+                        buttonClick: '&onSelectAct'
                     },
-                    templateUrl: 'saleItemWidget.html',
+                    template: [`
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            Name: <span ng-bind="item.name"></span>
+                            Price: <span ng-bind="item.price | currency"></span>
+                            Brand: <span ng-bind="item.brand"></span>
+                            Promo: {{promo}}
+                            <button class="pull-right" ng-click="buttonClick({selectedItem:item.name})">Buy me</button>
+                        </div>
+                    </div>`],
                     link: function (scope, element, attrs) {
                         element.on('click', function (event) {
                             element.html('Thanks for buying this item.');
