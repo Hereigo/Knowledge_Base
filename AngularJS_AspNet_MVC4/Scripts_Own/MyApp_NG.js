@@ -1,8 +1,6 @@
 ﻿var app = angular.module("myApp", []);
 
 app.controller("myCtrl", function ($scope, $http) {
-    
-    // debugger;
 
     $scope.InsertData = function () {
         var Action = document.getElementById("btnSave").getAttribute("value");
@@ -13,7 +11,7 @@ app.controller("myCtrl", function ($scope, $http) {
             $scope.Employe.Emp_Age = $scope.EmpAge;
             $http({
                 method: "post",
-                url: "/Employee/Insert_Employee",
+                url: "/Home/Insert_Employee",
                 datatype: "json",
                 data: JSON.stringify($scope.Employe)
             }).then(function (response) {
@@ -31,7 +29,7 @@ app.controller("myCtrl", function ($scope, $http) {
             $scope.Employe.Emp_Id = document.getElementById("EmpID_").value;
             $http({
                 method: "post",
-                url: "/Employee/Update_Employee",
+                url: "/Home/Update_Employee",
                 datatype: "json",
                 data: JSON.stringify($scope.Employe)
             }).then(function (response) {
@@ -50,7 +48,7 @@ app.controller("myCtrl", function ($scope, $http) {
     $scope.GetAllData = function () {
         $http({
             method: "get",
-            url: "/Employee/Get_AllEmployee"
+            url: "/Home/Get_AllEmployee"
         }).then(function (response) {
             $scope.employees = response.data;
         }, function () {
@@ -61,7 +59,7 @@ app.controller("myCtrl", function ($scope, $http) {
     $scope.DeleteEmp = function (Emp) {
         $http({
             method: "post",
-            url: "/Employee/Delete_Employee",
+            url: "/Home/Delete_Employee",
             datatype: "json",
             data: JSON.stringify(Emp)
         }).then(function (response) {

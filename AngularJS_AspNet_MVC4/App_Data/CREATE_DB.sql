@@ -1,4 +1,6 @@
-﻿USE [AngJSAsp4_Employees] CREATE TABLE [dbo].[Employee](
+﻿-- AFTER CREATE DB - ADD NEW ADO EDM TO THE PROJECT !
+
+USE [AngJSAsp4_Employees] CREATE TABLE [dbo].[Employee](
     [Emp_Id] [int] IDENTITY(1, 1) NOT NULL,
     [Emp_Name] [varchar](max) NULL,
     [Emp_City] [varchar](max) NULL,
@@ -21,3 +23,5 @@ VALUES
     ('Max', 44, 'Lviv'),
     ('Maria', 55, 'N.Y.'),
     ('Jose', 77, 'Kyiv')
+
+-- AFTER CREATE DB - ADD NEW ADO EDM TO THE PROJECT !
