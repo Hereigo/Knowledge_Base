@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Directive Demo</title>
+    <link rel="stylesheet" href="../bootstrap-3.3.7.min.css" />
+    <script src="../angular-1.7.9.min.js"></script>
+    <style>
+        [ng-bind] {
+            font-weight: bold;
+        }
+
+        widget-directive>div {
+            border: solid 1px blue;
+            border-radius: .5em;
+            margin: .5em;
+            padding: .5em;
+            ;
+        }
+    </style>
+</head>
+
+<body class="jumbotron container" ng-app="myApp">
+    <h3>List of Sale Items.</h3>
+    <div ng-controller="NgController1 as ctrl">
+
+        <div ng-repeat="ctrlItem in ctrl.items">
+            <widget-directive item="ctrlItem" widget-item="Sale!" boo="ctrl.ctrlAction1(currentItem)">
+            </widget-directive>
+        </div>
+
+    </div>
+
+    <script type="text/javascript">
+        angular
+            .module('myApp', [])
+            .controller('NgController1', [function () {
+                var ngController1 = this;
+                ngController1.items = [
+                    { name: 'Computer', price: 500 },
+                    { name: 'Phone', price: 200 },
+                    { name: 'Dishwasher', price: 350 },
+                ];
+                ngController1.ctrlAction1 = function (itemName) {
+                    console.log('Congrats! You have just bought a', itemName);
+                };
+            }])
+            .directive('widgetDirective', [function () {
+                return {
+                    scope: {
+                        item: '=', // get from Controller
+                        widgetItem: '@', // get from Directive
+                        templateBtnClick: '&boo'
+                    },
+                    template: [`<div>
+                        Name: <span ng-bind="item.name"></span>
+                        Price: <span ng-bind="item.price | currency"></span>
+                        <button ng-click="templateBtnClick({currentItem:item.name})">Click me</button>
+                        <b>{{widgetItem}}</b>
+                        </div>`
+                    ],
+                    link: function (scope, currElem, attribs) {
+                        currElem.on('click', function () {
+                            currElem.html('<div>Sold out.</div>')
+                            currElem.css({ color: 'red' });
+                        });
+                    }
+                }
+            }]);
+
+    </script>
+</body>
+
+</html>
