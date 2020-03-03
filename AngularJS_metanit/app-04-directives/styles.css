@@ -1,0 +1,11 @@
+[ng-bind] {
+    font-weight: bold;
+}
+
+widget-directive>div {
+    border: solid 1px blue;
+    border-radius: .5em;
+    margin: .5em;
+    padding: .5em;
+    ;
+}

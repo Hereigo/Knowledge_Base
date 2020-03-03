@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="../bootstrap-3.3.7.min.css" />
+    <script src="../angular-1.7.9.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="jumbotron container" ng-app="myApp">
+    <h3>List of Sale Items.</h3>
+
+    <div ng-controller="NgController1 as ctrl">
+
+    </div>
+
+    <script type="text/javascript">
+        angular
+            .module('myApp', [])
+            .controller('NgController1', [function () {
+                var ngController1 = this;
+            }])
+            .directive('widgetDirective', [function () {
+                return {
+                    scope: {
+                        item: '=', // in Widget from Controller
+                        widgetText: '@', // in Widget from Directive
+                        templateNgClick: '&boo' // in Widget from Controller via Template
+                    },
+                    template: [`<div>
+
+                        </div>`
+                    ],
+                    link: function (scope, currElem, attribs) {
+                        // process current html-element
+                        currElem.on('click', function () {
+                            currElem.html('<div>Sold out.</div>')
+                            currElem.css({ color: 'red' });
+                        });
+                    }
+                }
+            }]);
+
+    </script>
+</body>
+
+</html>

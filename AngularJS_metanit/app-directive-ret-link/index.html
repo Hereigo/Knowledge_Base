@@ -2,24 +2,21 @@
 <html>
 
 <head>
-    <title>Directive Demo</title>
     <link rel="stylesheet" href="../bootstrap-3.3.7.min.css" />
     <script src="../angular-1.7.9.min.js"></script>
-    <style>
-        [ng-bind] {
-            font-weight: bold;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body class="jumbotron container" ng-app="myApp">
     <h3>List of Sale Items.</h3>
-    <div ng-controller="AppController as ctrl">
 
-        <div NG-REPEAT="item in ctrl.items">
-            <!-- processed by Directive 'itemWidget' -->
-            <item-widget ITEM="item" PROMO="Christmas-Sale" ON-SELECT-ACT="ctrl.onItemSelect(selectedItem)">
-            </item-widget>
+    <div ng-controller="NgController1 as ctrl">
+
+        <div ng-repeat="ctrlItem in ctrl.items">
+
+            <widget-directive item="ctrlItem" widget-text="Sale!" boo="ctrl.consoleInfo(current)">
+            </widget-directive>
+
         </div>
 
     </div>
@@ -27,43 +24,40 @@
     <script type="text/javascript">
         angular
             .module('myApp', [])
-            .controller('AppController', [function () {
-                var self = this;
-                self.items = [
-                    { name: 'Computer', price: 500, condition: 'New', brand: 'Lenovo', published: '01/11/2015' },
-                    { name: 'Phone', price: 200, condition: 'New', brand: 'Samsung', published: '02/11/2015' },
-                    { name: 'Dishwasher', price: 350, condition: 'Second-Hand', brand: 'WhirlPool', published: '01/12/2015' },
+            .controller('NgController1', [function () {
+                var ngController1 = this;
+                ngController1.items = [
+                    { name: 'Computer', price: 500 },
+                    { name: 'Phone', price: 200 },
+                    { name: 'Dishwasher', price: 350 },
                 ];
-                self.onItemSelect = function (name) {
-                    console.log('Congrats! You have just bought a', name);
+                ngController1.consoleInfo = function (itemName) {
+                    console.log('Congrats! You have just bought a', itemName);
                 };
             }])
-            .directive('itemWidget', [function () {
+            .directive('widgetDirective', [function () {
                 return {
-                    restrict: 'E',
                     scope: {
-                        item: '=',
-                        promo: '@',
-                        buttonClick: '&onSelectAct'
+                        item: '=', // in Widget from Controller
+                        widgetText: '@', // in Widget from Directive
+                        templateNgClick: '&boo' // in Widget from Controller via Template
                     },
-                    template: [`
-                    <div class="panel panel-default">
-                        <div class="panel-body">
-                            Name: <span ng-bind="item.name"></span>
-                            Price: <span ng-bind="item.price | currency"></span>
-                            Brand: <span ng-bind="item.brand"></span>
-                            Promo: {{promo}}
-                            <button class="pull-right" ng-click="buttonClick({selectedItem:item.name})">Buy me</button>
-                        </div>
-                    </div>`],
-                    link: function (scope, element, attrs) {
-                        element.on('click', function (event) {
-                            element.html('Thanks for buying this item.');
-                            element.css({ color: 'green' });
+                    template: [`<div>
+                        {{item.name}} - {{item.price | currency}}
+                        <button ng-click="templateNgClick({current:item.name})">Click me</button>
+                        {{widgetText}}
+                        </div>`
+                    ],
+                    // attributes: { item: "item", widgetText: "widget-text", boo: "boo" }
+                    link: function (callScope, directiveDomElem, attributes) {
+                        directiveDomElem.on('click', function () {
+                            directiveDomElem.html('<div>Sold out.</div>')
+                            directiveDomElem.css({ color: 'red' });
                         });
                     }
                 }
             }]);
+
     </script>
 </body>
 
