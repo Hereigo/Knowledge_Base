@@ -1,0 +1,2 @@
+REM .* = Include hidden
+"C:\Program Files\7-Zip\7z.exe" a -r -t7z -pPassword -xr!packages -xr!bin -xr!obj %USERPROFILE%\source\repos\Knowledge_Base\Payments_Net462.7z %USERPROFILE%\source\repos\Knowledge_Base\Payments_Net462/.* %USERPROFILE%\source\repos\Knowledge_Base\Payments_Net462
