@@ -31,14 +31,17 @@ namespace Payments_Net462.Models
                 context.Categories.Add(new Category { Name = "PEB", IsActive = true });//17
                 context.Categories.Add(new Category { Name = "VLG", IsActive = true });//18
                 context.Categories.Add(new Category { Name = "KSH", IsActive = true });//19
-
-                // ADD ONE PAYMENT DATA TO INIT DB TABLE:
-
-                context.Payments.Add(new Payment { CatogoryId = 1, Amount = 100, Description = ("	Prev.Summary.	").Trim(), PayDate = DateTime.ParseExact(("	3/29/2018	").Trim(), "M/d/yyyy", CultureInfo.InvariantCulture) });
+                context.Categories.Add(new Category { Name = "RLS", IsActive = true, ID = 39 });
+                context.Categories.Add(new Category { Name = "BMO", IsActive = true, ID = 43 });
+                context.Categories.Add(new Category { Name = "KSH", IsActive = true, ID = 44 });
+                context.Categories.Add(new Category { Name = "KSH", IsActive = true, ID = 45 });
+                context.Categories.Add(new Category { Name = "KSH", IsActive = true, ID = 46 });
+                context.Categories.Add(new Category { Name = "KSH", IsActive = true, ID = 47 });
 
                 base.Seed(context);
             }
 
+            // ADD NEW CETGORIES :
             if (!context.Categories.Contains(new Category { Name = "BMO", IsActive = true, ID = 20 }))
             {
                 context.Categories.Add(new Category { Name = "BMO", IsActive = true, ID = 20 });
@@ -46,9 +49,9 @@ namespace Payments_Net462.Models
                 base.Seed(context);
             }
 
-            if (!context.Categories.Contains(new Category { Name = "OLD", IsActive = true, ID = 21 }))
+            if (!context.Payments.Any())
             {
-                context.Categories.Add(new Category { Name = "OLD", IsActive = true, ID = 21 });
+                context.Payments.Add(new Payment { CatogoryId = 1, Amount = 100, Description = ("	Prev.Summary.	").Trim(), PayDate = DateTime.ParseExact(("	3/29/2018	").Trim(), "M/d/yyyy", CultureInfo.InvariantCulture) });
 
                 base.Seed(context);
             }
