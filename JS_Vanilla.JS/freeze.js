@@ -16,3 +16,6 @@ console.log(arr); // [1, 2, 7]
 
 // ===================================
 
+const nums = [1,2,3];
+nums[10]=11;
+console.log(nums);

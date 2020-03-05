@@ -7,7 +7,6 @@ let reservedWords = {
 console.log(reservedWords.for + reservedWords.let + reservedWords.return);
 
 // ======= B I N A R Y - S H I F T ====================
-
 let uno = 100;
 
 for (let i = 0; i < 9; i++) {
@@ -16,9 +15,7 @@ for (let i = 0; i < 9; i++) {
 // x >> i == (x/2) i times, x << i == (x*2) i times
 
 // ===========================
-
 let x = 5;
-
 x = (x++ , x = addFive(x), x *= 2, x -= 5, x += 10);
 
 function addFive(num) {
@@ -40,6 +37,7 @@ console.log({a:2}.propertyIsEnumerable('a'));// TRUE
 
 
 console.log('======= if ( obj ) ==========');
+
 // =========== FALSE ================
 let aaa;
 if(aaa) console.log('if (obj) == true');
@@ -57,3 +55,12 @@ else console.log('if ("") == false');
 // =========== TRUE ================
 if([]) console.log('if ([]) == true');
 if({}) console.log('if ({}) == true');
+
+// ==== Console.Time === Console.Table =======
+console.time('TIME ');
+let a = [];
+a.push({name: 'aaa', age: 111, isGood: true});
+a.push({name: 'bbb', age: 222, isGood: false});
+a.push({name: 'ccc', age: 333, isGood: true});
+console.table(a);
+console.timeEnd('TIME ');
