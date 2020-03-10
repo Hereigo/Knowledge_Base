@@ -1,6 +1,5 @@
 ﻿body {
-    padding-bottom: 20px;
-    padding-top: 50px;
+    margin: 0 1em;
 }
 
 input, select, textarea {
@@ -41,26 +40,20 @@ thead {
     text-align: right;
 }
 
-.table-th div:nth-child(1) {
-    color: cadetblue;
-}
+    .table-th div:nth-child(1) {
+        color: cadetblue;
+    }
 
-.table-th div:nth-child(2) {
-    color: limegreen;
-}
+    .table-th div:nth-child(2) {
+        color: limegreen;
+    }
 
-.table-th div:nth-child(3) {
-    color: blue;
-}
+    .table-th div:nth-child(3) {
+        color: blue;
+    }
 
 #add-button {
     color: silver;
-}
-
-#body-render {
-    margin: 0 1em;
-    max-width: 1078px;
-    margin: auto;
 }
 
 #by-days {

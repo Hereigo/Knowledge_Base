@@ -305,6 +305,7 @@
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Statistics\Test.cshtml" />
     <Content Include="Views\Statistics\Index.cshtml" />
+    <Content Include="Views\Payments\Index_OLD.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

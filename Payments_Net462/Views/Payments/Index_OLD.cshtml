@@ -22,8 +22,8 @@
         </div>
         <div class="col-2">
         </div>
-        <div class="col-2 text-left">
-            @Html.ActionLink("(©)", "Create", null, new { id = "add-button" })
+        <div class="col-2">
+            @Html.ActionLink("(+)", "Create", null, new { id = "add-button" })
         </div>
     </div>
 
@@ -31,7 +31,6 @@
     @foreach (var item in Model)
     {
         <div class="row">
-
             <div class="col-2">
                 @Html.DisplayFor(modelItem => item.PayDate)
             </div>
@@ -47,7 +46,6 @@
             <div class="col-1">
                 @Html.ActionLink("(©)", "Edit", new { id = item.ID })
             </div>
-
         </div>
     }
 
