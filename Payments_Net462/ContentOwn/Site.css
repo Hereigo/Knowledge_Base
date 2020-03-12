@@ -1,5 +1,6 @@
 ﻿body {
     margin: 0 1em;
+    max-width:1076px;
 }
 
 input, select, textarea {

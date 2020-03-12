@@ -21,7 +21,9 @@ document.addEventListener('DOMContentLoaded', function () {
       `<div class="card">
                 <div class="card-img-wrapper">
                     <img class="card-img-top" src="${img}" alt="">
-                    <button class="card-add-wishlist" data-goods-id="${id}"></button>
+                    <button data-goods-id="${id}"
+                    class="card-add-wishlist ${wishlist.indexOf(id) + 1 ? 'active' : ''}">  <!-- SHOW MARKED AS FAV AFTER REFRESH! -->
+                    </button>
                 </div>
                 <div class="card-body justify-content-between">
                     <a href="#" class="card-title">${title}</a>
@@ -63,8 +65,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
   const searchGoods = event => {
     event.preventDefault();
-    // event.target.elements (is a HTMLFormControlsCollection)
+
+    // event.target.elements === HTMLFormControlsCollection
     const searchValue = event.target.elements.searchGoods.value.trim();
+
     if (searchValue === '') {
       search.classList.add('error');
       setTimeout(() => {
@@ -74,31 +78,39 @@ document.addEventListener('DOMContentLoaded', function () {
       const search = new RegExp(searchValue, 'i');
       getGoodsAndRender(renderCard, goods => goods.filter(item => search.test(item.title)));
       // OR (method 2) :
-      getGoodsAndRender(renderCard, goods => goods.filter(item => item.title.toLowerCase().includes(searchValue.toLowerCase())));
+      // getGoodsAndRender(renderCard, goods => goods.filter(item => item.title.toLowerCase().includes(searchValue.toLowerCase())));
     }
   };
 
-  const toggleWishList = id => {
-    console.log('A:', wishlist);
+
+
+  const toggleWishList = (id, element) => {
     if (wishlist.indexOf(id) >= 0) {
-
-
-
-      // PAUSED ON 1:21:00
-
-
-
+      wishlist.splice(wishlist.indexOf(id), 1);
+      element.classList.remove('active');  // Unmark goods as fav
     } else {
       wishlist.push(id);
+      element.classList.add('active'); // Mark goods as fav
     }
-    console.log('B:', wishlist);
+
+    // TEMPORARY :
+    // TEMPORARY :
+    // TEMPORARY :
+    console.log(wishlist);
+    // TEMPORARY :
+    // TEMPORARY :
+    // TEMPORARY :
+
+
+    // PAUSED ON 1:38:00
+
   }
 
   const goodsHandler = event => {
-    event.preventDefault();
-    if (event.target.classList.contains('card-add-wishlist')) {
-      // !!!!!!!!!!!!!!! <button data-goods-id="xxx"
-      toggleWishList(event.target.dataset.goodsId);
+    const target = event.target;
+    if (target.classList.contains('card-add-wishlist')) {
+      // !!!!!!!!!!!!!!!!!! <button data-goods-id="xxx"
+      toggleWishList(target.dataset.goodsId, target);
     }
   }
 
@@ -111,6 +123,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const renderCard = cardsArray => {
     // clear before re-render.
     goodsWrapper.textContent = '';
+
     if (cardsArray.length) {
       cardsArray.forEach((arrayElem) => {
         const { id, title, price, imgMin } = arrayElem;
