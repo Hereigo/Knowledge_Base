@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="../bootstrap-3.3.7.min.css" />
+    <script src="../angular-1.7.9.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="jumbotron container" ng-app="myApp">
+
+    <div ng-controller="ngController1">
+        <b>Controller 1 :</b> $factory.data <input type="text" ng-model="dataFactory.data">
+    </div>
+
+    <h4> === Share Data between Controllers === </h4>
+
+    <div ng-controller="ngController2">
+        <b>Controller 2 :</b> $factory.data <input type="text" ng-model="dataFactory.data">
+    </div>
+
+    <script type="text/javascript">
+        var app = angular.module('myApp', []);
+
+        app.controller('ngController1', function ($scope, dataFactory) {
+            $scope.dataFactory = dataFactory;
+        });
+
+        app.controller('ngController2', function ($scope, dataFactory) {
+            $scope.dataFactory = dataFactory;
+        });
+
+        app.factory('dataFactory', function () {
+            return { data: 'data factory text' };
+        })
+
+    </script>
+</body>
+
+</html>
