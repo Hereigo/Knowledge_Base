@@ -5,9 +5,34 @@ document.addEventListener('DOMContentLoaded', function () {
   const category = document.querySelector('.category');
   const goodsWrapper = document.querySelector('.goods-wrapper');
   const search = document.querySelector('.search');
-  const searchBtn = document.getElementById('wishlist');
+  const wishlistBtn = document.getElementById('wishlist');
+  const cardCounter = cardBtn.querySelector('.counter');
+  const wishlistCounter = wishlistBtn.querySelector('.counter');
 
-  let wishlist = [];
+
+
+  // PAUSED ON 2:06:00
+
+
+
+  const checkWishlistCount = () => {
+    wishlistCounter.textContent = wishlist.length;
+  };
+
+  const storageQuery = (get) => {
+    if (get) {
+      if (localStorage.getItem('wishlist')) {
+        JSON.parse(localStorage.getItem('wishlist')).forEach(id => wishlist.push(id));
+      }
+    } else {
+      localStorage.setItem('wishlist', JSON.stringify(wishlist));
+    }
+    checkWishlistCount();
+  };
+
+  const wishlist = []; //
+
+  storageQuery(true);
 
   const showLoadingSpinner = () => {
     goodsWrapper.innerHTML = `<div id="spinner"><div class="spinner-loading"><div><div><div></div>
@@ -22,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 <div class="card-img-wrapper">
                     <img class="card-img-top" src="${img}" alt="">
                     <button data-goods-id="${id}"
-                    class="card-add-wishlist ${wishlist.indexOf(id) + 1 ? 'active' : ''}">  <!-- SHOW MARKED AS FAV AFTER REFRESH! -->
+                    class="card-add-wishlist ${wishlist.includes(id) ? 'active' : ''}"> <!-- MARKED AS FAV AFTER REFRESH PAGE! -->
                     </button>
                 </div>
                 <div class="card-body justify-content-between">
@@ -82,28 +107,15 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   };
 
-
-
   const toggleWishList = (id, element) => {
-    if (wishlist.indexOf(id) >= 0) {
+    if (wishlist.includes(id)) {
       wishlist.splice(wishlist.indexOf(id), 1);
       element.classList.remove('active');  // Unmark goods as fav
     } else {
       wishlist.push(id);
       element.classList.add('active'); // Mark goods as fav
     }
-
-    // TEMPORARY :
-    // TEMPORARY :
-    // TEMPORARY :
-    console.log(wishlist);
-    // TEMPORARY :
-    // TEMPORARY :
-    // TEMPORARY :
-
-
-    // PAUSED ON 1:38:00
-
+    storageQuery();
   }
 
   const goodsHandler = event => {
