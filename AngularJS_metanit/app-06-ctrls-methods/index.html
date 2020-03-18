@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="../bootstrap-3.3.7.min.css" />
+    <script src="../angular-1.7.9.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="jumbotron container" ng-app="myApp">
+
+    <h4> = = = Controller Methods = = = </h4>
+
+    <div ng-controller="ngController1">
+        <div>{{CtrlText}}</div>
+        <div>{{CtrlAutoFunc()}}</div>
+        <div><button ng-click="CtrlFunc()">Change Case</button></div>
+        <div><button ng-click="FactFunc()">Change Text</button></div>
+    </div>
+
+    <script type="text/javascript">
+        var app = angular.module('myApp', []);
+
+        app.controller('ngController1', function ($scope, appFactory) {
+            $scope.CtrlText = 'just text';
+
+            $scope.CtrlAutoFunc = function () {
+                return 'AutoMethods text.';
+            }
+            $scope.CtrlFunc = function () {
+                if ($scope.CtrlText == $scope.CtrlText.toLowerCase())
+                    $scope.CtrlText = $scope.CtrlText.toUpperCase();
+                else
+                    $scope.CtrlText = $scope.CtrlText.toLowerCase();
+            }
+            $scope.FactFunc = function(){
+                $scope.CtrlText = appFactory.factoryFunc();
+            }
+        });
+
+        app.factory('appFactory', function () {
+            return {
+                factoryFunc: function () {
+                    return 'factory function returned text.';
+                }
+            };
+        });
+
+    </script>
+</body>
+
+</html>
