@@ -10,17 +10,14 @@ document.addEventListener('DOMContentLoaded', function () {
   const wishlistCounter = wishlistBtn.querySelector('.counter');
   const shopCartWrapperElem = document.querySelector('.cart-wrapper');
 
-
-
-  // PAUSED ON 2:34:00
-
-
+  const wishlist = [];
+  let goodsBasket = {};
 
   const checkCounter = () => {
     // wishlist counter :
     wishlistCounter.textContent = wishlist.length;
     // shoppingCart counter :
-    cardCounter.textContent = Object.keys(goodsBasket).length; 
+    cardCounter.textContent = Object.keys(goodsBasket).length;
   };
 
   const storageQuery = (get) => {
@@ -34,10 +31,14 @@ document.addEventListener('DOMContentLoaded', function () {
     checkCounter();
   };
 
-  const wishlist = []; //
-  const goodsBasket = {};
-
-  storageQuery(true);
+  const cookieQuery = get => {
+    if (get) {
+      goodsBasket = JSON.parse(getCookie('goodsBasketCookies'));
+    } else {             //                                    semi-colon ; is a Cookies-Delemiter.
+      document.cookie = `goodsBasketCookies=${JSON.stringify(goodsBasket)}; max-age=86400e3`;
+    }
+    checkCounter();
+  }
 
   const showLoadingSpinner = () => {
     goodsWrapper.innerHTML = `<div id="spinner"><div class="spinner-loading"><div><div><div></div>
@@ -118,24 +119,25 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     } else {
       shopCartWrapperElem.innerHTML =
-        '<div id="cart-empty">🙁 Sorry, your shopping cart is empty.</div>';
+        '<div id="cart-empty">🙁 Your shopping cart is empty.</div>';
     };
   }
 
-  const openCart = event => {
-    // Set event.defaultPrevented propperty = true.
-    // to force prevent reference click action :
+  const shoppingGoodsOnly = (items) => items.filter(item => goodsBasket.hasOwnProperty(item.id));
+
+  const openShoppingCart = event => {
     event.preventDefault();
     cart.style.display = 'flex';
-    document.addEventListener('keyup', closeCart);
+    document.addEventListener('keyup', closeShoppingCart);
+    getGoodsAndRender(renderShoppingCart, shoppingGoodsOnly);
   }
 
-  const closeCart = event => {
+  const closeShoppingCart = event => {
     const target = event.target;
     // on Esc key , on Cart click , on cart-close Cross sign :
     if (event.keyCode === 27 || target === cart || target.classList.contains('cart-close')) {
       cart.style.display = '';
-      document.removeEventListener('keyup', closeCart);
+      document.removeEventListener('keyup', closeShoppingCart);
     }
   }
 
@@ -185,12 +187,8 @@ document.addEventListener('DOMContentLoaded', function () {
     } else {
       goodsBasket[id] = 1; // add first
     }
-    
-    // TEST :
-    console.log(goodsBasket);
-    
+    cookieQuery();
     checkCounter();
-
   }
 
   const goodsHandler = event => {
@@ -208,14 +206,14 @@ document.addEventListener('DOMContentLoaded', function () {
     getGoodsAndRender(renderCard, goods => goods.filter(item => wishlist.includes(item.id)));
   }
 
-  cardBtn.addEventListener('click', openCart);
-  cart.addEventListener('click', closeCart);
+  cardBtn.addEventListener('click', openShoppingCart);
+  cart.addEventListener('click', closeShoppingCart);
   category.addEventListener('click', chooseCategory);
   search.addEventListener('submit', searchGoods);
   goodsWrapper.addEventListener('click', goodsHandler);
   wishlistBtn.addEventListener('click', showWishlist);
 
-  //... getGoodsAndRender = (handler, filter = undefined by default and will be skipped if PROMISES (.then(undefined))
+  //... getGoodsAndRender = (handler, filter == undefined by default) and will be skipped if PROMISES (.then(undefined))
   const getGoodsAndRender = (handler, filter) => {
     showLoadingSpinner();
     fetch('db/db.json')
@@ -228,7 +226,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
   getGoodsAndRender(renderCard, randomSort);
 
-
+  storageQuery(true);
+  cookieQuery(true);
 
 
 
