@@ -1,0 +1,43 @@
+<!doctype html>
+<html ng-app="myApp">
+
+<head>
+    <link rel="stylesheet" href="../bootstrap-3.3.7.min.css" />
+    <script src="../angular-1.7.9.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <div ng-controller="ParentController">
+        <h4>Parent Controller :</h4>
+        <div ng-controller="ChildController1">
+            <span>Child Controller 1 :</span>
+            <button ng-click="someFunction()">use Parent Function</button>
+        </div>
+        <div ng-controller="ChildController2">
+            <span>Child Controller 2 :</span>
+            <button ng-click="someFunction()">override Parent Function</button>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        var app = angular.module('myApp', []);
+
+        app.controller('ParentController', function ($scope) {
+            $scope.someFunction = function () {
+                console.log('in ParentController');
+            };
+        });
+
+        app.controller('ChildController1', function ($scope) { });
+
+        app.controller('ChildController2', function ($scope) {
+            $scope.someFunction = function () {
+                console.log('in ChildController2');
+            };
+        });
+    </script>
+</body>
+
+</html>

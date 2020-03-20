@@ -14,31 +14,31 @@
     <div ng-controller="ngController1">
         <div>{{CtrlText}}</div>
         <div>{{CtrlAutoFunc()}}</div>
-        <div><button ng-click="CtrlFunc()">Change Case</button></div>
-        <div><button ng-click="FactFunc()">Change Text</button></div>
+        <div><button ng-click="ControllerFunc()">Change Case</button></div>
+        <div><button ng-click="FactoryFunc()">Change Text</button></div>
     </div>
 
     <script type="text/javascript">
         var app = angular.module('myApp', []);
 
-        app.controller('ngController1', function ($scope, appFactory) {
+        app.controller('ngController1', function ($scope, appSharedFactory) {
             $scope.CtrlText = 'just text';
 
             $scope.CtrlAutoFunc = function () {
                 return 'AutoMethods text.';
             }
-            $scope.CtrlFunc = function () {
+            $scope.ControllerFunc = function () {
                 if ($scope.CtrlText == $scope.CtrlText.toLowerCase())
                     $scope.CtrlText = $scope.CtrlText.toUpperCase();
                 else
                     $scope.CtrlText = $scope.CtrlText.toLowerCase();
             }
-            $scope.FactFunc = function(){
-                $scope.CtrlText = appFactory.factoryFunc();
+            $scope.FactoryFunc = function () {
+                $scope.CtrlText = appSharedFactory.factoryFunc();
             }
         });
 
-        app.factory('appFactory', function () {
+        app.factory('appSharedFactory', function () {
             return {
                 factoryFunc: function () {
                     return 'factory function returned text.';
