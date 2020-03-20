@@ -11,13 +11,14 @@
 
     <div ng-controller="ParentController">
         <h4>Parent Controller :</h4>
+
         <div ng-controller="ChildController1">
             <span>Child Controller 1 :</span>
-            <button ng-click="someFunction()">use Parent Function</button>
+            <button ng-click="someFunction()">Use Parent Function</button>
         </div>
         <div ng-controller="ChildController2">
             <span>Child Controller 2 :</span>
-            <button ng-click="someFunction()">override Parent Function</button>
+            <button ng-click="someFunction()">Override Parent Function</button>
         </div>
     </div>
 
@@ -30,9 +31,12 @@
             };
         });
 
-        app.controller('ChildController1', function ($scope) { });
+        app.controller('ChildController1', function ($scope) {
+            // Use Parent someFunction()
+        });
 
         app.controller('ChildController2', function ($scope) {
+            // Override Parent someFunction()
             $scope.someFunction = function () {
                 console.log('in ChildController2');
             };
