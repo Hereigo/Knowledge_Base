@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="../bootstrap-3.3.7.min.css" />
+    <script src="../angular-1.7.9.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="jumbotron container" ng-app="myApp">
+    <h4>Directives :</h4>
+
+    <div simple-directive>
+        {{simpleDirectiveText}}
+    </div>
+
+    <div complex-directive></div>
+    <div complex-directive></div>
+    <div complex-directive></div>
+
+    <script type="text/javascript">
+        var app = angular.module('myApp', []);
+
+        app.directive('simpleDirective', [function () {
+            return function (scope, domElement, attrs) {
+                scope.simpleDirectiveText = 'Inside Simple Directive.';
+            };
+        }]);
+
+        app.directive('complexDirective', function () {
+            // return Object 
+            return {
+                // link: run after DOM rendered
+                link: function (scope, domElement, attrs) {
+
+                    domElement.text('Complex Directive Element.Text()');
+
+                    domElement.on('click', function () {
+
+                        if (domElement.text().toUpperCase() === domElement.text())
+                            domElement.text(domElement.text().toLowerCase());
+                        else
+                            domElement.text(domElement.text().toUpperCase());
+                    });
+                }
+            }
+        });
+
+    </script>
+</body>
+
+</html>

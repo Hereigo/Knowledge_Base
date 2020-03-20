@@ -40,12 +40,13 @@
             // Possible to Override MainController :
             // $scope.sharedProperty = '$scope.SharedProperty in SubController1';
             // or use own :
+            // $scope.SubController1 = this; == <div ng-controller="SubController1 as ctrl1">
             this.sharedProperty = 'this.SharedProperty (SubController1 only).';
         });
 
         app.controller('SubSubController2', function ($scope) {
             // override MainController & SubController1 :
-            $scope.sharedProperty = '$scope.SharedProperty overrided in SubSubController2';
+            $scope.sharedProperty = '$scope.SharedProperty overridden in SubSubController2';
             $scope.mainCtrlProperty = `I CAN'T override Main's property.`;
         });
 
