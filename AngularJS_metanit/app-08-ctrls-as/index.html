@@ -1,0 +1,55 @@
+<!doctype html>
+<html ng-app="myApp">
+
+<head>
+    <link rel="stylesheet" href="../bootstrap-3.3.7.min.css" />
+    <script src="../angular-1.7.9.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="jumbotron container">
+
+    <div ng-controller="MainController">
+        <h4>Main Controller :</h4>
+        <b>{{sharedProperty}}</b>
+
+        <div ng-controller="SubController1 as ctrl1">
+            <span>Sub Controller 1 :</span>
+            <b>{{ctrl1.sharedProperty}}</b>
+
+            <div ng-controller="SubSubController2">
+                <span>Sub-Sub Controller 2 :</span>
+                <b>{{sharedProperty}}</b>
+            </div>
+
+        </div>
+
+        <b>{{mainCtrlProperty}}</b>
+    </div>
+
+    <script type="text/javascript">
+
+        var app = angular.module('myApp', []);
+
+        app.controller('MainController', function ($scope) {
+            $scope.mainCtrlProperty = 'Main Property.';
+            $scope.sharedProperty = '$scope.SharedProperty in MainController';
+        });
+
+        app.controller('SubController1', function () {
+            // Possible to Override MainController :
+            // $scope.sharedProperty = '$scope.SharedProperty in SubController1';
+            // or use own :
+            this.sharedProperty = 'this.SharedProperty (SubController1 only).';
+        });
+
+        app.controller('SubSubController2', function ($scope) {
+            // override MainController & SubController1 :
+            $scope.sharedProperty = '$scope.SharedProperty overrided in SubSubController2';
+            $scope.mainCtrlProperty = `I CAN'T override Main's property.`;
+        });
+
+    </script>
+</body>
+
+</html>
