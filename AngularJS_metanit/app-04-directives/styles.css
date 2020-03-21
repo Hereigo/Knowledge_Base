@@ -13,9 +13,9 @@
     margin: 1em;
 }
 
-[simple-directive], [complex-directive] {
+simple-directive, [simple-directive], [complex-directive] {
     border: solid 1px blue;
     border-radius: .5em;
-    margin: .5em;
+    margin: 1.5em;
     padding: 1em;
 }

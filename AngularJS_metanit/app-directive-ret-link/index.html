@@ -38,9 +38,10 @@
             .directive('widgetDirective', [function () {
                 return {
                     scope: {
-                        item: '=', // in Widget from Controller
-                        widgetText: '@', // in Widget from Directive
-                        templateNgClick: '&boo' // in Widget from Controller via Template
+                        item: '=', // TWO-WAY binding between a local scope property and an expression (in Widget & in Ctrl)
+                        widgetText: '@', // bind a LOCAL SCOPE property TO THE VALUE (in Widget from Directive)
+                        templateNgClick: '&boo' // o execute an expression in the context of the parent scope (in Widget from Controller via Template)
+                        // abcd: '<' // ONE-WAY binding between a LOCAL SCOPE property and an EXPRESSION
                     },
                     template: [`<div>
                         {{item.name}} - {{item.price | currency}}

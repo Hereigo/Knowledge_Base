@@ -8,38 +8,43 @@
 </head>
 
 <body class="jumbotron container" ng-app="myApp">
-    <h3>List of Sale Items.</h3>
+    <h4>Directives :</h4>
 
-    <div ng-controller="NgController1 as ctrl">
-
+    <div simple-directive>
+        {{simpleDirectiveText}}
     </div>
 
-    <script type="text/javascript">
-        angular
-            .module('myApp', [])
-            .controller('NgController1', [function () {
-                var ngController1 = this;
-            }])
-            .directive('widgetDirective', [function () {
-                return {
-                    scope: {
-                        item: '=', // in Widget from Controller
-                        widgetText: '@', // in Widget from Directive
-                        templateNgClick: '&boo' // in Widget from Controller via Template
-                    },
-                    template: [`<div>
+    <div complex-directive></div>
+    <div complex-directive></div>
+    <div complex-directive></div>
 
-                        </div>`
-                    ],
-                    link: function (scope, currElem, attribs) {
-                        // process current html-element
-                        currElem.on('click', function () {
-                            currElem.html('<div>Sold out.</div>')
-                            currElem.css({ color: 'red' });
-                        });
-                    }
+    <script type="text/javascript">
+        var app = angular.module('myApp', []);
+
+        app.directive('simpleDirective', [function () {
+            return function (scope, domElement, attrs) {
+                scope.simpleDirectiveText = 'Inside Simple Directive.';
+            };
+        }]);
+
+        app.directive('complexDirective', function () {
+            // return Object 
+            return {
+                // link: run after DOM rendered
+                link: function (scope, domElement, attrs) {
+
+                    domElement.text('Complex Directive Element.Text()');
+
+                    domElement.on('click', function () {
+
+                        if (domElement.text().toUpperCase() === domElement.text())
+                            domElement.text(domElement.text().toLowerCase());
+                        else
+                            domElement.text(domElement.text().toUpperCase());
+                    });
                 }
-            }]);
+            }
+        });
 
     </script>
 </body>
