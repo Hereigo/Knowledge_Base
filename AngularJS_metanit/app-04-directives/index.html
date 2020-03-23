@@ -28,13 +28,18 @@
         }]);
 
         app.directive('complexDirective', function () {
-            // return Object 
+            // returns [Object] :
             return {
-                // link: run after DOM rendered
+
+                // TEMPLATE :
+                template: 'Complex Directive Template',
+
+                // LINK: RUN AFTER DOM RENDERED
                 link: function (scope, domElement, attrs) {
 
-                    domElement.text('Complex Directive Element.Text()');
+                    domElement.css({ color: "red" });
 
+                    // ELEMENT EVENTS :
                     domElement.on('click', function () {
 
                         if (domElement.text().toUpperCase() === domElement.text())
