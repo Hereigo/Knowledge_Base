@@ -19,3 +19,7 @@ simple-directive, [simple-directive], [complex-directive] {
     margin: 1.5em;
     padding: 1em;
 }
+
+hr {
+    border: solid 1px grey;
+}

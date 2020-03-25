@@ -10,16 +10,24 @@
 <body class="jumbotron container" ng-app="myApp">
     <h4>Directives :</h4>
 
-    <div simple-directive>
-        {{simpleDirectiveText}}
-    </div>
+    <div ng-controller="ctrl">
 
-    <div complex-directive></div>
-    <div complex-directive></div>
-    <div complex-directive></div>
+        <div simple-directive>
+            {{simpleDirectiveText}}
+        </div>
+
+        <div ng-repeat="item in counter">
+            <div complex-directive></div>
+        </div>
+
+    </div>
 
     <script type="text/javascript">
         var app = angular.module('myApp', []);
+
+        app.controller('ctrl', function ($scope) {
+            $scope.counter = [1, 2, 3];
+        });
 
         app.directive('simpleDirective', [function () {
             return function (scope, domElement, attrs) {

@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="../bootstrap-3.3.7.min.css" />
+    <script src="../angular-1.7.9.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="jumbotron container" ng-app="drinkApp">
+
+    <div ng-controller="AppCtrl">
+
+        <div ng-repeat="item in collection">
+            <bind-with-link something="{{item}}"></bind-with-link>
+        </div>
+        <hr />
+        <div ng-repeat="item in collection">
+            <bind-with-scope something="{{item}}"></bind-with-scope>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        var app = angular.module("drinkApp", []);
+
+        app.controller("AppCtrl", function ($scope) {
+            $scope.collection = [1111, 2222, 3333];
+        });
+
+        app.directive("bindWithLink", function () {
+            return {
+                scope: {},
+                template: '<div>{{something}}</div>',
+                link: function (scope, element, attrs) {
+                    scope.something = attrs.something;
+                }
+            };
+        });
+
+        app.directive("bindWithScope", function () {
+            return {
+                scope: { something: '@' },
+                template: '<div>{{something}}</div>'
+            };
+        });
+
+    </script>
+</body>
+
+</html>
