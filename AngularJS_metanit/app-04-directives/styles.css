@@ -13,11 +13,18 @@
     margin: 1em;
 }
 
-simple-directive, [ng-repeat], [complex-directive] {
+[ng-transclude], [ng-repeat] {
     border: solid 1px blue;
     border-radius: .5em;
     margin: 1.5em;
     padding: 1em;
+}
+
+.ng-binding {
+    border: solid 1px rgb(118, 10, 161);
+    border-radius: .5em;
+    margin: 1.5em;
+    padding: .2em;
 }
 
 bind-with-link {

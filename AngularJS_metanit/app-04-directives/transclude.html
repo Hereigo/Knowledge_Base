@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="../bootstrap-3.3.7.min.css" />
+    <script src="../angular-1.7.9.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="jumbotron container" ng-app="myApp">
+
+
+    <div ng-controller="mainCtrl">
+
+        <foo-bar>
+            Html Inside Directive :
+            <div>
+                <b>{{ctrlData}}</b>
+            </div>
+        </foo-bar>
+
+    </div>
+
+    <script type="text/javascript">
+        var app = angular.module("myApp", []);
+
+        app.controller("mainCtrl", function ($scope) {
+            $scope.ctrlData = 'Data from Controller.';
+        });
+
+        app.directive("fooBar", function () {
+            return {
+                restrict: 'E',
+                transclude: true,
+
+                template: `<div><b> Directive Template with NG-Transclude : </b></div>
+                            <!-- <div ng-transclude></div> (moved To link: function) -->`,
+
+                link: function (scope, domElement, attrs, ctrl, transclude) {
+
+                    // another way of <div ng-transclude></div> :
+                    // clone is - All Inside Directive
+                    // insert A.I.D. into directive.Template :
+                    transclude(scope, function (clone, scope) {
+
+                        domElement.append(clone);
+
+                    });
+
+                }
+            };
+        });
+
+
+    </script>
+</body>
+
+</html>
