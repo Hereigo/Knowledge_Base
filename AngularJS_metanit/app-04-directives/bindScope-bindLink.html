@@ -7,43 +7,65 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="jumbotron container" ng-app="drinkApp">
+<body class="jumbotron container" ng-app="myApp">
 
     <div ng-controller="AppCtrl">
 
-        <div ng-repeat="item in collection">
-            <bind-with-link something="{{item}}"></bind-with-link>
-        </div>
-        <hr />
-        <div ng-repeat="item in collection">
+        <h4>Bind with $scope</h4>
+        <div ng-repeat="item in counter">
             <bind-with-scope something="{{item}}"></bind-with-scope>
         </div>
+
+        <h4>Bind with Link: (elements are clickable)</h4>
+        <div ng-repeat="item in counter">
+            <div bind-with-link something="{{item}}"></div>
+            <bind-with-link something="{{item}}"></bind-with-link>
+        </div>
+
     </div>
 
     <script type="text/javascript">
-        var app = angular.module("drinkApp", []);
+        var app = angular.module("myApp", []);
 
         app.controller("AppCtrl", function ($scope) {
-            $scope.collection = [1111, 2222, 3333];
-        });
-
-        app.directive("bindWithLink", function () {
-            return {
-                scope: {},
-                template: '<div>{{something}}</div>',
-                link: function (scope, element, attrs) {
-                    scope.something = attrs.something;
-                }
-            };
+            $scope.counter = ['aaaaa', 'bbbbb', 'ccccc'];
         });
 
         app.directive("bindWithScope", function () {
             return {
-                scope: { something: '@' },
+
+                scope: {
+                    something: '@'
+                },
+
                 template: '<div>{{something}}</div>'
             };
         });
 
+        app.directive("bindWithLink", function () {
+
+            // return { [Object] } :
+            return {
+
+                // LINK => RUN AFTER DOM RENDERED :
+                link: function (scope, domElement, attrs) {
+
+                    scope.something = attrs.something;
+
+                    domElement.css({ color: "red" });
+
+                    domElement.on('click', function () {
+
+                        if (domElement.text().toUpperCase() === domElement.text())
+                            domElement.text(domElement.text().toLowerCase());
+                        else
+                            domElement.text(domElement.text().toUpperCase());
+                    });
+                },
+
+                template: '<span>{{something}}</span>'
+            }
+        });
     </script>
 </body>
 
