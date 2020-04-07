@@ -22,8 +22,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
   const storageQuery = (get) => {
     if (get) {
-      if (localStorage.getItem('wishlist')) {
-        JSON.parse(localStorage.getItem('wishlist')).forEach(id => wishlist.push(id));
+      let wishListInStorage = localStorage.getItem('wishlist');
+      if (wishListInStorage) {
+        JSON.parse(wishListInStorage).forEach(id => wishlist.push(id));
       }
     } else {
       localStorage.setItem('wishlist', JSON.stringify(wishlist));
@@ -31,9 +32,12 @@ document.addEventListener('DOMContentLoaded', function () {
     checkCounter();
   };
 
-  const cookieQuery = get => {
+  const cookieQuery = (get) => {
     if (get) {
-      goodsBasket = JSON.parse(getCookie('goodsBasketCookies'));
+      let goodsBasketCookies = getCookie('goodsBasketCookies');
+      if (goodsBasketCookies) {
+        goodsBasket = JSON.parse(goodsBasketCookies);
+      }
     } else {             //                                    semi-colon ; is a Cookies-Delemiter.
       document.cookie = `goodsBasketCookies=${JSON.stringify(goodsBasket)}; max-age=86400e3`;
     }
@@ -230,6 +234,9 @@ document.addEventListener('DOMContentLoaded', function () {
   cookieQuery(true);
 
 
+
+  // PAUSED - 18:08 (final part)
+  // PAUSED - 18:08 (final part)
 
 
 
