@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<note>
+  <from>felix@gmail.com</from>
+  <to>ajax@gmail.com</to>
+  <cc>alex@gmail.com</cc>
+  <bcc>max@gmail.com</bcc>
+  <heading1>Reminder</heading1>
+  <heading2>Important</heading2>
+  <body>Don't forget me this weekend!</body>
+</note>
