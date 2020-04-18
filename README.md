@@ -1,2 +1,2 @@
 # Knowledge_Base
-Just my own .Net development knowledge base.
+Just my own .Net and JS development Knowledge Base.
