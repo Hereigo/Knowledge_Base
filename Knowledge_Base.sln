@@ -28,8 +28,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AngularJS_AspNet_MVC4", "An
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XSLTransformations", "XSLTransformations\XSLTransformations.csproj", "{D96ABCD7-651E-4B0B-9A38-AFBB3B34994D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xpression_Net46", "Xpression_Net46\Xpression_Net46.csproj", "{09B1D87B-A5CF-4509-B216-9A2653CFA00A}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -76,10 +74,6 @@ Global
 		{D96ABCD7-651E-4B0B-9A38-AFBB3B34994D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D96ABCD7-651E-4B0B-9A38-AFBB3B34994D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D96ABCD7-651E-4B0B-9A38-AFBB3B34994D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{09B1D87B-A5CF-4509-B216-9A2653CFA00A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{09B1D87B-A5CF-4509-B216-9A2653CFA00A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{09B1D87B-A5CF-4509-B216-9A2653CFA00A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{09B1D87B-A5CF-4509-B216-9A2653CFA00A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

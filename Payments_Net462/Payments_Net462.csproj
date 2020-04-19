@@ -155,10 +155,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\PaymentsContext-2019-05-07.mdf" />
-    <Content Include="App_Data\PaymentsContext-2019-05-07_log.ldf">
-      <DependentUpon>PaymentsContext-2019-05-07.mdf</DependentUpon>
-    </Content>
     <Content Include="ContentOwn\Site.css" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
