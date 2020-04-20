@@ -6,6 +6,6 @@ namespace Payments_Net462.Models
     {
         public List<Payment> PaymentsVm { get; set; }
 
-        public StatistixView StatistixVm { get; set; }
+        public List<StatistixView> StatistixVm { get; set; }
     }
 }

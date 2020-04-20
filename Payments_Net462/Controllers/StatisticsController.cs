@@ -14,55 +14,6 @@ namespace Payments_Net462.Controllers
     {
         private readonly PaymentsContext db = new PaymentsContext();
 
-        public ActionResult Index()
-        {
-            DateTime today = DateTime.Now;
-            DateTime yearAgo = new DateTime(today.AddYears(-1).Year, today.Month, 1);
-            DateTime startPrevMonth = new DateTime(today.Year, today.AddMonths(-1).Month, 1);
-            DateTime startThisMonth = new DateTime(today.Year, today.Month, 1);
-
-            var categories = new List<KeyValuePair<int, string>>()
-            {
-                new KeyValuePair<int, string>(16,"ENJ"),
-                new KeyValuePair<int, string>(08,"KID"),
-                new KeyValuePair<int, string>(46,"TRI"),
-                new KeyValuePair<int, string>(45,"HOL"),
-                new KeyValuePair<int, string>(07,"HOM"),
-                new KeyValuePair<int, string>(10,"QVN"),
-            };
-
-            List<StatistixView> stats = new List<StatistixView>();
-
-            foreach (KeyValuePair<int, string> categItem in categories)
-            {
-                stats.Add(GetStatsRecord(categItem, yearAgo, startPrevMonth, startThisMonth));
-            }
-
-            return View(stats);
-        }
-
-        private StatistixView GetStatsRecord(KeyValuePair<int, string> category, DateTime yearAgo, DateTime startPrevMonth, DateTime startThisMonth)
-        {
-            // exclusion for the single 8680 payment :
-            bool kidExclusion = category.Key == 8 && yearAgo < new DateTime(2019, 11, 30);
-
-            int currMonthSum = db.Payments.Where(p => p.Category.ID == category.Key && p.PayDate > startThisMonth)
-                .Select(p => p.Amount).ToList().Sum();
-            int prevMonthSum = db.Payments.Where(p => p.Category.ID == category.Key && p.PayDate > startPrevMonth && p.PayDate < startThisMonth)
-                .Select(p => p.Amount).ToList().Sum();
-            int prevYearSum = db.Payments.Where(p => p.Category.ID == category.Key && p.PayDate > yearAgo && p.PayDate < startThisMonth)
-                .Select(p => p.Amount).ToList().Sum();
-
-            return new StatistixView
-            {
-                CategoryName = category.Value,
-                CurrentMonth = currMonthSum,
-                PreviousMonth = prevMonthSum,
-                YearAverage = kidExclusion ? (prevYearSum - 8680) / 12 : prevYearSum / 12,
-                YearSummary = prevYearSum,
-            };
-        }
-
         // TEST LINQ DYMANIC (using System.Linq.Dynamic.Core) :
         public ActionResult Test()
         {

@@ -17,6 +17,6 @@ namespace Payments_Net462.Models
         public int YearAverage { get; set; }
 
         [DisplayName("Year")]
-        public int YearSummary { get; set; }
+        public int B4PrevMonSummary { get; set; }
     }
 }
