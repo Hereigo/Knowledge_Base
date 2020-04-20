@@ -43,17 +43,16 @@ namespace Payments_Net462.Controllers
             DateTime minDate = DateTime.Now.AddDays((-1) * id);
 
             IQueryable<Payment> payments = db.Payments.Include(p => p.Category);
-#if DEBUG
-            ViewBag.alfa = 10000;
-            ViewBag.prima = 2000;
-            ViewBag.mono = 20888;
-            ViewBag.rest = 132456;
-#else
+            //#if !DEBUG
+            //            ViewBag.alfa = 10000;
+            //            ViewBag.prima = 2000;
+            //            ViewBag.mono = 20888;
+            //            ViewBag.rest = 132456;
+            //#else
             // TODO:
-            // make me stored in db !!!
-            // make me stored in db !!!
             // MAKE ME STORED IN DB !!!
-
+            // MAKE ME STORED IN DB !!!
+            // MAKE ME STORED IN DB !!!
             ViewBag.alfa = payments.Where(p => p.CatogoryId == 2).Sum(p => p.Amount);
             ViewBag.prima = payments.Where(p => p.CatogoryId == 3).Sum(p => p.Amount);
 
@@ -68,7 +67,7 @@ namespace Payments_Net462.Controllers
             int nonCsh = payments.Where(p => p.CatogoryId != 1).Sum(p => p.Amount);
 
             ViewBag.rest = (csh - nonCsh);
-#endif
+            //#endif
             return View(payments.Where(p => p.PayDate > minDate).OrderByDescending(p => p.PayDate).ToList());
         }
 

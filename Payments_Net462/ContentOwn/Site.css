@@ -1,64 +1,39 @@
 ﻿body {
-    margin: 0 1em;
-    max-width:1076px;
+    margin: 0 auto;
+    max-width: 1076px;
+    font-weight: 400;
+    font-size: small;
 }
 
-input, select, textarea {
-    max-width: 280px;
+.container {
+margin: 0 auto;
 }
 
-thead {
-    text-align: right;
-}
-
-.body-content {
-    padding-left: 0;
-    padding-right: 0;
-}
-
-.categor {
-    margin-right: 15px;
-}
-
-.dl-horizontal dt {
-    white-space: normal;
-}
-
-.my-table div {
-    height: 2.5em;
-    padding-top: .5em;
-    text-align: center;
+.row {
+    margin: 1em auto;
 }
 
 .row:hover {
     background-color: #caeefa;
 }
 
-.table-th div {
-    background-color: aliceblue;
-    font-weight: 700;
-    padding-top: .5em;
-    text-align: right;
+.col-2, .col-3 {
+    white-space: nowrap;
+    text-align:center;
 }
 
-    .table-th div:nth-child(1) {
-        color: cadetblue;
-    }
-
-    .table-th div:nth-child(2) {
-        color: limegreen;
-    }
-
-    .table-th div:nth-child(3) {
-        color: blue;
-    }
-
-#add-button {
-    color: silver;
+.table .col:nth-child(1) {
+    color: cadetblue;
 }
 
-#by-days {
-    display: block;
-    float: right;
-    margin: 1px 0 1px 25px;
+.table .col:nth-child(2) {
+    color: limegreen;
+}
+
+.table .col:nth-child(3) {
+    color: blue;
+}
+
+.delete {
+    background-color:red;
 }

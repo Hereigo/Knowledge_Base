@@ -6,7 +6,6 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
- 
 </head>
 <body>
 
@@ -38,13 +37,13 @@
             </div>
         </div>
     </div>
-    <div class="container">
+    <div id="body-render">
 
         @RenderBody()
 
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - <b>Somee.com Hosting</b> Web Application</p>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
         </footer>
     </div>
 
