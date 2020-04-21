@@ -38,8 +38,8 @@ document.addEventListener('DOMContentLoaded', function () {
       if (goodsBasketCookies) {
         goodsBasket = JSON.parse(goodsBasketCookies);
       }
-    } else {             //                                    semi-colon ; is a Cookies-Delemiter.
-      document.cookie = `goodsBasketCookies=${JSON.stringify(goodsBasket)}; max-age=86400e3`;
+    } else {             //                                    semi-colon ; is a Cookies-DELEMITER.
+      document.cookie = `goodsBasketCookies=${JSON.stringify(goodsBasket)}; max-age=86400e3`; // 24*60*60
     }
     checkCounter();
   }
