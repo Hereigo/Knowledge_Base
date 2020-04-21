@@ -1,54 +1,72 @@
-﻿@model IEnumerable<Payments_Net462.Models.Payment>
+﻿@model Payments_Net462.Models.PaymentsWithStatVm
 
 @{
     ViewBag.Title = "Index";
 }
 
-<div class="my-table">
+<table class="table table-striped">
 
-    <div class="row table-th">
-
-        <div class="col-2">
-            @ViewBag.alfa
-        </div>
-        <div class="col-2">
-            @ViewBag.prima
-        </div>
-        <div class="col-2">
-            @ViewBag.rest
-        </div>
-        <div class="col-2">
-            @ViewBag.mono
-        </div>
-        <div class="col-2">
-        </div>
-        <div class="col-2 text-left">
-            @Html.ActionLink("(©)", "Create", null, new { id = "add-button" })
-        </div>
-    </div>
-
-
-    @foreach (var item in Model)
+    @foreach (var item in Model.StatistixVm)
     {
-        <div class="row">
-
-            <div class="col-2">
-                @Html.DisplayFor(modelItem => item.PayDate)
-            </div>
-            <div class="col-1 categor">
-                @Html.DisplayFor(modelItem => item.Category.Name)
-            </div>
-            <div class="col-2 text-right">
-                @Html.DisplayFor(modelItem => item.Amount)
-            </div>
-            <div class="col-5 text-left">
-                @Html.DisplayFor(modelItem => item.Description)
-            </div>
-            <div class="col-1">
-                @Html.ActionLink("(©)", "Edit", new { id = item.ID })
-            </div>
-
-        </div>
+        <tr>
+            <td class="col-2">
+                @Html.DisplayFor(modelItem => item.CategoryName)
+            </td>
+            <td class="col-2">
+                @Html.DisplayFor(modelItem => item.CurrentMonth)
+            </td>
+            <td class="col-2">
+                @Html.DisplayFor(modelItem => item.PreviousMonth)
+            </td>
+            <td class="col-2">
+                @Html.DisplayFor(modelItem => item.B4PrevMonSummary)
+            </td>
+            <td class="col-2">
+                @Html.DisplayFor(modelItem => item.YearAverage)
+            </td>
+        </tr>
     }
+</table>
 
+<div class="row">
+    <div class="col">
+        @ViewBag.alfa
+    </div>
+    <div class="col">
+        @ViewBag.prima
+    </div>
+    <div class="col">
+        @ViewBag.rest
+    </div>
+    <div class="col">
+        @ViewBag.mono
+    </div>
+    <div class="col text-right">
+        @Html.ActionLink(" ", "Create", null, new { @class = "fas fa-plus-square" })
+    </div>
 </div>
+
+<hr />
+
+@foreach (var item in Model.PaymentsVm)
+{
+    <div class="row table">
+
+        <div class="col-2">
+            @Html.DisplayFor(modelItem => item.PayDate)
+        </div>
+        <div class="col-2">
+            @Html.DisplayFor(modelItem => item.Category.Name)
+        </div>
+        <div class="col-3">
+            @Html.DisplayFor(modelItem => item.Amount)
+        </div>
+        <div class="col-3">
+            @Html.DisplayFor(modelItem => item.Description)
+        </div>
+        <div class="col-2 text-right">
+            @Html.ActionLink(" ", "Edit", new { id = item.ID }, new { @class = "fas fa-edit" })
+        </div>
+
+    </div>
+}

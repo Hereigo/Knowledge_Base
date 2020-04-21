@@ -6,44 +6,19 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+
 </head>
 <body>
-
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar">...</span>
-                </button>
-
-                <form id="by-days" action="@Url.Action("Index", "Payments")">
-                    <input type="hidden" id="id" name="id" />
-                    <input type="button" value=" 1 " onclick="document.forms['by-days'].id.value = 1; submit()" />
-                    <input type="button" value=" 3 " onclick="document.forms['by-days'].id.value = 3; submit()" />
-                    <input type="button" value=" 5 " onclick="document.forms['by-days'].id.value = 5; submit()" />
-                    <input type="button" value=" 7 " onclick="document.forms['by-days'].id.value = 7; submit()" />
-                    <input type="button" value=" 14 " onclick="document.forms['by-days'].id.value = 14; submit()" />
-                </form>
-
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Payments", "Index", "Payments")</li>
-                    <li>@Html.ActionLink("Categories", "Index", "Categories")</li>
-                    <li>@Html.ActionLink("Stats", "Index", "Statistics")</li>
-                    <li><a href="http://somee.com/DOKA/DOU/DOMP/DOWebSites/DOSiteDefault.aspx" target="_blank">Somee</a>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <div id="body-render">
+    <div class="container">
 
         @RenderBody()
 
         <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        <footer class="text-center">
+            <p>
+                <a href="http://somee.com/DOKA/DOU/DOMP/DOWebSites/DOSiteDefault.aspx">&copy;</a>
+                @DateTime.Now.Year - @Html.ActionLink("Somee.com", "Index", "Payments", new { id = 1 }, null) Hosting Web Application
+            </p>
         </footer>
     </div>
 

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.5.0.min.js"
+        integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
+    <!-- <script src="socket.io.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.4.5/socket.io.min.js"></script>
+</head>
+
+<body>
+    <h3>Socket test :</h3>
+    <div></div>
+    <form action="">
+        <input id="m" autocomplete="off" /><button>Send</button>
+    </form>
+    <ul id="messages"></ul>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.0/socket.io.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+    <script>
+
+        var socket = io.connect('http://localhost:100');
+
+        $('form').submit(function () {
+            //$('#messages').append($('<li>').text($('#m').val()));
+            socket.send('sending', $('#m').val());
+            $('#m').val('');
+            return false;
+        });
+
+
+        socket.on('recieve', function (msg) {
+            $('#messages').append($('<li>').text(msg));
+        });
+
+    </script>
+
+</body>
+
+</html>
