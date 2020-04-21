@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 
 namespace IO_SubDirectories
 {
@@ -6,19 +7,22 @@ namespace IO_SubDirectories
     {
         private static void Main()
         {
-            const string rootPathToSearch = @"C:\Users\Hereigo\";
+            string rootPathToSearch = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) +
+                @"\source\repos\" + "FAKE_PROJECT";
 
             string[] directoryNames = { "bin", "obj" };
 
             string[] directoriesToSkip = { ".git" };
 
-            string[] dirs = ProcessFilesDirectories.GetArrayByNames(rootPathToSearch, directoryNames, directoriesToSkip);
+            Func<string[]> GetDirs = () => Directory.Exists(rootPathToSearch)
+                ? ProcessFilesDirectories.GetArrayByNames(rootPathToSearch, directoryNames, directoriesToSkip)
+                : new string[] { "No one found." };
 
             string[] mp3files = ProcessFilesDirectories.GetFilesMp3(rootPathToSearch);
 
 
 
-            foreach (var item in mp3files)
+            foreach (var item in GetDirs()) // mp3files)
             {
                 Console.WriteLine(item);
             }
@@ -26,7 +30,7 @@ namespace IO_SubDirectories
             string[] from = { "" };
             string[] into = { "" };
 
-            FilesRenamer.ReplaceByPatterns(from, into, mp3files);
+            // FilesRenamer.ReplaceByPatterns(from, into, mp3files);
 
             Console.WriteLine("\r\n Done.");
             Console.ReadKey();
