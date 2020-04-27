@@ -28,6 +28,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AngularJS_AspNet_MVC4", "An
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XSLTransformations", "XSLTransformations\XSLTransformations.csproj", "{D96ABCD7-651E-4B0B-9A38-AFBB3B34994D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LINQ_46", "LINQ_46\LINQ_46.csproj", "{C350F7F1-C968-41AA-A8A9-9BD0AACBA8ED}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -74,6 +76,10 @@ Global
 		{D96ABCD7-651E-4B0B-9A38-AFBB3B34994D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D96ABCD7-651E-4B0B-9A38-AFBB3B34994D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D96ABCD7-651E-4B0B-9A38-AFBB3B34994D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C350F7F1-C968-41AA-A8A9-9BD0AACBA8ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C350F7F1-C968-41AA-A8A9-9BD0AACBA8ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C350F7F1-C968-41AA-A8A9-9BD0AACBA8ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C350F7F1-C968-41AA-A8A9-9BD0AACBA8ED}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
