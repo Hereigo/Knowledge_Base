@@ -7,10 +7,12 @@ namespace IO_SubDirectories
     {
         private static void Main()
         {
+            string whereToMove = "C:\\Recycle.bin";
+
             string rootPathToSearch = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) +
                 @"\source\repos\" + "FAKE_PROJECT";
 
-            string[] directoryNames = { "bin", "obj" };
+            string[] directoryNames = { "bin", "obj", "packages", ".vs" };
 
             string[] directoriesToSkip = { ".git" };
 
@@ -18,13 +20,22 @@ namespace IO_SubDirectories
                 ? ProcessFilesDirectories.GetArrayByNames(rootPathToSearch, directoryNames, directoriesToSkip)
                 : new string[] { "No one found." };
 
-            string[] mp3files = ProcessFilesDirectories.GetFilesMp3(rootPathToSearch);
 
-
+            //string[] mp3files = ProcessFilesDirectories.GetFilesMp3(rootPathToSearch);
 
             foreach (var item in GetDirs()) // mp3files)
             {
-                Console.WriteLine(item);
+
+                // TOD :
+                // REFACTORE - EXTRACT :
+                string prevDirNameOnly = Path.GetFileName(Path.GetDirectoryName(item));
+                string lastDirNameOnly = Path.GetFileName(item);
+
+                string newPath = $"{whereToMove}\\{prevDirNameOnly}_{lastDirNameOnly}".Replace(' ', '_');
+
+                // Directory.Move(item, newPath);
+
+
             }
 
             string[] from = { "" };

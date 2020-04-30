@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C350F7F1-C968-41AA-A8A9-9BD0AACBA8ED}</ProjectGuid>
+    <ProjectGuid>{28CFB1E8-520B-4CAB-B6B0-51C5353A9BE2}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>LINQ_46</RootNamespace>
-    <AssemblyName>LINQ_46</AssemblyName>
+    <RootNamespace>OOP_Deriving</RootNamespace>
+    <AssemblyName>OOP_Deriving</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,8 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="A_Data.cs" />
-    <Compile Include="MergeCollectionsByPrio.cs" />
+    <Compile Include="Use_Base.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

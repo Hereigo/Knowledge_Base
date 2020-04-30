@@ -1,14 +1,12 @@
 ﻿using System;
 
-namespace LINQ_46
+namespace OOP_Deriving
 {
     internal static class Program
     {
-        static void Main()
+        private static void Main()
         {
-
-            MergeCollectionsByPrio.Test();
-
+            Use_Base.Test();
 
             Console.WriteLine("\n Done.");
             Console.ReadKey();

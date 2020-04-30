@@ -41,25 +41,20 @@ namespace Payments_Net462.Controllers
         // GET: Payments
         public ActionResult Index(int id = 1)
         {
+            const int categiryBMO = 43;
+
             PaymentsWithStatVm result = new PaymentsWithStatVm();
 
             DateTime minDate = DateTime.Now.AddDays((-1) * id);
 
             IQueryable<Payment> payments = db.Payments.Include(p => p.Category);
-            //#if !DEBUG
-            //            ViewBag.alfa = 10000;
-            //            ViewBag.prima = 2000;
-            //            ViewBag.mono = 20888;
-            //            ViewBag.rest = 132456;
-            //#else
+
             // TODO:
             // MAKE ME STORED IN DB !!!
             // MAKE ME STORED IN DB !!!
             // MAKE ME STORED IN DB !!!
             ViewBag.alfa = payments.Where(p => p.CatogoryId == 2).Sum(p => p.Amount);
             ViewBag.prima = payments.Where(p => p.CatogoryId == 3).Sum(p => p.Amount);
-
-            const int categiryBMO = 43;
 
             if (payments.Any(p => p.CatogoryId == categiryBMO))
             {
@@ -75,17 +70,17 @@ namespace Payments_Net462.Controllers
 
             result.StatistixVm = GetStats();
 
-            //#endif
             return View(result);
         }
 
         private List<StatistixView> GetStats()
         {
             DateTime today = DateTime.Now;
-            DateTime startThisMonth = new DateTime(today.Year, today.Month, 1);
-            DateTime startPrevMonth = new DateTime(today.Year, today.AddMonths(-1).Month, 1);
-            DateTime startBeforePrevM = new DateTime(today.Year, today.AddMonths(-2).Month, 1);
-            DateTime yearAgo = new DateTime(today.AddYears(-1).Year, today.Month, 1);
+            DateTime startThisMonth = new DateTime(today.Year, today.Month, 1).AddMinutes(-1); // 23:59 of Previous Day.
+            DateTime startPrevMonth = new DateTime(today.Year, today.AddMonths(-1).Month, 1).AddMinutes(-1);
+            DateTime startBeforePrevM = new DateTime(today.Year, today.AddMonths(-2).Month, 1).AddMinutes(-1);
+            DateTime startBeforeBefPrevM = new DateTime(today.Year, today.AddMonths(-3).Month, 1).AddMinutes(-1);
+            DateTime yearAgo = new DateTime(today.AddYears(-1).Year, today.Month, 1).AddMinutes(-1);
 
             var categories = new List<KeyValuePair<int, string>>()
             {
@@ -101,13 +96,13 @@ namespace Payments_Net462.Controllers
 
             foreach (KeyValuePair<int, string> categItem in categories)
             {
-                stats.Add(GetStatsRecord(categItem, yearAgo, startBeforePrevM, startPrevMonth, startThisMonth));
+                stats.Add(GetStatsRecord(categItem, yearAgo, startBeforeBefPrevM, startBeforePrevM, startPrevMonth, startThisMonth));
             }
 
             return stats;
         }
 
-        private StatistixView GetStatsRecord(KeyValuePair<int, string> category, DateTime yearAgo, DateTime startBeforePrevM, DateTime startPrevMonth, DateTime startThisMonth)
+        private StatistixView GetStatsRecord(KeyValuePair<int, string> category, DateTime yearAgo, DateTime startBeforeBefPrevM, DateTime startBeforePrevM, DateTime startPrevMonth, DateTime startThisMonth)
         {
             int currMonthSum = db.Payments.Where(p => p.Category.ID == category.Key && p.PayDate > startThisMonth)
                 .Select(p => p.Amount).ToList().Sum();
@@ -115,16 +110,19 @@ namespace Payments_Net462.Controllers
                 .Select(p => p.Amount).ToList().Sum();
             int b4PrevMonSum = db.Payments.Where(p => p.Category.ID == category.Key && p.PayDate > startBeforePrevM && p.PayDate < startPrevMonth)
                 .Select(p => p.Amount).ToList().Sum();
+            int b4b4PrevMonSum = db.Payments.Where(p => p.Category.ID == category.Key && p.PayDate > startBeforeBefPrevM && p.PayDate < startPrevMonth)
+                .Select(p => p.Amount).ToList().Sum();
             int prevYearSum = db.Payments.Where(p => p.Category.ID == category.Key && p.PayDate > yearAgo && p.PayDate < startThisMonth)
                 .Select(p => p.Amount).ToList().Sum();
 
-            // exclusion for the single 8680 study payment :
+            // exclusion for the single 8680 study payment of the end of 2019 :
             bool kidExclusion = category.Key == 8 && yearAgo < new DateTime(2019, 11, 30);
 
             return new StatistixView
             {
                 CategoryName = category.Value,
                 B4PrevMonSummary = b4PrevMonSum,
+                B4B4PrevMonSummary = b4b4PrevMonSum,
                 CurrentMonth = currMonthSum,
                 PreviousMonth = prevMonthSum,
                 YearAverage = kidExclusion ? (prevYearSum - 8680) / 12 : prevYearSum / 12,
