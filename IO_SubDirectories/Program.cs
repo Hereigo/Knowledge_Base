@@ -9,21 +9,20 @@ namespace IO_SubDirectories
         {
             string whereToMove = "C:\\Recycle.bin";
 
-            string rootPathToSearch = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) +
-                @"\source\repos\" + "FAKE_PROJECT";
+            string rootPathToSearch = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + @"\source\repos\" + "FAKE_PROJECT";
 
-            string[] directoryNames = { "bin", "obj", "packages", ".vs" };
+            string[] dirNamesToFind = { "bin", "obj", "packages", ".vs" };
 
-            string[] directoriesToSkip = { ".git" };
+            string[] dirNameToSkip = { ".git" };
 
-            Func<string[]> GetDirs = () => Directory.Exists(rootPathToSearch)
-                ? ProcessFilesDirectories.GetArrayByNames(rootPathToSearch, directoryNames, directoriesToSkip)
+            string[] GetDirsByNames() => Directory.Exists(rootPathToSearch)
+                ? ProcessFilesDirectories.GetArrayByNames(rootPathToSearch, dirNamesToFind, dirNameToSkip)
                 : new string[] { "No one found." };
 
 
             //string[] mp3files = ProcessFilesDirectories.GetFilesMp3(rootPathToSearch);
 
-            foreach (var item in GetDirs()) // mp3files)
+            foreach (var item in GetDirsByNames()) // mp3files)
             {
 
                 // TOD :
@@ -32,6 +31,9 @@ namespace IO_SubDirectories
                 string lastDirNameOnly = Path.GetFileName(item);
 
                 string newPath = $"{whereToMove}\\{prevDirNameOnly}_{lastDirNameOnly}".Replace(' ', '_');
+
+
+                Console.WriteLine(newPath);
 
                 // Directory.Move(item, newPath);
 
