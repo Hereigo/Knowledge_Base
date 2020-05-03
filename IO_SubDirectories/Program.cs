@@ -37,6 +37,8 @@ namespace IO_SubDirectories
 
                 // Directory.Move(item, newPath);
 
+                //Directory.Delete(item, true);
+
 
             }
 
