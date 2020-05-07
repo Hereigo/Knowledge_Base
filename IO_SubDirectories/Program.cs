@@ -19,27 +19,29 @@ namespace IO_SubDirectories
                 ? ProcessFilesDirectories.GetArrayByNames(rootPathToSearch, dirNamesToFind, dirNameToSkip)
                 : new string[] { "No one found." };
 
-
             //string[] mp3files = ProcessFilesDirectories.GetFilesMp3(rootPathToSearch);
 
             foreach (var item in GetDirsByNames()) // mp3files)
             {
-
                 // TOD :
                 // REFACTORE - EXTRACT :
                 string prevDirNameOnly = Path.GetFileName(Path.GetDirectoryName(item));
                 string lastDirNameOnly = Path.GetFileName(item);
 
-                string newPath = $"{whereToMove}\\{prevDirNameOnly}_{lastDirNameOnly}".Replace(' ', '_');
-
+                string newPath = $"{whereToMove}\\{prevDirNameOnly}_{lastDirNameOnly}".Replace(' ', '_').Replace(".vs", "_vs");
 
                 Console.WriteLine(newPath);
 
-                // Directory.Move(item, newPath);
+                try
+                {
+                    // Directory.Move(item, newPath);
 
-                //Directory.Delete(item, true);
-
-
+                    // Directory.Delete(item, true);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                }
             }
 
             string[] from = { "" };
