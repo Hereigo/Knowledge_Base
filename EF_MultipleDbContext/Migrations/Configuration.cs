@@ -22,7 +22,7 @@
         }
     }
 
-    // After this - add first init config migration :
+    // After this - SHOULD ADD the first init config migration :
 
     // add-migration -configuration EF_MultipleDbContext.Migrations.Configuration Initial
 }

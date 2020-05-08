@@ -55,10 +55,7 @@
   <ItemGroup>
     <Compile Include="Database\DatabaseInitialize.cs" />
     <Compile Include="Database\DataManager.cs" />
-    <Compile Include="Migrations\202005071502035_Initial.cs" />
-    <Compile Include="Migrations\202005071502035_Initial.designer.cs">
-      <DependentUpon>202005071502035_Initial.cs</DependentUpon>
-    </Compile>
+    <Compile Include="RandomStringGenerator.cs" />
     <Compile Include="Models\IPerson.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Database\MyStudentContext.cs" />
@@ -71,11 +68,6 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\202005071502035_Initial.resx">
-      <DependentUpon>202005071502035_Initial.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

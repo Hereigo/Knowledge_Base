@@ -13,24 +13,24 @@ namespace EF_MultipleDbContext
 
             var dataManager = new DataManager();
 
-            IPerson personStudent = dataManager.GetStudent();
-            dataManager.ClonePerson(personStudent);
+            IPerson person = Teacher.GenerateOne();
 
-            IPerson personTeacher = dataManager.GetTeacher();
-            dataManager.ClonePerson(personTeacher);
+            dataManager.InsertIntoDb(person);
+
+            // Implement for Derived object :
+
+            person = Student.GenerateOne();
+
+            dataManager.InsertIntoDb(person);
 
             using (var context = new MyStudentContext())
             {
                 Console.WriteLine("\n Retrieve all Students from the database:\n ");
 
-                var students = (from s in context.Students
-                                orderby s.FirstMidName
-                                select s).ToList();
-
-                foreach (var stdnt in students)
+                foreach (var stud in context.Students.OrderBy(s => s.ID))
                 {
-                    string name = stdnt.FirstMidName + " " + stdnt.LastName;
-                    Console.WriteLine("ID: {0}, Name: {1}", stdnt.ID, name);
+                    Console.WriteLine(
+                        $"ID: {stud.ID}, Name: {stud.FirstMidName} {stud.LastName}");
                 }
             }
 
@@ -38,19 +38,15 @@ namespace EF_MultipleDbContext
             {
                 Console.WriteLine("\n Retrieve all teachers from the database:\n ");
 
-                var teachers = (from t in context.Teachers
-                                orderby t.FirstMidName
-                                select t).ToList();
-
-                foreach (var teacher in teachers)
+                foreach (var teacher in context.Teachers.OrderBy(s => s.ID))
                 {
-                    string name = teacher.FirstMidName + " " + teacher.LastName;
-                    Console.WriteLine("ID: {0}, Name: {1}", teacher.ID, name);
+                    Console.WriteLine(
+                        $"ID: {teacher.ID}, Name: {teacher.FirstMidName} {teacher.LastName}");
                 }
             }
 
-            Console.WriteLine("\n Press any key to exit...");
-            Console.ReadKey();
+            //Console.WriteLine("\n Press any key to exit...");
+            //Console.ReadKey();
         }
     }
 }
