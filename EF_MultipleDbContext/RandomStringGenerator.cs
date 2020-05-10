@@ -6,15 +6,13 @@ namespace EF_MultipleDbContext
     {
         Random rand = new Random();
 
-        public string GetWord()
+        public string GetWord(int wordLenth = 0)
         {
+            int stringLenth = wordLenth > 0 ? wordLenth : rand.Next(3, 10);
+
             char[] upperCaseLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".ToCharArray();
 
             char[] lowerCaseLetters = "abcdefghijklmnopqrstuvwxyz".ToCharArray();
-
-
-
-            int stringLenth = rand.Next(3, 10);
 
             // First letter in UpperCase (my current case necessary)
             // Should be configured in the future.

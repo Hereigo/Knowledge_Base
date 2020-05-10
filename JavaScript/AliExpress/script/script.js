@@ -44,9 +44,18 @@ document.addEventListener('DOMContentLoaded', function () {
     checkCounter();
   }
 
-  const showLoadingSpinner = () => {
-    goodsWrapper.innerHTML = `<div id="spinner"><div class="spinner-loading"><div><div><div></div>
+  const showLoadingSpinner = (nameFunction) => {
+
+    const spinner = `<div id="spinner"><div class="spinner-loading"><div><div><div></div>
     </div><div><div></div></div><div><div></div></div><div><div></div></div></div></div></div>`;
+
+    // INTERESTING :
+    if (nameFunction === 'renderCard') {
+      goodsWrapper.innerHTML = spinner;
+    }
+    else if (nameFunction === 'renderShoppingCart') {
+      shopCartWrapperElem = spinner;
+    }
   };
 
   const createCardGoods = (id, title, price, img) => {
@@ -106,7 +115,7 @@ document.addEventListener('DOMContentLoaded', function () {
               </button>
               <button class="goods-delete" data-goods-id="${id}"></button>
             </div>
-          <div class="goods-count">1</div>
+          <div class="goods-count">${goodsBasket[id]}</div> <!-- Count of Many the same goods. -->
     </div>`;
     return card;
   };
@@ -219,7 +228,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
   //... getGoodsAndRender = (handler, filter == undefined by default) and will be skipped if PROMISES (.then(undefined))
   const getGoodsAndRender = (handler, filter) => {
-    showLoadingSpinner();
+
+    showLoadingSpinner(handler.name); // pass handler.name to handle caller insi
+
     fetch('db/db.json')
       .then((rez) => { return rez.json(); })
       .then(filter)
@@ -235,8 +246,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
-  // PAUSED - 23:40 (final part)
-  // PAUSED - 23:40 (final part)
+  // PAUSED - 30:00 (final part)
+  // PAUSED - 30:00 (final part)
+  // PAUSED - 30:00 (final part)
 
 
 
