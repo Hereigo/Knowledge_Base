@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const shopCartWrapperElem = document.querySelector('.cart-wrapper');
 
   const wishlist = [];
-  let goodsBasket = {};
+  const goodsBasket = {};
 
   const checkCounter = () => {
     // wishlist counter :
@@ -24,7 +24,11 @@ document.addEventListener('DOMContentLoaded', function () {
     if (get) {
       let wishListInStorage = localStorage.getItem('wishlist');
       if (wishListInStorage) {
-        JSON.parse(wishListInStorage).forEach(id => wishlist.push(id));
+        // JSON.parse(wishListInStorage).forEach(id => wishlist.push(id));
+        // OR
+        wishlist.push(...JSON.parse(wishListInStorage));
+        // OR  .splice(fromEnd, delete, insert...FromArray) - faster
+        // wishlist.splice(Infinity, 0, ...JSON.parse(wishListInStorage));
       }
     } else {
       localStorage.setItem('wishlist', JSON.stringify(wishlist));
@@ -36,7 +40,10 @@ document.addEventListener('DOMContentLoaded', function () {
     if (get) {
       let goodsBasketCookies = getCookie('goodsBasketCookies');
       if (goodsBasketCookies) {
-        goodsBasket = JSON.parse(goodsBasketCookies);
+        // Object method to Assign Properties one obj. to another :
+        Object.assign(goodsBasket, JSON.parse(goodsBasketCookies));
+        // goodsBasket = JSON.parse(goodsBasketCookies);
+        // NOT allowed if CONST goodsBasket.
       }
     } else {             //                                    semi-colon ; is a Cookies-DELEMITER.
       document.cookie = `goodsBasketCookies=${JSON.stringify(goodsBasket)}; max-age=86400e3`; // 24*60*60
@@ -54,7 +61,7 @@ document.addEventListener('DOMContentLoaded', function () {
       goodsWrapper.innerHTML = spinner;
     }
     else if (nameFunction === 'renderShoppingCart') {
-      shopCartWrapperElem = spinner;
+      shopCartWrapperElem.innerHTML = spinner;
     }
   };
 
@@ -246,9 +253,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
-  // PAUSED - 30:00 (final part)
-  // PAUSED - 30:00 (final part)
-  // PAUSED - 30:00 (final part)
+  // PAUSED - 47:00 (final part)
+  // PAUSED - 47:00 (final part)
+  // PAUSED - 47:00 (final part)
 
 
 
