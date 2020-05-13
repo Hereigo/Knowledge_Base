@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+    <title>test</title>
+</head>
+<body>
+    <div class="container" style="margin-top: 200px;">
+        <select id="select1"style="width:200px;" onchange="arrangeSelects(this)">
+            <option value="mayak">Маяковского</option>
+            <option value="irp">Мечникова</option>
+            <option value="kasht">Каштанова</option>
+        </select>
+        <select id="select2" style="display: none;">
+            <option value="mayak#1">Вода</option>
+            <option value="mayak#2">Электричество</option>
+            <option value="irp#1">Вода</option>
+            <option value="irp#2">Электричество</option>
+            <option value="kasht#1">Вода</option>
+            <option value="kasht#2">Электричество</option>
+        </select>
+    </div>
+    <script>
+        window.onload=function(){
+            var ind=3
+            con=document.getElementById('container')
+            sel=new Array()
+            sel[1] = document.getElementById('select1')
+            sel[2] = document.getElementById('select2')
+            sel[1].options[ind-1].selected=true
+
+            arrangeSelects(sel[1])
+        }
+        function arrangeSelects(obj){
+            var val = obj.options[obj.selectedIndex].value
+            var ar = val.split('#')
+            var count = ar.length
+            if(count == 2) {
+                return false
+            }
+
+            for (var j=count+1; j<=2; j++){
+                if(!document.getElementById('created-selected'+j))
+                {
+                    var select=document.createElement('select')
+                    select.id='created-selected'+j
+                    select.style.width="200px"
+	                select.style.marginTop="20px"
+	                select.onchange=function(){arrangeSelects(this)}
+                }
+                else{
+                    var select=document.getElementById('created-select'+j)
+                        select.innerHTML=""
+                }
+                for(var i=0; i<sel[j].options.length; i++){
+                    var v=sel[j].options[i].value
+                	var h=sel[j].options[i].innerHTML
+                	var a=v.split('#')
+                	var c=0
+                	for(var k=0; k<=2; k++){
+                	    if(count>=k+1){
+                	        if(typeof(a[k])!="undefined"){
+                	            if(a[k]==ar[k]){c++}
+                	        }
+                	    }
+                	}
+                     
+	                if(c==count){
+	                    o=document.createElement('option')
+	                    o.value=v
+	                    o.innerHTML=h
+	                    select.appendChild(o)
+	                }
+                    if(!document.getElementById('created-select'+j)){con.appendChild(select)}
+                }
+            }
+        }
+
+    </script>
+</body>
+</html>

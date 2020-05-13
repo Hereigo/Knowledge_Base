@@ -4,18 +4,20 @@ namespace EF_MultipleDbContext
 {
     public class RandomStringGenerator
     {
-        Random rand = new Random();
+        private readonly Random rand = new Random();
 
         public string GetWord(int wordLenth = 0)
         {
             int stringLenth = wordLenth > 0 ? wordLenth : rand.Next(3, 10);
 
-            char[] upperCaseLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".ToCharArray();
+            // TODO :
+            // Should be devided in two arrays for vowels and consonants :
 
-            char[] lowerCaseLetters = "abcdefghijklmnopqrstuvwxyz".ToCharArray();
+            char[] upperCaseLetters = "ABCDEFGHIJKAELMNOPQRISTUVUWXYZY".ToCharArray();
 
-            // First letter in UpperCase (my current case necessary)
-            // Should be configured in the future.
+            char[] lowerCaseLetters = "abcdefghijkaelmnopqristuvuwxyzy".ToCharArray();
+
+            // First letter in UpperCase for my current case (should be configured in the future).
             int firstLetter = rand.Next(0, upperCaseLetters.Length - 1);
 
             string word = upperCaseLetters[firstLetter].ToString();

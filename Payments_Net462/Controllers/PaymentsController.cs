@@ -170,7 +170,7 @@ namespace Payments_Net462.Controllers
                     }
                 }
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Index/2");
             }
 
             ViewBag.CatogoryId = new SelectList(db.Categories, "ID", "Name", payment.CatogoryId);
@@ -204,7 +204,7 @@ namespace Payments_Net462.Controllers
             {
                 db.Entry(payment).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index/2");
             }
             ViewBag.CatogoryId = new SelectList(db.Categories, "ID", "Name", payment.CatogoryId);
             return View(payment);
