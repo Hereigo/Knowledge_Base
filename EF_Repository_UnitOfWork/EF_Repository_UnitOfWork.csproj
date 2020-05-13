@@ -5,10 +5,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{FABBD278-50B4-46E2-940B-5855F2722EC5}</ProjectGuid>
+    <ProjectGuid>{82FC7EFE-8682-4FF8-B71B-8ED60FDA93D8}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>EF_UnitOfWork</RootNamespace>
-    <AssemblyName>EF_UnitOfWork</AssemblyName>
+    <RootNamespace>EF_Repository_UnitOfWork</RootNamespace>
+    <AssemblyName>EF_Repository_UnitOfWork</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -53,11 +53,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EntityOneRepository.cs" />
-    <Compile Include="DatabaseContext.cs" />
+    <Compile Include="AppContext.cs" />
+    <Compile Include="IUnitOfWork.cs" />
+    <Compile Include="Repository.cs" />
+    <Compile Include="IRepository.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UnitOfWork.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="UsingPatterns.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

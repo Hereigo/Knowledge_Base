@@ -38,6 +38,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EF_MultipleDbContext", "EF_
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EF_UnitOfWork", "EF_UnitOfWork\EF_UnitOfWork.csproj", "{FABBD278-50B4-46E2-940B-5855F2722EC5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EF_Repository_UnitOfWork", "EF_Repository_UnitOfWork\EF_Repository_UnitOfWork.csproj", "{82FC7EFE-8682-4FF8-B71B-8ED60FDA93D8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -104,6 +106,10 @@ Global
 		{FABBD278-50B4-46E2-940B-5855F2722EC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FABBD278-50B4-46E2-940B-5855F2722EC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FABBD278-50B4-46E2-940B-5855F2722EC5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{82FC7EFE-8682-4FF8-B71B-8ED60FDA93D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82FC7EFE-8682-4FF8-B71B-8ED60FDA93D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82FC7EFE-8682-4FF8-B71B-8ED60FDA93D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82FC7EFE-8682-4FF8-B71B-8ED60FDA93D8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
