@@ -1,10 +1,10 @@
-﻿namespace EF_Repository_UnitOfWork
+﻿namespace EF_UnitOfWork_Repository_2
 {
     public interface IUnitOfWork
     {
-        IRepository<Author> AuthorRepository { get; }
+        IRepository<BizOneEntity> RepositoryOne { get; }
 
-        IRepository<Book> BookRepository { get; }
+        IRepository<BizTwoEntity> RepositoryTwo { get; }
 
         void Commit();
 

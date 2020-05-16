@@ -2,33 +2,33 @@
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 
-namespace EF_Repository_UnitOfWork
+namespace EF_UnitOfWork_Repository_2
 {
-    public class UnitOfWork : IUnitOfWork
+    internal class UnitOfWork : IUnitOfWork
     {
-        private readonly AppDbContext _dbContext;
+        private readonly DatabaseContext _dbCtx;
 
-        public IRepository<Author> AuthorRepository => new Repository<Author>(_dbContext);
-        public IRepository<Book> BookRepository => new Repository<Book>(_dbContext);
-
-        public UnitOfWork(AppDbContext dbContext)
+        public UnitOfWork(DatabaseContext dbCtx)
         {
-            _dbContext = dbContext;
+            _dbCtx = dbCtx;
         }
+
+        public IRepository<BizOneEntity> RepositoryOne => new RepositoryGeneral<BizOneEntity>(_dbCtx);
+        public IRepository<BizTwoEntity> RepositoryTwo => new RepositoryGeneral<BizTwoEntity>(_dbCtx);
 
         public void Commit()
         {
-            _dbContext.SaveChanges();
+            _dbCtx.SaveChanges();
         }
 
         public void Dispose()
         {
-            _dbContext.Dispose();
+            _dbCtx.Dispose();
         }
 
         public void RejectChanges()
         {
-            foreach (DbEntityEntry entry in _dbContext.ChangeTracker.Entries().Where(e => e.State != EntityState.Unchanged))
+            foreach (DbEntityEntry entry in _dbCtx.ChangeTracker.Entries().Where(e => e.State != EntityState.Unchanged))
             {
                 switch (entry.State)
                 {

@@ -4,10 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EF_Repository_UnitOfWork
+namespace EF_UnitOfWork_Repository
 {
-    class Program
+    class Start
     {
-
+        static void Main(string[] args)
+        {
+        }
     }
 }

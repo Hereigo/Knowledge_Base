@@ -132,7 +132,7 @@ namespace Payments_Net462.Controllers
         // GET: Payments/Create
         public ActionResult Create()
         {
-            ViewBag.CatogoryId = new SelectList(db.Categories, "ID", "Name");
+            ViewBag.CatogoryId = new SelectList(db.Categories.OrderBy(c => c.Name), "ID", "Name");
 
             ViewBag.Today = DateTime.Now; //.ToString("MM/dd/yyyy");
 
@@ -173,7 +173,7 @@ namespace Payments_Net462.Controllers
                 return RedirectToAction("Index/2");
             }
 
-            ViewBag.CatogoryId = new SelectList(db.Categories, "ID", "Name", payment.CatogoryId);
+            ViewBag.CatogoryId = new SelectList(db.Categories.OrderBy(c => c.Name), "ID", "Name", payment.CatogoryId);
             return View(payment);
         }
 
@@ -189,7 +189,7 @@ namespace Payments_Net462.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.CatogoryId = new SelectList(db.Categories, "ID", "Name", payment.CatogoryId);
+            ViewBag.CatogoryId = new SelectList(db.Categories.OrderBy(c => c.Name), "ID", "Name", payment.CatogoryId);
             return View(payment);
         }
 
@@ -206,7 +206,7 @@ namespace Payments_Net462.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index/2");
             }
-            ViewBag.CatogoryId = new SelectList(db.Categories, "ID", "Name", payment.CatogoryId);
+            ViewBag.CatogoryId = new SelectList(db.Categories.OrderBy(c => c.Name), "ID", "Name", payment.CatogoryId);
             return View(payment);
         }
 
@@ -233,7 +233,7 @@ namespace Payments_Net462.Controllers
             Payment payment = db.Payments.Find(id);
             db.Payments.Remove(payment);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Index/2");
         }
 
         protected override void Dispose(bool disposing)

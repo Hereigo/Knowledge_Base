@@ -30,12 +30,6 @@ namespace EF_UnitOfWork
                 _uow.OneRepository.Create(new EntityOne() { Name = "Alex Murphy" });
                 _uow.OneRepository.Create(new EntityOne() { Name = "Robinson Crusoe" });
                 _uow.Save();
-
-                EntityOne bookToUpdate = _uow.OneRepository.Get(1);
-                bookToUpdate.Name = "Bruce Lee";
-
-                _uow.OneRepository.Update(bookToUpdate);
-                _uow.Save();
             }
 
             foreach (var item in _uow.OneRepository.GetAll())

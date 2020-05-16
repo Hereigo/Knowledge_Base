@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Data.Entity;
 namespace EF_UnitOfWork
 {
     public class EntityOne
@@ -13,7 +12,6 @@ namespace EF_UnitOfWork
         IEnumerable<T> GetAll();
         T Get(int id);
         void Create(T item);
-        void Update(T item);
     }
 
     public class EntityOneRepository : IRepository<EntityOne>
@@ -39,11 +37,6 @@ namespace EF_UnitOfWork
         {
             db.EntityOne.Add(entity);
         }
-
-        public void Update(EntityOne entity)
-        {
-            db.Entry(entity).State = EntityState.Modified;
-        }
     }
 
     // Another Repositories and Entities :
@@ -68,11 +61,6 @@ namespace EF_UnitOfWork
         }
 
         public IEnumerable<EntityTwo> GetAll()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void Update(EntityTwo item)
         {
             throw new System.NotImplementedException();
         }
