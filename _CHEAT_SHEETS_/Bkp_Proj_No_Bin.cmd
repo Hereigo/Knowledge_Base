@@ -1,2 +1,2 @@
 REM -mhe = hide encrypted file names
-"C:\Program Files\7-Zip\7z.exe" a %USERPROFILE%\source\repos\PROJECT_TO_BKP.7z %USERPROFILE%\source\repos\PROJECT_TO_BKP\ -r -t7z -pPassword -mhe -xr!bin -xr!obj -xr!.vs -xr!packages
+"C:\Program Files\7-Zip\7z.exe" a %USERPROFILE%\source\repos\PROJECT_TO_BKP.7z %USERPROFILE%\source\repos\PROJECT_TO_BKP\* -r -t7z -pPassword -mhe -xr!bin -xr!obj -xr!.vs -xr!packages

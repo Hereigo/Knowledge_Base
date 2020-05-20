@@ -1,5 +1,8 @@
 ﻿-- AFTER CREATE DB - ADD NEW ADO EDM TO THE PROJECT !
 
+CREATE DATABASE [AngJSAsp4_Employees];
+GO
+
 USE [AngJSAsp4_Employees] CREATE TABLE [dbo].[Employee](
     [Emp_Id] [int] IDENTITY(1, 1) NOT NULL,
     [Emp_Name] [varchar](max) NULL,

@@ -8,11 +8,11 @@ namespace AngularJS_ASPNet_MVC_4
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/site.css"));
+                        "~/Content/site.css"));
 
-            bundles.Add(new ScriptBundle("~/bundles/AwesomeAngularMVCApp")
-                        .IncludeDirectory("~/App/Controllers", "*.js")
-                        .Include("~/App/AwesomeAngularMVCApp.js"));
+            bundles.Add(new ScriptBundle("~/bundles/AngularMVCAppBundle")
+                        .IncludeDirectory("~/App_NG/Controllers", "*.js")
+                        .Include("~/App_NG/AppNgMainModule.js"));
 
             BundleTable.EnableOptimizations = true;
         }

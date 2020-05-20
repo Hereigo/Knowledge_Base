@@ -21,6 +21,10 @@ table th, .table td {
     background-color: red;
 }
 
+.hidden {
+    display: none;
+}
+
 .row {
     margin: 1em auto;
 }

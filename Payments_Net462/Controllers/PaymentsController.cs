@@ -85,6 +85,8 @@ namespace Payments_Net462.Controllers
             var categories = new List<KeyValuePair<int, string>>()
             {
                 // new KeyValuePair<int, string>(16,"ENJ"),
+                new KeyValuePair<int, string>(43,"BMO"),
+                new KeyValuePair<int, string>(09,"KIU"),
                 new KeyValuePair<int, string>(08,"KID"),
                 new KeyValuePair<int, string>(11,"FOO"),
                 new KeyValuePair<int, string>(45,"HOL"),

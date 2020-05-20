@@ -24,7 +24,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		SQL\CATEGORIES.sql = SQL\CATEGORIES.sql
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AngularJS_AspNet_MVC4", "AngularJS_AspNet_MVC4\AngularJS_AspNet_MVC4.csproj", "{9FAED370-7559-4FBE-9E77-0A5822F6C913}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AngularJS_AspNet_EmployeesDB", "AngularJS_AspNet_MVC4\AngularJS_AspNet_EmployeesDB.csproj", "{9FAED370-7559-4FBE-9E77-0A5822F6C913}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XSLTransformations", "XSLTransformations\XSLTransformations.csproj", "{D96ABCD7-651E-4B0B-9A38-AFBB3B34994D}"
 EndProject

@@ -171,13 +171,13 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App\NG\angular-route-1.2.20.min.js" />
-    <Content Include="App\Controllers\LandingPageController.js" />
-    <Content Include="App\AwesomeAngularMVCApp.js" />
+    <Content Include="App_NG\NG\angular-route-1.2.20.min.js" />
+    <Content Include="App_NG\Controllers\LandingPageController.js" />
+    <Content Include="App_NG\AppNgMainModule.js" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="App\NG\angular-1.2.20.min.js" />
+    <Content Include="App_NG\NG\angular-1.2.20.min.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

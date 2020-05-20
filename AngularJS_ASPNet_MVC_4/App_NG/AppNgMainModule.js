@@ -1,7 +1,7 @@
 ﻿
-var AwesomeAngularMVCApp = angular.module('AwesomeAngularMVCApp', ['ngRoute']);
+var AppNgMainModule = angular.module('AppNgMainModule', ['ngRoute']);
 
-AwesomeAngularMVCApp.controller('LandingPageController', LandingPageController);
+AppNgMainModule.controller('LandingPageController', LandingPageController);
 
 var configFunction = function ($routeProvider) {
     $routeProvider.
@@ -15,6 +15,7 @@ var configFunction = function ($routeProvider) {
             templateUrl: 'routesDemo/three'
         });
 }
+
 configFunction.$inject = ['$routeProvider'];
 
-AwesomeAngularMVCApp.config(configFunction);
+AppNgMainModule.config(configFunction);
