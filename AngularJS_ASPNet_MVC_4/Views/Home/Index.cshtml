@@ -2,17 +2,23 @@
 <html>
 <head>
     <title ng-bind="models.helloAngular"></title>
+    <link rel="stylesheet" href="~/Content/Site.css" />
 </head>
 
-<body ng-app="AppNgMainModule" ng-controller="LandingPageController">
+<body ng-app="AppFirstModule" ng-controller="LandingPageController">
 
     <h1>{{models.helloAngular}}</h1>
 
-    <ul>
-        <li><a href="/#/routeOne">Route One</a></li>
-        <li><a href="/#/routeTwo/5">Route Two (with param 5)</a></li>
-        <li><a href="/#/routeThree">Route Three</a></li>
-    </ul>
+    <hr />
+    <div>
+        <span> || <a href="/#/routeOne">Home</a></span>
+        <span> || <a href="/#/routeTwo/5">Donuts (5)</a></span>
+        <span> || <a href="/#/routeThree">Members only</a></span>
+        <span> || <a href="/#/login">Login</a></span>
+        <span> || <a href="/#/register">Register</a></span>
+        <span> || </span>
+    </div>
+    <hr />
 
     <div ng-view></div>
 

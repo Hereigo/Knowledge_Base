@@ -12,7 +12,8 @@ namespace AngularJS_ASPNet_MVC_4
 
             bundles.Add(new ScriptBundle("~/bundles/AngularMVCAppBundle")
                         .IncludeDirectory("~/App_NG/Controllers", "*.js")
-                        .Include("~/App_NG/AppNgMainModule.js"));
+                        .IncludeDirectory("~/App_NG/Factories", "*.js")
+                        .Include("~/App_NG/App_First_Module.js"));
 
             BundleTable.EnableOptimizations = true;
         }

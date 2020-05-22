@@ -15,6 +15,7 @@ namespace AngularJS_ASPNet_MVC_4.Controllers
             return View();
         }
 
+        [Authorize]
         public ActionResult Three()
         {
             return View();

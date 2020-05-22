@@ -1,0 +1,19 @@
+﻿
+<h4>Members only area! Please login :</h4>
+
+<form ng-submit="login()">
+    <label for="emailAddress">Email Address:</label>
+    <input type="email" ng-model="loginForm.emailAddress" id="emailAddress" />
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" ng-model="loginForm.password" />
+
+    <label for="rememberMe">Remember Me:</label>
+    <input type="checkbox" id="rememberMe" ng-model="loginForm.rememberMe" />
+
+    <button type="submit">Login</button>
+</form>
+
+<div ng-if="loginForm.loginFailure">
+    D'oh!
+</div>

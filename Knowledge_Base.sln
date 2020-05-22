@@ -11,8 +11,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Payments_MVC_472", "Payment
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IO_SubDirectories", "IO_SubDirectories\IO_SubDirectories.csproj", "{88E40183-02EB-4B84-9E9D-D0C40DBC8C3B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AngularJS_MVC_Net462", "AngularJS_MVC_Net462\AngularJS_MVC_Net462.csproj", "{D3861912-CDDE-4A25-B6EE-6134D3D7D611}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SQL_EF_Autofac_Net462", "SQL_EF_Autofac_Net462\SQL_EF_Autofac_Net462.csproj", "{864A7358-5743-4DDF-8930-296C5D8DB6C0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Payments_Net462", "Payments_Net462\Payments_Net462.csproj", "{6E4D1069-949D-4910-B088-A06E4276933E}"
@@ -23,8 +21,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		SQL\CATEGORIES.sql = SQL\CATEGORIES.sql
 	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AngularJS_AspNet_EmployeesDB", "AngularJS_AspNet_MVC4\AngularJS_AspNet_EmployeesDB.csproj", "{9FAED370-7559-4FBE-9E77-0A5822F6C913}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XSLTransformations", "XSLTransformations\XSLTransformations.csproj", "{D96ABCD7-651E-4B0B-9A38-AFBB3B34994D}"
 EndProject
@@ -45,6 +41,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EF_UnitOfWork_Repository_2", "EF_UnitOfWork_Repository_2\EF_UnitOfWork_Repository_2.csproj", "{230FB578-34FD-41E1-816C-3148BAF2AFF5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AngularJS_ASPNet_MVC_4", "AngularJS_ASPNet_MVC_4\AngularJS_ASPNet_MVC_4.csproj", "{C04BC438-70F4-4829-A05B-4C935CC4C45C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AngularJS_AspNet_Bootstrap", "AngularJS_AspNet_Bootstrap\AngularJS_AspNet_Bootstrap.csproj", "{149C3486-4FAD-4E9C-B5A1-224EB858B387}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -68,10 +66,6 @@ Global
 		{88E40183-02EB-4B84-9E9D-D0C40DBC8C3B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{88E40183-02EB-4B84-9E9D-D0C40DBC8C3B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{88E40183-02EB-4B84-9E9D-D0C40DBC8C3B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D3861912-CDDE-4A25-B6EE-6134D3D7D611}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D3861912-CDDE-4A25-B6EE-6134D3D7D611}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D3861912-CDDE-4A25-B6EE-6134D3D7D611}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D3861912-CDDE-4A25-B6EE-6134D3D7D611}.Release|Any CPU.Build.0 = Release|Any CPU
 		{864A7358-5743-4DDF-8930-296C5D8DB6C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{864A7358-5743-4DDF-8930-296C5D8DB6C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{864A7358-5743-4DDF-8930-296C5D8DB6C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -84,10 +78,6 @@ Global
 		{E4EC559D-76FD-42AC-AC80-922A9F67D72C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E4EC559D-76FD-42AC-AC80-922A9F67D72C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E4EC559D-76FD-42AC-AC80-922A9F67D72C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9FAED370-7559-4FBE-9E77-0A5822F6C913}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9FAED370-7559-4FBE-9E77-0A5822F6C913}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9FAED370-7559-4FBE-9E77-0A5822F6C913}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9FAED370-7559-4FBE-9E77-0A5822F6C913}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D96ABCD7-651E-4B0B-9A38-AFBB3B34994D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D96ABCD7-651E-4B0B-9A38-AFBB3B34994D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D96ABCD7-651E-4B0B-9A38-AFBB3B34994D}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -128,6 +118,10 @@ Global
 		{C04BC438-70F4-4829-A05B-4C935CC4C45C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C04BC438-70F4-4829-A05B-4C935CC4C45C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C04BC438-70F4-4829-A05B-4C935CC4C45C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{149C3486-4FAD-4E9C-B5A1-224EB858B387}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{149C3486-4FAD-4E9C-B5A1-224EB858B387}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{149C3486-4FAD-4E9C-B5A1-224EB858B387}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{149C3486-4FAD-4E9C-B5A1-224EB858B387}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
