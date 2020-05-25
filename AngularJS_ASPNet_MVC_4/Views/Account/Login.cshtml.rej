@@ -1,0 +1,26 @@
+diff a/AngularJS_ASPNet_MVC_4/Views/Account/Login.cshtml b/AngularJS_ASPNet_MVC_4/Views/Account/Login.cshtml	(rejected hunks)
+@@ -1,18 +1,19 @@
+ ﻿
++<h4>Members only area! Please login :</h4>
++
+ <form ng-submit="login()">
+     <label for="emailAddress">Email Address:</label>
+-    <input type="text" ng-model="loginForm.emailAddress" id="emailAddress" required />
++    <input type="email" ng-model="loginForm.emailAddress" id="emailAddress" />
+ 
+     <label for="password">Password:</label>
+-    <input type="password" id="password" ng-model="loginForm.password" required />
++    <input type="password" id="password" ng-model="loginForm.password" />
+ 
+     <label for="rememberMe">Remember Me:</label>
+-    <input type="checkbox" id="rememberMe" ng-model="loginForm.rememberMe" required />
++    <input type="checkbox" id="rememberMe" ng-model="loginForm.rememberMe" />
+ 
+     <button type="submit">Login</button>
+ </form>
+ 
+-
+ <div ng-if="loginForm.loginFailure">
+     D'oh!
+ </div>
+\ No newline at end of file

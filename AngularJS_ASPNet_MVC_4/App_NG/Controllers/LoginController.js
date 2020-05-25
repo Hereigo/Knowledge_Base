@@ -1,6 +1,6 @@
 ﻿
 
-var LoginController = function ($scope, $routeParams) {
+var LoginController = function ($scope, $routeParams, $location, LoginFactory) {
     $scope.loginForm = {
         emailAddress: '',
         password: '',
@@ -10,9 +10,7 @@ var LoginController = function ($scope, $routeParams) {
     };
 
     $scope.login = function () {
-
         var result = LoginFactory($scope.loginForm.emailAddress, $scope.loginForm.password, $scope.loginForm.rememberMe);
-
         result.then(function (result) {
             if (result.success) {
                 if ($scope.loginForm.returnUrl !== undefined) {

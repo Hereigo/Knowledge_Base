@@ -172,14 +172,6 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\aspnet-AngularJS_ASPNet_MVC_4-20200519124556.mdf" />
-    <Content Include="App_Data\aspnet-AngularJS_ASPNet_MVC_4-20200519124556_log.ldf">
-      <DependentUpon>aspnet-AngularJS_ASPNet_MVC_4-20200519124556.mdf</DependentUpon>
-    </Content>
-    <Content Include="App_Data\aspnet-AngularJS_ASPNet_MVC_4-20200522071102.mdf" />
-    <Content Include="App_Data\aspnet-AngularJS_ASPNet_MVC_4-20200522071102_log.ldf">
-      <DependentUpon>aspnet-AngularJS_ASPNet_MVC_4-20200522071102.mdf</DependentUpon>
-    </Content>
     <Content Include="App_NG\Controllers\LoginController.js" />
     <Content Include="App_NG\Controllers\RegisterController.js" />
     <Content Include="App_NG\Factories\AuthHttpResponseInterceptor.js" />
@@ -204,7 +196,9 @@
     <Content Include="Views\RoutesDemo\Two.cshtml" />
     <Content Include="Views\RoutesDemo\Three.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
     <Content Include="Views\RoutesDemo\One.cshtml" />
