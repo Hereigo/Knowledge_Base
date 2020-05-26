@@ -1,6 +1,6 @@
 ﻿
-
 var AuthHttpResponseInterceptor = function ($q, $location) {
+
     return {
         response: function (response) {
             if (response.status === 401) {

@@ -1,6 +1,6 @@
 ﻿
-
 var RegistrationFactory = function ($http, $q) {
+
     return function (emailAddress, password, confirmPassword) {
 
         var deferredObject = $q.defer();

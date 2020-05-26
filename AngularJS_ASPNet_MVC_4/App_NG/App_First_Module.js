@@ -23,9 +23,11 @@ AppFirstModule.factory('AuthHttpResponseInterceptor', AuthHttpResponseIntercepto
 AppFirstModule.factory('LoginFactory', LoginFactory);
 AppFirstModule.factory('RegistrationFactory', RegistrationFactory);
 
-var configFunction = function ($routeProvider, $httpProvider) {
+var configFunction = function ($routeProvider, $httpProvider, $locationProvider) {
 
     // ROUTING :
+
+    $locationProvider.hashPrefix('!').html5Mode(true);
 
     $routeProvider.
         when('/routeOne', {
@@ -55,7 +57,7 @@ var configFunction = function ($routeProvider, $httpProvider) {
 
 // INJECT PROVIDERS :
 
-configFunction.$inject = ['$routeProvider', '$httpProvider'];
+configFunction.$inject = ['$routeProvider', '$httpProvider', '$locationProvider'];
 
 // APPLY CONFIG :
 

@@ -1,6 +1,6 @@
 ﻿
-
 var RegisterController = function ($scope, $location, RegistrationFactory) {
+
     $scope.registerForm = {
         emailAddress: '',
         password: '',

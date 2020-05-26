@@ -1,6 +1,6 @@
 ﻿
-
 var LoginFactory = function ($http, $q) {
+
     return function (emailAddress, password, rememberMe) {
 
         var deferredObject = $q.defer();
