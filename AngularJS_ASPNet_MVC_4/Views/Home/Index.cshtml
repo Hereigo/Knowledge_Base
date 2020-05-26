@@ -1,31 +1,42 @@
 ﻿<!DOCTYPE html>
-<html>
+<html ng-app="AppFirstModule" ng-controller="LandingPageController">
 <head>
     <title ng-bind="models.helloAngular"></title>
-    <link rel="stylesheet" href="~/Content/Site.css" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/css/bootstrap.min.css">
+    @Styles.Render("~/Content/css")
 </head>
-
-<body ng-app="AppFirstModule" ng-controller="LandingPageController">
-
-    <h1>{{models.helloAngular}}</h1>
-
-    <hr />
-    <div>
-        <span> || <a href="/routeOne">Home</a></span>
-        <span> || <a href="/routeTwo/5">Donuts (5)</a></span>
-        <span> || <a href="/routeThree">Members only</a></span>
-        <span> || <a href="/login">Login</a></span>
-        <span> || <a href="/register">Register</a></span>
-        <span> || </span>
+<body>
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" ng-click="navbarProperties.isCollapsed = !navbarProperties.isCollapsed">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Awesome Angular MVC APP</a>
+            </div>
+            <div class="navbar-collapse collapse" collapse="navbarProperties.isCollapsed">
+                <ul class="nav navbar-nav">
+                    <li><a href="/routeOne">Route One</a></li>
+                    <li><a href="/routeTwo/6">Route Two</a></li>
+                    <li><a href="/routeThree">Route Three</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/login">Login</a></li>
+                    <li><a href="/register">Register</a></li>
+                </ul>
+            </div>
+        </div>
     </div>
-    <hr />
 
-    <div ng-view></div>
-
-    <script src="~/App_NG/NG/angular-1.2.20.min.js"></script>
-    <script src="~/App_NG/NG/angular-route-1.2.20.min.js"></script>
+    <div class="container mainContent">
+        <div ng-view></div>
+    </div>
 
     @Scripts.Render("~/bundles/AngularMVCAppBundle")
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.10.0/ui-bootstrap-tpls.min.js"></script>
 
 </body>
 </html>

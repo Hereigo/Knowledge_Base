@@ -1,6 +1,6 @@
 ﻿
-//                    angular.module("ModuleName", ["DependModules"], "AdditionalConfigs opt.")
-var AppFirstModule = angular.module('AppFirstModule', ['ngRoute']);
+//                         angular.module("ModuleName", ["DependModules"], "AdditionalConfigs opt.")
+var AppFirstModule = angular.module('AppFirstModule', ['ngRoute', 'ui.bootstrap']);
 
 // angular.module("ModuleName", []) = CREATE Module.
 // angular.module("ModuleName")     = To GET Module.
