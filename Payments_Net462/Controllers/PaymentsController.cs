@@ -6,6 +6,7 @@ using System.Linq;
 using System.Linq.Dynamic.Core;
 using System.Net;
 using System.Web.Mvc;
+using Payments_Net462.DataManager;
 using Payments_Net462.Models;
 
 namespace Payments_Net462.Controllers
@@ -41,6 +42,17 @@ namespace Payments_Net462.Controllers
         // GET: Payments
         public ActionResult Index(int id = 1)
         {
+            // When Redirect from Create-Action :
+            if (bool.TryParse(TempData["NewRecordCreated"]?.ToString(), out bool isNewCreated) && isNewCreated)
+            {
+                // TODO:
+                // Make me async !!!
+
+                DatabaseManager dbMgr = new DatabaseManager();
+
+                ViewBag.BackUpResult = dbMgr.CreateBackUp();
+            }
+
             const int categiryBMO = 43;
 
             PaymentsWithStatVm result = new PaymentsWithStatVm();
@@ -155,6 +167,8 @@ namespace Payments_Net462.Controllers
                 db.Payments.Add(payment);
                 db.SaveChanges();
 
+                // Create Source Decreasing payment according the previous one:
+
                 if (!string.IsNullOrEmpty(payFrom) && !string.Equals(payFrom, "NONE", StringComparison.OrdinalIgnoreCase))
                 {
                     int foundCategId = db.Categories.FirstOrDefault(c => c.Name == payFrom).ID;
@@ -171,10 +185,12 @@ namespace Payments_Net462.Controllers
                         db.SaveChanges();
                     }
                 }
+                //DatabaseManager dbMgr = new DatabaseManager();
+
+                TempData["NewRecordCreated"] = true; //dbMgr.CreateBackUp();
 
                 return RedirectToAction("Index/2");
             }
-
             ViewBag.CatogoryId = new SelectList(db.Categories.OrderBy(c => c.Name), "ID", "Name", payment.CatogoryId);
             return View(payment);
         }

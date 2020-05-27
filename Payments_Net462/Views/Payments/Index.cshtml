@@ -4,6 +4,8 @@
     ViewBag.Title = "Index";
 }
 
+<p>@ViewBag.BackUpResult</p>
+
 <table class="table table-striped">
 
     @foreach (var item in Model.StatistixVm)
@@ -79,7 +81,7 @@
 <script>
     let selectCateg = function (categ) {
         let categRowShow = document.querySelectorAll('.' + categ);
-        let categRowAll = document.querySelectorAll('.rawMain:not(.' + categ +')');
+        let categRowAll = document.querySelectorAll('.rawMain:not(.' + categ + ')');
 
         categRowAll.forEach(hide);
         categRowShow.forEach(show);
