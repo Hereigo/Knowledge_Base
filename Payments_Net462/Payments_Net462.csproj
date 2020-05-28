@@ -354,6 +354,7 @@
     <Content Include="webfonts\fa-brands-400.eot" />
     <Content Include="Scripts\jquery-3.5.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.5.1.min.map" />
+    <Content Include="_TO_DO_.md" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

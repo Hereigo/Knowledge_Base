@@ -143,13 +143,25 @@ document.addEventListener('DOMContentLoaded', function () {
     };
   }
 
-  const shoppingGoodsOnly = (items) => items.filter(item => goodsBasket.hasOwnProperty(item.id));
+  const showCardBasket = (items) => {
+
+
+
+    return items.filter(item => goodsBasket.hasOwnProperty(item.id));
+  }
+
+  // PAUSED - 49:20 (final part)
+  // PAUSED - 49:20 (final part)
+  // PAUSED - 49:20 (final part)
 
   const openShoppingCart = event => {
+
+    // cart-total-sum
+
     event.preventDefault();
     cart.style.display = 'flex';
     document.addEventListener('keyup', closeShoppingCart);
-    getGoodsAndRender(renderShoppingCart, shoppingGoodsOnly);
+    getGoodsAndRender(renderShoppingCart, showCardBasket);
   }
 
   const closeShoppingCart = event => {
@@ -253,9 +265,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
-  // PAUSED - 47:00 (final part)
-  // PAUSED - 47:00 (final part)
-  // PAUSED - 47:00 (final part)
+
 
 
 
