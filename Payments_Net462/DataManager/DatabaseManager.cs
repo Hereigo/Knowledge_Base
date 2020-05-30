@@ -20,7 +20,7 @@ namespace Payments_Net462.DataManager
             {
                 string dataFile = HttpContext.Current.Server.MapPath($"~/App_Data/{today:yyMMdd.HHmm.ss}.txt");
 
-                var allData = db.Payments.OrderByDescending(i => i.ID);
+                IOrderedQueryable<Payment> allData = db.Payments.OrderByDescending(i => i.ID);
 
                 StreamWriter streamWriter = new StreamWriter(dataFile, true);
 
@@ -30,6 +30,8 @@ namespace Payments_Net462.DataManager
                 {
                     streamWriter.WriteLine($"{item.ID},{item.Amount},{item.CatogoryId},{item.PayDate},{item.Description}");
                 }
+
+                streamWriter.FlushAsync();
 
                 return $"{today:MM.dd} ({today.DayOfWeek.ToString().Substring(0, 3)}) {today:HH:mm} BackUp created successfully.";
             }

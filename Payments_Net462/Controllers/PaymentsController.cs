@@ -14,6 +14,8 @@ namespace Payments_Net462.Controllers
     [Authorize]
     public class PaymentsController : Controller
     {
+        const string backupMarker = "shouldCreateBkp";
+
         private readonly PaymentsContext db = new PaymentsContext();
 
         // TODO:
@@ -43,7 +45,7 @@ namespace Payments_Net462.Controllers
         public ActionResult Index(int id = 1)
         {
             // When Redirect from Create-Action :
-            if (bool.TryParse(TempData["NewRecordCreated"]?.ToString(), out bool isNewCreated) && isNewCreated)
+            if (bool.TryParse(TempData[backupMarker]?.ToString(), out bool isNewCreated) && isNewCreated)
             {
                 // TODO:
                 // Make me async !!!
@@ -185,9 +187,8 @@ namespace Payments_Net462.Controllers
                         db.SaveChanges();
                     }
                 }
-                //DatabaseManager dbMgr = new DatabaseManager();
 
-                TempData["NewRecordCreated"] = true; //dbMgr.CreateBackUp();
+                TempData[backupMarker] = true;
 
                 return RedirectToAction("Index/2");
             }
@@ -222,6 +223,9 @@ namespace Payments_Net462.Controllers
             {
                 db.Entry(payment).State = EntityState.Modified;
                 db.SaveChanges();
+
+                TempData[backupMarker] = true;
+
                 return RedirectToAction("Index/2");
             }
             ViewBag.CatogoryId = new SelectList(db.Categories.OrderBy(c => c.Name), "ID", "Name", payment.CatogoryId);
