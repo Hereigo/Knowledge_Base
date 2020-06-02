@@ -143,21 +143,33 @@ document.addEventListener('DOMContentLoaded', function () {
     };
   }
 
-  const showCardBasket = (items) => {
-
-
-
-    return items.filter(item => goodsBasket.hasOwnProperty(item.id));
+  const calcTotalPrice = goods => {
+    // let sum = 0;
+    // for (const item of goods) {
+    //   sum = sum + item.price * goodsBasket[item.id];
+    // }
+    // === VARIANT 2 : ===
+    let sum = goods.reduce((accum, item) => {
+      //                        multiply a few the same goods
+      return accum + item.price * goodsBasket[item.id];
+    }, 0); // <== let sum = 0; (before)
+    //                                                      to prevent 0,005 copecs
+    cart.querySelector('.cart-total>span').textContent = sum.toFixed(2);
   }
 
-  // PAUSED - 49:20 (final part)
-  // PAUSED - 49:20 (final part)
-  // PAUSED - 49:20 (final part)
+  const showCardBasket = (items) => {
+    const basketGoods = items.filter(item => goodsBasket.hasOwnProperty(item.id));
+    calcTotalPrice(basketGoods);
+    return basketGoods;
+  }
 
+
+  // PAUSED - 01:06 (final part)
+  // PAUSED - 01:06 (final part)
+  // PAUSED - 01:06 (final part)
+
+  
   const openShoppingCart = event => {
-
-    // cart-total-sum
-
     event.preventDefault();
     cart.style.display = 'flex';
     document.addEventListener('keyup', closeShoppingCart);
