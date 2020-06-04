@@ -2,7 +2,7 @@ namespace Payments_Net462.Migrations
 {
     using System.Data.Entity.Migrations;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<Payments_Net462.Models.PaymentsContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<Models.PaymentsContext>
     {
         public Configuration()
         {

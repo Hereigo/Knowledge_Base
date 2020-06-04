@@ -24,14 +24,26 @@ namespace Payments_Net462.DataManager
 
                 StreamWriter streamWriter = new StreamWriter(dataFile, true);
 
+                var START = DateTime.Now.ToString("hh:mm:ss");
+
                 streamWriter.WriteLine($"Records : {allData.Count()}");
 
                 foreach (Payment item in allData)
                 {
-                    streamWriter.WriteLine($"{item.ID},{item.Amount},{item.CatogoryId},{item.PayDate},{item.Description}");
+                    streamWriter.WriteLine($"{item.ID},{item.Amount},{item.CatogoryId},{item.PayDate:M/d/yy},{item.Description}");
                 }
 
-                streamWriter.FlushAsync();
+
+
+                // TEMP TEST !!!
+
+                streamWriter.WriteLine($"{START} - {DateTime.Now:hh:mm:ss}");
+
+
+
+                streamWriter.Flush();
+
+                streamWriter.Close();
 
                 return $"{today:MM.dd} ({today.DayOfWeek.ToString().Substring(0, 3)}) {today:HH:mm} BackUp created successfully.";
             }

@@ -143,10 +143,6 @@
     <Compile Include="Migrations\201810101308016_InitialCreate.Designer.cs">
       <DependentUpon>201810101308016_InitialCreate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201903140719341_Categories_Bmo_Old.cs" />
-    <Compile Include="Migrations\201903140719341_Categories_Bmo_Old.Designer.cs">
-      <DependentUpon>201903140719341_Categories_Bmo_Old.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Payment.cs" />
@@ -371,9 +367,6 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201810101308016_InitialCreate.resx">
       <DependentUpon>201810101308016_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201903140719341_Categories_Bmo_Old.resx">
-      <DependentUpon>201903140719341_Categories_Bmo_Old.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
