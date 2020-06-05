@@ -14,7 +14,7 @@ namespace AngularJS_ASPNet_MVC_4
                 .Include("~/App_NG/App_First_Module.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/site.css"));
+                      "~/Views/site.css"));
 
             BundleTable.EnableOptimizations = true;
         }
