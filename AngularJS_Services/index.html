@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="../_CDN_LOCAL_/angular-1.7.9.min.js"></script>
+    <script src="../_CDN_LOCAL_/angular-sanitize-1.7.9.min.js"></script>
+    <script src="app.js"></script>
+</head>
+
+<body>
+    <div ng-app="servicesApp">
+
+        <h4>Custom Time Service:</h4>
+        <table>
+            <tr>
+                <td>Kyiv Time:</td>
+                <td>
+                    <div ng-controller="KVController">
+                        <span>{{cityTime}}</span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>New York Time:</td>
+                <td>
+                    <div ng-controller="NYController">
+                        <span>{{cityTime}}</span>
+                    </div>
+                </td>
+            </tr>
+        </table>
+
+        <div ng-controller="httpSvcCtrl">
+
+            <h4>Angular-JS Servisec List :</h4>
+            <div ng-bind-html="ngServicesTable"></div>
+
+        </div>
+
+    </div>
+</body>
+
+</html>

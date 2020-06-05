@@ -1,0 +1,148 @@
+<style>
+    td,th {
+        border: solid 1px grey;
+        padding: .5em;
+    }
+    th {
+        background-color:lightgrey;
+    }
+</style>
+<table>
+    <tr>
+        <th>Service Name</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td><code>$anchorScroll</code></td>
+        <td>Provides capability to scroll to page anchor specified in <code>$location.hash()</code></td>
+    </tr>
+    <tr>
+        <td><code>$animate</code></td>
+        <td>This service exposes a series of DOM utility methods that provide support for animation hooks.</td>
+    </tr>
+    <tr>
+        <td><code>$animateCss</code></td>
+        <td>By default, only when the <code>ngAnimate</code> is included, then this service will perform animations.
+        </td>
+    </tr>
+    <tr>
+        <td><code>$cacheFactory</code></td>
+        <td>Factory that constructs Cache objects, put and retrieve key-value pairs and give it&#8217;s access to other
+            services.</td>
+    </tr>
+    <tr>
+        <td><code>$templateCache</code></td>
+        <td>The first time a template is used, it is loaded in the template cache for quick retrieval.</td>
+    </tr>
+    <tr>
+        <td><code>$compile</code></td>
+        <td>Compiles an HTML string or DOM into a template and produces a template function, which can then be used to
+            link scope and the template together.</td>
+    </tr>
+    <tr>
+        <td><code>$controller</code></td>
+        <td>This is responsible for instantiating angular controller components.</td>
+    </tr>
+    <tr>
+        <td><code>$document</code></td>
+        <td>Specifies a <a
+                href="//howtodoinjava.com/scripting/jquery/javascript-dom-objects-vs-jquery-objects/">jQuery-wrapped</a>
+            reference to <code>window.document</code> element.</td>
+    </tr>
+    <tr>
+        <td><code>$exceptionHandler</code></td>
+        <td>Any uncaught exception in angular expressions is delegated to this service. The default implementation
+            simply delegates to <code>$log.error</code> which logs it into the browser console.</td>
+    </tr>
+    <tr>
+        <td><code>$filter</code></td>
+        <td>Filters are used for formatting data displayed to the user.</td>
+    </tr>
+    <tr>
+        <td><code>$httpParamSerializer</code></td>
+        <td>Default <code>$http</code> params serializer that converts object to string.</td>
+    </tr>
+    <tr>
+        <td><code>$httpParamSerializer-JQLike</code></td>
+        <td>Alternative <code>$http</code> params serializer that follows jQuery&#8217;s <code>param()</code> method
+            logic. The serializer will also sort the params alphabetically.</td>
+    </tr>
+    <tr>
+        <td><code>$http</code></td>
+        <td>This service facilitates communication with the remote HTTP servers via the browser&#8217;s
+            <code>XMLHttpRequest</code> object or via <code>JSONP</code>.</td>
+    </tr>
+    <tr>
+        <td><code>$xhrFactory</code></td>
+        <td>Factory function used to create <code>XMLHttpRequest</code> objects.</td>
+    </tr>
+    <tr>
+        <td><code>$httpBackend</code></td>
+        <td>Used for dealing with browser incompatibilities.</td>
+    </tr>
+    <tr>
+        <td><code>$interpolate</code></td>
+        <td>Compiles a string with markup into an interpolation function. This service is used by the HTML
+            <code>$compile</code> service for data binding.</td>
+    </tr>
+    <tr>
+        <td><code>$interval</code></td>
+        <td>Angular&#8217;s wrapper for <code>window.setInterval</code>.</td>
+    </tr>
+    <tr>
+        <td><code>$locale</code></td>
+        <td>Provides localization rules for various Angular components.</td>
+    </tr>
+    <tr>
+        <td><code>$location</code></td>
+        <td>It parses the URL in the browser address bar and makes the URL available to your application. Changes to the
+            URL in the address bar are reflected into <code>$location</code> service and changes to
+            <code>$location</code> are reflected into the browser address bar.</td>
+    </tr>
+    <tr>
+        <td><code>$log</code></td>
+        <td>Console logger.</td>
+    </tr>
+    <tr>
+        <td><code>$parse</code></td>
+        <td>Converts Angular expression into a function.</td>
+    </tr>
+    <tr>
+        <td><code>$q</code></td>
+        <td>Helps you run functions asynchronously, and use their return values (or errors) when they are done
+            processing.</td>
+    </tr>
+    <tr>
+        <td><code>$rootElement</code></td>
+        <td>The root element of Angular application.</td>
+    </tr>
+    <tr>
+        <td><code>$rootScope</code></td>
+        <td>Scopes provide separation between the model and the view. This is for root scope. Every application has a
+            single root scope.</td>
+    </tr>
+    <tr>
+        <td><code>$sceDelegate</code></td>
+        <td>Used by the <code>$sce</code> in backend.</td>
+    </tr>
+    <tr>
+        <td><code>$sce</code></td>
+        <td>provides Strict Contextual Escaping services to AngularJS.</td>
+    </tr>
+    <tr>
+        <td><code>$templateRequest</code></td>
+        <td>It runs security checks then downloads the provided template using <code>$http</code> and, upon success,
+            stores the contents inside of <code>$templateCache</code>.</td>
+    </tr>
+    <tr>
+        <td><code>$timeout</code></td>
+        <td>Angular&#8217;s wrapper for <code>window.setTimeout()</code></td>
+    </tr>
+    <tr>
+        <td><code>$window</code></td>
+        <td>A reference to the browser&#8217;s <code>window</code> object. While <code>window</code> is globally
+            available in JavaScript, it causes testability problems, because it is a global variable. In angular we
+            always refer to it through the <code>$window</code> service, so it may be overridden, removed or mocked for
+            testing.</td>
+    </tr>
+</table>
