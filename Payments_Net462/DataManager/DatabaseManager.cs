@@ -4,6 +4,7 @@ using System.Linq;
 using System.Linq.Dynamic.Core;
 using System.Threading.Tasks;
 using System.Web;
+using Ionic.Zip;
 using Payments_Net462.Models;
 
 namespace Payments_Net462.DataManager
@@ -24,8 +25,6 @@ namespace Payments_Net462.DataManager
 
                 StreamWriter streamWriter = new StreamWriter(dataFile, true);
 
-                var START = DateTime.Now.ToString("hh:mm:ss");
-
                 streamWriter.WriteLine($"Records : {allData.Count()}");
 
                 foreach (Payment item in allData)
@@ -33,17 +32,13 @@ namespace Payments_Net462.DataManager
                     streamWriter.WriteLine($"{item.ID},{item.Amount},{item.CatogoryId},{item.PayDate:M/d/yy},{item.Description}");
                 }
 
-
-
-                // TEMP TEST !!!
-
-                streamWriter.WriteLine($"{START} - {DateTime.Now:hh:mm:ss}");
-
-
-
-                streamWriter.Flush();
-
                 streamWriter.Close();
+
+                ZipFile zip = new ZipFile();
+                zip.AddFile(dataFile, ""); // 2nd param can create dir inside archive
+                zip.Save(dataFile + ".zip");
+
+                File.Delete(dataFile);
 
                 return $"{today:MM.dd} ({today.DayOfWeek.ToString().Substring(0, 3)}) {today:HH:mm} BackUp created successfully.";
             }
@@ -54,7 +49,8 @@ namespace Payments_Net462.DataManager
         }
 
         // TODO:
-        // make it async !!!
+
+        // MAKE IT ASYNC !!!
 
         private async Task WriteFileAsync(string dir, string file, string content)
         {
