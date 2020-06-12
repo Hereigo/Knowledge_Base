@@ -1,4 +1,4 @@
-﻿namespace XSL_SQL_ORM.Models
+﻿namespace XSL_SQL_ORM
 {
     public class User
     {

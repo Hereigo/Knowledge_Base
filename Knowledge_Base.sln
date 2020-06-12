@@ -44,7 +44,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AngularJS_ASPNet_MVC_4", "A
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AngularJS_AspNet_Bootstrap", "AngularJS_AspNet_Bootstrap\AngularJS_AspNet_Bootstrap.csproj", "{149C3486-4FAD-4E9C-B5A1-224EB858B387}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XSL_SQL_ORM", "XSL_SQL_ORM\XSL_SQL_ORM.csproj", "{CF81B120-551B-4375-A1BC-337027E2BD3E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XSL_SQL_ORM", "XSL_SQL_ORM\XSL_SQL_ORM.csproj", "{3949329B-813C-4A4C-9FBD-A8DCB0D6484C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -124,10 +124,10 @@ Global
 		{149C3486-4FAD-4E9C-B5A1-224EB858B387}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{149C3486-4FAD-4E9C-B5A1-224EB858B387}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{149C3486-4FAD-4E9C-B5A1-224EB858B387}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CF81B120-551B-4375-A1BC-337027E2BD3E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CF81B120-551B-4375-A1BC-337027E2BD3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CF81B120-551B-4375-A1BC-337027E2BD3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CF81B120-551B-4375-A1BC-337027E2BD3E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3949329B-813C-4A4C-9FBD-A8DCB0D6484C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3949329B-813C-4A4C-9FBD-A8DCB0D6484C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3949329B-813C-4A4C-9FBD-A8DCB0D6484C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3949329B-813C-4A4C-9FBD-A8DCB0D6484C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
