@@ -6,6 +6,12 @@ namespace OOP_Deriving
     {
         private static void Main()
         {
+            StringOverride stringOverride = new StringOverride("Default name.");
+
+            Console.WriteLine(stringOverride.ToString());
+
+            Console.WriteLine("==============================");
+
             Use_Base.Test();
 
             Console.WriteLine("\n Done.");
