@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("XSL_SQL_ORM")]
+[assembly: AssemblyTitle("FTP_Downloader")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("XSL_SQL_ORM")]
+[assembly: AssemblyProduct("FTP_Downloader")]
 [assembly: AssemblyCopyright("Copyright ©  2020")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("3949329b-813c-4a4c-9fbd-a8dcb0d6484c")]
+[assembly: Guid("fb6b4ae4-c67e-4b7e-9bca-bb5ae7faae7b")]
 
 // Version information for an assembly consists of the following four values:
 //
