@@ -130,6 +130,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="!!!_GIT_IGNORE.cs" />
     <Compile Include="App_Start\BasicAuthHttpModule.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
@@ -362,12 +363,6 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\GIT_IGNORE\GIT_IGNORE.csproj">
-      <Project>{e4ec559d-76fd-42ac-ac80-922a9f67d72c}</Project>
-      <Name>GIT_IGNORE</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Migrations\201810101308016_InitialCreate.resx">
       <DependentUpon>201810101308016_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
@@ -375,7 +370,6 @@
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>
-  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

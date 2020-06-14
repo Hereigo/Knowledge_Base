@@ -352,7 +352,8 @@ MigrationBackup/
 # ANDY'S RULES :
 */Content
 */Fonts
+*/GIT_IGNORE/Variables.cs
 */Scripts
 */Web.Release.config
 /Payments_Net462/webfonts
-!!!_GIT_IGNORE/GIT_IGNORE/Variables.cs
+/Payments_Net462/!!!_GIT_IGNORE.cs

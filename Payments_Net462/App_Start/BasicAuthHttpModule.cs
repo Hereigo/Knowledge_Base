@@ -36,7 +36,7 @@ namespace Payments_Net462.App_Start
 
                 string TEST = Convert.ToBase64String(hash);
 
-                result = Convert.ToBase64String(hash) == GIT_IGNORE.Variables.paymentsNet462_BaseAuthStr;
+                result = Convert.ToBase64String(hash) == GIT_IGNORE.test;
             }
             return result;
         }

@@ -15,8 +15,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SQL_EF_Autofac_Net462", "SQ
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Payments_Net462", "Payments_Net462\Payments_Net462.csproj", "{6E4D1069-949D-4910-B088-A06E4276933E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GIT_IGNORE", "GIT_IGNORE\GIT_IGNORE.csproj", "{E4EC559D-76FD-42AC-AC80-922A9F67D72C}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F12C7229-D12B-4739-8207-32BF3687AC81}"
 	ProjectSection(SolutionItems) = preProject
 		SQL\CATEGORIES.sql = SQL\CATEGORIES.sql
@@ -45,6 +43,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AngularJS_AspNet_Bootstrap", "AngularJS_AspNet_Bootstrap\AngularJS_AspNet_Bootstrap.csproj", "{149C3486-4FAD-4E9C-B5A1-224EB858B387}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FTP_Downloader", "FTP_Downloader\FTP_Downloader.csproj", "{FB6B4AE4-C67E-4B7E-9BCA-BB5AE7FAAE7B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GIT_IGNORE", "!!!_GIT_IGNORE\GIT_IGNORE\GIT_IGNORE.csproj", "{94FBB94C-7663-4239-88D4-6D3F28805D0F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -76,10 +76,6 @@ Global
 		{6E4D1069-949D-4910-B088-A06E4276933E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6E4D1069-949D-4910-B088-A06E4276933E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6E4D1069-949D-4910-B088-A06E4276933E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E4EC559D-76FD-42AC-AC80-922A9F67D72C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E4EC559D-76FD-42AC-AC80-922A9F67D72C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E4EC559D-76FD-42AC-AC80-922A9F67D72C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E4EC559D-76FD-42AC-AC80-922A9F67D72C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D96ABCD7-651E-4B0B-9A38-AFBB3B34994D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D96ABCD7-651E-4B0B-9A38-AFBB3B34994D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D96ABCD7-651E-4B0B-9A38-AFBB3B34994D}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -128,6 +124,10 @@ Global
 		{FB6B4AE4-C67E-4B7E-9BCA-BB5AE7FAAE7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FB6B4AE4-C67E-4B7E-9BCA-BB5AE7FAAE7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FB6B4AE4-C67E-4B7E-9BCA-BB5AE7FAAE7B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{94FBB94C-7663-4239-88D4-6D3F28805D0F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94FBB94C-7663-4239-88D4-6D3F28805D0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94FBB94C-7663-4239-88D4-6D3F28805D0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94FBB94C-7663-4239-88D4-6D3F28805D0F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
