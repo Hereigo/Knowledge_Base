@@ -355,4 +355,4 @@ MigrationBackup/
 */Scripts
 */Web.Release.config
 /Payments_Net462/webfonts
-GIT_IGNORE/Variables.cs
+!!!_GIT_IGNORE/GIT_IGNORE/Variables.cs
