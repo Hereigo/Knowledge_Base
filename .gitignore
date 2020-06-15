@@ -355,5 +355,6 @@ MigrationBackup/
 */GIT_IGNORE/Variables.cs
 */Scripts
 */Web.Release.config
-/Payments_Net462/webfonts
+/FTP_Downloader/GIT_IGNORE.cs
 /Payments_Net462/!!!_GIT_IGNORE.cs
+/Payments_Net462/webfonts

@@ -44,8 +44,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AngularJS_AspNet_Bootstrap"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FTP_Downloader", "FTP_Downloader\FTP_Downloader.csproj", "{FB6B4AE4-C67E-4B7E-9BCA-BB5AE7FAAE7B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GIT_IGNORE", "!!!_GIT_IGNORE\GIT_IGNORE\GIT_IGNORE.csproj", "{94FBB94C-7663-4239-88D4-6D3F28805D0F}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -124,10 +122,6 @@ Global
 		{FB6B4AE4-C67E-4B7E-9BCA-BB5AE7FAAE7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FB6B4AE4-C67E-4B7E-9BCA-BB5AE7FAAE7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FB6B4AE4-C67E-4B7E-9BCA-BB5AE7FAAE7B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{94FBB94C-7663-4239-88D4-6D3F28805D0F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{94FBB94C-7663-4239-88D4-6D3F28805D0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{94FBB94C-7663-4239-88D4-6D3F28805D0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{94FBB94C-7663-4239-88D4-6D3F28805D0F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,24 +1,37 @@
 ﻿using System;
 using System.Net;
-using GIT_IGNORE;
 
 namespace FTP_Downloader
 {
     internal static class Program
     {
-        static void Main()
+        private static void Main()
         {
             Console.WriteLine("Write your password to download :\r\n");
 
-            var password = Console.ReadLine().Trim();
+            string password = Console.ReadLine().Trim();
 
-            var credentials = new NetworkCredential(Variables.ftpUser, password);
+            NetworkCredential credentials = new NetworkCredential(GIT_IGNORE.ftpUser, password);
 
-            var uri = new Uri(Variables.ftpPath);
+            Uri uri = new Uri(GIT_IGNORE.ftpPath);
 
-            var fileName = FtpWorker.GetFilesList(uri, credentials);
+            string[] filesList = FtpWorker.GetZipFilesList(uri, credentials);
 
-            FtpWorker.DisplayFileFromServer(uri, fileName, credentials);
+            if (filesList.Length < 1)
+            {
+                Console.WriteLine("No files to download!");
+            }
+            else
+            {
+                string latestFile = FtpWorker.SelectFtpListLatestFile(filesList);
+
+                //FtpWorker.DownloadFileFromFtp(latestFile, uri, credentials);
+
+                Console.WriteLine("\r\nCheck downloaded file and press any key to clean Server ...\r\n");
+                Console.ReadKey();
+
+                FtpWorker.DeleteFilesFromFtp(filesList, uri, credentials);
+            }
 
             Console.ReadKey();
         }
