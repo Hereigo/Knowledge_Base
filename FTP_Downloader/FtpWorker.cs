@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -96,6 +97,8 @@ namespace FTP_Downloader
                 myWebClient.DownloadFile(remoteUri + fileName, fileName);
 
                 Console.WriteLine($"File {fileName} Successfully Downloaded.");
+
+                Process.Start(fileName);
             }
             catch (WebException e)
             {

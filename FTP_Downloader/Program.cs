@@ -25,7 +25,7 @@ namespace FTP_Downloader
             {
                 string latestFile = FtpWorker.SelectFtpListLatestFile(filesList);
 
-                //FtpWorker.DownloadFileFromFtp(latestFile, uri, credentials);
+                FtpWorker.DownloadFileFromFtp(latestFile, uri, credentials);
 
                 Console.WriteLine("\r\nCheck downloaded file and press any key to clean Server ...\r\n");
                 Console.ReadKey();
