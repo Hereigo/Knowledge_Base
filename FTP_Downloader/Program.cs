@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Net;
 
 namespace FTP_Downloader
@@ -23,14 +24,26 @@ namespace FTP_Downloader
             }
             else
             {
-                string latestFile = FtpWorker.SelectFtpListLatestFile(filesList);
+                string latestFileName = FtpWorker.SelectFtpListLatestFile(filesList);
 
-                FtpWorker.DownloadFileFromFtp(latestFile, uri, credentials);
+                FtpWorker.DownloadFileFromFtp(latestFileName, uri, credentials);
 
-                Console.WriteLine("\r\nCheck downloaded file and press any key to clean Server ...\r\n");
-                Console.ReadKey();
+                Zipper.CompressFile(password, latestFileName, GIT_IGNORE.zipOutput);
 
-                FtpWorker.DeleteFilesFromFtp(filesList, uri, credentials);
+                FileInfo archive = new FileInfo(GIT_IGNORE.zipOutput);
+
+                if (archive.Exists)
+                {
+                    Console.WriteLine($"\r\nArchive Created. Size : {archive.Length / 1024} kb, Modified : {archive.LastWriteTime}");
+                    Console.WriteLine("\r\nCheck downloaded file and press any key TO DELETE temporary files ...\r\n");
+                    Console.ReadKey();
+                    File.Delete(latestFileName);
+                    FtpWorker.DeleteFilesFromFtp(filesList, uri, credentials);
+                }
+                else
+                {
+                    Console.WriteLine("WARNING! Archive not created!");
+                }
             }
 
             Console.ReadKey();
