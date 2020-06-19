@@ -30,11 +30,6 @@ namespace FTP_Downloader
             }
         }
 
-        internal static void CompressFile(string password, string latestFile, object zipOutput)
-        {
-            throw new NotImplementedException();
-        }
-
         internal static void CompressFile(string password, string fileName, string outPathname)
         {
             try
@@ -89,20 +84,17 @@ namespace FTP_Downloader
 
                 zipStream.CloseEntry();
             }
-            catch (System.Exception ex)
+            catch (Exception ex)
             {
-                System.Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.Message);
             }
         }
 
         // Recursively compresses a folder structure
         private void CompressFolder(string path, ZipOutputStream zipStream, int folderOffset)
         {
-            var files = Directory.GetFiles(path);
-
-            foreach (var filename in files)
+            foreach (var filename in Directory.GetFiles(path))
             {
-
                 var fi = new FileInfo(filename);
 
                 // Make the name in zip based on the folder

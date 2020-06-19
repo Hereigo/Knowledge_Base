@@ -6,29 +6,40 @@ namespace FTP_Downloader
 {
     internal static class Program
     {
+        private static Uri uriArch = new Uri(GIT_IGNORE.ftpPath);
+        private static Uri uriDb = new Uri(GIT_IGNORE.ftpPathDb);
+
         private static void Main()
         {
-            Console.WriteLine("Write your password to download :\r\n");
+            Console.WriteLine("Write your wishes :\r\n");
 
             string password = Console.ReadLine().Trim();
 
             NetworkCredential credentials = new NetworkCredential(GIT_IGNORE.ftpUser, password);
 
-            Uri uri = new Uri(GIT_IGNORE.ftpPath);
+            string[] backupsList = FtpWorker.GetFilesListByExt(uriDb, ".bak", credentials);
 
-            string[] filesList = FtpWorker.GetZipFilesList(uri, credentials);
-
-            if (filesList.Length < 1)
+            foreach (var item in backupsList)
             {
-                Console.WriteLine("No files to download!");
+                if (!File.Exists(item))
+                {
+                    FtpWorker.DownloadFileFromFtp(item, uriDb, credentials, false);
+
+                    Console.WriteLine($"{item} downloaded.");
+
+                    Zipper.CompressFile(password, item, GIT_IGNORE.zipOutputDB);
+                }
             }
-            else
+
+            string[] archivesList = FtpWorker.GetFilesListByExt(uriArch, ".zip", credentials);
+
+            if (archivesList.Length > 0)
             {
-                string latestFileName = FtpWorker.SelectFtpListLatestFile(filesList);
+                string latestArchiveName = FtpWorker.SelectLatestByNameFile(archivesList);
 
-                FtpWorker.DownloadFileFromFtp(latestFileName, uri, credentials);
+                FtpWorker.DownloadFileFromFtp(latestArchiveName, uriArch, credentials, true);
 
-                Zipper.CompressFile(password, latestFileName, GIT_IGNORE.zipOutput);
+                Zipper.CompressFile(password, latestArchiveName, GIT_IGNORE.zipOutput);
 
                 FileInfo archive = new FileInfo(GIT_IGNORE.zipOutput);
 
@@ -37,8 +48,8 @@ namespace FTP_Downloader
                     Console.WriteLine($"\r\nArchive Created. Size : {archive.Length / 1024} kb, Modified : {archive.LastWriteTime}");
                     Console.WriteLine("\r\nCheck downloaded file and press any key TO DELETE temporary files ...\r\n");
                     Console.ReadKey();
-                    File.Delete(latestFileName);
-                    FtpWorker.DeleteFilesFromFtp(filesList, uri, credentials);
+                    File.Delete(latestArchiveName);
+                    FtpWorker.DeleteFilesFromFtp(archivesList, uriArch, credentials);
                 }
                 else
                 {
@@ -46,6 +57,7 @@ namespace FTP_Downloader
                 }
             }
 
+            Console.WriteLine("\r\nAll tasks finished.");
             Console.ReadKey();
         }
     }

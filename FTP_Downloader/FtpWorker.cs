@@ -9,7 +9,7 @@ namespace FTP_Downloader
 {
     public static class FtpWorker
     {
-        internal static string[] GetZipFilesList(Uri remoteUri, NetworkCredential credentials)
+        internal static string[] GetFilesListByExt(Uri remoteUri, string fileExtension, NetworkCredential credentials)
         {
             List<string> filesList = new List<string>();
 
@@ -40,7 +40,7 @@ namespace FTP_Downloader
                     {
                         foreach (var item in line.Split(' '))
                         {
-                            if (item.EndsWith(".zip"))
+                            if (item.EndsWith(fileExtension, StringComparison.OrdinalIgnoreCase))
                             {
                                 filesList.Add(item);
                             }
@@ -77,7 +77,7 @@ namespace FTP_Downloader
             }
         }
 
-        internal static void DownloadFileFromFtp(string fileName, Uri remoteUri, NetworkCredential credentials)
+        internal static void DownloadFileFromFtp(string fileName, Uri remoteUri, NetworkCredential credentials, bool shouldToOpen)
         {
             if (string.IsNullOrEmpty(fileName))
             {
@@ -97,8 +97,12 @@ namespace FTP_Downloader
                 myWebClient.DownloadFile(remoteUri + fileName, fileName);
 
                 Console.WriteLine($"File {fileName} Successfully Downloaded.");
-
-                Process.Start(fileName);
+                
+                if (shouldToOpen)
+                {
+                    Process.Start(fileName);
+                }
+                
             }
             catch (WebException e)
             {
@@ -106,18 +110,11 @@ namespace FTP_Downloader
             }
         }
 
-        internal static string SelectFtpListLatestFile(string[] filesList)
+        internal static string SelectLatestByNameFile(string[] filesList)
         {
-            string latestFileName = string.Empty;
+            Array.Reverse(filesList);
 
-            if (filesList.Length > 0)
-            {
-                // files list sorted descending :
-                Array.Reverse(filesList);
-
-                latestFileName = filesList[0];
-            }
-            return filesList[0];
+            return filesList.Length > 0 ? filesList[0] : string.Empty;
         }
     }
 }
