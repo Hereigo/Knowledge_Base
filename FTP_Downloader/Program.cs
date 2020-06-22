@@ -11,7 +11,7 @@ namespace FTP_Downloader
 
         private static void Main()
         {
-            Console.WriteLine("Write your wishes :\r\n");
+            Console.WriteLine("\r\n - What would you like, my lord?\r\n");
 
             string password = Console.ReadLine().Trim();
 

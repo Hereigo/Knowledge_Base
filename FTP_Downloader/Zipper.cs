@@ -14,7 +14,6 @@ namespace FTP_Downloader
             using (FileStream fsOut = File.Create(outPathname))
             using (var zipStream = new ZipOutputStream(fsOut))
             {
-
                 //0-9, 9 being the highest level of compression
                 zipStream.SetLevel(3);
 
