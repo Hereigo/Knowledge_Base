@@ -168,7 +168,7 @@ document.addEventListener('DOMContentLoaded', function () {
   // PAUSED - 01:30 (final part)
   // PAUSED - 01:30 (final part)
 
-  
+
   const openShoppingCart = event => {
     event.preventDefault();
     cart.style.display = 'flex';
@@ -283,6 +283,5 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
   //
-  // END of
-  // document.addEventListener('DOMContentLoaded', function() {
+  // END of document.addEventListener('DOMContentLoaded', function() {
 });
