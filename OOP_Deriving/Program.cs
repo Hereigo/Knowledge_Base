@@ -14,6 +14,10 @@ namespace OOP_Deriving
 
             Use_Base.Test();
 
+            Console.WriteLine("==============================");
+
+            HashSet_use.Test();
+
             Console.WriteLine("\n Done.");
             Console.ReadKey();
         }
