@@ -164,9 +164,9 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
 
-  // PAUSED - 01:30 (final part)
-  // PAUSED - 01:30 (final part)
-  // PAUSED - 01:30 (final part)
+  // PAUSED - 02:28 (final part)
+  // PAUSED - 02:28 (final part)
+  // PAUSED - 02:28 (final part)
 
 
   const openShoppingCart = event => {
