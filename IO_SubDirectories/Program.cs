@@ -1,53 +1,30 @@
 ﻿using System;
-using System.IO;
+using System.Collections.Generic;
 
 namespace IO_SubDirectories
 {
     internal static class Program
     {
+        private static string rootSearchDir = @"C:\Users\...";
+        private static string[] extensionsToSearch = new string[] { "*.mp3" };
+
         private static void Main()
         {
-            string whereToMove = "C:\\Recycle.bin";
-
-            string rootPathToSearch = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + @"\source\repos\" + "FAKE_PROJECT";
-
-            string[] dirNamesToFind = { "bin", "obj", "packages", ".vs" };
-
-            string[] dirNameToSkip = { ".git" };
-
-            string[] GetDirsByNames() => Directory.Exists(rootPathToSearch)
-                ? ProcessFilesDirectories.GetArrayByNames(rootPathToSearch, dirNamesToFind, dirNameToSkip)
-                : new string[] { "No one found." };
-
-            //string[] mp3files = ProcessFilesDirectories.GetFilesMp3(rootPathToSearch);
-
-            foreach (var item in GetDirsByNames()) // mp3files)
+            var fromToReplacements = new List<KeyValuePair<string, string>>
             {
-                // TOD :
-                // REFACTORE - EXTRACT :
-                string prevDirNameOnly = Path.GetFileName(Path.GetDirectoryName(item));
-                string lastDirNameOnly = Path.GetFileName(item);
+                new KeyValuePair<string, string>(" - ", "")
+            };
 
-                string newPath = $"{whereToMove}\\{prevDirNameOnly}_{lastDirNameOnly}".Replace(' ', '_').Replace(".vs", "_vs");
+            try
+            {
+                string[] TEST = GetFiles.AllByExtensions(rootSearchDir, extensionsToSearch);
 
-                Console.WriteLine(newPath);
-
-                try
-                {
-                    // Directory.Move(item, newPath);
-
-                    // Directory.Delete(item, true);
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e.Message);
-                }
+                FilesRenamer.ReplaceByPatterns(fromToReplacements, TEST);
             }
-
-            string[] from = { "" };
-            string[] into = { "" };
-
-            // FilesRenamer.ReplaceByPatterns(from, into, mp3files);
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
 
             Console.WriteLine("\r\n Done.");
             Console.ReadKey();

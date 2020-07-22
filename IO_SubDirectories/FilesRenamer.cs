@@ -1,38 +1,35 @@
-﻿using System.IO;
+﻿using System.Collections.Generic;
+using System.IO;
 
 namespace IO_SubDirectories
 {
     internal static class FilesRenamer
     {
-        internal static void ReplaceByPatterns(string[] from, string[] to, string[] files)
+        internal static void ReplaceByPatterns(List<KeyValuePair<string, string>> fromToReplacements, string[] filesToRename)
         {
-            if (from.Length != to.Length)
+            foreach (var file in filesToRename)
             {
-                System.Console.WriteLine("Replace Collection FROM & TO must be the same length!");
-            }
-            else
-            {
-                foreach (var file in files)
+                if (File.Exists(file))
                 {
-                    if (File.Exists(file))
+                    string inFileName = Path.GetFileName(file);
+
+                    string inFileFullPath = Path.GetFullPath(file);
+
+                    string inFilePath = inFileFullPath.Substring(0, inFileFullPath.IndexOf(inFileName));
+
+                    string outFileName = inFileName;
+
+                    for (int i = 0; i < fromToReplacements.Count; i++)
                     {
-                        string inFileName = Path.GetFileName(file);
+                        outFileName = outFileName.Replace(fromToReplacements[i].Key, fromToReplacements[i].Value);
+                    }
 
-                        string inFileFullPath = Path.GetFullPath(file);
+                    // TODO :
+                    // Add validation asking HERE !
 
-                        string inFilePath = inFileFullPath.Substring(0, inFileFullPath.IndexOf(inFileName));
-
-                        string outFileName = inFileName;
-
-                        for (int i = 0; i < from.Length; i++)
-                        {
-                            outFileName = outFileName.Replace(from[i], to[i]);
-                        }
-
-                        if (inFileName != outFileName)
-                        {
-                            File.Move(inFileFullPath, inFilePath + outFileName);
-                        }
+                    if (inFileName != outFileName)
+                    {
+                        File.Move(inFileFullPath, inFilePath + outFileName);
                     }
                 }
             }

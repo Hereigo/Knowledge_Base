@@ -33,17 +33,7 @@ namespace IO_SubDirectories
                         .Sum(f => f.Length);
         }
 
-        internal static string[] GetFilesMp3(string rootSearchDir) //, string[] searchPatterns)
-        {
-            // Search needed files recursively.
-            string[] foundFiles = Directory.EnumerateFiles(rootSearchDir, "*.mp3", SearchOption.AllDirectories)
-                //.Where(f => f.EndsWith(".csproj", System.StringComparison.OrdinalIgnoreCase)
-                // || f.EndsWith(".config", System.StringComparison.OrdinalIgnoreCase)
-                // )
-                .ToArray();
 
-            return foundFiles;
-        }
 
         internal static void TEST(string path, string searchPattern)
         {

@@ -43,8 +43,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Useful_Commands.CMD" />
+    <Compile Include="VS_Projects_Cleaner.cs" />
+    <None Include="CMD_Compile.cmd" />
     <Compile Include="FilesRenamer.cs" />
+    <Compile Include="GetFiles.cs" />
     <Compile Include="ProcessFilesDirectories.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

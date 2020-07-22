@@ -66,6 +66,26 @@
             document.querySelector('.modal').classList.toggle('showMe');
             document.querySelector('.overlay').classList.toggle('showMe');
         }
+
+        // CREATE CHECKBOX :
+        var input = document.createElement("input");
+        input.type = "checkbox";
+        input.setAttribute("checked", "checked");
+        document.body.appendChild(input);
+
+        // DIFF :
+        var elems1 = document.getElementsByTagName('a'), // elems1.length = 3;
+            elems2 = document.querySelectorAll("a");     // elems2.length = 2; - can't see element created in the next row
+        document.body.appendChild(document.createElement("a"));
+
+        // GET ALL COMPUTED CSS PROPPERTIES :
+
+        const getCSSProp = (element, propName) => getComputedStyle(element).getPropertyValue(propName);
+
+        const colorAccent = getCSSProp(document.documentElement, '--color-accent'); // #00eb9b
+
+        console.log(document.documentElement);
+
     </script>
 </body>
 

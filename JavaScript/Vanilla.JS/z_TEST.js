@@ -80,8 +80,3 @@ var arr = [{ aaa: '111' },
 arr.splice(1,0, { eee: '555' },{ fff: '666' });
 
 console.log(arr);
-
-// GET ALL COMPUTED CSS PROPPERTIES :
-
-const getCSSProp = (element, propName) => getComputedStyle(element).getPropertyValue(propName);
-const colorAccent = getCSSProp(document.documentElement, '--color-accent'); // #00eb9b
