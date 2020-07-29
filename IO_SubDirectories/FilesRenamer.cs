@@ -5,9 +5,9 @@ namespace IO_SubDirectories
 {
     internal static class FilesRenamer
     {
-        internal static void ReplaceByPatterns(List<KeyValuePair<string, string>> fromToReplacements, string[] filesToRename)
+        internal static void ReplaceSomeToAnother(List<KeyValuePair<string, string>> fromToReplacements, string[] filesToRename)
         {
-            foreach (var file in filesToRename)
+            foreach (string file in filesToRename)
             {
                 if (File.Exists(file))
                 {
@@ -25,7 +25,7 @@ namespace IO_SubDirectories
                     }
 
                     // TODO :
-                    // Add validation asking HERE !
+                    // Add validation asking HERE !!!
 
                     if (inFileName != outFileName)
                     {

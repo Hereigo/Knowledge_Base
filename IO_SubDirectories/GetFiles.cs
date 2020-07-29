@@ -27,5 +27,10 @@ namespace IO_SubDirectories
             }
             return foundFiles.ToArray();
         }
+
+        //internal static string[] GetAllExtensions(string rootSearchDir)
+        //{
+
+        //}
     }
 }

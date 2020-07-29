@@ -105,8 +105,11 @@ document.addEventListener('DOMContentLoaded', function () {
   // Shopping Cart :
 
   const createShoppingCart = (id, title, price, img) => {
+
     const card = document.createElement('div');
+    
     card.className = 'goods';
+    
     card.innerHTML =
       `<div class="goods-img-wrapper">
           <img class="goods-img" src="${img}" alt="">
@@ -118,12 +121,13 @@ document.addEventListener('DOMContentLoaded', function () {
           <div class="goods-price-count">
             <div class="goods-trigger">
               <button data-goods-id="${id}"
-                class="card-add-wishlist ${wishlist.includes(id) ? 'active' : ''}"> <!-- MARKED AS FAV AFTER REFRESH PAGE! -->
+                class="card-add-wishlist ${wishlist.includes(id) ? 'active' : ''}">   <!-- MARKED AS FAV AFTER REFRESH PAGE! -->
               </button>
               <button class="goods-delete" data-goods-id="${id}"></button>
             </div>
-          <div class="goods-count">${goodsBasket[id]}</div> <!-- Count of Many the same goods. -->
+          <div class="goods-count">${goodsBasket[id]}</div>   <!-- Count of Many the same goods. -->
     </div>`;
+
     return card;
   };
 

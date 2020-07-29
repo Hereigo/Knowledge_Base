@@ -33,8 +33,6 @@ namespace IO_SubDirectories
                         .Sum(f => f.Length);
         }
 
-
-
         internal static void TEST(string path, string searchPattern)
         {
             DirectoryInfo di = new DirectoryInfo(path);
