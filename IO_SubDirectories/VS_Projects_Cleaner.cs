@@ -11,7 +11,7 @@ namespace IO_SubDirectories
 
             string whereToMove = "C:\\Recycle.bin";
 
-            string rootPathToSearch = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + @"\source\repos\" + "FAKE_PROJECT";
+            string rootPathToSearch = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + solutionPath;
 
             string[] dirNamesToFind = { "bin", "obj", "packages", ".vs" };
 
@@ -30,15 +30,14 @@ namespace IO_SubDirectories
                 string prevDirNameOnly = Path.GetFileName(Path.GetDirectoryName(item));
                 string lastDirNameOnly = Path.GetFileName(item);
 
-                string newPath = $"{whereToMove}\\{prevDirNameOnly}_{lastDirNameOnly}".Replace(' ', '_').Replace(".vs", "_vs");
-
-                Console.WriteLine(newPath);
+                //string newPath = $"{whereToMove}\\{prevDirNameOnly}_{lastDirNameOnly}".Replace(' ', '_').Replace(".vs", "_vs");
+                //Console.WriteLine(newPath);
 
                 try
                 {
                     // Directory.Move(item, newPath);
 
-                    // Directory.Delete(item, true);
+                    Directory.Delete(item, true);
                 }
                 catch (Exception e)
                 {

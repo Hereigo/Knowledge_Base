@@ -5,30 +5,33 @@ namespace IO_SubDirectories
 {
     internal static class Program
     {
+        private const string projectToClean = @"\source\repos\" + "Testing_Labs";
+
         private static readonly string rootSearchDir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
 
         private static readonly string[] extensionsToSearch = new string[] { "*.mp3" };
 
+        private static readonly List<KeyValuePair<string, string>> fromToReplacements = new List<KeyValuePair<string, string>>
+        {
+            new KeyValuePair<string, string>("", ""),
+            new KeyValuePair<string, string>("", "")
+        };
+
         private static void Main()
         {
-            var fromToReplacements = new List<KeyValuePair<string, string>>
-            {
-                new KeyValuePair<string, string>(" - ", "")
-            };
-
             try
             {
-                string[] TEST = GetFiles.AllByExtensions(rootSearchDir, extensionsToSearch);
+                //string[] TEST = GetFiles.AllByExtensions(rootSearchDir, extensionsToSearch);
 
-                foreach (var item in TEST)
-                {
-                    Console.WriteLine(item);
-                }
+                //foreach (var item in TEST)
+                //{
+                //    Console.WriteLine(item);
+                //}
 
                 // FilesRenamer.ReplaceSomeToAnother(fromToReplacements, TEST);
 
 
-
+                VS_Projects_Cleaner.CleanAll(projectToClean);
 
             }
             catch (Exception e)

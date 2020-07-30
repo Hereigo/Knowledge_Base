@@ -107,9 +107,9 @@ document.addEventListener('DOMContentLoaded', function () {
   const createShoppingCart = (id, title, price, img) => {
 
     const card = document.createElement('div');
-    
+
     card.className = 'goods';
-    
+
     card.innerHTML =
       `<div class="goods-img-wrapper">
           <img class="goods-img" src="${img}" alt="">
@@ -120,7 +120,7 @@ document.addEventListener('DOMContentLoaded', function () {
           </div>
           <div class="goods-price-count">
             <div class="goods-trigger">
-              <button data-goods-id="${id}"
+              <button style="position:relative;margin-top:.5em" data-goods-id="${id}"
                 class="card-add-wishlist ${wishlist.includes(id) ? 'active' : ''}">   <!-- MARKED AS FAV AFTER REFRESH PAGE! -->
               </button>
               <button class="goods-delete" data-goods-id="${id}"></button>
