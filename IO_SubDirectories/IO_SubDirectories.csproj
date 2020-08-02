@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Poligon.cs" />
     <Compile Include="VS_Projects_Cleaner.cs" />
     <None Include="CMD_Compile.cmd" />
     <Compile Include="FilesRenamer.cs" />

@@ -167,12 +167,6 @@ document.addEventListener('DOMContentLoaded', function () {
     return basketGoods;
   }
 
-
-  // PAUSED - 02:28 (final part)
-  // PAUSED - 02:28 (final part)
-  // PAUSED - 02:28 (final part)
-
-
   const openShoppingCart = event => {
     event.preventDefault();
     cart.style.display = 'flex';
@@ -250,6 +244,18 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 
+
+  // PAUSED - 02:32 (final part)
+  // PAUSED - 02:32 (final part)
+  // PAUSED - 02:32 (final part)
+
+
+  const basketHandler = () => {
+    const taregt = event.target;
+
+
+  }
+
   const showWishlist = () => {
     getGoodsAndRender(renderCard, goods => goods.filter(item => wishlist.includes(item.id)));
   }
@@ -259,6 +265,7 @@ document.addEventListener('DOMContentLoaded', function () {
   category.addEventListener('click', chooseCategory);
   search.addEventListener('submit', searchGoods);
   goodsWrapper.addEventListener('click', goodsHandler);
+  shopCartWrapperElem.addEventListener('click', basketHandler);
   wishlistBtn.addEventListener('click', showWishlist);
 
   //... getGoodsAndRender = (handler, filter == undefined by default) and will be skipped if PROMISES (.then(undefined))
