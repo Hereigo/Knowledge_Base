@@ -359,3 +359,4 @@ MigrationBackup/
 /Payments_Net462/!!!_GIT_IGNORE.cs
 /Payments_Net462/webfonts
 */credentials.json
+MB_API/GIT_IGNORE.cs
