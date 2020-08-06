@@ -12,31 +12,31 @@ namespace Payments_Net462.Models
             // FIRST INITIALIZATION SEEDING :
             if (!context.Categories.Any())
             {
-                context.Categories.Add(new Category { Name = "CSH", IsActive = true });//1
-                context.Categories.Add(new Category { Name = "ALF", IsActive = true });//2
-                context.Categories.Add(new Category { Name = "PRV", IsActive = true });//3
-                context.Categories.Add(new Category { Name = "CEX", IsActive = true });//4
-                context.Categories.Add(new Category { Name = "WOK", IsActive = true });//5
-                context.Categories.Add(new Category { Name = "STU", IsActive = true });//6
-                context.Categories.Add(new Category { Name = "HOM", IsActive = true });//7
-                context.Categories.Add(new Category { Name = "KID", IsActive = true });//8
-                context.Categories.Add(new Category { Name = "KIU", IsActive = true });//9
-                context.Categories.Add(new Category { Name = "QVN", IsActive = true });//10
-                context.Categories.Add(new Category { Name = "FOO", IsActive = true });//11
-                context.Categories.Add(new Category { Name = "COF", IsActive = true });//12
-                context.Categories.Add(new Category { Name = "HLS", IsActive = true });//13
-                context.Categories.Add(new Category { Name = "CLO", IsActive = true });//14
-                context.Categories.Add(new Category { Name = "VIH", IsActive = true });//15
-                context.Categories.Add(new Category { Name = "ENJ", IsActive = true });//16
-                context.Categories.Add(new Category { Name = "PEB", IsActive = true });//17
-                context.Categories.Add(new Category { Name = "VLG", IsActive = true });//18
-                context.Categories.Add(new Category { Name = "KSH", IsActive = true });//19
+                context.Categories.Add(new Category { Name = "CSH", IsActive = true }); //1
+                context.Categories.Add(new Category { Name = "ALF", IsActive = true }); //2
+                context.Categories.Add(new Category { Name = "PRV", IsActive = true }); //3
+                context.Categories.Add(new Category { Name = "CEX", IsActive = true }); //4
+                context.Categories.Add(new Category { Name = "WOK", IsActive = true }); //5
+                context.Categories.Add(new Category { Name = "STU", IsActive = true }); //6
+                context.Categories.Add(new Category { Name = "HOM", IsActive = true }); //7
+                context.Categories.Add(new Category { Name = "KID", IsActive = true }); //8
+                context.Categories.Add(new Category { Name = "KIU", IsActive = true }); //9
+                context.Categories.Add(new Category { Name = "QVN", IsActive = true }); //10
+                context.Categories.Add(new Category { Name = "FOO", IsActive = true }); //11
+                context.Categories.Add(new Category { Name = "COF", IsActive = true }); //12
+                context.Categories.Add(new Category { Name = "HLS", IsActive = true }); //13
+                context.Categories.Add(new Category { Name = "CLO", IsActive = true }); //14
+                context.Categories.Add(new Category { Name = "VIH", IsActive = true }); //15
+                context.Categories.Add(new Category { Name = "ENJ", IsActive = true }); //16
+                context.Categories.Add(new Category { Name = "PEB", IsActive = true }); //17
+                context.Categories.Add(new Category { Name = "VLG", IsActive = true }); //18
+                context.Categories.Add(new Category { Name = "KSH", IsActive = true }); //19
                 context.Categories.Add(new Category { Name = "RLS", IsActive = true, ID = 39 });
                 context.Categories.Add(new Category { Name = "BMO", IsActive = true, ID = 43 });
-                context.Categories.Add(new Category { Name = "KSH", IsActive = true, ID = 44 });
-                context.Categories.Add(new Category { Name = "KSH", IsActive = true, ID = 45 });
-                context.Categories.Add(new Category { Name = "KSH", IsActive = true, ID = 46 });
-                context.Categories.Add(new Category { Name = "KSH", IsActive = true, ID = 47 });
+                context.Categories.Add(new Category { Name = "HOL", IsActive = true, ID = 45 });
+                context.Categories.Add(new Category { Name = "TRI", IsActive = true, ID = 46 });
+                context.Categories.Add(new Category { Name = "BKP", IsActive = true, ID = 47 });
+                context.Categories.Add(new Category { Name = "SCH", IsActive = true, ID = 48 });
 
                 base.Seed(context);
             }

@@ -21,10 +21,10 @@ SELECT
         WHEN [CatogoryId] = 19 THEN 'KSH'
         WHEN [CatogoryId] = 39 THEN 'RLS'
         WHEN [CatogoryId] = 43 THEN 'BMO'
-        WHEN [CatogoryId] = 44 THEN 'OLD'
         WHEN [CatogoryId] = 45 THEN 'HOL'
         WHEN [CatogoryId] = 46 THEN 'TRI'
         WHEN [CatogoryId] = 47 THEN 'BKP'
+        WHEN [CatogoryId] = 48 THEN 'SCH'
         ELSE '---'
     END 
     [CatogoryId],

@@ -253,10 +253,12 @@ document.addEventListener('DOMContentLoaded', function () {
   const basketHandler = () => {
     const taregt = event.target;
 
-    if (target.classList.contains('goods-add-wishlist')) {
-      // !!!!!!!!!!!! <button data-goods-id="xxx"
-      toggleWishList(target.dataset.goodsId, target);
-    }
+    console.log(taregt);
+
+    // if (target.classList.contains('card-add-wishlist')) {
+    //   // !!!!!!!!!!!! <button data-goods-id="xxx"
+    //   toggleWishList(target.dataset.goodsId, target);
+    // }
   }
 
   const showWishlist = () => {
