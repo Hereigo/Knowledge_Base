@@ -10,7 +10,6 @@ namespace Payments_Net462.Models
         public int ID { get; set; }
 
         [Required]
-        //
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:d.M}")]
         //[DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}")]

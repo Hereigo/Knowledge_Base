@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const wishlistBtn = document.getElementById('wishlist');
   const cardCounter = cardBtn.querySelector('.counter');
   const wishlistCounter = wishlistBtn.querySelector('.counter');
-  const shopCartWrapperElem = document.querySelector('.cart-wrapper');
+  const shopCartWrapperElem = document.querySelector('.card-wrapper');
 
   const wishlist = [];
   const goodsBasket = {};
@@ -253,12 +253,14 @@ document.addEventListener('DOMContentLoaded', function () {
   const basketHandler = () => {
     const taregt = event.target;
 
-    console.log(taregt);
+    console.log(target.dataset.goodsId);
 
-    // if (target.classList.contains('card-add-wishlist')) {
-    //   // !!!!!!!!!!!! <button data-goods-id="xxx"
-    //   toggleWishList(target.dataset.goodsId, target);
-    // }
+    console.log(target);
+
+    if (target.classList.contains('card-add-wishlist')) {
+      // !!!!!!!!!!!! <button data-goods-id="xxx"
+      toggleWishList(target.dataset.goodsId, target);
+    }
   }
 
   const showWishlist = () => {
