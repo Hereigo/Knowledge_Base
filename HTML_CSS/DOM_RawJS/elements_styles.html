@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #wrapper {
+            margin: auto 35%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id='wrapper'>
+        <div class="test">В лесу родилась ёлочка...</div>
+        <div class="test">В лесу родилась ёлочка...</div>
+        <div class="test">В лесу родилась ёлочка...</div>
+        <div class="test">В лесу родилась ёлочка...</div>
+        <div class="test2">Test 2 parent div node.</div>
+    </div>
+
+    <script>
+        var firstSelect = document.querySelector('div.test');
+        firstSelect.style.color = 'red';
+        firstSelect.nextElementSibling.style.color = 'green';
+
+        var allSelect = document.querySelectorAll('div.test');
+        // v1
+        Array.from(allSelect).forEach(e => e.style.backgroundColor = 'yellow');
+        // v2
+        [].forEach.call(allSelect, el => el.style.margin = '10px');
+
+        var newDiv = document.createElement('div');
+        newDiv.textContent = "Div as Child Appended.";
+
+        var newDiv2 = document.createElement('div');
+        newDiv2.textContent = "Inserted Before Child Appended (clickable)";
+        newDiv2.style.backgroundColor = 'silver';
+
+        var test2elem = document.querySelector('div.test2');
+        test2elem.appendChild(newDiv);
+        test2elem.insertBefore(newDiv2, newDiv);
+
+        newDiv2.addEventListener('click', function (event) {
+            alert(event.type + ' - got fired.');
+        });
+    </script>
+
+</body>
+
+</html>

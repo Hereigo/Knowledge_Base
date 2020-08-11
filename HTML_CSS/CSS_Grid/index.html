@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CSS Grid =)</title>
+    <style>
+        div {
+            margin: .2em;
+            padding: 1em;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-rows: 50px 50px;
+        }
+
+        .container-2 {
+            display: grid;
+            grid-gap: 5px;
+            grid-template-columns: repeat(auto-fit, 100px);
+            grid-template-rows: repeat(2, 100px);
+        }
+
+        .container-3 {
+            display: grid;
+            grid-gap: 5px;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            grid-template-rows: repeat(2, 100px);
+        }
+
+        .container-3>div {
+            margin: 0;
+            padding: 0;
+        }
+
+        .container-3>div>img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div style='background-color:aqua'>1</div>
+        <div style='background-color:coral'>2</div>
+        <div style='background-color:darkseagreen'>3</div>
+        <div style='background-color:hotpink'>4</div>
+        <div style='background-color:khaki'>5</div>
+        <div style='background-color:lightgreen'>6</div>
+    </div>
+    <hr />
+    <div class="container-2">
+        <div style='background-color:aqua'>1</div>
+        <div style='background-color:coral'>2</div>
+        <div style='background-color:darkseagreen'>3</div>
+        <div style='background-color:hotpink'>4</div>
+        <div style='background-color:khaki'>5</div>
+        <div style='background-color:lightgreen'>6</div>
+    </div>
+    <hr />
+    <div class="container-3">
+        <div style='background-color:aqua'>1</div>
+        <div style='background-color:coral'>2</div>
+        <div style='background-color:darkseagreen'>3</div>
+        <div style='background-color:hotpink'>4</div>
+        <div style='background-color:khaki'>5</div>
+        <div style='background-color:lightgreen'>6</div>
+    </div>
+    <hr />
+    <div class="container-3">
+        <div><img src="../kitty.jpg" /></div>
+        <div><img src="../kitty.jpg" /></div>
+        <div><img src="../kitty.jpg" /></div>
+        <div><img src="../kitty.jpg" /></div>
+        <div><img src="../kitty.jpg" /></div>
+        <div><img src="../kitty.jpg" /></div>
+    </div>
+
+</body>
+
+</html>

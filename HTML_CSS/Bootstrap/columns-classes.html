@@ -1,0 +1,129 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Bootstrap 4 Test</title>
+    <!-- Latest compiled and minified CSS -->
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style>
+        .container {
+            border: 2px solid green;
+            margin-bottom: 10px;
+            padding: 5px;
+        }
+
+        .col {
+            border: 1px solid blue;
+        }
+
+        .col-4,
+        .col-8 {
+            border: 1px solid violet;
+        }
+
+        .col-sm {
+            border: 1px solid goldenrod;
+        }
+
+        .col-sm-3 {
+            border: 1px solid darkgrey;
+        }
+
+        .col-sm-2,
+        .col-sm-4,
+        .col-sm-6 {
+            border: 1px solid brown;
+        }
+
+        .row {
+            background-color: lightcyan;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="text-center">
+        <h3>Bootstrap 4 table</h3>
+    </div>
+
+    <div class="container" style="margin-top:30px;">
+        <h5>BASIC :</h5>
+        <div class="row">
+            <div class="col">col</div>
+            <div class="col">col</div>
+            <div class="col">col</div>
+        </div>
+    </div>
+
+    <div class="container" style="margin-top:30px;">
+        <h5>BY SIZE :</h5>
+        <div class="row">
+            <div class="col-4">col-4</div>
+            <div class="col-8">col-8</div>
+        </div>
+    </div>
+
+    <div class="container" style="margin-top:30px;">
+        <h5>BREAKPOINTS :</h5>
+        <div class="row">
+            <div class="col-sm">col-sm</div>
+            <div class="col-sm">col-sm</div>
+        </div>
+    </div>
+
+    <div class="container" style="margin-top:30px;">
+        <h5>BREAKPOINTS AND SIZE :</h5>
+        <div class="row">
+            <div class="col-sm-4">col-sm-4</div>
+            <div class="col-sm-6">col-sm-6</div>
+            <div class="col-sm-2">col-sm-2</div>
+        </div>
+    </div>
+
+    <div class="container" style="margin-top:30px;">
+        <h5>ROW! class="row no-gutters" : </h5>
+        <div class="row no-gutters">
+            <div class="col">col</div>
+            <div class="col">col</div>
+        </div>
+    </div>
+
+    <div class="container" style="margin-top:30px;">
+        <h5>LAST COL. OFFSET :</h5>
+        <div class="row">
+            <div class="col-sm-6">col-sm-6</div>
+            <div class="col-sm-3 offset-sm-3">col-sm-3 offset-sm-3</div>
+        </div>
+    </div>
+
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <!--  Bootstrap 3 :
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	Bootstrap 4 : -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+    </script>
+</body>
+
+</html>

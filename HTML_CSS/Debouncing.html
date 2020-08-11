@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+</head>
+
+<body>
+
+    <div>
+        <input type="button" id="test-btn" value="test btn">
+    </div>
+
+
+    <script>
+        var element = document.getElementById('test-btn');
+
+        // regular call to function handleEvent
+        element.on('event', handleEvent);
+
+        // debounce handleEvent so it gets called after calls have stopped for 2 seconds (2000 ms)
+        element.on('event', debounce(handleEvent, 2000));
+
+        function debounce(f, t) {
+            return function (args) {
+                let previousCall = this.lastCall;
+                this.lastCall = Date.now();
+                if (previousCall && ((this.lastCall - previousCall) <= t)) {
+                    clearTimeout(this.lastCallTimer);
+                }
+                this.lastCallTimer = setTimeout(() => f(args), t);
+            }
+        }
+
+        let logger = (args) => console.log(`My args are ${args}`);
+        // debounce: call the logger when two seconds have elapsed since the last call
+        let debouncedLogger = debounce(logger, 2000);
+
+        debouncedLogger([1, 2, 3]);
+        debouncedLogger([4, 5, 6]);
+        debouncedLogger([7, 8, 9]);
+
+        // "My args are 7, 8, 9" - logged after two seconds
+    </script>
+</body>
+
+</html>

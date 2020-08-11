@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #toggleMe {
+            border: 1px solid black;
+            display: none;
+            margin: 10px;
+            padding: 10px;
+        }
+
+        #toggleControl:checked~#toggleMe {
+            display: block;
+        }
+
+        #toggleControl {
+            display: none;
+        }
+
+        .my-button {
+            background-color: #2185d0;
+            cursor: pointer;
+            padding: 1em;
+            margin: 3em;
+            transition: background-color 1s ease-out;
+        }
+
+        .my-button:hover {
+            background-color: #146aac;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+        <label for="toggleControl" class="my-button">Click Me</label>
+
+        <input type="checkbox" id="toggleControl">
+
+        <div id="toggleMe">
+            Look mom, there is No JavaScript here!
+        </div>
+
+    </div>
+</body>
+
+</html>

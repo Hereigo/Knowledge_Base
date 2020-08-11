@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #wrapper {
+            margin: auto 35%;
+        }
+
+        #myP,
+        #myP2 {
+            background-color: silver;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id='wrapper'>
+        <p>
+            This form log to console the input changes.
+        </p>
+        <form>
+            <input type="text">
+            <input type="submit" value="push me">
+        </form>
+        <hr />
+
+        <p>This example demonstrates the difference between bubbling and capturing when adding event listeners.</p>
+
+        <div id="myDiv">
+            <p id="myP">Click this paragraph, I am Bubbling (P then DIV).</p>
+        </div><br>
+
+        <div id="myDiv2">
+            <p id="myP2">Click this paragraph, I am Capturing (DIV then P).</p>
+        </div>
+
+    </div>
+
+    <script>
+        // first form input change event :
+        const myForm = document.forms[0];
+
+        //const myInputElements = myForm.querySelectorAll('input');
+        //Array.from(myInputElements).forEach(el => {
+        //    el.addEventListener('change', function (event) {
+        //        console.log(event.target.value)
+        //    })
+        //});
+        //// v2 (Better!) :
+        myForm.addEventListener('change', function (event) {
+            const target = event.target
+            if (target.matches('input')) {
+                console.log(target.value)
+            }
+        })
+
+        // event listeners with Bubbling and Capturing :
+        document.getElementById("myP").addEventListener("click", function () {
+            alert("You clicked the P element!");
+        }, false);
+
+        document.getElementById("myDiv").addEventListener("click", function () {
+            alert("You clicked the DIV element!");
+        }, false);
+
+        document.getElementById("myP2").addEventListener("click", function () {
+            alert("You clicked the P element!");
+        }, true);
+
+        document.getElementById("myDiv2").addEventListener("click", function () {
+            alert("You clicked the DIV element!");
+        }, true);
+    </script>
+</body>
+
+</html>

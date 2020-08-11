@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <style>
+        input {
+            display: none;
+            visibility: hidden;
+        }
+
+        label {
+            display: block;
+            padding: 0.5em;
+            text-align: center;
+            border-bottom: 1px solid #CCC;
+            color: #666;
+        }
+
+        label:hover {
+            color: #000;
+        }
+
+        label::before {
+            font-family: Consolas, monaco, monospace;
+            font-weight: bold;
+            font-size: 15px;
+            content: "+";
+            vertical-align: text-top;
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            margin-right: 3px;
+            background: radial-gradient(ellipse at center, #CCC 50%, transparent 50%);
+        }
+
+        #expand {
+            height: 0px;
+            overflow: hidden;
+            transition: height 0.5s;
+            background: url(http://placekitten.com/g/600/300);
+            color: #FFF;
+        }
+
+        section {
+            padding: 0 20px;
+        }
+
+        #toggle:checked~#expand {
+            height: 250px;
+        }
+
+        #toggle:checked~label::before {
+            content: "-";
+        }
+
+        .container .content {
+            display: none;
+            padding: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <main>
+        <h2>Expand/Collapse Section Examples :</h2>
+        <input id="toggle" type="checkbox" unchecked>
+        <label for="toggle">Show/Hide Content (by CSS)</label>
+        <div id="expand">
+            <section>
+                <p>Meaw!</p>
+            </section>
+        </div>
+        <section>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas porta non turpis faucibus lobortis.
+                Curabitur non eros rutrum, gravida felis non, luctus velit. Ut commodo congue velit feugiat lobortis.
+                Etiam nec dolor quis nulla bibendum blandit vitae nec enim. Maecenas id dignissim erat. Aenean ac mi nec
+                ante venenatis interdum quis vel lacus.
+            </p>
+            <p>Aliquam ligula est, aliquet et semper vitae, elementum eget dolor. In ut dui id leo tristique iaculis
+                eget a dui. Vestibulum cursus, dolor sit amet lacinia feugiat, turpis odio auctor nisi, quis pretium dui
+                elit at est. Pellentesque lacus risus, vulputate sed gravida eleifend, accumsan ac ante. Donec accumsan,
+                augue eu congue condimentum, erat magna luctus diam, adipiscing bibendum sem sem non elit.</p>
+        </section>
+    </main>
+    <hr />
+    <div class="container">
+        <div class="header"><span>Expand (by JQuery)</span>
+
+        </div>
+        <div class="content">
+            <ul>
+                <li>This is just some random content.</li>
+                <li>This is just some random content.</li>
+                <li>This is just some random content.</li>
+                <li>This is just some random content.</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        $(".header").click(function () {
+
+            $header = $(this);
+            //getting the next element
+            $content = $header.next();
+            //open up the content needed - toggle the slide- if visible, slide up, if not slidedown.
+            $content.slideToggle(500, function () {
+                //execute this after slideToggle is done
+                //change text of header based on visibility of content div
+                $header.text(function () {
+                    //change text based on condition
+                    return $content.is(":visible") ? "Collapse (by JQuery)" :
+                        "Expand (by JQuery)";
+                });
+            });
+
+        });
+    </script>
+
+</body>
+
+</html>

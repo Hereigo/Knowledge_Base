@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .my-container td,
+        th {
+            padding: 5px 10px;
+        }
+
+        .my-container .ico-High:before {
+            background-color: red;
+        }
+
+        .my-container .ico-Low:before {
+            background-color: forestgreen;
+        }
+
+        .my-container .ico-Medium:before {
+            background-color: dodgerblue;
+        }
+
+        .my-container .ico-None:before {
+            background-color: grey;
+        }
+
+        .my-container .prio-ico {
+            padding-left: 30px !important;
+            position: relative;
+        }
+
+        .my-container .prio-ico:before {
+            border-radius: 50%;
+            content: '';
+            height: 15px;
+            left: 0;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="my-container">
+
+        <h4>Some Example.</h4>
+
+        <div id="table-wrapper">
+
+            <table frame=hsides rules=rows>
+                <thead>
+                    <th></th>
+                    <th>Example with priority lamps.</th>
+                    <th></th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1.</td>
+                        <td>lksd kb dflk jbsdkljb sdf lk</td>
+                        <td class='prio-ico ico-Low'>Low priority</td>
+                    </tr>
+                    <tr>
+                        <td>2.</td>
+                        <td>lksd kb dflk jbsdkljb sdf lk</td>
+                        <td class='prio-ico ico-Medium'>Medium priority</td>
+                    </tr>
+                    <tr>
+                        <td>3.</td>
+                        <td>lksd kb dflk jbsdkljb sdf lk</td>
+                        <td class='prio-ico ico-High'>High priority</td>
+                    </tr>
+                    <tr>
+                        <td>4.</td>
+                        <td>lksd kb dflk jbsdkljb sdf lk</td>
+                        <td class='prio-ico ico-None'>None priority</td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+
+    </div>
+</body>
+
+</html>

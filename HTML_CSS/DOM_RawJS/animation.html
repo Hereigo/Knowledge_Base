@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            width: 10px;
+            height: 10px;
+            background: orange;
+            float: left;
+        }
+
+        button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+
+        #stop {
+            left: 100px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <button id="start">start</button>
+    <button id="stop">stop</button>
+
+    <script>
+        var start = null;
+        var element = document.getElementById('SomeElementYouWantToAnimate');
+
+        function step(timestamp) {
+            if (!start) start = timestamp;
+            var progress = timestamp - start;
+            element.style.transform = 'translateX(' + Math.min(progress / 10, 200) + 'px)';
+            if (progress < 2000) {
+                window.requestAnimationFrame(step);
+            }
+        }
+
+        var globalID;
+
+        function repeatOften() {
+            var myDiv = document.createElement('div');
+            var body = document.querySelector('body');
+            body.appendChild(myDiv);
+            globalID = requestAnimationFrame(repeatOften);
+        }
+
+        globalID = requestAnimationFrame(repeatOften);
+
+        var startButton = document.querySelector('#start');
+
+        startButton.addEventListener('click', function (event) {
+            const target1 = event.target;
+            if (target1.matches('button')) {
+                globalID = requestAnimationFrame(repeatOften);
+            }
+        });
+
+        var stopButton = document.querySelector('#stop');
+
+        stopButton.addEventListener('click', function (event) {
+            const target2 = event.target;
+            if (target2.matches('button')) {
+                cancelAnimationFrame(globalID);
+            }
+        });
+
+        // using JQuery :
+        //
+        // $("#stop").on("click", function () {
+        //     cancelAnimationFrame(globalID);
+        // });
+        // $("#start").on("click", function () {
+        //     globalID = requestAnimationFrame(repeatOften);
+        // });
+    </script>
+</body>
+
+</html>

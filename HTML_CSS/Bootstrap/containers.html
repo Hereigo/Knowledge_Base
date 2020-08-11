@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Containers:</title>
+    <style>
+        .container {
+            background-color: antiquewhite;
+        }
+
+        .container-fluid {
+            background-color: lightblue;
+        }
+
+        .panel {
+            background-color: gainsboro;
+        }
+
+        .panel-body {
+            background-color: honeydew;
+        }
+
+        .text-center {
+            margin: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="text-center">
+            <h4>class="container"</h4>
+        </div>
+        <hr />
+        <h5>Description List (vertical) :</h5>
+        <hr />
+        <dl>
+            <dt>Arahat</dt>
+            <dd>The "Perfected One", who has overcome The Three Poisons of Desire, Hatred and Ignorance. </dd>
+            <dt>Bodhi</dt>
+            <dd>Awakened wisdom.</dd>
+            <dt>Zen</dt>
+            <dd>Meditative absorption in which all dualistic distinctions are eliminated.</dd>
+        </dl>
+    </div>
+
+    <div class="container-fluid">
+        <div class="text-center">
+            <h4>class="container-fluid"</h4>
+        </div>
+        <hr />
+        <h5>Description List (horizontal) :</h5>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">Arahat</dt>
+            <dd class="col-sm-10">The "Perfected One", who has overcome The Three Poisons of Desire, Hatred and
+                Ignorance.
+            </dd>
+            <dt class="col-sm-2">Bodhi</dt>
+            <dd class="col-sm-10">Awakened wisdom.</dd>
+            <dt class="col-sm-2">Zen</dt>
+            <dd class="col-sm-10">Meditative absorption in which all dualistic distinctions are eliminated.</dd>
+        </dl>
+    </div>
+
+    <div class="container">
+        <div class="text-center">
+            <h4>class="container"</h4>
+        </div>
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
+        standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make
+        a type specimen book.
+        <div class="panel panel-default">
+            <div class="text-center">
+                <h4>class="panel"</h4>
+            </div>
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+            industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+            scrambled it to make a type specimen book.
+            <div class="panel-body">
+                <div class="text-center">
+                    <h4>class="panel-body"</h4>
+                </div>
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+                scrambled it to make a type specimen book.
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="container">
+        <div class="text-center">
+            <h4>class="container"</h4>
+        </div>
+        <div class="panel-group">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" href="#collaps-target">data-toggle="COLLAPSE" the "collaps-target"</a>
+                    </h4>
+                </div>
+                <div id="collaps-target" class="panel-collapse collapse">
+                    <ul>
+                        <li>
+                            Div-s below are inside of : class="panel-collapse collapse" with ID="collaps-target"
+                        </li>
+                    </ul>
+                    <div class="panel-body">class="panel-body"</div>
+                    <div class="panel-body">class="panel-body"</div>
+                    <div class="panel-footer">class="panel-footer"</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+    </script>
+
+</body>
+
+</html>

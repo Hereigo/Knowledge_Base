@@ -1,0 +1,23 @@
+#container {
+    margin: 0 auto;
+    width: 60%;
+}
+
+#delta-container {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+#my-ctx-menu {
+    background-color: gainsboro;
+    display: none;
+    position: fixed;
+}
+
+#my-scroll-container {
+    background-color: aqua;
+    height: 100px;
+    width: 100px;
+    position: relative;
+}

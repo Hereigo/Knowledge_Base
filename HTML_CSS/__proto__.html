@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        // new Object() - can be ommited (syntax sugar) :
+        const person = new Object({
+            name: "Max",
+            age: 25,
+            greet: function () {
+                console.log("Greetings from Max! ");
+            }
+        });
+
+        Object.prototype.sayHello = function () {
+            console.log("Hello!");
+        };
+
+        // lena is clone of person (already named Max) with sayHello function :
+        const lena = Object.create(person);
+
+        lena.name = "Lena";
+
+        const myStr = "I am a string";
+
+        // to see all availables functions :
+        console.log(myStr.__proto__);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

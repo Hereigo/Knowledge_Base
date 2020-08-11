@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+    <style>
+        td {
+            padding: 1em;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <table id="super-table" border=1 frame=hsides rules=rows>
+            <tr>
+                <td>1</td>
+                <td>bla-bla-abl</td>
+                <td>Samsung Galaxy S9</td>
+                <td>bla-bla-abl</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>bla-bla-abl</td>
+                <td>Apple iPhone 7 Plus</td>
+                <td>bla-bla-abl</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>bla-bla-abl</td>
+                <td>Apple<br /> iPhone XS Max</td>
+                <td>bla-bla-abl</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>bla-bla-abl</td>
+                <td>Nokia - 3310</td>
+                <td>bla-bla-abl</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>bla-bla-abl</td>
+                <td>Apple iPhone 8</td>
+                <td>bla-bla-abl</td>
+            </tr>
+        </table>
+    </div>
+</body>
+
+<script>
+    $(document).ready(function () {
+
+        $("#super-table td").filter(function () {
+            return $(this).text().startsWith("Apple");
+        }).closest("tr").css("background-color", "azure");
+
+    });
+</script>
+
+</html>
