@@ -11,15 +11,13 @@ namespace FTP_Downloader
 
         private static void Main()
         {
-            Console.WriteLine("\r\n - What would you like, my lord?\r\n");
+            Console.WriteLine("\r\n - What would you like, my lord? \r\n");
 
             string password = Console.ReadLine().Trim();
 
             NetworkCredential credentials = new NetworkCredential(GIT_IGNORE.ftpUser, password);
 
-            string[] backupsList = FtpWorker.GetFilesListByExt(uriDb, ".bak", credentials);
-
-            foreach (var item in backupsList)
+            foreach (string item in FtpWorker.GetFilesListByExt(uriDb, ".bak", credentials))
             {
                 if (!File.Exists(item))
                 {
@@ -57,8 +55,31 @@ namespace FTP_Downloader
                 }
             }
 
+            System.Threading.Thread.Sleep(1000);
             Console.WriteLine("\r\nAll tasks finished.");
             Console.ReadKey();
+
+            // Temporary moving :
+
+            if (File.Exists(GIT_IGNORE.zipOutputDB))
+            {
+                string oldFile = GIT_IGNORE.tempPathToStore + GIT_IGNORE.zipOutputDB;
+                if (File.Exists(oldFile))
+                {
+                    File.Delete(oldFile);
+                }
+                File.Move(GIT_IGNORE.zipOutputDB, oldFile);
+            }
+
+            if (File.Exists(GIT_IGNORE.zipOutput))
+            {
+                string oldFile = GIT_IGNORE.tempPathToStore + GIT_IGNORE.zipOutput;
+                if (File.Exists(oldFile))
+                {
+                    File.Delete(oldFile);
+                }
+                File.Move(GIT_IGNORE.zipOutput, oldFile);
+            }
         }
     }
 }
