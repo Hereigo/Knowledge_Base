@@ -100,6 +100,8 @@ namespace Payments_Net462.Controllers
             {
                 // new KeyValuePair<int, string>(16,"ENJ"),
                 // new KeyValuePair<int, string>(43,"BMO"),
+                new KeyValuePair<int, string>(18,"VLG"),
+                new KeyValuePair<int, string>(19,"KSH"),
                 new KeyValuePair<int, string>(13,"HLS"),
                 new KeyValuePair<int, string>(09,"KIU"),
                 new KeyValuePair<int, string>(08,"KID"),
