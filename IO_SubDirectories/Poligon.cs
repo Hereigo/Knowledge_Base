@@ -1,10 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace IO_SubDirectories
 {
     internal static class Poligon
     {
+        internal static void TEST_RUN()
+        {
+            List<Tuple<int, int, int>> testList = new List<Tuple<int, int, int>>();
+
+            testList.Add(Tuple.Create(1, 2, 3));
+            testList.Add(Tuple.Create(4, 5, 6));
+            testList.Add(Tuple.Create(7, 8, 9));
+
+            var Test = testList.FirstOrDefault(t => t.Item1 == 3);
+
+            Console.WriteLine(Test?.Item3);
+        }
+
+
         private class TestClass
         {
             public int ID { get; set; }
@@ -17,7 +32,7 @@ namespace IO_SubDirectories
             }
         }
 
-        internal static void TestMe()
+        internal static void CompareSpeed()
         {
             DateTime beginTime = DateTime.Now;
 
@@ -34,9 +49,9 @@ namespace IO_SubDirectories
 
                 foreach (var item in tests)
                 {
-                //    var tempNum1 = item.Num1;
-                //    item.Num1 = item.Num2;
-                //    item.Num2 = tempNum1;
+                    // var tempNum1 = item.Num1;
+                    // item.Num1 = item.Num2;
+                    // item.Num2 = tempNum1;
 
                     rezult.Add(new TestClass() { ID = item.ID, Num1 = item.Num2, Num2 = item.Num1 });
                 }
@@ -46,8 +61,6 @@ namespace IO_SubDirectories
                     Console.WriteLine(item);
                 }
             }
-
-
 
             DateTime currentTime = DateTime.Now;
             long elapsedTicks = currentTime.Ticks - beginTime.Ticks;

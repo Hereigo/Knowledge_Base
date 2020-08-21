@@ -25,7 +25,7 @@ namespace IO_SubDirectories
                 // FilesRenamer.ReplaceSomeToAnother(fromToReplacements, TEST);
                 // VS_Projects_Cleaner.CleanAll(projectToClean);
 
-                Poligon.TestMe();
+                Poligon.TEST_RUN();
 
             }
             catch (Exception e)
