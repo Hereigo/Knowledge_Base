@@ -251,16 +251,17 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
   const basketHandler = () => {
-    const taregt = event.target;
+    
+    const target = event.target;
 
     console.log(target.dataset.goodsId);
 
     console.log(target);
 
-    if (target.classList.contains('card-add-wishlist')) {
-      // !!!!!!!!!!!! <button data-goods-id="xxx"
-      toggleWishList(target.dataset.goodsId, target);
-    }
+    //if (target.classList.contains('card-add-wishlist')) {
+    //  // !!!!!!!!!!!! <button data-goods-id="xxx"
+    //  toggleWishList(target.dataset.goodsId, target);
+    //}
   }
 
   const showWishlist = () => {
@@ -272,7 +273,7 @@ document.addEventListener('DOMContentLoaded', function () {
   category.addEventListener('click', chooseCategory);
   search.addEventListener('submit', searchGoods);
   goodsWrapper.addEventListener('click', goodsHandler);
-  shopCartWrapperElem.addEventListener('click', basketHandler);
+  // shopCartWrapperElem.addEventListener('click', basketHandler);
   wishlistBtn.addEventListener('click', showWishlist);
 
   //... getGoodsAndRender = (handler, filter == undefined by default) and will be skipped if PROMISES (.then(undefined))
