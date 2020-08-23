@@ -138,6 +138,8 @@ namespace Payments_Net462.Controllers
             // exclusion for the single 8680 study payment of the end of 2019 :
             bool kidExclusion = category.Key == 8 && yearAgo < new DateTime(2019, 11, 30);
 
+            ViewBag.CurrMonth = DateTime.Now.Month;
+
             return new StatistixView
             {
                 CategoryName = category.Value,
