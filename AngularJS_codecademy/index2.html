@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+
+<head>
+    <link href="../_CDN_LOCAL_/bootstrap-3.3.7.min.css" rel="stylesheet" />
+    <link href='https://fonts.googleapis.com/css?family=Roboto:500,300,700,400' rel='stylesheet' type='text/css'>
+    <link href="css/two.css" rel="stylesheet" />
+    <script src="../_CDN_LOCAL_/angular-1.7.9.min.js"></script>
+</head>
+
+<body ng-app="myApp">
+    <div class="header">
+        <div class="container">
+            <h1>App Market</h1>
+        </div>
+    </div>
+
+    <div class="main" ng-controller="SecondController">
+        <div class="container">
+
+            <!-- use directive -->
+            <div class="card">
+                <app-info info="move"></app-info>
+            </div>
+
+            <div class="card">
+                <app-info info="shutterbugg"></app-info>
+            </div>
+
+            <div class="card">
+                <app-info info="gameboard"></app-info>
+            </div>
+            
+        </div>
+    </div>
+
+    <!-- Modules -->
+    <script src="js/app.js"></script>
+
+    <!-- Controllers -->
+    <script src="js/controllers/SecondController.js"></script>
+
+    <!-- Directives -->
+    <script src="js/directives/appInfo.js"></script>
+
+</body>
+
+</html>

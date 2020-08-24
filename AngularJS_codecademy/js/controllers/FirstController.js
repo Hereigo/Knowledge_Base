@@ -1,4 +1,4 @@
-app.controller('MainController', ['$scope', function ($scope) {
+app.controller('FirstController', ['$scope', function ($scope) {
     $scope.title = 'Top Sellers in Books 2020';
     $scope.promo = 'Hooray! Promo!';
     $scope.plusOne = function (index) {
