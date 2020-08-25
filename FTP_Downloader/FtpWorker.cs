@@ -7,9 +7,16 @@ using System.Net;
 
 namespace FTP_Downloader
 {
-    public static class FtpWorker
+    public class FtpWorker
     {
-        internal static string[] GetFilesListByExt(Uri remoteUri, string fileExtension, NetworkCredential credentials)
+        private readonly NetworkCredential credentials;
+
+        public FtpWorker(string password)
+        {
+            credentials = new NetworkCredential(GIT_IGNORE.ftpUser, password);
+        }
+
+        internal string[] GetFilesListByExt(Uri remoteUri, string fileExtension)
         {
             List<string> filesList = new List<string>();
 
@@ -57,7 +64,7 @@ namespace FTP_Downloader
             return filesList.ToArray();
         }
 
-        internal static void DeleteFilesFromFtp(string[] filesList, Uri remoteUri, NetworkCredential credentials)
+        internal void DeleteFilesFromFtp(string[] filesList, Uri remoteUri)
         {
             foreach (var file in filesList)
             {
@@ -77,7 +84,7 @@ namespace FTP_Downloader
             }
         }
 
-        internal static void DownloadFileFromFtp(string fileName, Uri remoteUri, NetworkCredential credentials, bool shouldToOpen)
+        internal void DownloadFileFromFtp(string fileName, Uri remoteUri, bool shouldToOpen)
         {
             if (string.IsNullOrEmpty(fileName))
             {
@@ -97,12 +104,11 @@ namespace FTP_Downloader
                 myWebClient.DownloadFile(remoteUri + fileName, fileName);
 
                 Console.WriteLine($"File {fileName} Successfully Downloaded.");
-                
+
                 if (shouldToOpen)
                 {
                     Process.Start(fileName);
                 }
-                
             }
             catch (WebException e)
             {
@@ -110,7 +116,7 @@ namespace FTP_Downloader
             }
         }
 
-        internal static string SelectLatestByNameFile(string[] filesList)
+        internal string SelectLatestByNameFile(string[] filesList)
         {
             Array.Reverse(filesList);
 

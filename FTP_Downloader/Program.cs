@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO;
-using System.Net;
 
 namespace FTP_Downloader
 {
@@ -11,55 +10,7 @@ namespace FTP_Downloader
 
         private static void Main()
         {
-            Console.WriteLine("\r\n - What would you like, my lord? \r\n");
-
-            string password = Console.ReadLine().Trim();
-
-            NetworkCredential credentials = new NetworkCredential(GIT_IGNORE.ftpUser, password);
-
-            foreach (string item in FtpWorker.GetFilesListByExt(uriDb, ".bak", credentials))
-            {
-                if (!File.Exists(item))
-                {
-                    FtpWorker.DownloadFileFromFtp(item, uriDb, credentials, false);
-
-                    Console.WriteLine($"{item} downloaded.");
-
-                    Zipper.CompressFile(password, item, GIT_IGNORE.zipOutputDB);
-                }
-            }
-
-            string[] archivesList = FtpWorker.GetFilesListByExt(uriArch, ".zip", credentials);
-
-            if (archivesList.Length > 0)
-            {
-                string latestArchiveName = FtpWorker.SelectLatestByNameFile(archivesList);
-
-                FtpWorker.DownloadFileFromFtp(latestArchiveName, uriArch, credentials, true);
-
-                Zipper.CompressFile(password, latestArchiveName, GIT_IGNORE.zipOutput);
-
-                FileInfo archive = new FileInfo(GIT_IGNORE.zipOutput);
-
-                if (archive.Exists)
-                {
-                    Console.WriteLine($"\r\nArchive Created. Size : {archive.Length / 1024} kb, Modified : {archive.LastWriteTime}");
-                    Console.WriteLine("\r\nCheck downloaded file and press any key TO DELETE temporary files ...\r\n");
-                    Console.ReadKey();
-                    File.Delete(latestArchiveName);
-                    FtpWorker.DeleteFilesFromFtp(archivesList, uriArch, credentials);
-                }
-                else
-                {
-                    Console.WriteLine("WARNING! Archive not created!");
-                }
-            }
-
-            System.Threading.Thread.Sleep(1000);
-            Console.WriteLine("\r\nAll tasks finished.");
-            Console.ReadKey();
-
-            // Temporary moving :
+            // Archiving previous :
 
             if (File.Exists(GIT_IGNORE.zipOutputDB))
             {
@@ -80,6 +31,57 @@ namespace FTP_Downloader
                 }
                 File.Move(GIT_IGNORE.zipOutput, oldFile);
             }
+
+            Console.WriteLine("\r\n - What would you like, my Lord? \r\n");
+
+            string password = Console.ReadLine().Trim();
+
+            FtpWorker ftp = new FtpWorker(password);
+            Zipper zipper = new Zipper(password);
+
+            string[] ftpFilesBak = ftp.GetFilesListByExt(uriDb, ".bak");
+
+            string ftpFilesBakLast = string.Empty;
+
+            foreach (string item in ftpFilesBak)
+            {
+                if (!File.Exists(item))
+                {
+                    ftp.DownloadFileFromFtp(item, uriDb, false);
+                    ftpFilesBakLast = item;
+                }
+            }
+
+            zipper.CompressFile(ftpFilesBakLast, GIT_IGNORE.zipOutputDB);
+
+            string[] archivesList = ftp.GetFilesListByExt(uriArch, ".zip");
+
+            if (archivesList.Length > 0)
+            {
+                string latestArchiveName = ftp.SelectLatestByNameFile(archivesList);
+
+                ftp.DownloadFileFromFtp(latestArchiveName, uriArch, true);
+
+                zipper.CompressFile(latestArchiveName, GIT_IGNORE.zipOutput);
+
+                FileInfo archive = new FileInfo(GIT_IGNORE.zipOutput);
+
+                if (archive.Exists)
+                {
+                    Console.WriteLine($"\r\nArchive Created. Size : {archive.Length / 1024} kb, Modified : {archive.LastWriteTime}");
+                    Console.WriteLine("\r\nCheck downloaded file and press any key TO DELETE temporary files ...\r\n");
+                    Console.ReadKey();
+                    File.Delete(latestArchiveName);
+                    ftp.DeleteFilesFromFtp(archivesList, uriArch);
+                }
+                else
+                {
+                    Console.WriteLine("WARNING! Archive not created!");
+                }
+            }
+
+            Console.WriteLine("\r\nAll tasks finished.");
+            Console.ReadKey();
         }
     }
 }
