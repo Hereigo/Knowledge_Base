@@ -19,18 +19,11 @@
         <div class="container">
 
             <!-- use directive -->
-            <div class="card">
-                <app-info info="move"></app-info>
+            <div class="card" ng-repeat="app in apps">
+                <app-info info="app"></app-info>
+                <install-app></install-app>
             </div>
 
-            <div class="card">
-                <app-info info="shutterbugg"></app-info>
-            </div>
-
-            <div class="card">
-                <app-info info="gameboard"></app-info>
-            </div>
-            
         </div>
     </div>
 
@@ -42,6 +35,7 @@
 
     <!-- Directives -->
     <script src="js/directives/appInfo.js"></script>
+    <script src="js/directives/installApp.js"></script>
 
 </body>
 
