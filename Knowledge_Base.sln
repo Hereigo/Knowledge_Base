@@ -46,7 +46,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FTP_Downloader", "FTP_Downl
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gm_API_test", "Gm_API_test\Gm_API_test.csproj", "{4B77D021-80B1-4C46-9444-75F4A08F9A43}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MB_API", "MB_API\MB_API.csproj", "{645A162E-9115-47E8-9458-0257A0F4342A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MB_API", "MB_API\MB_API.csproj", "{645A162E-9115-47E8-9458-0257A0F4342A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

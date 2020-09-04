@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        td {
+            border: solid 1px black;
+            padding: .5em;
+        }
+    </style>
+</head>
+
+<body>
+    <table id="myTable">
+        <thead>
+            <th>Aaaa</th>
+            <th>Bbbb</th>
+            <th>Cccc</th>
+            <th>Dddd</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td>6534</td>
+                <td>7563</td>
+                <td>78543</td>
+                <td>12345</td>
+            </tr>
+            <tr>
+                <td>65634</td>
+                <td>37563</td>
+                <td>7864</td>
+                <td>1234</td>
+            </tr>
+            <tr>
+                <td>6534</td>
+                <td>77563</td>
+                <td>86433</td>
+                <td>123</td>
+            </tr>
+            <tr>
+                <td>96534</td>
+                <td>17563</td>
+                <td>45</td>
+                <td>356356</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+
+    <script>
+
+        window.onload = function () {
+            TableSorter.makeSortable(document.getElementById("myTable"));
+        };
+
+        var TableSorter = {
+            makeSortable: function (table) {
+                // Store context of this in the object
+                var _this = this;
+                var th = table.tHead, i;
+                th && (th = th.rows[0]) && (th = th.cells);
+
+                if (th) {
+                    i = th.length;
+                } else {
+                    return; // if no `<thead>` then do nothing
+                }
+
+                // Loop through every <th> inside the header
+                while (--i >= 0) (function (i) {
+                    var dir = 1;
+
+                    // Append click listener to sort
+                    th[i].addEventListener('click', function () {
+                        _this._sort(table, i, (dir = 1 - dir));
+                    });
+                }(i));
+            },
+            _sort: function (table, col, reverse) {
+                var tb = table.tBodies[0], // use `<tbody>` to ignore `<thead>` and `<tfoot>` rows
+                    tr = Array.prototype.slice.call(tb.rows, 0), // put rows into array
+                    i;
+
+                reverse = -((+reverse) || -1);
+
+                // Sort rows
+                tr = tr.sort(function (a, b) {
+                    // `-1 *` if want opposite order
+                    return reverse * (
+                        // Using `.textContent.trim()` for test
+                        a.cells[col].textContent.trim().localeCompare(
+                            b.cells[col].textContent.trim()
+                        )
+                    );
+                });
+
+                for (i = 0; i < tr.length; ++i) {
+                    // Append rows in new order
+                    tb.appendChild(tr[i]);
+                }
+            }
+        };
+    </script>
+</body>
+
+</html>
