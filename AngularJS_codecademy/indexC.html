@@ -12,13 +12,15 @@
 
 <body ng-app="myApp">
 
-  <div class="main" ng-controller="ThirdController">
+  <div class="main" ng-controller="CccController">
     <div class="container">
       <div class="row">
         <div class="col-sm-5 col-sm-offset-7">
-          <h1>{{ fiveDay.city_name }}</h1>
+          
+          <h1>{{ fiveDays.city_name }}</h1>
           <h2>5-day forecast</h2>
-          <div class="forecast" ng-repeat="day in fiveDay.days">
+          
+          <div class="forecast" ng-repeat="day in fiveDays.days">
             <div class="day row">
 
               <!-- datetime -->
@@ -56,10 +58,10 @@
   <script src="js/app.js"></script>
 
   <!-- Controllers -->
-  <script src="js/controllers/ThirdController.js"></script>
+  <script src="js/controllers/CccController.js"></script>
 
   <!-- Services -->
-  <script src="js/services/forecast.js"></script>
+  <script src="js/services/forecastSvc.js"></script>
 
   <!-- Directives -->
 

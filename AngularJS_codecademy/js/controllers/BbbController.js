@@ -1,5 +1,5 @@
 
-app.controller('SecondController', ['$scope', function ($scope) {
+app.controller('BbbController', ['$scope', function ($scope) {
 
     $scope.apps = [
         {
