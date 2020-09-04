@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .item-block {
+            border: solid 1px blue;
+            padding: .5em;
+            margin: .5em;
+            width: 70%
+        }
+    </style>
+    <script src="/_CDN_LOCAL_/angular.min.js"></script>
+</head>
+
+<body ng-app="ngApp">
+
+    <div ng-controller="ItemsController">
+        <div ng-repeat="item in items">
+            <div class="item-block">
+
+                <item-info info="item"></item-info>
+                Likes :
+                <button ng-click="plusOne($index)">
+                    @ {{item.likes}} @
+                </button>
+                
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+    <!-- controllers -->
+    <script src="controllers/ItemsController.js"></script>
+    <!-- directives -->
+    <script src="directives/itemInfo.js"></script>
+    <script src="directives/itemMark.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,19 @@
+<table>
+    <tr>
+        <td><img class="icon" ng-src="{{ info.image }}"> </td>
+        <td>
+            <ul>
+                <li>{{ info.name }}</li>
+                <li>{{ info.price | currency }}</li>
+                <li>{{ info.pubdate | date }}</li>
+            </ul>
+
+            <p>
+                <!-- one directive-template inside another -->
+
+                <item-mark></item-mark>
+            </p>
+
+        </td>
+    </tr>
+</table>
