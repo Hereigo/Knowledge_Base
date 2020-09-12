@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="styles.css" rel="stylesheet">
+    <script src="/_CDN_LOCAL_/angular.min.js"></script>
+</head>
+
+<body ng-app="ngApp">
+    <div ng-controller="firstController">
+
+        <div ng-repeat="item in items">
+
+            <item-info-directive info="item">
+            </item-info-directive>
+
+        </div>
+
+    </div>
+    <script src="app.js"></script>
+    <script src="itemDirective.js"></script>
+</body>
+
+</html>

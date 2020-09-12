@@ -1,0 +1,15 @@
+<div>
+    <span>
+        <img class="icon" ng-src="{{ info.image }}"> </td>
+    </span>
+    <span>
+        <ul>
+            <li>{{ info.name }}</li>
+            <li>{{ info.price | currency }}</li>
+            <li>{{ info.pubdate | date }}</li>
+        </ul>
+        <button ng-click="itemBtnToggle()" class="abc">
+            {{ itemBtnText }}
+        </button>
+    </span>
+</div>

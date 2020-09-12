@@ -1,0 +1,16 @@
+item-info-directive > div {
+    border: solid 1px blue;
+    padding: .5em;
+    margin: 1em;
+    width: 500px;
+}
+
+item-info-directive > div > span:nth-child(2n) {
+    border: solid 1px blueviolet;
+    float: right;
+    padding: .5em;
+}
+
+.abc {
+    background-color: aqua;
+}
