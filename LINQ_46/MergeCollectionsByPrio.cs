@@ -6,7 +6,7 @@ namespace LINQ_46
 {
     public static class MergeCollectionsByPrio
     {
-        public static void Test()
+        public static void Run()
         {
             List<A_Data> listSomeData = A_Data.GetSomeList().ToList();
             List<A_Data> listPrioData = A_Data.GetPrioList().ToList();

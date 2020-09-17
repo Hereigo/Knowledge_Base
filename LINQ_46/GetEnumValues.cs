@@ -6,11 +6,21 @@ namespace LINQ_46
 {
     public enum MyEnum
     {
-        EnumA, EnumB, EnumC, EnumD
+        Enum_Value_A, Enum_Value_B, Enum_Value_C, Enum_Value_D
     }
 
-    class GetEnumValues
+    public static class GetEnumValues
     {
-        IEnumerable<MyEnum> test = Enum.GetValues(typeof(MyEnum)).Cast<MyEnum>();
+        public static void Run()
+        {
+            Console.WriteLine("\r\n Foreach Enum values : \r\n");
+
+            IEnumerable<MyEnum> myEnums = Enum.GetValues(typeof(MyEnum)).Cast<MyEnum>();
+
+            foreach (var item in myEnums)
+            {
+                Console.WriteLine((int)item + " - " + item.ToString());
+            }
+        }
     }
 }

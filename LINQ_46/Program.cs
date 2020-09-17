@@ -6,9 +6,9 @@ namespace LINQ_46
     {
         static void Main()
         {
+            MergeCollectionsByPrio.Run();
 
-            MergeCollectionsByPrio.Test();
-
+            GetEnumValues.Run();
 
             Console.WriteLine("\n Done.");
             Console.ReadKey();
