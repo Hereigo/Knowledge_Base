@@ -68,15 +68,27 @@ console.timeEnd('TIME ');
 console.log('done.')
 
 var arr = [{ aaa: '111' },
-           { bbb: '222' },
-           { ccc: '333' },
-           { ddd: '444' }];
+{ bbb: '222' },
+{ ccc: '333' },
+{ ddd: '444' }];
 
 // var arr2 = { eee: '555' },
 //            { fff: '666' };
 
 // SPLICE TEST :
 
-arr.splice(1,0, { eee: '555' },{ fff: '666' });
+arr.splice(1, 0, { eee: '555' }, { fff: '666' });
 
 console.log(arr);
+
+// // //  Alex or Felix ???
+
+let name = 'Alex';
+
+function getName() {
+  console.log(name);
+  let name = 'Felix';
+  //var name = 'Felix';
+};
+
+getName(); //  Alex or Felix ???

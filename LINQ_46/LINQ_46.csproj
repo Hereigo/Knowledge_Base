@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="A_Data.cs" />
+    <Compile Include="GetEnumValues.cs" />
     <Compile Include="MergeCollectionsByPrio.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
