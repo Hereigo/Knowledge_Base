@@ -9,7 +9,7 @@ namespace LINQ_46
         Enum_Value_A, Enum_Value_B, Enum_Value_C, Enum_Value_D
     }
 
-    public static class GetEnumValues
+    public static class CatsAllEnumValues
     {
         public static void Run()
         {

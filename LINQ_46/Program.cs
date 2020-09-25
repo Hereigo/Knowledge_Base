@@ -8,7 +8,7 @@ namespace LINQ_46
         {
             MergeCollectionsByPrio.Run();
 
-            GetEnumValues.Run();
+            CatsAllEnumValues.Run();
 
             Console.WriteLine("\n Done.");
             Console.ReadKey();
