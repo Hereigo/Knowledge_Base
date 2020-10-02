@@ -1,0 +1,69 @@
+﻿@using AngularJS_ASPnet48_XML.Helpers
+@model AngularJS_ASPnet48_XML.Models.DetailsVM
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h3 class="text-center">Details page</h3>
+
+<div class="row bordered list-block">
+
+    <h4>Product details</h4>
+
+    <div class="row bordered">
+
+        <div class="row">
+            <div class="col-sm-12">
+                @Html.DisplayFor(model => model.Title)
+                @Html.DisplayFor(model => model.Id)
+            </div>
+        </div>
+
+        <div class="row ">
+            <div class="col-sm-1">
+                <img alt="Product Image"
+                     src="~/Content/images/@Html.DisplayFor(model => model.Image)" />
+            </div>
+
+            <div class="col-sm-9 bordered">
+
+                <div class="col-sm-5">
+                    @CustomHtmlHelpers.RemoveHTMLTags(Model.Description)
+                </div>
+
+                <div class="col-sm-5 bordered">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            Price:
+                        </div>
+                        <div class="col-sm-8">
+                            @Html.DisplayFor(model => model.Price) EUR
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row bordered">
+
+            <div class="col-sm-6">
+
+                Specifications :
+                <ul>
+                    @foreach (var item in Model.Specs)
+                    {
+                        <li>@item</li>
+                    }
+                </ul>
+
+            </div>
+
+        </div>
+
+    </div>
+    <p>
+        @Html.ActionLink("Back to Products List", "Index", new object { }, new { @class = "back-link" })
+    </p>
+
+</div>

@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Store>
+  <Products>
+    <Product id="PROD01">
+      <Title>Product 1</Title>
+      <Description><![CDATA[Product <b>1</b> description]]></Description>
+      <Image>prod01.gif</Image>
+      <Specs>
+        <Spec>Good computer</Spec>
+        <Spec>Good display</Spec>
+        <Spec>Latest version</Spec>
+      </Specs>
+      <Availability>same day</Availability>
+	</Product>
+    <Product id="PROD02">
+      <Title>Product 2</Title>
+      <Description><![CDATA[Product <b>2</b> description]]></Description>
+      <Image>prod01.gif</Image>
+      <Specs>
+        <Spec>Good computer</Spec>
+        <Spec>Soon available</Spec>
+      </Specs>
+      <Availability>next day</Availability>
+    </Product>
+    <Product id="PROD03">
+      <Title>Product 3</Title>
+      <Description><![CDATA[Product <b>3</b> description]]></Description>
+      <Image>prod01.gif</Image>
+      <Specs>
+        <Spec>Good computer</Spec>
+        <Spec>Good display</Spec>
+        <Spec>Soon available</Spec>
+        <Spec>Latest version</Spec>
+      </Specs>
+      <Availability>out of stock</Availability>
+    </Product>
+    <Product id="PROD04">
+      <Title>Product 4</Title>
+      <Description><![CDATA[Product <b>4</b> description]]></Description>
+      <Image>prod01.gif</Image>
+      <Specs>
+        <Spec>Good computer</Spec>
+      </Specs>
+      <Availability>one week</Availability>
+    </Product>
+    <Product id="PROD05">
+      <Title>Product 5</Title>
+      <Description><![CDATA[Product <b>5</b> description]]></Description>
+      <Image>prod01.gif</Image>
+      <Specs>
+        <Spec>Good display</Spec>
+      </Specs>
+      <Availability>one week</Availability>
+    </Product>
+    <Product id="PROD06">
+      <Title>Product 6</Title>
+      <Description><![CDATA[Product <b>6</b> description]]></Description>
+      <Image>prod01.gif</Image>
+      <Specs>
+        <Spec>Soon available</Spec>
+      </Specs>
+      <Availability>next day</Availability>
+    </Product>
+    <Product id="PROD07">
+      <Title>Product 7</Title>
+      <Description><![CDATA[Product <b>7</b> description]]></Description>
+      <Image>prod01.gif</Image>
+      <Specs>
+        <Spec>Latest version</Spec>
+      </Specs>
+      <Availability>2 weeks</Availability>
+    </Product>
+    <Product id="PROD07">
+      <Title>Product 7</Title>
+      <Description><![CDATA[Product <b>7</b> description]]></Description>
+      <Image>prod01.gif</Image>
+      <Specs>
+        <Spec>Good display</Spec>
+        <Spec>Soon available</Spec>
+      </Specs>
+      <Availability>2 weeks</Availability>
+    </Product>
+    <Product id="PROD08">
+      <Title>Product 8</Title>
+      <Description><![CDATA[Product <b>8</b> description]]></Description>
+      <Image>prod01.gif</Image>
+      <Specs>
+        <Spec>Soon available</Spec>
+        <Spec>Latest version</Spec>
+        <Spec>New model</Spec>
+      </Specs>
+      <Availability>1 week</Availability>
+    </Product>
+    <Product id="PROD09">
+      <Title>Product 9</Title>
+      <Description><![CDATA[Product <b>9</b> description]]></Description>
+      <Image>prod01.gif</Image>
+      <Specs>
+        <Spec>Good computer</Spec>
+        <Spec>Good display</Spec>
+        <Spec>Soon available</Spec>
+        <Spec>Latest version</Spec>
+        <Spec>New model</Spec>
+      </Specs>
+      <Availability>same day</Availability>
+    </Product>
+    <Product id="PROD10">
+      <Title>Product 10</Title>
+      <Description><![CDATA[Product <b>10</b> description]]></Description>
+      <Image>prod01.gif</Image>
+      <Specs>
+        <Spec>Good computer</Spec>
+        <Spec>Good display</Spec>
+        <Spec>Soon available</Spec>
+        <Spec>New model</Spec>
+      </Specs>
+      <Availability>same day</Availability>
+    </Product>
+    <Product id="PROD11">
+      <Title>Product 11</Title>
+      <Description><![CDATA[Product <b>11</b> description]]></Description>
+      <Image>prod01.gif</Image>
+      <Specs>
+        <Spec>Good computer</Spec>
+        <Spec>Good display</Spec>
+        <Spec>Soon available</Spec>
+        <Spec>Latest version</Spec>
+        <Spec>New model</Spec>
+      </Specs>
+      <Availability>next day</Availability>
+    </Product>
+  </Products>
+</Store>

@@ -1,0 +1,83 @@
+﻿@using AngularJS_ASPnet48_XML.Helpers
+@model IEnumerable<AngularJS_ASPnet48_XML.Models.Product>
+
+@{
+    ViewBag.Title = "List";
+}
+
+<h3 class="text-center">Design will be implemented as in Page "MVC View"</h3>
+
+<div ng-app="listApp">
+    <div ng-controller="listController">
+
+        <div class="row bordered list-block">
+            <div class="col-sm-12">
+                Sort by :
+                <select ng-options="order as order.name for order in sortOrders track by order.num"
+                        ng-model="selected" ng-change="selectOrder(selected.name)">
+                </select>
+
+                <button ng-click="isReverse=!isReverse" class="glyphicon glyphicon-resize-vertical reverse-btn">
+                    <span>Switch Sort Order</span>
+                </button>
+
+            </div>
+        </div>
+        <br />
+        <div class="row bordered list-block">
+            <div>
+
+                <div ng-repeat="product in products | orderBy : orderByFunction : isReverse?'reverse':'' ">
+
+                    <div class="row bordered">
+
+                        <div class="col-sm-1">
+                            <img alt="Product Image" ng-src="~/Content/images/{{product.Image}}" />
+                        </div>
+
+                        <div class="col-sm-5">
+                            <div>
+                                = {{product.Title}} =
+                            </div>
+                            <div>
+                                <span ng-bind-html="product.Description"></span>
+                            </div>
+                            <div class="details">
+                                <span>
+                                    <a ng-href="/Home/Details/{{ product.Id }}">Details</a>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4 bordered">
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    Price:
+                                </div>
+                                <div class="col-sm-8">
+                                    {{product.Price}} EUR
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    Availability:
+                                </div>
+                                <div class="col-sm-6" id="{{ product.Id }}">
+                                    ...
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts
+{
+    <script src="~/ScriptsCustom/app.js"></script>
+    <script src="~/ScriptsCustom/getList.js"></script>
+    <script src="~/ScriptsCustom/listProcessing.js"></script>
+}

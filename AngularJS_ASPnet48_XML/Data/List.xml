@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Store>
+  <Products>
+    <Product id="PROD01">
+      <Title>Product 1</Title>
+      <Description><![CDATA[Product <b>1</b> description]]></Description>
+      <Image>prod01.gif</Image>
+      <Price>145.12</Price>
+      <Sorting>
+        <Popular>1</Popular>
+      </Sorting>
+    </Product>
+    <Product id="PROD02">
+      <Title>Product 2</Title>
+      <Description>Product 2 description</Description>
+      <Image>prod01.gif</Image>
+      <Price>74</Price>
+      <Sorting>
+        <Popular>2</Popular>
+      </Sorting>
+    </Product>
+    <Product id="PROD03">
+      <Title>Product 3</Title>
+      <Description><![CDATA[Product <b>3</b> description]]></Description>
+      <Image>prod01.gif</Image>
+      <Price>56</Price>
+      <Sorting>
+        <Popular>1</Popular>
+      </Sorting>
+    </Product>
+    <Product id="PROD04">
+      <Title>Product 4</Title>
+      <Description><![CDATA[Product <b>4</b> description]]></Description>
+      <Image>prod01.gif</Image>
+      <Price>145.10</Price>
+      <Sorting>
+        <Popular>100</Popular>
+      </Sorting>
+    </Product>
+    <Product id="PROD05">
+      <Title>Product 5</Title>
+      <Description><![CDATA[Product <b>5</b> description]]></Description>
+      <Image>prod01.gif</Image>
+      <Price>145.1</Price>
+      <Sorting>
+        <Popular>6</Popular>
+      </Sorting>
+    </Product>
+    <Product id="PROD06">
+      <Title>Product 6</Title>
+      <Description><![CDATA[Product <b>6</b> description]]></Description>
+      <Image>prod01.gif</Image>
+      <Price>145.01</Price>
+      <Sorting>
+        <Popular>10</Popular>
+      </Sorting>
+    </Product>
+    <Product id="PROD07">
+      <Title>Product 7</Title>
+      <Description><![CDATA[Product <b>7</b> description]]></Description>
+      <Image>prod01.gif</Image>
+      <Price>1</Price>
+      <Sorting>
+        <Popular>3</Popular>
+      </Sorting>
+    </Product>
+    <Product id="PROD07">
+      <Title>Product 7</Title>
+      <Description><![CDATA[Product <b>7</b> description]]></Description>
+      <Image>prod01.gif</Image>
+      <Price>33</Price>
+      <Sorting>
+        <Popular>3</Popular>
+      </Sorting>
+    </Product>
+    <Product id="PROD08">
+      <Title>Product 8</Title>
+      <Description><![CDATA[Product <b>8</b> description]]></Description>
+      <Image>prod01.gif</Image>
+      <Price>33.56</Price>
+      <Sorting>
+        <Popular>1</Popular>
+      </Sorting>
+    </Product>
+    <Product id="PROD09">
+      <Title>Product 9</Title>
+      <Description><![CDATA[Product <b>9</b> description]]></Description>
+      <Image>prod01.gif</Image>
+      <Price>76</Price>
+      <Sorting>
+        <Popular>6</Popular>
+      </Sorting>
+    </Product>
+    <Product id="PROD10">
+      <Title>Product 10</Title>
+      <Description><![CDATA[Product <b>10</b> description]]></Description>
+      <Image>prod01.gif</Image>
+      <Price>67</Price>
+      <Sorting>
+        <Popular>1</Popular>
+      </Sorting>
+    </Product>
+    <Product id="PROD11">
+      <Title>Product 11</Title>
+      <Description><![CDATA[Product <b>11</b> description]]></Description>
+      <Image>prod01.gif</Image>
+      <Price>22</Price>
+      <Sorting>
+        <Popular>11</Popular>
+      </Sorting>
+    </Product>
+  </Products>
+</Store>
