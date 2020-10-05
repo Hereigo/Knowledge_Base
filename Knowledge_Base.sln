@@ -50,7 +50,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MB_API", "MB_API\MB_API.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AngularJS_ASPnet48_XML", "AngularJS_ASPnet48_XML\AngularJS_ASPnet48_XML.csproj", "{1BA1443B-5082-4D92-8DEB-AB9CA637CDB1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dapper_use", "Dapper_use\Dapper_use.csproj", "{A54502C8-9199-492E-9033-44F5ED856C6F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dapper_use", "Dapper_use\Dapper_use.csproj", "{A54502C8-9199-492E-9033-44F5ED856C6F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AsyncAwait_use", "AsyncAwait_use\AsyncAwait_use.csproj", "{F05BE9FA-F513-4B51-9861-3870B28312BD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test_DoToKin", "Test_DoToKin\Test_DoToKin.csproj", "{887D3F8C-7164-446C-AC95-CACA89B9A5B5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -146,6 +150,14 @@ Global
 		{A54502C8-9199-492E-9033-44F5ED856C6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A54502C8-9199-492E-9033-44F5ED856C6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A54502C8-9199-492E-9033-44F5ED856C6F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F05BE9FA-F513-4B51-9861-3870B28312BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F05BE9FA-F513-4B51-9861-3870B28312BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F05BE9FA-F513-4B51-9861-3870B28312BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F05BE9FA-F513-4B51-9861-3870B28312BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{887D3F8C-7164-446C-AC95-CACA89B9A5B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{887D3F8C-7164-446C-AC95-CACA89B9A5B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{887D3F8C-7164-446C-AC95-CACA89B9A5B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{887D3F8C-7164-446C-AC95-CACA89B9A5B5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
