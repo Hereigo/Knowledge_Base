@@ -9,7 +9,7 @@ app.controller("listController", ['$scope', 'getList', function ($scope, getList
 
     $scope.sortOrders = [
         { num: 0, name: 'Price' },
-        { num: 1, name: 'Popularity' }];
+        { num: 1, name: 'Popular' }];
 
     $scope.isReverse = false;
 
@@ -24,8 +24,8 @@ app.controller("listController", ['$scope', 'getList', function ($scope, getList
         if ($scope.selectedOrder == 'Price') {
             return product.Price;
 
-        } else if ($scope.selectedOrder == 'Popularity') {
-            return product.Popularity;
+        } else if ($scope.selectedOrder == 'Popular') {
+            return product.Popular;
 
         } else {
             return product.Title;

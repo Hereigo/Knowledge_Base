@@ -24,7 +24,7 @@ namespace AngularJS_ASPnet48_XML
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                         "~/Content/bootstrap.css",
-                        "~/Content/site.css"));
+                        "~/ContentCustom/site.css"));
         }
     }
 }

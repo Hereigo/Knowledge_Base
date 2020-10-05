@@ -2,10 +2,10 @@
 app.factory('getList', ['$http', function ($http) {
 
     return $http.post('/Home/GetList/')
-        .success(function (data) {
+        .then(function (data) {
             return data;
         })
-        .error(function (err) {
+        .then(function (err) {
             return err;
         });
 }]); 

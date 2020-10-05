@@ -1,0 +1,73 @@
+﻿body {
+    padding: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+h4 {
+    margin: .5em auto;
+}
+
+.back-link {
+    border: solid 1px #B9B9B9;
+    border-radius: 6%;
+    margin-left: 1em;
+    padding: .3em;
+}
+
+.bordered {
+    border: solid 1px #B9B9B9;
+    margin: 1em;
+}
+
+.col-sm-1, .col-sm-5, .col-sm-12 {
+    margin: 1em;
+}
+
+.col-sm-4, .col-sm-6, .col-sm-8 {
+    margin-top: .5em;
+    margin-bottom: .5em;
+}
+
+.details {
+    margin-top: .5em;
+}
+
+    .details > span {
+        border: solid 1px #B9B9B9;
+        border-radius: 10%;
+        padding: .3em;
+    }
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+.list-block, .navbar > .container {
+    margin: auto 20%;
+}
+
+.reverse-btn {
+    border-radius: 5%;
+    margin-left: .5em;
+    padding: .3em;
+}
+
+    .reverse-btn > span {
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
