@@ -3,7 +3,7 @@ var app = angular.module("listApp", ["ngSanitize"]);
 
 app.controller("listController", ['$scope', 'getList', function ($scope, getList) {
 
-    getList.then(function (data) {
+    getList.success(function (data) {
         $scope.products = data;
     });
 
@@ -21,10 +21,10 @@ app.controller("listController", ['$scope', 'getList', function ($scope, getList
 
     $scope.orderByFunction = function (product) {
 
-        if ($scope.selectedOrder === 'Price') {
+        if ($scope.selectedOrder == 'Price') {
             return product.Price;
 
-        } else if ($scope.selectedOrder === 'Popular') {
+        } else if ($scope.selectedOrder == 'Popular') {
             return product.Popular;
 
         } else {

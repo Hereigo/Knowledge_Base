@@ -136,7 +136,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\images\prod01.gif" />
+    <Content Include="ContentCustom\images\prod01.gif" />
     <Content Include="Data\Detail.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
