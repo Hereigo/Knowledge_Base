@@ -38,13 +38,6 @@ namespace AngularJS_ASPnet48_XML.Controllers
             return Json(products);
         }
 
-        public ActionResult IndexMVC()
-        {
-            List<Product> data = productsData.GetAll().ToList();
-
-            return View(data);
-        }
-
         public JsonResult GetAvailability()
         {
             var avalabilities = detailsData.GetAvailabilities();
