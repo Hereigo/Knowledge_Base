@@ -360,3 +360,5 @@ MigrationBackup/
 /Payments_Net462/webfonts
 */credentials.json
 MB_API/GIT_IGNORE.cs
+.idea/
+
