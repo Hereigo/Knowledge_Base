@@ -54,7 +54,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dapper_use", "Dapper_use\Da
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AsyncAwait_use", "AsyncAwait_use\AsyncAwait_use.csproj", "{F05BE9FA-F513-4B51-9861-3870B28312BD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test_DoToKin", "Test_DoToKin\Test_DoToKin.csproj", "{887D3F8C-7164-446C-AC95-CACA89B9A5B5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Test_DoToKin", "Test_DoToKin\Test_DoToKin.csproj", "{887D3F8C-7164-446C-AC95-CACA89B9A5B5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Swagger_FluentValidation", "Swagger_FluentValidation\Swagger_FluentValidation.csproj", "{2FCA01D0-F750-45F7-B4C0-8E96131AEEB0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -158,6 +160,10 @@ Global
 		{887D3F8C-7164-446C-AC95-CACA89B9A5B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{887D3F8C-7164-446C-AC95-CACA89B9A5B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{887D3F8C-7164-446C-AC95-CACA89B9A5B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2FCA01D0-F750-45F7-B4C0-8E96131AEEB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2FCA01D0-F750-45F7-B4C0-8E96131AEEB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2FCA01D0-F750-45F7-B4C0-8E96131AEEB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2FCA01D0-F750-45F7-B4C0-8E96131AEEB0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
