@@ -1,0 +1,40 @@
+html, body {
+    margin: 0;
+}
+
+.header {
+    padding: 16px 32px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-bottom: 1px #ccc solid;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: #fff;
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+.header.is_scroll {
+    background: #ccc;
+    padding: 8px 32px;
+    box-shadow: 0 2px 10px #222;
+}
+
+.header__menu {
+    text-align: center;
+}
+
+.header__menu a {
+    margin: 0 5px;
+}
+
+.header__main-menu {
+    text-align: right;
+}
+
+.content {
+    margin: auto 15%;
+    padding: 51px 32px 60px;
+}

@@ -17,7 +17,7 @@ namespace Swagger_FluentValidation.Validators
             this.serviceProvider = serviceProvider;
             RuleFor(x => x.Line1).NotEmpty();
             RuleFor(x => x.Line1).MaximumLength(100);
-            RuleFor(x => x.Line2).MaximumLength(100);
+            RuleFor(x => x.Line2).MaximumLength(10);
             RuleFor(x => x.City).NotEmpty();
             RuleFor(x => x.City).MaximumLength(100);
             RuleFor(x => x.State).NotEmpty();

@@ -38,12 +38,7 @@ namespace Swagger_FluentValidation
             // FluentValidation enabled :
             // (FluentValidation.AspNetCore package needed)
             services.AddMvc()
-               // [Obsolete] 
-               //.SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
-               .AddFluentValidation(o =>
-               {
-                   o.RegisterValidatorsFromAssemblyContaining<AddressModelValidator>();
-               });
+               .AddFluentValidation(o => o.RegisterValidatorsFromAssemblyContaining<AddressModelValidator>());
 
             services.AddSwaggerGen(c =>
             {
@@ -74,6 +69,7 @@ namespace Swagger_FluentValidation
 
                 // Fluent Validation integration with Swagger (OpenAPI) :
                 // MicroElements.Swashbuckle.FluentValidation package needed.
+
                 c.AddFluentValidationRules();
             });
         }
