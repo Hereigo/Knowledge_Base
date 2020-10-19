@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Swagger_FluentValidation</name>
+    </assembly>
+    <members>
+        <member name="T:Swagger_FluentValidation.Controllers.TestController">
+            <summary>
+            Verifies that the swagger documentation generator works as expected.
+            </summary>
+        </member>
+        <member name="M:Swagger_FluentValidation.Controllers.TestController.GetTestData">
+            <summary>
+            Retrieves test data.
+            </summary>
+            <returns>The test data.</returns>
+        </member>
+    </members>
+</doc>

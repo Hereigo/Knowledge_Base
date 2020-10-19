@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using System.Reflection;
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -8,7 +9,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using Swagger_FluentValidation.Data;
 using Swagger_FluentValidation.Models;
+using Swagger_FluentValidation.Validators;
+using Swashbuckle.AspNetCore.Swagger;
 using Swashbuckle.AspNetCore.SwaggerUI;
 
 namespace Swagger_FluentValidation
@@ -27,7 +31,19 @@ namespace Swagger_FluentValidation
         {
             services.AddDbContext<TodoContext>(opt => opt.UseInMemoryDatabase("TodoList"));
 
+            services.AddTransient<IStateRepository, StateRepository>();
+
             services.AddControllers();
+
+            // FluentValidation enabled :
+            // (FluentValidation.AspNetCore package needed)
+            services.AddMvc()
+               // [Obsolete] 
+               //.SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
+               .AddFluentValidation(o =>
+               {
+                   o.RegisterValidatorsFromAssemblyContaining<AddressModelValidator>();
+               });
 
             services.AddSwaggerGen(c =>
             {
@@ -49,14 +65,21 @@ namespace Swagger_FluentValidation
                         Url = new Uri("https://example.com/license"),
                     }
                 });
-                //var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
-                //var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
-                //c.IncludeXmlComments(xmlPath, true);
+                // Set the comments path for the Swagger JSON and UI :
+                // (xml-genaration must be enabled in vs)
+                // (also recommended to suppress warnings for #1591)
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                c.IncludeXmlComments(xmlPath, true);
+
+                // Fluent Validation integration with Swagger (OpenAPI) :
+                // MicroElements.Swashbuckle.FluentValidation package needed.
+                c.AddFluentValidationRules();
             });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public static void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
