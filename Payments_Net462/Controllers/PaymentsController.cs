@@ -29,7 +29,7 @@ namespace Payments_Net462.Controllers
 
             // query = query.Where(p => p.CatogoryId == 1 || p.CatogoryId == 2 || p.CatogoryId == 3);
             // by Linq/Dynamic :
-            int[] categories = { 1 };
+            int[] categories = {1};
 
             string selectedCategories = $"CatogoryId={categories[0]}";
             for (int i = 0; i < categories.Length; i++)
@@ -72,7 +72,7 @@ namespace Payments_Net462.Controllers
 
             if (payments.Any(p => p.CatogoryId == categiryBMO))
             {
-                ViewBag.mono = (int)payments.Where(p => p.CatogoryId == categiryBMO).Sum(p => p.Amount);
+                ViewBag.mono = (int) payments.Where(p => p.CatogoryId == categiryBMO).Sum(p => p.Amount);
             }
 
             int csh = payments.Where(p => p.CatogoryId == 1).Sum(p => p.Amount);
@@ -100,39 +100,45 @@ namespace Payments_Net462.Controllers
             {
                 // new KeyValuePair<int, string>(16,"ENJ"),
                 // new KeyValuePair<int, string>(43,"BMO"),
-                new KeyValuePair<int, string>(18,"VLG"),
-                new KeyValuePair<int, string>(19,"KSH"),
-                new KeyValuePair<int, string>(13,"HLS"),
-                new KeyValuePair<int, string>(09,"KIU"),
-                new KeyValuePair<int, string>(08,"KID"),
-                new KeyValuePair<int, string>(11,"FOO"),
-                new KeyValuePair<int, string>(45,"HOL"),
-                new KeyValuePair<int, string>(07,"HOM"),
-                new KeyValuePair<int, string>(10,"QVN"),
-                new KeyValuePair<int, string>(48,"SCH"),
+                new KeyValuePair<int, string>(18, "VLG"),
+                new KeyValuePair<int, string>(19, "KSH"),
+                new KeyValuePair<int, string>(13, "HLS"),
+                new KeyValuePair<int, string>(09, "KIU"),
+                new KeyValuePair<int, string>(08, "KID"),
+                new KeyValuePair<int, string>(11, "FOO"),
+                new KeyValuePair<int, string>(45, "HOL"),
+                new KeyValuePair<int, string>(07, "HOM"),
+                new KeyValuePair<int, string>(10, "QVN"),
+                new KeyValuePair<int, string>(48, "SCH"),
             };
 
             List<StatistixView> stats = new List<StatistixView>();
 
             foreach (KeyValuePair<int, string> categItem in categories)
             {
-                stats.Add(GetStatsRecord(categItem, yearAgo, startBeforeBefPrevM, startBeforePrevM, startPrevMonth, startThisMonth));
+                stats.Add(GetStatsRecord(categItem, yearAgo, startBeforeBefPrevM, startBeforePrevM, startPrevMonth,
+                    startThisMonth));
             }
 
             return stats;
         }
 
-        private StatistixView GetStatsRecord(KeyValuePair<int, string> category, DateTime yearAgo, DateTime startBeforeBefPrevM, DateTime startBeforePrevM, DateTime startPrevMonth, DateTime startThisMonth)
+        private StatistixView GetStatsRecord(KeyValuePair<int, string> category, DateTime yearAgo,
+            DateTime startBeforeBefPrevM, DateTime startBeforePrevM, DateTime startPrevMonth, DateTime startThisMonth)
         {
             int currMonthSum = db.Payments.Where(p => p.Category.ID == category.Key && p.PayDate > startThisMonth)
                 .Select(p => p.Amount).ToList().Sum();
-            int prevMonthSum = db.Payments.Where(p => p.Category.ID == category.Key && p.PayDate > startPrevMonth && p.PayDate < startThisMonth)
+            int prevMonthSum = db.Payments.Where(p =>
+                    p.Category.ID == category.Key && p.PayDate > startPrevMonth && p.PayDate < startThisMonth)
                 .Select(p => p.Amount).ToList().Sum();
-            int b4PrevMonSum = db.Payments.Where(p => p.Category.ID == category.Key && p.PayDate > startBeforePrevM && p.PayDate < startPrevMonth)
+            int b4PrevMonSum = db.Payments.Where(p =>
+                    p.Category.ID == category.Key && p.PayDate > startBeforePrevM && p.PayDate < startPrevMonth)
                 .Select(p => p.Amount).ToList().Sum();
-            int b4b4PrevMonSum = db.Payments.Where(p => p.Category.ID == category.Key && p.PayDate > startBeforeBefPrevM && p.PayDate < startPrevMonth)
+            int b4b4PrevMonSum = db.Payments.Where(p =>
+                    p.Category.ID == category.Key && p.PayDate > startBeforeBefPrevM && p.PayDate < startPrevMonth)
                 .Select(p => p.Amount).ToList().Sum();
-            int prevYearSum = db.Payments.Where(p => p.Category.ID == category.Key && p.PayDate > yearAgo && p.PayDate < startThisMonth)
+            int prevYearSum = db.Payments.Where(p =>
+                    p.Category.ID == category.Key && p.PayDate > yearAgo && p.PayDate < startThisMonth)
                 .Select(p => p.Amount).ToList().Sum();
 
             // exclusion for the single 8680 study payment of the end of 2019 :
@@ -158,7 +164,7 @@ namespace Payments_Net462.Controllers
 
             ViewBag.Today = DateTime.Now; //.ToString("MM/dd/yyyy");
 
-            Payment newPay = new Payment { PayDate = DateTime.Today };
+            Payment newPay = new Payment {PayDate = DateTime.Today};
 
             return View(newPay);
         }
@@ -168,7 +174,8 @@ namespace Payments_Net462.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,PayDate,Amount,Description,CatogoryId")] Payment payment, string payFrom)
+        public ActionResult Create([Bind(Include = "ID,PayDate,Amount,Description,CatogoryId")]
+            Payment payment, string payFrom)
         {
             if (ModelState.IsValid)
             {
@@ -177,16 +184,17 @@ namespace Payments_Net462.Controllers
 
                 // Create Source Decreasing payment according the previous one:
 
-                if (!string.IsNullOrEmpty(payFrom) && !string.Equals(payFrom, "NONE", StringComparison.OrdinalIgnoreCase))
+                if (!string.IsNullOrEmpty(payFrom)
+                    && !string.Equals(payFrom, "NONE", StringComparison.OrdinalIgnoreCase))
                 {
-                    int foundCategId = db.Categories.FirstOrDefault(c => c.Name == payFrom).ID;
+                    int categoryIdToFind = db.Categories?.FirstOrDefault(c => c.Name == payFrom)?.ID ?? 0;
 
-                    if (foundCategId != default)
+                    if (categoryIdToFind != default)
                     {
                         db.Payments.Add(new Payment
                         {
                             Amount = payment.Amount * (-1),
-                            CatogoryId = foundCategId,
+                            CatogoryId = categoryIdToFind,
                             Description = payment.Description,
                             PayDate = payment.PayDate
                         });
@@ -198,6 +206,7 @@ namespace Payments_Net462.Controllers
 
                 return RedirectToAction("Index/2");
             }
+
             ViewBag.CatogoryId = new SelectList(db.Categories.OrderBy(c => c.Name), "ID", "Name", payment.CatogoryId);
             return View(payment);
         }
@@ -209,11 +218,13 @@ namespace Payments_Net462.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             Payment payment = db.Payments.Find(id);
             if (payment == null)
             {
                 return HttpNotFound();
             }
+
             ViewBag.CatogoryId = new SelectList(db.Categories.OrderBy(c => c.Name), "ID", "Name", payment.CatogoryId);
             return View(payment);
         }
@@ -223,7 +234,8 @@ namespace Payments_Net462.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,PayDate,Amount,Description,CatogoryId")] Payment payment)
+        public ActionResult Edit([Bind(Include = "ID,PayDate,Amount,Description,CatogoryId")]
+            Payment payment)
         {
             if (ModelState.IsValid)
             {
@@ -234,6 +246,7 @@ namespace Payments_Net462.Controllers
 
                 return RedirectToAction("Index/2");
             }
+
             ViewBag.CatogoryId = new SelectList(db.Categories.OrderBy(c => c.Name), "ID", "Name", payment.CatogoryId);
             return View(payment);
         }
@@ -245,11 +258,13 @@ namespace Payments_Net462.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             Payment payment = db.Payments.Find(id);
             if (payment == null)
             {
                 return HttpNotFound();
             }
+
             return View(payment);
         }
 
@@ -270,6 +285,7 @@ namespace Payments_Net462.Controllers
             {
                 db.Dispose();
             }
+
             base.Dispose(disposing);
         }
     }
