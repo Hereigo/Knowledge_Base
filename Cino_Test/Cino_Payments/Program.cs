@@ -37,6 +37,7 @@ namespace Cino_Payments
             string password = Console.ReadLine().Trim();
 
             FtpWorker ftp = new FtpWorker(password);
+
             Zipper zipper = new Zipper(password);
 
             string[] ftpFilesBak = ftp.GetFilesListByExt(uriDb, ".bak");
