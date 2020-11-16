@@ -5,7 +5,7 @@ namespace IO_SubDirectories
 {
     internal static class Program
     {
-        private const string projectToClean = @"\source\repos\" + "Testing_Labs";
+        private const string inReposProjectToClean = "___AAA___";
 
         private static readonly string rootSearchDir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
 
@@ -23,9 +23,10 @@ namespace IO_SubDirectories
             {
                 //string[] TEST = GetFiles.AllByExtensions(rootSearchDir, extensionsToSearch);
                 // FilesRenamer.ReplaceSomeToAnother(fromToReplacements, TEST);
-                // VS_Projects_Cleaner.CleanAll(projectToClean);
 
-                Poligon.TEST_RUN();
+                // VS_Projects_Cleaner.CleanAll(inReposProjectToClean);
+
+                // Poligon.TEST_RUN();
 
             }
             catch (Exception e)

@@ -11,7 +11,8 @@ namespace IO_SubDirectories
 
             string whereToMove = "C:\\Recycle.bin";
 
-            string rootPathToSearch = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + solutionPath;
+            string rootPathToSearch =
+                Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + @"\source\repos\" + solutionPath;
 
             string[] dirNamesToFind = { "bin", "obj", "packages", ".vs" };
 
@@ -19,7 +20,7 @@ namespace IO_SubDirectories
 
             string[] GetDirsByNames() => Directory.Exists(rootPathToSearch)
                 ? ProcessFilesDirectories.GetArrayByNames(rootPathToSearch, dirNamesToFind, dirNameToSkip)
-                : new string[] { "Nothing." };
+                : Array.Empty<string>();
 
             //string[] mp3files = ProcessFilesDirectories.GetFilesMp3(rootPathToSearch);
 
