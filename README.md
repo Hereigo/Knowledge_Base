@@ -1,9 +1,9 @@
 # Knowledge_Base
 Just my own .Net and JS development Knowledge Base.
 
+-----------------------------------------------------
 
 #### To run a .NET Core console application on Linux
-
 
 1. Publish your application as a self contained application:
 
