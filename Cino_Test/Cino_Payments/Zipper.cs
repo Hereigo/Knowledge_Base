@@ -16,7 +16,7 @@ namespace Cino_Payments
 
         // Compresses the files in the nominated folder, and creates a zip file 
         // on disk named as outPathname.
-        public void CreateSample(string outPathname, string password, string folderName)
+        public void CreateTestSample(string outPathname, string folderName)
         {
             using (FileStream fsOut = File.Create(outPathname))
             using (var zipStream = new ZipOutputStream(fsOut))
@@ -36,13 +36,13 @@ namespace Cino_Payments
             }
         }
 
-        internal void CompressFile(string fileName, string outPathname)
+        internal void CompressFile(string fileName, string compressOutPath)
         {
             if (File.Exists(fileName))
             {
                 try
                 {
-                    FileStream fsOut = File.Create(outPathname);
+                    FileStream fsOut = File.Create(compressOutPath);
 
                     var zipStream = new ZipOutputStream(fsOut);
 
@@ -63,9 +63,11 @@ namespace Cino_Payments
 
                     var newEntry = new ZipEntry(fileName);
 
+                    newEntry.Size = fi.Length;
+                    
                     // Note the zip format stores 2 second granularity
                     newEntry.DateTime = fi.LastWriteTime;
-
+                    
                     // Specifying the AESKeySize triggers AES encryption. 
                     // Allowable values are 0 (off), 128 or 256.
                     // A password on the ZipOutputStream is required if using AES.
@@ -77,8 +79,7 @@ namespace Cino_Payments
                     // If the file may be bigger than 4GB, or you do not need WinXP built-in compatibility, 
                     // you do not need either, but the zip will be in Zip64 format which
                     // not all utilities can understand.
-                    //   zipStream.UseZip64 = UseZip64.Off;
-                    newEntry.Size = fi.Length;
+                    zipStream.UseZip64 = UseZip64.Off;
 
                     zipStream.PutNextEntry(newEntry);
 

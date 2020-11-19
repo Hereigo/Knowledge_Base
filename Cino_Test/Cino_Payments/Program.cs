@@ -34,11 +34,10 @@ namespace Cino_Payments
 
             Console.WriteLine("\r\n - What would you like, my Lord? \r\n");
 
-            string password = Console.ReadLine().Trim();
+            string magicWord = Console.ReadLine()?.Trim();
 
-            FtpWorker ftp = new FtpWorker(password);
-
-            Zipper zipper = new Zipper(password);
+            FtpWorker ftp = new FtpWorker(magicWord);
+            Zipper zipper = new Zipper(magicWord);
 
             string[] ftpFilesBak = ftp.GetFilesListByExt(uriDb, ".bak");
 
@@ -53,7 +52,10 @@ namespace Cino_Payments
                 }
             }
 
-            zipper.CompressFile(ftpFilesBakLast, GIT_IGNORE.zipOutputDB);
+            if (!string.IsNullOrEmpty(ftpFilesBakLast))
+            {
+                zipper.CompressFile(ftpFilesBakLast, GIT_IGNORE.zipOutputDB);
+            }
 
             string[] archivesList = ftp.GetFilesListByExt(uriArch, ".zip");
 
