@@ -11,37 +11,20 @@ namespace Cino_Payments
         private static void Main()
         {
             // Archiving previous :
+            if (File.Exists(GIT_IGNORE.zipOutputDB))
+                File.Move(GIT_IGNORE.zipOutputDB, GIT_IGNORE.zipOutputDB + ".old", true);
 
-//            if (File.Exists(GIT_IGNORE.zipOutputDB))
-//            {
-//                string oldFile = GIT_IGNORE.tempPathToStore + GIT_IGNORE.zipOutputDB;
-//                if (File.Exists(oldFile))
-//                {
-//                    File.Delete(oldFile);
-//                }
-//                File.Move(GIT_IGNORE.zipOutputDB, oldFile);
-//            }
-//
-//            if (File.Exists(GIT_IGNORE.zipOutput))
-//            {
-//                string oldFile = GIT_IGNORE.tempPathToStore + GIT_IGNORE.zipOutput;
-//                if (File.Exists(oldFile))
-//                {
-//                    File.Delete(oldFile);
-//                }
-//                File.Move(GIT_IGNORE.zipOutput, oldFile);
-//            }
+            if (File.Exists(GIT_IGNORE.zipOutput))
+                File.Move(GIT_IGNORE.zipOutput, GIT_IGNORE.zipOutput + ".old", true);
 
             Console.WriteLine("\r\n - What would you like, my Lord? \r\n");
-
             string magicWord = Console.ReadLine()?.Trim();
 
             FtpWorker ftp = new FtpWorker(magicWord);
             Zipper zipper = new Zipper(magicWord);
 
-            string[] ftpFilesBak = ftp.GetFilesListByExt(uriDb, ".bak");
-
             string ftpFilesBakLast = string.Empty;
+            string[] ftpFilesBak = ftp.GetFilesListByExt(uriDb, ".bak");
 
             foreach (string item in ftpFilesBak)
             {
@@ -63,12 +46,14 @@ namespace Cino_Payments
             {
                 string latestArchiveName = ftp.SelectLatestByNameFile(archivesList);
 
-                ftp.DownloadFileFromFtp(latestArchiveName, uriArch, true);
+                ftp.DownloadFileFromFtp(latestArchiveName, uriArch, false);
 
                 zipper.CompressFile(latestArchiveName, GIT_IGNORE.zipOutput);
 
+                System.Threading.Thread.Sleep(2000);
+                
                 FileInfo archive = new FileInfo(GIT_IGNORE.zipOutput);
-
+                
                 if (archive.Exists)
                 {
                     Console.WriteLine($"\r\nArchive Created. Size : {archive.Length / 1024} kb, Modified : {archive.LastWriteTime}");
