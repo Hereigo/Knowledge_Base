@@ -364,3 +364,4 @@ MB_API/GIT_IGNORE.cs
 Cino_Test/Cino_Payments/GIT_IGNORE.cs
 Cino_Test/Cino_Payments/MyExpenses_autobackup_*.BAK
 CinoSomMVC/wwwroot/lib/
+*.Development.json

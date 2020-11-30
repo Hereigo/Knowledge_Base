@@ -2,9 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CinoSomMVC.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -24,6 +26,11 @@ namespace CinoSomMVC
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            services.AddTransient<IPaymentsContext, PaymentsContext>();
+            
+            services.AddDbContext<PaymentsContext>(options => 
+                options.UseSqlServer(Configuration.GetConnectionString("PaymentsContext")));
         }
 
         // Configure the HTTP request pipeline (called by runtime).
@@ -42,11 +49,8 @@ namespace CinoSomMVC
             }
 
             app.UseHttpsRedirection();
-            
             app.UseStaticFiles();
-
             app.UseRouting();
-
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
