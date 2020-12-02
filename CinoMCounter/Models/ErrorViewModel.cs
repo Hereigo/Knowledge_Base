@@ -1,6 +1,6 @@
 using System;
 
-namespace CinoSomMVC.Models
+namespace CinoMCounter.Models
 {
     public class ErrorViewModel
     {

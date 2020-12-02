@@ -349,19 +349,18 @@ MigrationBackup/
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
 
-# ANDY'S RULES :
+# MY OWN RULES :
+!!!_GIT_IGNORE.cs
+*.Development.json
 */Content
 */Fonts
-*/GIT_IGNORE/Variables.cs
+*/GIT_IGNORE/*
 */Scripts
-*/Web.Release.config
-/FTP_Downloader/GIT_IGNORE.cs
-/Payments_Net462/!!!_GIT_IGNORE.cs
-/Payments_Net462/webfonts
-*/credentials.json
-MB_API/GIT_IGNORE.cs
+*/wwwroot/lib/
 .idea/
-Cino_Test/Cino_Payments/GIT_IGNORE.cs
-Cino_Test/Cino_Payments/MyExpenses_autobackup_*.BAK
-CinoSomMVC/wwwroot/lib/
-*.Development.json
+/Payments_Net462/webfonts
+GIT_IGNORE.cs
+MB_API/GIT_IGNORE.cs
+MyExpenses_autobackup_*.BAK
+Web.Release.config
+credentials.json

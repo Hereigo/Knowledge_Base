@@ -3,22 +3,19 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-using CinoSomMVC.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using CinoSomMVC.Models;
+using CinoMCounter.Models;
 
-namespace CinoSomMVC.Controllers
+namespace CinoMCounter.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly IPaymentsContext _context;
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger, IPaymentsContext context)
+        public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
-            _context = context;
         }
 
         public IActionResult Index()
@@ -29,13 +26,6 @@ namespace CinoSomMVC.Controllers
         public IActionResult Privacy()
         {
             return View();
-        }
-
-        public IActionResult Test()
-        {
-            var test = _context.Categories.ToList();
-
-            return View(test);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

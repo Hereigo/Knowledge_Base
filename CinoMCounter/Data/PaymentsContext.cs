@@ -1,7 +1,7 @@
-using CinoSomMVC.Models;
+﻿using CinoMCounter.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace CinoSomMVC.Data
+namespace CinoMCounter.Data
 {
     public class PaymentsContext : DbContext, IPaymentsContext
     {
