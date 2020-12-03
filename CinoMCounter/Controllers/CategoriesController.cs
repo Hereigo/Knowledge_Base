@@ -1,13 +1,17 @@
 using System.Linq;
-using System.Net;
 using CinoMCounter.Data;
 using CinoMCounter.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
 namespace CinoMCounter.Controllers
 {
+        
+    // TEMPORARY !!!!!!!!!!!
+    
+    // [Authorize]
+    
+    
     public class CategoriesController: Controller
     {
         private readonly IPaymentsContext db;

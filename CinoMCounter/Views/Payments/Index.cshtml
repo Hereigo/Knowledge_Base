@@ -1,0 +1,106 @@
+﻿@model CinoMCounter.Models.PaymentsWithStatVm
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<p>@ViewBag.BackUpResult</p>
+
+<table class="table table-striped">
+
+    <tr>
+        <td class="col-2">...</td>
+        <td class="col-2">@ViewBag.CurrMonth</td>
+        <td class="col-2">@(--ViewBag.CurrMonth)</td>
+        <td class="col-2">@(--ViewBag.CurrMonth)</td>
+        <td class="col-2">@(--ViewBag.CurrMonth)</td>
+        <td class="col-2">30</td>
+    </tr>
+
+    @foreach (var item in Model.StatistixVm)
+    {
+        <tr>
+            <td class="col-2" onclick="selectCateg('@item.CategoryName')">
+                @Html.DisplayFor(modelItem => item.CategoryName)
+            </td>
+            <td class="col-2">
+                @Html.DisplayFor(modelItem => item.CurrentMonth)
+            </td>
+            <td class="col-2">
+                @Html.DisplayFor(modelItem => item.PreviousMonth)
+            </td>
+            <td class="col-2">
+                @Html.DisplayFor(modelItem => item.B4PrevMonSummary)
+            </td>
+            <td class="col-2">
+                @Html.DisplayFor(modelItem => item.B4B4PrevMonSummary)
+            </td>
+            <td class="col-2">
+                @Html.DisplayFor(modelItem => item.YearAverage)
+            </td>
+        </tr>
+    }
+</table>
+
+<div class="row">
+    <div class="col">
+        @ViewBag.alfa
+    </div>
+    <div class="col">
+        @ViewBag.prima
+    </div>
+    <div class="col">
+        @ViewBag.rest
+    </div>
+    <div class="col">
+        @ViewBag.mono
+    </div>
+    <div class="col text-right">
+        @Html.ActionLink(" ", "Create", null, new { @class = "fas fa-plus-square" })
+    </div>
+</div>
+
+<hr />
+
+@foreach (var item in Model.PaymentsVm)
+{
+    var category = item.Category.Name;
+
+    <div class="row table rawMain @category">
+
+        <div class="col-2">
+            @Html.DisplayFor(modelItem => item.PayDate)
+        </div>
+        <div class="col-2">
+            @Html.DisplayFor(modelItem => item.Category.Name)
+        </div>
+        <div class="col-3">
+            @Html.DisplayFor(modelItem => item.Amount)
+        </div>
+        <div class="col-3">
+            @Html.DisplayFor(modelItem => item.Description)
+        </div>
+        <div class="col-2 text-right">
+            @Html.ActionLink(" ", "Edit", new { id = item.ID }, new { @class = "fas fa-edit" })
+        </div>
+
+    </div>
+}
+
+<script>
+    let selectCateg = function (categ) {
+        let categRowShow = document.querySelectorAll('.' + categ);
+        let categRowAll = document.querySelectorAll('.rawMain:not(.' + categ + ')');
+
+        categRowAll.forEach(hide);
+        categRowShow.forEach(show);
+    }
+
+    let hide = function (row) {
+        row.classList.add('hidden');
+    }
+    let show = function (row) {
+        row.classList.remove('hidden');
+    }
+
+</script>
