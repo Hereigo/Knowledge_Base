@@ -1,74 +1,56 @@
-﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-for details on configuring this project to bundle and minify static web assets. */
-
-a.navbar-brand {
-  white-space: normal;
-  text-align: center;
-  word-break: break-all;
+﻿body {
+    margin: 1em auto;
+    max-width: 700px;
+    font-weight: 400;
+    font-size: small;
 }
 
-/* Provide sufficient contrast against white background */
-a {
-  color: #0366d6;
+table th, .table td {
+    padding: .3em;
 }
 
-.btn-primary {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+.col-2, .col-3 {
+    white-space: nowrap;
+    text-align: center;
 }
 
-.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+.container {
 }
 
-/* Sticky footer styles
--------------------------------------------------- */
-html {
-  font-size: 14px;
-}
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+.delete {
+    background-color: red;
 }
 
-.border-top {
-  border-top: 1px solid #e5e5e5;
-}
-.border-bottom {
-  border-bottom: 1px solid #e5e5e5;
+.hidden {
+    display: none;
 }
 
-.box-shadow {
-  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+.row {
+    margin: 1em auto;
 }
 
-button.accept-policy {
-  font-size: 1rem;
-  line-height: inherit;
-}
+    .row:hover {
+        background-color: #caeefa;
+    }
 
-/* Sticky footer styles
--------------------------------------------------- */
-html {
-  position: relative;
-  min-height: 100%;
-}
+    .row .col {
+        font-weight: 700;
+    }
 
-body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
-  
-  background-color: #daefff;
-}
-.footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  white-space: nowrap;
-  line-height: 60px; /* Vertically center the text there */
-}
+        .row .col:nth-child(1) {
+            color: cadetblue;
+        }
 
+        .row .col:nth-child(2) {
+            color: limegreen;
+        }
+
+        .row .col:nth-child(3) {
+            color: blue;
+        }
+
+.table td:nth-child(1),
+.table td:nth-child(2),
+.table td:nth-child(6) {
+    font-weight: 700;
+}
