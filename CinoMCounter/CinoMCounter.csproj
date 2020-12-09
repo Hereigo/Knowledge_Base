@@ -5,6 +5,16 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <None Remove="App_Data\aaa.init.txt" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Content Include="App_Data\aaa.init.txt">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+    </ItemGroup>
+
+    <ItemGroup>
       <PackageReference Include="DotNetZip" Version="1.15.0" />
       <PackageReference Include="FontAwesome" Version="4.7.0" />
       <PackageReference Include="jQuery" Version="3.5.1" />

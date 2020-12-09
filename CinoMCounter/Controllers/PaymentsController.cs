@@ -13,11 +13,10 @@ using Microsoft.Extensions.Logging;
 
 namespace CinoMCounter.Controllers
 {
-    
     // TEMPORARY !!!!!!!!!!!
-    
+
     // [Authorize]
-    
+
     public class PaymentsController : Controller
     {
         const string backupMarker = "shouldCreateBkp";
@@ -37,16 +36,15 @@ namespace CinoMCounter.Controllers
         public ActionResult Index(int id = 1)
         {
             // When Redirect from Create-Action :
-            if (false) // bool.TryParse(TempData[backupMarker]?.ToString(), out bool isNewCreated) && isNewCreated)
+            if (bool.TryParse(TempData[backupMarker]?.ToString(), out bool isNewCreated) && isNewCreated)
             {
                 // TODO:
                 // MAKE ME ASYNC !!!
 
                 // TODO:
                 // USE DI !!!!!!!!!
-                
-                DatabaseManager dbMgr = new DatabaseManager(_db, _env);
 
+                DatabaseManager dbMgr = new DatabaseManager(_db, _env);
                 ViewBag.BackUpResult = dbMgr.CreateBackUp();
             }
 
@@ -167,7 +165,7 @@ namespace CinoMCounter.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create( // [Bind(Include = "ID,PayDate,Amount,Description,CatogoryId")]
-                                    Payment payment, string payFrom)
+            Payment payment, string payFrom)
         {
             if (ModelState.IsValid)
             {
@@ -196,7 +194,7 @@ namespace CinoMCounter.Controllers
 
                 TempData[backupMarker] = true;
 
-                return RedirectToAction("Index/2");
+                return RedirectToAction("Index", new {id = 2});
             }
 
             ViewBag.CatogoryId = new SelectList(_db.Categories.OrderBy(c => c.Name), "ID", "Name", payment.CatogoryId);
@@ -236,7 +234,7 @@ namespace CinoMCounter.Controllers
 
                 TempData[backupMarker] = true;
 
-                return RedirectToAction("Index/2");
+                return RedirectToAction("Index", new {id = 2});
             }
 
             ViewBag.CatogoryId = new SelectList(_db.Categories.OrderBy(c => c.Name), "ID", "Name", payment.CatogoryId);
@@ -267,8 +265,8 @@ namespace CinoMCounter.Controllers
         {
             Payment payment = _db.Payments.Find(id);
             _db.Payments.Remove(payment);
-                // _db.SaveChanges();
-            return RedirectToAction("Index/2");
+            // _db.SaveChanges();
+            return RedirectToAction("Index", new {id = 2});
         }
 
         protected override void Dispose(bool disposing)
