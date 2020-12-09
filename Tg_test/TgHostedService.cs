@@ -3,19 +3,23 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Hosting;
 using Telegram.Bot;
+using Telegram.Bot.Types;
 
 namespace Tg_test
 {
     public class TgHostedService : BackgroundService
     {
         private static ITelegramBotClient _tClient { get; set; }
-        private static long adminUid = GIT_IGNORE.adminUid;
-        
+        // private static long adminUid = GIT_IGNORE.adminUid;
+        private static long adminUid = 719542068; // EDIT!!!!
+        private static string token = "1328828756:AAFcrvtfg0uazEKIpMw3TPJUWfKLWMQCCvU"; // EDIT!!!!
+
+
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
             while (!stoppingToken.IsCancellationRequested)
             {
-                _tClient = new TelegramBotClient(GIT_IGNORE.token)
+                _tClient = new TelegramBotClient(token)
                 {
                     Timeout = TimeSpan.FromSeconds(10)
                 };
@@ -39,7 +43,19 @@ namespace Tg_test
                     switch (text)
                     {
                         case "/start":
-                            _tClient.SendTextMessageAsync(uid, $"Hello world!\nMy commands:\n /today\n /start\n  /help\n /admin");
+                            var keyboard = new Telegram.Bot.Types.ReplyMarkups.ReplyKeyboardMarkup
+                            {
+                                Keyboard = new[] {
+                                    new[]
+                                    {
+                                        new Telegram.Bot.Types.ReplyMarkups.KeyboardButton("/help"),
+                                        new Telegram.Bot.Types.ReplyMarkups.KeyboardButton("/admin"),
+                                        new Telegram.Bot.Types.ReplyMarkups.KeyboardButton("/today"),
+                                    },
+                                },
+                                ResizeKeyboard = true
+                            };
+                            _tClient.SendTextMessageAsync(uid, $"Hello world!\nMy commands:\n /today\n /start\n  /help\n /admin", replyMarkup: keyboard);
                             break;
                         case "/today":
                             _tClient.SendTextMessageAsync(uid, $"Now : {DateTime.Now.ToString("f")}");
