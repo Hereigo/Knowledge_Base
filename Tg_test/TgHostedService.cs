@@ -10,9 +10,9 @@ namespace Tg_test
     public class TgHostedService : BackgroundService
     {
         private static ITelegramBotClient _tClient { get; set; }
-        // private static long adminUid = GIT_IGNORE.adminUid;
-        private static long adminUid = 719542068; // EDIT!!!!
-        private static string token = "1328828756:AAFcrvtfg0uazEKIpMw3TPJUWfKLWMQCCvU"; // EDIT!!!!
+        private static long adminUid = GIT_IGNORE.adminUid;
+        
+        private static string token = ""; // EDIT!!!!
 
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
@@ -48,9 +48,11 @@ namespace Tg_test
                                 Keyboard = new[] {
                                     new[]
                                     {
-                                        new Telegram.Bot.Types.ReplyMarkups.KeyboardButton("/help"),
-                                        new Telegram.Bot.Types.ReplyMarkups.KeyboardButton("/admin"),
-                                        new Telegram.Bot.Types.ReplyMarkups.KeyboardButton("/today"),
+                                        new Telegram.Bot.Types.ReplyMarkups.KeyboardButton("What's now?"),
+                                    },
+                                    new[]
+                                    {
+                                        new Telegram.Bot.Types.ReplyMarkups.KeyboardButton("HELP!!!!"),
                                     },
                                 },
                                 ResizeKeyboard = true
@@ -66,6 +68,13 @@ namespace Tg_test
                         case "/admin":
                             _tClient.SendTextMessageAsync(uid, "Admin has recived your conseravtion!");
                             _tClient.SendTextMessageAsync(adminUid, $"@{userName} is calling help!");
+                            break;
+                        case "HELP!!!!":
+                            _tClient.SendTextMessageAsync(uid, "Admin has recived your ask!");
+                            _tClient.SendTextMessageAsync(adminUid, $"@{userName} is calling for help!");
+                            break;
+                        case "What's now?":
+                            _tClient.SendTextMessageAsync(uid, $"Now : {DateTime.Now.ToString("f")}");
                             break;
                         default:
                             _tClient.SendTextMessageAsync(uid, $"Command unknown. Please? try another.");
