@@ -10,7 +10,7 @@ namespace Tg_test
         private Task _executingTask;
         private readonly CancellationTokenSource _stoppingCts =
             new CancellationTokenSource();
-
+        
         protected abstract Task ExecuteAsync(CancellationToken stoppingToken);
 
         public virtual Task StartAsync(CancellationToken cancellationToken)
@@ -48,7 +48,6 @@ namespace Tg_test
                 await Task.WhenAny(_executingTask, Task.Delay(Timeout.Infinite,
                     cancellationToken));
             }
-
         }
 
         public virtual void Dispose()

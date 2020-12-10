@@ -1,19 +1,17 @@
 using System;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.Extensions.Hosting;
 using Telegram.Bot;
-using Telegram.Bot.Types;
+using TG_Types = Telegram.Bot.Types;
 
 namespace Tg_test
 {
     public class TgHostedService : BackgroundService
     {
         private static ITelegramBotClient _tClient { get; set; }
-        private static long adminUid = GIT_IGNORE.adminUid;
-        
-        private static string token = ""; // EDIT!!!!
 
+        private static readonly long adminUid = GIT_IGNORE.adminUid;
+        private static readonly string token = GIT_IGNORE.token; // EDIT!!!!
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
@@ -25,7 +23,7 @@ namespace Tg_test
                 };
 
                 var me = _tClient.GetMeAsync().Result;
-            
+
                 Console.WriteLine(
                     $"Hello World! My name is {me.FirstName}, id = {me.Id}");
 
@@ -34,25 +32,25 @@ namespace Tg_test
                     var text = e?.Message?.Text;
                     var uid = e?.Message?.Chat?.Id;
                     var userName = e?.Message?.From?.Username;
-                    
+
                     if (text is null)
                         return;
 
                     Console.WriteLine($"{uid} : {text}");
-                    
+
                     switch (text)
                     {
                         case "/start":
-                            var keyboard = new Telegram.Bot.Types.ReplyMarkups.ReplyKeyboardMarkup
+                            var keyboard = new TG_Types.ReplyMarkups.ReplyKeyboardMarkup
                             {
                                 Keyboard = new[] {
                                     new[]
                                     {
-                                        new Telegram.Bot.Types.ReplyMarkups.KeyboardButton("What's now?"),
+                                        new TG_Types.ReplyMarkups.KeyboardButton("What's now?"),
                                     },
                                     new[]
                                     {
-                                        new Telegram.Bot.Types.ReplyMarkups.KeyboardButton("HELP!!!!"),
+                                        new TG_Types.ReplyMarkups.KeyboardButton("HELP!!!!"),
                                     },
                                 },
                                 ResizeKeyboard = true
@@ -60,7 +58,7 @@ namespace Tg_test
                             _tClient.SendTextMessageAsync(uid, $"Hello world!\nMy commands:\n /today\n /start\n  /help\n /admin", replyMarkup: keyboard);
                             break;
                         case "/today":
-                            _tClient.SendTextMessageAsync(uid, $"Now : {DateTime.Now.ToString("f")}");
+                            _tClient.SendTextMessageAsync(uid, $"Now : {DateTime.Now:f}");
                             break;
                         case "/help":
                             _tClient.SendTextMessageAsync(uid, "Not implemented yet. :)");
@@ -83,10 +81,8 @@ namespace Tg_test
                 };
 
                 _tClient.StartReceiving();
-            
-                Console.ReadKey();
-                
-                await Task.Delay(0, stoppingToken);
+
+                await Task.Delay(TimeSpan.FromSeconds(2), stoppingToken);
             }
         }
     }
