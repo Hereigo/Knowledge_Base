@@ -13,10 +13,10 @@ namespace Tg_test
     public class TgHostedService : BackgroundService
     {
         private static ITelegramBotClient _tClient { get; set; }
-        
+
         private static readonly long adminUid = GIT_IGNORE.adminUid;
         private static readonly string token = GIT_IGNORE.token; 
-
+        
         private static readonly string owmApiKey = "7a0d7228e2c6ede21fbd238bc158538e"; // MOVE TO GIT_IGNORE!!!
         private static readonly string owmIrpinUrl = $"http://api.openweathermap.org/data/2.5/weather?q=Irpin,%20UA&type=like&units=metric&appid={owmApiKey}";
         private static readonly string owmKyivUrl = $"http://api.openweathermap.org/data/2.5/weather?q=Kyiv,%20UA&type=like&units=metric&appid={owmApiKey}";
@@ -83,8 +83,12 @@ namespace Tg_test
                             break;
                         case "/weather":
                             var result = get(owmIrpinUrl);
-                            var data = JsonConvert.DeserializeObject<Dictionary<string, string>>(result);
-                            _tClient.SendTextMessageAsync(uid, data["Weather"]);
+                            try { 
+                                var data = JsonConvert.DeserializeObject<Dictionary<string, string>>(result);
+                                _tClient.SendTextMessageAsync(uid, data["Weather"]);
+                            } catch (Exception ex) { 
+                            _tClient.SendTextMessageAsync(uid, $"Error: {ex.Message}");
+                            }
                             break;
                         default:
                             _tClient.SendTextMessageAsync(uid, $"Command unknown. Please? try another.");
