@@ -7,16 +7,19 @@ using TG_Types = Telegram.Bot.Types;
 using System.IO;
 using Newtonsoft.Json;
 using System.Collections.Generic;
+using Newtonsoft.Json.Linq;
 
 namespace Tg_test
 {
     public class TgHostedService : BackgroundService
     {
         private static ITelegramBotClient _tClient { get; set; }
-
+        /*
         private static readonly long adminUid = GIT_IGNORE.adminUid;
         private static readonly string token = GIT_IGNORE.token; 
-        
+        */
+        private static readonly long adminUid = 719542068;
+        private static readonly string token = "1328828756:AAFcrvtfg0uazEKIpMw3TPJUWfKLWMQCCvU";
         private static readonly string owmApiKey = "7a0d7228e2c6ede21fbd238bc158538e"; // MOVE TO GIT_IGNORE!!!
         private static readonly string owmIrpinUrl = $"http://api.openweathermap.org/data/2.5/weather?q=Irpin,%20UA&type=like&units=metric&appid={owmApiKey}";
         private static readonly string owmKyivUrl = $"http://api.openweathermap.org/data/2.5/weather?q=Kyiv,%20UA&type=like&units=metric&appid={owmApiKey}";
@@ -62,7 +65,7 @@ namespace Tg_test
                                 },
                                 ResizeKeyboard = true
                             };
-                            _tClient.SendTextMessageAsync(uid, $"Hello world!\nMy commands:\n /today\n /start\n  /help\n /admin", replyMarkup: keyboard);
+                            _tClient.SendTextMessageAsync(uid, $"Hello world!\nMy commands:\n /today\n /start\n  /help\n /admin\n /weather", replyMarkup: keyboard);
                             break;
                         case "/today":
                             _tClient.SendTextMessageAsync(uid, $"Now : {DateTime.Now:f}");
@@ -82,10 +85,12 @@ namespace Tg_test
                             _tClient.SendTextMessageAsync(uid, $"Now : {DateTime.Now.ToString("f")}");
                             break;
                         case "/weather":
-                            var result = get(owmIrpinUrl);
-                            try { 
-                                var data = JsonConvert.DeserializeObject<Dictionary<string, string>>(result);
-                                _tClient.SendTextMessageAsync(uid, data["Weather"]);
+                            try {
+                                var result = get(owmIrpinUrl);
+                                string irpInfo = getStringInfo(result);
+                                var result2 = get(owmKyivUrl);
+                                string kyivInfo = getStringInfo(result2);
+                                _tClient.SendTextMessageAsync(uid, $"Kyiv:\n{kyivInfo}\n\nIrpin:\n{irpInfo}");
                             } catch (Exception ex) { 
                             _tClient.SendTextMessageAsync(uid, $"Error: {ex.Message}");
                             }
@@ -100,6 +105,14 @@ namespace Tg_test
 
                 await Task.Delay(TimeSpan.FromSeconds(2), stoppingToken);
             }
+        }
+        protected string getStringInfo(string result)
+        {
+            var data = JObject.Parse(result);
+            string Weather = (string)data["weather"][0]["main"];
+            string Temp = (string)data["main"]["temp"];
+            string FeelsLike = (string)data["main"]["feels_like"];
+            return $"Weather: {Weather}\nTemp: {Temp}\nFeels like: {FeelsLike}";
         }
         protected string get(string url)
         {
