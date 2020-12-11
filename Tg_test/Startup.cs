@@ -19,7 +19,7 @@ namespace Tg_test
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
-            services.AddHostedService<TgHostedService>();
+            services.AddHostedService<TgBotService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
