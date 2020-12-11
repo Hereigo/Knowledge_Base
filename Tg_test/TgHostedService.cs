@@ -1,18 +1,25 @@
 using System;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Net;
 using Telegram.Bot;
 using TG_Types = Telegram.Bot.Types;
+using System.IO;
+using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace Tg_test
 {
     public class TgHostedService : BackgroundService
     {
         private static ITelegramBotClient _tClient { get; set; }
-
+        
         private static readonly long adminUid = GIT_IGNORE.adminUid;
-        private static readonly string token = GIT_IGNORE.token; // EDIT!!!!
+        private static readonly string token = GIT_IGNORE.token; 
 
+        private static readonly string owmApiKey = "7a0d7228e2c6ede21fbd238bc158538e"; // MOVE TO GIT_IGNORE!!!
+        private static readonly string owmIrpinUrl = $"http://api.openweathermap.org/data/2.5/weather?q=Irpin,%20UA&type=like&units=metric&appid={owmApiKey}";
+        private static readonly string owmKyivUrl = $"http://api.openweathermap.org/data/2.5/weather?q=Kyiv,%20UA&type=like&units=metric&appid={owmApiKey}";
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
             while (!stoppingToken.IsCancellationRequested)
@@ -74,6 +81,11 @@ namespace Tg_test
                         case "What's now?":
                             _tClient.SendTextMessageAsync(uid, $"Now : {DateTime.Now.ToString("f")}");
                             break;
+                        case "/weather":
+                            var result = get(owmIrpinUrl);
+                            var data = JsonConvert.DeserializeObject<Dictionary<string, string>>(result);
+                            _tClient.SendTextMessageAsync(uid, data["Weather"]);
+                            break;
                         default:
                             _tClient.SendTextMessageAsync(uid, $"Command unknown. Please? try another.");
                             break;
@@ -83,6 +95,33 @@ namespace Tg_test
                 _tClient.StartReceiving();
 
                 await Task.Delay(TimeSpan.FromSeconds(2), stoppingToken);
+            }
+        }
+        protected string get(string url)
+        {
+            try
+            {
+                string rt;
+
+                WebRequest request = WebRequest.Create(url);
+
+                WebResponse response = request.GetResponse();
+
+                Stream dataStream = response.GetResponseStream();
+
+                StreamReader reader = new StreamReader(dataStream);
+
+                rt = reader.ReadToEnd();
+
+                reader.Close();
+                response.Close();
+
+                return rt;
+            }
+
+            catch (Exception ex)
+            {
+                return "Error: " + ex.Message;
             }
         }
     }
