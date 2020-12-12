@@ -19,24 +19,24 @@ namespace CinoMCounter.Controllers
 
     public class PaymentsController : Controller
     {
-        const string backupMarker = "shouldCreateBkp";
+        private const string BackupMarker = "shouldCreateBkp";
 
-        private readonly IPaymentsContext _db;
+        private readonly PaymentsContext _db;
         private readonly ILogger<HomeController> _logger;
-        public IWebHostEnvironment _env { get; set; }
+        private IWebHostEnvironment Env { get; }
 
-        public PaymentsController(ILogger<HomeController> logger, IPaymentsContext context, IWebHostEnvironment env)
+        public PaymentsController(ILogger<HomeController> logger, PaymentsContext context, IWebHostEnvironment env)
         {
             _logger = logger;
             _db = context;
-            _env = env;
+            Env = env;
         }
 
         // GET: Payments
         public ActionResult Index(int id = 1)
         {
             // When Redirect from Create-Action :
-            if (bool.TryParse(TempData[backupMarker]?.ToString(), out bool isNewCreated) && isNewCreated)
+            if (bool.TryParse(TempData[BackupMarker]?.ToString(), out bool isNewCreated) && isNewCreated)
             {
                 // TODO:
                 // MAKE ME ASYNC !!!
@@ -44,7 +44,7 @@ namespace CinoMCounter.Controllers
                 // TODO:
                 // USE DI !!!!!!!!!
 
-                DatabaseManager dbMgr = new DatabaseManager(_db, _env);
+                DatabaseManager dbMgr = new DatabaseManager(_db, Env);
                 ViewBag.BackUpResult = dbMgr.CreateBackUp();
             }
 
@@ -170,7 +170,7 @@ namespace CinoMCounter.Controllers
             if (ModelState.IsValid)
             {
                 _db.Payments.Add(payment);
-                // _db.SaveChanges();
+                _db.SaveChanges();
 
                 // Create Source Decreasing payment according the previous one:
 
@@ -188,11 +188,11 @@ namespace CinoMCounter.Controllers
                             Description = payment.Description,
                             PayDate = payment.PayDate
                         });
-                        // _db.SaveChanges();
+                        _db.SaveChanges();
                     }
                 }
 
-                TempData[backupMarker] = true;
+                TempData[BackupMarker] = true;
 
                 return RedirectToAction("Index", new {id = 2});
             }
@@ -229,10 +229,10 @@ namespace CinoMCounter.Controllers
         {
             if (ModelState.IsValid)
             {
-                // _db.Entry(payment).State = EntityState.Modified;
-                // _db.SaveChanges();
+                _db.Entry(payment).State = EntityState.Modified;
+                _db.SaveChanges();
 
-                TempData[backupMarker] = true;
+                TempData[BackupMarker] = true;
 
                 return RedirectToAction("Index", new {id = 2});
             }
@@ -265,7 +265,7 @@ namespace CinoMCounter.Controllers
         {
             Payment payment = _db.Payments.Find(id);
             _db.Payments.Remove(payment);
-            // _db.SaveChanges();
+            _db.SaveChanges();
             return RedirectToAction("Index", new {id = 2});
         }
 
@@ -273,7 +273,7 @@ namespace CinoMCounter.Controllers
         {
             if (disposing)
             {
-                // _db.Dispose();
+               _db.Dispose();
             }
 
             base.Dispose(disposing);
