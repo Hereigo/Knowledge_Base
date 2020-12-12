@@ -17,6 +17,7 @@ namespace Tg_test
         private const string token = "1328828756:AAFcrvtfg0uazEKIpMw3TPJUWfKLWMQCCvU";
 
         private readonly WeatherService weather = new WeatherService();
+        private readonly CurrencyService currency = new CurrencyService();
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
@@ -76,6 +77,13 @@ namespace Tg_test
                             break;
                         case "What's now?":
                             _tClient.SendTextMessageAsync(uid, $"Now : {DateTime.Now:f}");
+                            break;
+                        case "/currency":
+                            try{
+                                _tClient.SendTextMessageAsync(uid, currency.getResult());
+                            } catch (Exception ex) {
+                                _tClient.SendTextMessageAsync(uid, $"Error: {ex.Message}");
+                            }
                             break;
                         case "/weather":
                             try

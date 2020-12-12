@@ -6,7 +6,7 @@ namespace Tg_test
 {
     public class WeatherService
     {
-        private static readonly string owmApiKey = GIT_IGNORE.owmApiKey;
+        private static readonly string owmApiKey = "hsjafgjhasgfjh";
 
         private string FormatResult(string result)
         {
