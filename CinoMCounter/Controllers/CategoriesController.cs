@@ -14,10 +14,10 @@ namespace CinoMCounter.Controllers
     
     public class CategoriesController: Controller
     {
-        private readonly IPaymentsContext db;
+        private readonly PaymentsContext db;
         private readonly ILogger<HomeController> _logger;
 
-        public CategoriesController(ILogger<HomeController> logger, IPaymentsContext context)
+        public CategoriesController(ILogger<HomeController> logger, PaymentsContext context)
         {
             _logger = logger;
             db = context;
@@ -57,8 +57,7 @@ namespace CinoMCounter.Controllers
             if (ModelState.IsValid)
             {
                 db.Categories.Add(category);
-                
-                // db.SaveChanges();
+                db.SaveChanges();
                 
                 return RedirectToAction("Index");
             }
@@ -84,12 +83,17 @@ namespace CinoMCounter.Controllers
         // POST: Categories/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit( Category category) // [Bind(Include = "ID,Name,IsActive")] Category category)
+        public ActionResult Edit(Category category) // [Bind(Include = "ID,Name,IsActive")] Category category)
         {
             if (ModelState.IsValid)
             {
+                // .Net 4.8 :
                 // db.Entry(category).State = EntityState.Modified;
-                // db.SaveChanges();
+                
+                var existedCategory = db.Categories.Single(c => c.ID == category.ID);
+                db.Entry(existedCategory).CurrentValues.SetValues(category);
+                db.SaveChanges();
+                
                 return RedirectToAction("Index");
             }
             return View(category);
@@ -117,7 +121,8 @@ namespace CinoMCounter.Controllers
         {
             Category category = db.Categories.Find(id);
             db.Categories.Remove(category); 
-            // db.SaveChanges();
+            db.SaveChanges();
+            
             return RedirectToAction("Index");
         }
 
@@ -125,7 +130,7 @@ namespace CinoMCounter.Controllers
         {
             if (disposing)
             {
-                // db.Dispose();
+                db.Dispose();
             }
             base.Dispose(disposing);
         }
