@@ -20,7 +20,8 @@ namespace Tg_test
         internal string get(string cityName)
         {
             string url =
-                $"http://api.openweathermap.org/data/2.5/weather?q={cityName},%20UA&type=like&units=metric&appid={owmApiKey}";
+                $"http://api.openweathermap.org/data/2.5/weather?q={cityName}," +
+                $"%20UA&type=like&units=metric&appid={owmApiKey}";
 
             string rt;
 

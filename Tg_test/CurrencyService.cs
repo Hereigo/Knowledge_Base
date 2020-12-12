@@ -4,11 +4,10 @@ using Newtonsoft.Json.Linq;
 
 namespace Tg_test{
 
-    public class CurrencyService{
-
-        internal string get(string url)
+    public class CurrencyService
+    {
+        private string get(string url)
         {
-
             string rt;
 
             WebRequest request = WebRequest.Create(url);
@@ -26,7 +25,7 @@ namespace Tg_test{
 
         internal string getResult(){
             var res = get("https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?json");
-            var data = JObject.Parse(res);
+            var data = JArray.Parse(res);
             var usd = (string)data[20]["rate"];
             var rub = (string)data[18]["rate"];
             var euro = (string)data[33]["rate"];

@@ -10,8 +10,8 @@ namespace Tg_test
     {
         private static ITelegramBotClient _tClient { get; set; }
 
-        // private const long adminUid = GIT_IGNORE.adminUid;
-        // private const string token = GIT_IGNORE.token;
+        //private readonly long adminUid = GIT_IGNORE.adminUid;
+        //private readonly string token = GIT_IGNORE.token;
 
         private const long adminUid = 719542068;
         private const string token = "1328828756:AAFcrvtfg0uazEKIpMw3TPJUWfKLWMQCCvU";
@@ -30,7 +30,6 @@ namespace Tg_test
 
                 var me = _tClient.GetMeAsync().Result;
 
-
                 _tClient.OnMessage += (sender, e) =>
                 {
                     var text = e?.Message?.Text;
@@ -47,7 +46,8 @@ namespace Tg_test
                         case "/start":
                             var keyboard = new TG_Types.ReplyMarkups.ReplyKeyboardMarkup
                             {
-                                Keyboard = new[] {
+                                Keyboard = new[]
+                                {
                                     new[]
                                     {
                                         new TG_Types.ReplyMarkups.KeyboardButton("What's now?"),
@@ -59,7 +59,9 @@ namespace Tg_test
                                 },
                                 ResizeKeyboard = true
                             };
-                            _tClient.SendTextMessageAsync(uid, $"Hello world!\nMy commands:\n /today\n /start\n  /help\n /admin\n /weather", replyMarkup: keyboard);
+                            _tClient.SendTextMessageAsync(uid,
+                                $"Hello world!\nMy commands:\n /today\n /start\n  /help\n /admin\n /weather",
+                                replyMarkup: keyboard);
                             break;
                         case "/today":
                             _tClient.SendTextMessageAsync(uid, $"Now : {DateTime.Now:f}");
@@ -68,22 +70,26 @@ namespace Tg_test
                             _tClient.SendTextMessageAsync(uid, "Not implemented yet. :)");
                             break;
                         case "/admin":
-                            _tClient.SendTextMessageAsync(uid, "Admin has recived your conseravtion!");
+                            _tClient.SendTextMessageAsync(uid, "Admin has received your conseravtion!");
                             _tClient.SendTextMessageAsync(adminUid, $"@{userName} is calling help!");
                             break;
                         case "HELP!!!!":
-                            _tClient.SendTextMessageAsync(uid, "Admin has recived your ask!");
+                            _tClient.SendTextMessageAsync(uid, "Admin has received your ask!");
                             _tClient.SendTextMessageAsync(adminUid, $"@{userName} is calling for help!");
                             break;
                         case "What's now?":
                             _tClient.SendTextMessageAsync(uid, $"Now : {DateTime.Now:f}");
                             break;
                         case "/currency":
-                            try{
+                            try
+                            {
                                 _tClient.SendTextMessageAsync(uid, currency.getResult());
-                            } catch (Exception ex) {
+                            }
+                            catch (Exception ex)
+                            {
                                 _tClient.SendTextMessageAsync(uid, $"Error: {ex.Message}");
                             }
+
                             break;
                         case "/weather":
                             try
@@ -96,6 +102,7 @@ namespace Tg_test
                             {
                                 _tClient.SendTextMessageAsync(uid, $"Error: {ex.Message}");
                             }
+
                             break;
                         default:
                             _tClient.SendTextMessageAsync(uid, $"Command unknown. Please? try another.");
