@@ -10,8 +10,8 @@ namespace Tg_test
     {
         private static ITelegramBotClient _tClient { get; set; }
 
-        //private readonly long adminUid = GIT_IGNORE.adminUid;
-        //private readonly string token = GIT_IGNORE.token;
+        // private readonly long adminUid = GIT_IGNORE.adminUid;
+        // private readonly string token = GIT_IGNORE.token;
 
         private const long adminUid = 719542068;
         private const string token = "1328828756:AAFcrvtfg0uazEKIpMw3TPJUWfKLWMQCCvU";
@@ -83,7 +83,8 @@ namespace Tg_test
                         case "/currency":
                             try
                             {
-                                _tClient.SendTextMessageAsync(uid, currency.getResult());
+                                string currencyInfo = currency.get();
+                                _tClient.SendTextMessageAsync(uid, currencyInfo);
                             }
                             catch (Exception ex)
                             {
