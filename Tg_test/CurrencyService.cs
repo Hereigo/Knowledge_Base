@@ -9,7 +9,7 @@ namespace Tg_test{
         private string FormatResult(string res){
             
             var data = JArray.Parse(res);
-            var usd = (string)data[20]["rate"];
+            var usd = (string)data[26]["rate"];
             var rub = (string)data[18]["rate"];
             var euro = (string)data[33]["rate"];
             return $"{usd} UAH = 1$\n{rub} UAH = 1₽\n{euro} UAH = 1€";
