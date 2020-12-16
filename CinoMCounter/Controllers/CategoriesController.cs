@@ -52,7 +52,7 @@ namespace CinoMCounter.Controllers
         // POST: Categories/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create( Category category) //[Bind(Include = "ID,Name,IsActive")] Category category)
+        public ActionResult Create(Category category) //[Bind(Include = "ID,Name,IsActive")] Category category)
         {
             if (ModelState.IsValid)
             {

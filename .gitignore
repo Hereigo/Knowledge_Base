@@ -350,16 +350,16 @@ MigrationBackup/
 .ionide/
 
 # MY OWN RULES :
-!!!_GIT_IGNORE.cs
 *.Development.json
 */Content
 */Fonts
 */GIT_IGNORE/*
 */Scripts
 */wwwroot/lib/
+*GIT_IGNORE*
 .idea/
 /Payments_Net462/webfonts
-GIT_IGNORE.cs
+CoreMvcTG/app.db
 MB_API/GIT_IGNORE.cs
 MyExpenses_autobackup_*.BAK
 Web.Release.config
