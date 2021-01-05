@@ -1,0 +1,16 @@
+{
+  "providerId": "Microsoft.Tools.ServiceModel.Svcutil",
+  "version": "2.0.2",
+  "options": {
+    "inputs": [
+      "https://www.w3schools.com/xml/tempconvert.asmx?wsdl"
+    ],
+    "namespaceMappings": [
+      "*, ServiceReference"
+    ],
+    "outputFile": "Reference.cs",
+    "serializerMode": "XmlSerializer",
+    "targetFramework": "net5.0",
+    "typeReuseMode": "All"
+  }
+}
