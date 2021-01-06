@@ -66,6 +66,12 @@ namespace WsdlCore.Clients
             return Task.Factory.FromAsync(((ICommunicationObject)(this)).BeginClose(null, null), ((ICommunicationObject)(this)).EndClose);
         }
         
+        public enum EndpointConfiguration
+        {
+            TempConvertSoap,
+            TempConvertSoap12
+        }
+        
         private static Binding GetBindingForEndpoint(EndpointConfiguration endpointConfiguration)
         {
             if ((endpointConfiguration == EndpointConfiguration.TempConvertSoap))
@@ -104,14 +110,6 @@ namespace WsdlCore.Clients
                 return new EndpointAddress("http://www.w3schools.com/xml/tempconvert.asmx");
             }
             throw new InvalidOperationException(string.Format("Could not find endpoint with name \'{0}\'.", endpointConfiguration));
-        }
-        
-        public enum EndpointConfiguration
-        {
-            
-            TempConvertSoap,
-            
-            TempConvertSoap12
         }
     }
 }

@@ -10,14 +10,11 @@ namespace WsdlCore.Repositories
 {
     public class TempConvertRepository : ITempConvertRepository
     {
-
         private readonly ITempConvertChannel _proxy;
 
         public TempConvertRepository(IOptions<ClientConfig> config)
         {
-
             var cfg = config.Value;
-
             /*
              * Create & Configure Client
              */
@@ -33,19 +30,16 @@ namespace WsdlCore.Repositories
             EndpointAddress address = new EndpointAddress(cfg.Url);
             ChannelFactory<ITempConvertChannel> factory = new ChannelFactory<ITempConvertChannel>(binding, address);
             this._proxy = factory.CreateChannel();
-
         }
 
         public async Task<string> FahrenheitToCelsiusAsync(string fahrenheit)
         {
             return await _proxy.FahrenheitToCelsiusAsync(fahrenheit);
-
         }
 
         public async Task<string> CelsiusToFahrenheitAsync(string celsius)
         {
             return await _proxy.CelsiusToFahrenheitAsync(celsius);
         }
-
     }
 }
