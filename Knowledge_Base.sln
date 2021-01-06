@@ -70,6 +70,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CinoMCounter", "CinoMCounte
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreMvcTG", "CoreMvcTG\CoreMvcTG.csproj", "{AC1C8E5D-FFE5-425C-9F56-7DAB1F98A1A1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WsdlCore", "wsdl_core\src\WsdlCore\WsdlCore.csproj", "{D1E8FEEA-5F01-47C2-A066-67CDE1B0DB22}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -200,6 +202,10 @@ Global
 		{AC1C8E5D-FFE5-425C-9F56-7DAB1F98A1A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AC1C8E5D-FFE5-425C-9F56-7DAB1F98A1A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AC1C8E5D-FFE5-425C-9F56-7DAB1F98A1A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D1E8FEEA-5F01-47C2-A066-67CDE1B0DB22}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1E8FEEA-5F01-47C2-A066-67CDE1B0DB22}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1E8FEEA-5F01-47C2-A066-67CDE1B0DB22}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1E8FEEA-5F01-47C2-A066-67CDE1B0DB22}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
