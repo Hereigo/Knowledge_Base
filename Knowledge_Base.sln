@@ -60,17 +60,19 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Swagger_FluentValidation", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Log_SeriLog", "Log_SeriLog\Log_SeriLog.csproj", "{8F1BFF4B-7788-4F2B-895E-894C6FD6AE21}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xtra_Tests", "Xtra_Tests\Xtra_Tests.csproj", "{AAB6E154-63C2-4A85-89F0-CF8A5C738049}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xtra_Tests", "Xtra_Tests\Xtra_Tests.csproj", "{AAB6E154-63C2-4A85-89F0-CF8A5C738049}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cino_Payments", "Cino_Test\Cino_Payments\Cino_Payments.csproj", "{36105C4F-26A3-4B62-A776-65D03D1C9CBA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cino_Payments", "Cino_Test\Cino_Payments\Cino_Payments.csproj", "{36105C4F-26A3-4B62-A776-65D03D1C9CBA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CinoAppFromZero", "CinoAppFromZero\CinoAppFromZero.csproj", "{D9459610-4494-421C-A866-DEE985428E55}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CinoAppFromZero", "CinoAppFromZero\CinoAppFromZero.csproj", "{D9459610-4494-421C-A866-DEE985428E55}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CinoMCounter", "CinoMCounter\CinoMCounter.csproj", "{F8448021-D8B8-492B-852D-C9370E264278}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CinoMCounter", "CinoMCounter\CinoMCounter.csproj", "{F8448021-D8B8-492B-852D-C9370E264278}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreMvcTG", "CoreMvcTG\CoreMvcTG.csproj", "{AC1C8E5D-FFE5-425C-9F56-7DAB1F98A1A1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoreMvcTG", "CoreMvcTG\CoreMvcTG.csproj", "{AC1C8E5D-FFE5-425C-9F56-7DAB1F98A1A1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WsdlCore", "wsdl_core\src\WsdlCore\WsdlCore.csproj", "{D1E8FEEA-5F01-47C2-A066-67CDE1B0DB22}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WsdlCore", "wsdl_core\src\WsdlCore\WsdlCore.csproj", "{D1E8FEEA-5F01-47C2-A066-67CDE1B0DB22}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CinoPaysAuth", "CinoPaysAuth\CinoPaysAuth.csproj", "{F4A7130D-A8FD-4C9E-BB8D-3058E41E6413}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -206,6 +208,10 @@ Global
 		{D1E8FEEA-5F01-47C2-A066-67CDE1B0DB22}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D1E8FEEA-5F01-47C2-A066-67CDE1B0DB22}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D1E8FEEA-5F01-47C2-A066-67CDE1B0DB22}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F4A7130D-A8FD-4C9E-BB8D-3058E41E6413}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4A7130D-A8FD-4C9E-BB8D-3058E41E6413}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4A7130D-A8FD-4C9E-BB8D-3058E41E6413}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4A7130D-A8FD-4C9E-BB8D-3058E41E6413}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
