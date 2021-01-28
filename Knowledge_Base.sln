@@ -72,8 +72,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoreMvcTG", "CoreMvcTG\Core
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WsdlCore", "wsdl_core\src\WsdlCore\WsdlCore.csproj", "{D1E8FEEA-5F01-47C2-A066-67CDE1B0DB22}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CinoPaysAuth", "CinoPaysAuth\CinoPaysAuth.csproj", "{F4A7130D-A8FD-4C9E-BB8D-3058E41E6413}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -208,10 +206,6 @@ Global
 		{D1E8FEEA-5F01-47C2-A066-67CDE1B0DB22}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D1E8FEEA-5F01-47C2-A066-67CDE1B0DB22}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D1E8FEEA-5F01-47C2-A066-67CDE1B0DB22}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F4A7130D-A8FD-4C9E-BB8D-3058E41E6413}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F4A7130D-A8FD-4C9E-BB8D-3058E41E6413}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F4A7130D-A8FD-4C9E-BB8D-3058E41E6413}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F4A7130D-A8FD-4C9E-BB8D-3058E41E6413}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
