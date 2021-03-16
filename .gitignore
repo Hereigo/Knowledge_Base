@@ -364,3 +364,5 @@ MB_API/GIT_IGNORE.cs
 MyExpenses_autobackup_*.BAK
 Web.Release.config
 credentials.json
+Cino_Payments/myXpens.dll.old
+Cino_Payments/myXpens.dat.old
