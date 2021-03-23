@@ -1,17 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
 using System.Linq;
-using System.Linq.Dynamic.Core;
 using System.Net;
-using System.Web.Mvc;
 using MyXpens.DataManager;
-using MyXpens.Models;
-using System.Linq;
 using MyXpens.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 
 namespace MyXpens.Controllers
 {
@@ -27,23 +23,23 @@ namespace MyXpens.Controllers
 
         // TEST LINQ DYMANIC (using System.Linq.Dynamic.Core) :
 
-        public ActionResult USE_THIS()
-        {
-            IQueryable<Payment> query = db.Payments.Include(p => p.Category);
-
-            // query = query.Where(p => p.CatogoryId == 1 || p.CatogoryId == 2 || p.CatogoryId == 3);
-            // by Linq/Dynamic :
-            int[] categories = {1};
-
-            var selectedCategories = $"CatogoryId={categories[0]}";
-            
-            for (var i = 0; i < categories.Length; i++)
-                selectedCategories += $" || CatogoryId={categories[i]}";
-
-            query = query.Where(selectedCategories);
-
-            return null; // View(query.ToList());
-        }
+        // public ActionResult USE_THIS()
+        // {
+        //     IQueryable<Payment> query = db.Payments.Include(p => p.Category);
+        //
+        //     // query = query.Where(p => p.CatogoryId == 1 || p.CatogoryId == 2 || p.CatogoryId == 3);
+        //     // by Linq/Dynamic :
+        //     int[] categories = {1};
+        //
+        //     var selectedCategories = $"CatogoryId={categories[0]}";
+        //     
+        //     for (var i = 0; i < categories.Length; i++)
+        //         selectedCategories += $" || CatogoryId={categories[i]}";
+        //
+        //     query = query.Where(selectedCategories);
+        //
+        //     return null; // View(query.ToList());
+        // }
 
 
         // GET: Payments
@@ -176,8 +172,8 @@ namespace MyXpens.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,PayDate,Amount,Description,CatogoryId")]
-            Payment payment, string payFrom)
+        public ActionResult Create( // [Bind(Include = "ID,PayDate,Amount,Description,CatogoryId")]
+                                    Payment payment, string payFrom)
         {
             if (ModelState.IsValid)
             {
@@ -206,7 +202,7 @@ namespace MyXpens.Controllers
 
                 TempData[backupMarker] = true;
 
-                return RedirectToAction("Index/2");
+                return RedirectToAction("Index", new {id = 2});
             }
 
             ViewBag.CatogoryId = new SelectList(db.Categories.OrderBy(c => c.Name), "ID", "Name", payment.CatogoryId);
@@ -218,13 +214,13 @@ namespace MyXpens.Controllers
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return BadRequest();
             }
 
             Payment payment = db.Payments.Find(id);
             if (payment == null)
             {
-                return HttpNotFound();
+                return NotFound();
             }
 
             ViewBag.CatogoryId = new SelectList(db.Categories.OrderBy(c => c.Name), "ID", "Name", payment.CatogoryId);
@@ -236,7 +232,7 @@ namespace MyXpens.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,PayDate,Amount,Description,CatogoryId")]
+        public ActionResult Edit( // [Bind(Include = "ID,PayDate,Amount,Description,CatogoryId")]
             Payment payment)
         {
             if (ModelState.IsValid)
@@ -246,7 +242,8 @@ namespace MyXpens.Controllers
 
                 TempData[backupMarker] = true;
 
-                return RedirectToAction("Index/2");
+                // return RedirectToAction("Index/2");
+                return RedirectToAction("Index", new {id = 2});
             }
 
             ViewBag.CatogoryId = new SelectList(db.Categories.OrderBy(c => c.Name), "ID", "Name", payment.CatogoryId);
@@ -258,13 +255,13 @@ namespace MyXpens.Controllers
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return BadRequest();
             }
 
             Payment payment = db.Payments.Find(id);
             if (payment == null)
             {
-                return HttpNotFound();
+                return NotFound();
             }
 
             return View(payment);
@@ -278,7 +275,8 @@ namespace MyXpens.Controllers
             Payment payment = db.Payments.Find(id);
             db.Payments.Remove(payment);
             db.SaveChanges();
-            return RedirectToAction("Index/2");
+            //return RedirectToAction("Index/2");
+            return RedirectToAction("Index", new {id = 2});
         }
 
         protected override void Dispose(bool disposing)
