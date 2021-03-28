@@ -5,9 +5,9 @@ using System.Data.Entity;
 using System.Linq;
 using System.Linq.Dynamic.Core;
 using System.Web.Mvc;
-using Payments_Net462.Models;
+using MyXpens.Models;
 
-namespace Payments_Net462.Controllers
+namespace MyXpens.Controllers
 {
     [Authorize]
     public class StatisticsController : Controller

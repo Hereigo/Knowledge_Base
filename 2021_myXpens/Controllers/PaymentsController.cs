@@ -14,9 +14,17 @@ namespace MyXpens.Controllers
     [Authorize]
     public class PaymentsController : Controller
     {
+        private static DbContextOptions<PaymentsContext> _options;
         const string backupMarker = "shouldCreateBkp";
-
-        private readonly PaymentsContext db = new PaymentsContext();
+        private readonly PaymentsContext _dbContext;
+        
+        public PaymentsController(DbContextOptions<PaymentsContext> options, PaymentsContext dbContextContext)
+        {
+            _options = options;
+            _dbContext = dbContextContext;
+        }
+        
+        // = new PaymentsContext(_options);
 
         // TODO:
         // USE THIS !!!
@@ -51,7 +59,7 @@ namespace MyXpens.Controllers
                 // TODO:
                 // Make me async !!!
 
-                DatabaseManager dbMgr = new DatabaseManager();
+                DatabaseManager dbMgr = new DatabaseManager(_options);
 
                 ViewBag.BackUpResult = dbMgr.CreateBackUp();
             }
@@ -62,7 +70,7 @@ namespace MyXpens.Controllers
 
             var minDate = DateTime.Now.AddDays((-1) * id);
 
-            var payments = db.Payments.Include(p => p.Category);
+            var payments = _dbContext.Payments.Include(p => p.Category);
 
             // TODO:
             // MAKE ME STORED IN DB !!!
@@ -127,18 +135,18 @@ namespace MyXpens.Controllers
         private StatistixView GetStatsRecord(KeyValuePair<int, string> category, DateTime yearAgo,
             DateTime startBeforeBefPrevM, DateTime startBeforePrevM, DateTime startPrevMonth, DateTime startThisMonth)
         {
-            int currMonthSum = db.Payments.Where(p => p.Category.ID == category.Key && p.PayDate > startThisMonth)
+            int currMonthSum = _dbContext.Payments.Where(p => p.Category.ID == category.Key && p.PayDate > startThisMonth)
                 .Select(p => p.Amount).ToList().Sum();
-            int prevMonthSum = db.Payments.Where(p =>
+            int prevMonthSum = _dbContext.Payments.Where(p =>
                     p.Category.ID == category.Key && p.PayDate > startPrevMonth && p.PayDate < startThisMonth)
                 .Select(p => p.Amount).ToList().Sum();
-            int b4PrevMonSum = db.Payments.Where(p =>
+            int b4PrevMonSum = _dbContext.Payments.Where(p =>
                     p.Category.ID == category.Key && p.PayDate > startBeforePrevM && p.PayDate < startPrevMonth)
                 .Select(p => p.Amount).ToList().Sum();
-            int b4b4PrevMonSum = db.Payments.Where(p =>
+            int b4b4PrevMonSum = _dbContext.Payments.Where(p =>
                     p.Category.ID == category.Key && p.PayDate > startBeforeBefPrevM && p.PayDate < startPrevMonth)
                 .Select(p => p.Amount).ToList().Sum();
-            int prevYearSum = db.Payments.Where(p =>
+            int prevYearSum = _dbContext.Payments.Where(p =>
                     p.Category.ID == category.Key && p.PayDate > yearAgo && p.PayDate < startThisMonth)
                 .Select(p => p.Amount).ToList().Sum();
 
@@ -158,7 +166,7 @@ namespace MyXpens.Controllers
         // GET: Payments/Create
         public ActionResult Create()
         {
-            ViewBag.CatogoryId = new SelectList(db.Categories.OrderBy(c => c.Name), "ID", "Name");
+            ViewBag.CatogoryId = new SelectList(_dbContext.Categories.OrderBy(c => c.Name), "ID", "Name");
 
             ViewBag.Today = DateTime.Now; //.ToString("MM/dd/yyyy");
 
@@ -177,26 +185,26 @@ namespace MyXpens.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Payments.Add(payment);
-                db.SaveChanges();
+                _dbContext.Payments.Add(payment);
+                _dbContext.SaveChanges();
 
                 // Create Source Decreasing payment according the previous one:
 
                 if (!string.IsNullOrEmpty(payFrom)
                     && !string.Equals(payFrom, "NONE", StringComparison.OrdinalIgnoreCase))
                 {
-                    int categoryIdToFind = db.Categories?.FirstOrDefault(c => c.Name == payFrom)?.ID ?? 0;
+                    int categoryIdToFind = _dbContext.Categories?.FirstOrDefault(c => c.Name == payFrom)?.ID ?? 0;
 
                     if (categoryIdToFind != default)
                     {
-                        db.Payments.Add(new Payment
+                        _dbContext.Payments.Add(new Payment
                         {
                             Amount = payment.Amount * (-1),
                             CatogoryId = categoryIdToFind,
                             Description = payment.Description,
                             PayDate = payment.PayDate
                         });
-                        db.SaveChanges();
+                        _dbContext.SaveChanges();
                     }
                 }
 
@@ -205,7 +213,7 @@ namespace MyXpens.Controllers
                 return RedirectToAction("Index", new {id = 2});
             }
 
-            ViewBag.CatogoryId = new SelectList(db.Categories.OrderBy(c => c.Name), "ID", "Name", payment.CatogoryId);
+            ViewBag.CatogoryId = new SelectList(_dbContext.Categories.OrderBy(c => c.Name), "ID", "Name", payment.CatogoryId);
             return View(payment);
         }
 
@@ -217,13 +225,13 @@ namespace MyXpens.Controllers
                 return BadRequest();
             }
 
-            Payment payment = db.Payments.Find(id);
+            Payment payment = _dbContext.Payments.Find(id);
             if (payment == null)
             {
                 return NotFound();
             }
 
-            ViewBag.CatogoryId = new SelectList(db.Categories.OrderBy(c => c.Name), "ID", "Name", payment.CatogoryId);
+            ViewBag.CatogoryId = new SelectList(_dbContext.Categories.OrderBy(c => c.Name), "ID", "Name", payment.CatogoryId);
             return View(payment);
         }
 
@@ -237,8 +245,8 @@ namespace MyXpens.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(payment).State = EntityState.Modified;
-                db.SaveChanges();
+                _dbContext.Entry(payment).State = EntityState.Modified;
+                _dbContext.SaveChanges();
 
                 TempData[backupMarker] = true;
 
@@ -246,7 +254,7 @@ namespace MyXpens.Controllers
                 return RedirectToAction("Index", new {id = 2});
             }
 
-            ViewBag.CatogoryId = new SelectList(db.Categories.OrderBy(c => c.Name), "ID", "Name", payment.CatogoryId);
+            ViewBag.CatogoryId = new SelectList(_dbContext.Categories.OrderBy(c => c.Name), "ID", "Name", payment.CatogoryId);
             return View(payment);
         }
 
@@ -258,7 +266,7 @@ namespace MyXpens.Controllers
                 return BadRequest();
             }
 
-            Payment payment = db.Payments.Find(id);
+            Payment payment = _dbContext.Payments.Find(id);
             if (payment == null)
             {
                 return NotFound();
@@ -272,9 +280,9 @@ namespace MyXpens.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Payment payment = db.Payments.Find(id);
-            db.Payments.Remove(payment);
-            db.SaveChanges();
+            Payment payment = _dbContext.Payments.Find(id);
+            _dbContext.Payments.Remove(payment);
+            _dbContext.SaveChanges();
             //return RedirectToAction("Index/2");
             return RedirectToAction("Index", new {id = 2});
         }
@@ -283,7 +291,7 @@ namespace MyXpens.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                _dbContext.Dispose();
             }
 
             base.Dispose(disposing);

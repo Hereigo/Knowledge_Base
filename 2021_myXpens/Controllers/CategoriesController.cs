@@ -2,18 +2,27 @@
 using MyXpens.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace MyXpens.Controllers
 {
     [Authorize]
     public class CategoriesController : Controller
     {
-        private readonly PaymentsContext db = new PaymentsContext();
+        private static DbContextOptions<PaymentsContext> _options;
+        
+        private readonly PaymentsContext _dbContext;
 
+        public CategoriesController(DbContextOptions<PaymentsContext> options, PaymentsContext dbContext)
+        {
+            _options = options;
+            _dbContext = dbContext;
+        }
+        
         // GET: Categories
         public ActionResult Index()
         {
-            return View(db.Categories.ToList());
+            return View(_dbContext.Categories.ToList());
         }
 
         // GET: Categories/Details/5
@@ -23,7 +32,7 @@ namespace MyXpens.Controllers
             {
                 return BadRequest();
             }
-            Category category = db.Categories.Find(id);
+            Category category = _dbContext.Categories.Find(id);
             if (category == null)
             {
                 return NotFound();
@@ -46,8 +55,8 @@ namespace MyXpens.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Categories.Add(category);
-                db.SaveChanges();
+                _dbContext.Categories.Add(category);
+                _dbContext.SaveChanges();
                 return RedirectToAction("Index");
             }
 
@@ -61,7 +70,7 @@ namespace MyXpens.Controllers
             {
                 return BadRequest();
             }
-            Category category = db.Categories.Find(id);
+            Category category = _dbContext.Categories.Find(id);
             if (category == null)
             {
                 return NotFound();
@@ -80,9 +89,9 @@ namespace MyXpens.Controllers
             {
                 // .Net 4.8 :
                 // db.Entry(category).State = EntityState.Modified;
-                var existedCategory = db.Categories.Single(c => c.ID == category.ID);
-                db.Entry(existedCategory).CurrentValues.SetValues(category);
-                db.SaveChanges();
+                var existedCategory = _dbContext.Categories.Single(c => c.ID == category.ID);
+                _dbContext.Entry(existedCategory).CurrentValues.SetValues(category);
+                _dbContext.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View(category);
@@ -95,7 +104,7 @@ namespace MyXpens.Controllers
             {
                 return BadRequest();
             }
-            Category category = db.Categories.Find(id);
+            Category category = _dbContext.Categories.Find(id);
             if (category == null)
             {
                 return NotFound();
@@ -108,9 +117,9 @@ namespace MyXpens.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Category category = db.Categories.Find(id);
-            db.Categories.Remove(category);
-            db.SaveChanges();
+            Category category = _dbContext.Categories.Find(id);
+            _dbContext.Categories.Remove(category);
+            _dbContext.SaveChanges();
             return RedirectToAction("Index");
         }
 
@@ -118,7 +127,7 @@ namespace MyXpens.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                _dbContext.Dispose();
             }
             base.Dispose(disposing);
         }

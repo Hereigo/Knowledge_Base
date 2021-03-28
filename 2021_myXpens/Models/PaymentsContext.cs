@@ -11,7 +11,9 @@ namespace MyXpens.Models
         // For more information refer to the documentation:
         // http://msdn.microsoft.com/en-us/data/jj591621.aspx
 
-        public PaymentsContext() : base()
+        //public ApplicationDbContext
+        public PaymentsContext(DbContextOptions<PaymentsContext> options)
+        : base(options)
         {
             // Database.SetInitializer<PaymentsContext>(new CreateDatabaseIfNotExists<PaymentsContext>());
         }
