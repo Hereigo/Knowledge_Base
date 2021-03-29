@@ -24,31 +24,21 @@ namespace MyXpens.Controllers
             _dbContext = dbContextContext;
         }
         
-        // = new PaymentsContext(_options);
-
         // TODO:
         // USE THIS !!!
-
         // TEST LINQ DYMANIC (using System.Linq.Dynamic.Core) :
-
         // public ActionResult USE_THIS()
         // {
         //     IQueryable<Payment> query = db.Payments.Include(p => p.Category);
-        //
         //     // query = query.Where(p => p.CatogoryId == 1 || p.CatogoryId == 2 || p.CatogoryId == 3);
         //     // by Linq/Dynamic :
         //     int[] categories = {1};
-        //
         //     var selectedCategories = $"CatogoryId={categories[0]}";
-        //     
         //     for (var i = 0; i < categories.Length; i++)
         //         selectedCategories += $" || CatogoryId={categories[i]}";
-        //
         //     query = query.Where(selectedCategories);
-        //
         //     return null; // View(query.ToList());
         // }
-
 
         // GET: Payments
         public ActionResult Index(int id = 1)
@@ -61,7 +51,9 @@ namespace MyXpens.Controllers
 
                 DatabaseManager dbMgr = new DatabaseManager(_options);
 
-                ViewBag.BackUpResult = dbMgr.CreateBackUp();
+                // TODO:
+                // Temporary disabled!
+                // ViewBag.BackUpResult = dbMgr.CreateBackUp();
             }
 
             const int categoryBmo = 43;
