@@ -49,7 +49,7 @@ namespace MyXpens.Controllers
                 // TODO:
                 // Make me async !!!
 
-                DatabaseManager dbMgr = new DatabaseManager(_options);
+                // DatabaseManager dbMgr = new DatabaseManager(_options);
 
                 // TODO:
                 // Temporary disabled!
