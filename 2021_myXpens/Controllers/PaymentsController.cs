@@ -17,13 +17,13 @@ namespace MyXpens.Controllers
         private static DbContextOptions<PaymentsContext> _options;
         const string backupMarker = "shouldCreateBkp";
         private readonly PaymentsContext _dbContext;
-        
+
         public PaymentsController(DbContextOptions<PaymentsContext> options, PaymentsContext dbContextContext)
         {
             _options = options;
             _dbContext = dbContextContext;
         }
-        
+
         // TODO:
         // USE THIS !!!
         // TEST LINQ DYMANIC (using System.Linq.Dynamic.Core) :
@@ -127,7 +127,8 @@ namespace MyXpens.Controllers
         private StatistixView GetStatsRecord(KeyValuePair<int, string> category, DateTime yearAgo,
             DateTime startBeforeBefPrevM, DateTime startBeforePrevM, DateTime startPrevMonth, DateTime startThisMonth)
         {
-            int currMonthSum = _dbContext.Payments.Where(p => p.Category.ID == category.Key && p.PayDate > startThisMonth)
+            int currMonthSum = _dbContext.Payments
+                .Where(p => p.Category.ID == category.Key && p.PayDate > startThisMonth)
                 .Select(p => p.Amount).ToList().Sum();
             int prevMonthSum = _dbContext.Payments.Where(p =>
                     p.Category.ID == category.Key && p.PayDate > startPrevMonth && p.PayDate < startThisMonth)
@@ -173,26 +174,29 @@ namespace MyXpens.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create( // [Bind(Include = "ID,PayDate,Amount,Description,CatogoryId")]
-                                    Payment payment, string payFrom)
+            Payment payment, string payFrom)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                _dbContext.Payments.Add(payment);
-                _dbContext.SaveChanges();
-
-                // Create Source Decreasing payment according the previous one:
-
-                if (!string.IsNullOrEmpty(payFrom)
-                    && !string.Equals(payFrom, "NONE", StringComparison.OrdinalIgnoreCase))
+                return RedirectToAction("Index", "Home", new {errorMessage = "Invalid Model can't be save!"});
+            }
+            else
+            {
+                if (!payFrom.Equals("NONE", StringComparison.OrdinalIgnoreCase))
                 {
-                    int categoryIdToFind = _dbContext.Categories?.FirstOrDefault(c => c.Name == payFrom)?.ID ?? 0;
+                    var paymentSourceCatId = _dbContext.Categories?.FirstOrDefault(c => c.Name == payFrom)?.ID ?? 0;
 
-                    if (categoryIdToFind != default)
+                    if (paymentSourceCatId == 0 || paymentSourceCatId == payment.CatogoryId)
+                    {
+                        return RedirectToAction("Index", "Home", 
+                            new {errorMessage = $"Invalid payment Source Category : {payFrom} and can't be save!"});
+                    }
+                    else
                     {
                         _dbContext.Payments.Add(new Payment
                         {
                             Amount = payment.Amount * (-1),
-                            CatogoryId = categoryIdToFind,
+                            CatogoryId = paymentSourceCatId,
                             Description = payment.Description,
                             PayDate = payment.PayDate
                         });
@@ -200,12 +204,17 @@ namespace MyXpens.Controllers
                     }
                 }
 
+                _dbContext.Payments.Add(payment);
+                _dbContext.SaveChanges();
+
                 TempData[backupMarker] = true;
 
                 return RedirectToAction("Index", new {id = 2});
             }
 
-            ViewBag.CatogoryId = new SelectList(_dbContext.Categories.OrderBy(c => c.Name), "ID", "Name", payment.CatogoryId);
+            ViewBag.CatogoryId =
+                new SelectList(_dbContext.Categories.OrderBy(c => c.Name), "ID", "Name", payment.CatogoryId);
+
             return View(payment);
         }
 
@@ -223,7 +232,8 @@ namespace MyXpens.Controllers
                 return NotFound();
             }
 
-            ViewBag.CatogoryId = new SelectList(_dbContext.Categories.OrderBy(c => c.Name), "ID", "Name", payment.CatogoryId);
+            ViewBag.CatogoryId =
+                new SelectList(_dbContext.Categories.OrderBy(c => c.Name), "ID", "Name", payment.CatogoryId);
             return View(payment);
         }
 
@@ -246,7 +256,8 @@ namespace MyXpens.Controllers
                 return RedirectToAction("Index", new {id = 2});
             }
 
-            ViewBag.CatogoryId = new SelectList(_dbContext.Categories.OrderBy(c => c.Name), "ID", "Name", payment.CatogoryId);
+            ViewBag.CatogoryId =
+                new SelectList(_dbContext.Categories.OrderBy(c => c.Name), "ID", "Name", payment.CatogoryId);
             return View(payment);
         }
 

@@ -18,8 +18,9 @@ namespace MyXpens.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(string errorMessage)
         {
+            ViewBag.ErrorMessage = errorMessage;
             return View();
         }
 

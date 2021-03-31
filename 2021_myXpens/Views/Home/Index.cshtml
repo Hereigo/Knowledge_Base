@@ -3,6 +3,10 @@
     ViewBag.Title = "Index";
 }
 
+<div class="@(string.IsNullOrEmpty(ViewBag.ErrorMessage)?"invisible":"alert alert-danger")" role="alert">
+  @ViewBag.ErrorMessage
+</div>
+
 <div style="text-align:center">
 
     <h4>Thanks a lot to SOMEE.COM for the very nice Hosting!</h4>
