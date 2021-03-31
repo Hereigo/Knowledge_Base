@@ -56,7 +56,7 @@
         @ViewBag.mono
     </div>
     <div class="col text-right">
-        @Html.ActionLink(" ADD", "Create", null, new { @class = "fas fa-plus-square font-weight-bold" })
+        @Html.ActionLink(" ", "Create", "Payments", null, new { @class = "fas fa-plus-square font-weight-bold" })
     </div>
 </div>
 
@@ -81,7 +81,7 @@
             @Html.DisplayFor(modelItem => item.Description)
         </div>
         <div class="col-2 text-right">
-            @Html.ActionLink(" Edit", "Edit", new { id = item.ID }, new { @class = "fas fa-edit font-weight-bold" })
+            @Html.ActionLink(" ", "Edit", new { id = item.ID }, new { @class = "fas fa-edit font-weight-bold" })
         </div>
 
     </div>

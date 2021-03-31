@@ -14,7 +14,8 @@
       "wwwroot/js/site.js",
       "wwwroot/lib/jquery/dist/jquery.min.js",
       "wwwroot/lib/jquery-validation/dist/jquery.validate.js",
-      "wwwroot/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"
+      "wwwroot/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js",
+      "wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.min.js"
     ],
     "minify": {
       "enabled": true,
