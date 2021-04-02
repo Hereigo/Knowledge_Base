@@ -6,86 +6,78 @@
 
 <p>@ViewBag.BackUpResult</p>
 
-<table class="table table-striped">
-
-    <tr>
-        <td class="col-2">...</td>
-        <td class="col-2">@ViewBag.CurrMonth</td>
-        <td class="col-2">@(--ViewBag.CurrMonth)</td>
-        <td class="col-2">@(--ViewBag.CurrMonth)</td>
-        <td class="col-2">@(--ViewBag.CurrMonth)</td>
-        <td class="col-2">30</td>
-    </tr>
-
-    @foreach (var item in Model.StatistixVm)
-    {
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
         <tr>
-            <td class="col-2" onclick="selectCateg('@item.CategoryName')">
-                @Html.DisplayFor(modelItem => item.CategoryName)
-            </td>
-            <td class="col-2">
-                @Html.DisplayFor(modelItem => item.CurrentMonth)
-            </td>
-            <td class="col-2">
-                @Html.DisplayFor(modelItem => item.PreviousMonth)
-            </td>
-            <td class="col-2">
-                @Html.DisplayFor(modelItem => item.B4PrevMonSummary)
-            </td>
-            <td class="col-2">
-                @Html.DisplayFor(modelItem => item.B4B4PrevMonSummary)
-            </td>
-            <td class="col-2">
-                @Html.DisplayFor(modelItem => item.YearAverage)
-            </td>
+            <th>...</th>
+            <th>@ViewBag.CurrMonth</th>
+            <th>@(--ViewBag.CurrMonth)</th>
+            <th>@(--ViewBag.CurrMonth)</th>
+            <th>@(--ViewBag.CurrMonth)</th>
+            <th>30</th>
         </tr>
-    }
-</table>
-
-<div class="row">
-    <div class="col">
-        @ViewBag.alfa
-    </div>
-    <div class="col">
-        @ViewBag.prima
-    </div>
-    <div class="col">
-        @ViewBag.rest
-    </div>
-    <div class="col">
-        @ViewBag.mono
-    </div>
-    <div class="col text-right">
-        @Html.ActionLink(" ", "Create", "Payments", null, new { @class = "fas fa-plus-square font-weight-bold" })
-    </div>
+        </thead>
+        <tbody>
+        @foreach (var item in Model.StatistixVm)
+        {
+            <tr>
+                <td class="col-2" onclick="selectCateg('@item.CategoryName')">
+                    @Html.DisplayFor(modelItem => item.CategoryName)
+                </td>
+                <td class="col-2">
+                    @Html.DisplayFor(modelItem => item.CurrentMonth)
+                </td>
+                <td class="col-2">
+                    @Html.DisplayFor(modelItem => item.PreviousMonth)
+                </td>
+                <td class="col-2">
+                    @Html.DisplayFor(modelItem => item.B4PrevMonSummary)
+                </td>
+                <td class="col-2">
+                    @Html.DisplayFor(modelItem => item.B4B4PrevMonSummary)
+                </td>
+                <td class="col-2">
+                    @Html.DisplayFor(modelItem => item.YearAverage)
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
 </div>
 
-<hr />
-
-@foreach (var item in Model.PaymentsVm)
-{
-    var category = item.Category.Name;
-
-    <div class="row table rawMain @category">
-
-        <div class="col-2">
-            @Html.DisplayFor(modelItem => item.PayDate)
-        </div>
-        <div class="col-2">
-            @Html.DisplayFor(modelItem => item.Category.Name)
-        </div>
-        <div class="col-3">
-            @Html.DisplayFor(modelItem => item.Amount)
-        </div>
-        <div class="col-3">
-            @Html.DisplayFor(modelItem => item.Description)
-        </div>
-        <div class="col-2 text-right">
-            @Html.ActionLink(" ", "Edit", new { id = item.ID }, new { @class = "fas fa-edit font-weight-bold" })
-        </div>
-
-    </div>
-}
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+        <tr class="secondHeader">
+            <th>@ViewBag.alfa</th><th>@ViewBag.prima</th><th>@ViewBag.rest</th><th>@ViewBag.mono</th><th>@Html.ActionLink(" ", "Create", "Payments", null, new {@class = "fas fa-plus-square font-weight-bold"})</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var item in Model.PaymentsVm)
+        {
+            var category = item.Category.Name;
+            <tr class="@category">
+                <td>
+                    @Html.DisplayFor(modelItem => item.PayDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Category.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Amount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.ActionLink(" ", "Edit", new {id = item.ID}, new {@class = "fas fa-edit font-weight-bold"})
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>
 
 <script>
     let selectCateg = function (categ) {
