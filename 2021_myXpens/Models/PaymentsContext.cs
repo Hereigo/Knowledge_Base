@@ -10,17 +10,14 @@ namespace MyXpens.Models
         // automatically whenever you change your model schema, please use data migrations.
         // For more information refer to the documentation:
         // http://msdn.microsoft.com/en-us/data/jj591621.aspx
-
-        //public ApplicationDbContext
         public PaymentsContext(DbContextOptions<PaymentsContext> options)
-        : base(options)
+            : base(options)
         {
             // Database.SetInitializer<PaymentsContext>(new CreateDatabaseIfNotExists<PaymentsContext>());
         }
 
         public DbSet<Category> Categories { get; set; }
-
         public DbSet<Payment> Payments { get; set; }
-
+        public DbSet<PaysSummary> PaysSummaries { get; set; }
     }
 }

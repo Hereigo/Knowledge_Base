@@ -5,6 +5,9 @@ for details on configuring this project to bundle and minify static web assets. 
   font-family: "Comic Sans MS", "Comic Sans";
 }
 
+.container{
+  margin-top: -1em;
+}
 
 a.navbar-brand {
   white-space: normal;
