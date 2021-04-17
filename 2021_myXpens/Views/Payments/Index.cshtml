@@ -4,6 +4,15 @@
     ViewBag.Title = "Index";
 }
 
+<style>
+    .rowHidden{
+        display: none;
+    }
+    .rowShown{
+        display: table-row;
+    }
+</style>
+
 <p>@ViewBag.BackUpResult</p>
 
 <div class="table-responsive">
@@ -57,7 +66,7 @@
         @foreach (var item in Model.PaymentsVm)
         {
             var category = item.Category.Name;
-            <tr class="@category">
+            <tr class="rawMain @category">
                 <td>
                     @Html.DisplayFor(modelItem => item.PayDate)
                 </td>
@@ -80,17 +89,18 @@
 </div>
 
 <script>
-    let selectCateg = function (categ) {
-        let categRowShow = document.querySelectorAll('.' + categ);
-        let categRowAll = document.querySelectorAll('.rawMain:not(.' + categ + ')');
-
-        categRowAll.forEach(hide);
-        categRowShow.forEach(show);
-    }
-    let hide = function (row) {
-        row.classList.add('hidden');
-    }
-    let show = function (row) {
-        row.classList.remove('hidden');
-    }
+let selectCateg = function (categ) {
+    let categRowShow = document.querySelectorAll('.' + categ);
+    let categRowAll = document.querySelectorAll('.rawMain:not(.' + categ + ')');
+    categRowAll.forEach(hide);
+    categRowShow.forEach(show);
+}
+let hide = function (row) {
+    row.classList.remove('rowShown');
+    row.classList.add('rowHidden');    
+}
+let show = function (row) {
+        row.classList.remove('rowHidden');
+        row.classList.add('rowShown');
+}
 </script>

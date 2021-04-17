@@ -21,6 +21,7 @@ namespace MyXpens.Controllers
         public IActionResult Index(string errorMessage)
         {
             ViewBag.ErrorMessage = errorMessage;
+            ViewBag.ServerTime = DateTime.Now.ToString("HH:mm:ss");
             return View();
         }
 

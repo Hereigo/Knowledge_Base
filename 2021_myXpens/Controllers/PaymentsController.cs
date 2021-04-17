@@ -163,7 +163,7 @@ namespace MyXpens.Controllers
 
             ViewBag.Today = DateTime.Now; //.ToString("MM/dd/yyyy");
 
-            Payment newPay = new Payment {PayDate = DateTime.Today};
+            Payment newPay = new Payment {PayDate = DateTime.Now.AddHours(10)}; // fix by UTC + TimeZone!
 
             return View(newPay);
         }
@@ -173,8 +173,7 @@ namespace MyXpens.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create( // [Bind(Include = "ID,PayDate,Amount,Description,CatogoryId")]
-            Payment payment, string payFrom)
+        public ActionResult Create(Payment payment, string payFrom)
         {
             if (!ModelState.IsValid)
             {
