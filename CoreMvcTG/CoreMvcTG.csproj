@@ -6,6 +6,13 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <Compile Remove="Identity\**" />
+      <Content Remove="Identity\**" />
+      <EmbeddedResource Remove="Identity\**" />
+      <None Remove="Identity\**" />
+    </ItemGroup>
+
+    <ItemGroup>
         <None Update="app.db" CopyToOutputDirectory="PreserveNewest" ExcludeFromSingleFile="true" />
     </ItemGroup>
 
@@ -22,7 +29,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Identity" />
+      <ProjectReference Include="..\GIT_IGNORE\!!!__GIT_IGNORE__!!!.csproj" />
     </ItemGroup>
 
 </Project>

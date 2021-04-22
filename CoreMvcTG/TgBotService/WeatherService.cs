@@ -6,7 +6,7 @@ namespace CoreMvcTG.TgBot
 {
     public class WeatherService
     {
-        private static readonly string owmApiKey = GIT_IGNORE.owmApiKey;
+        private static readonly string owmApiKey = GIT_IGNORE.PASSWORDS.owmApiKey;
 
         private string FormatResult(string result)
         {

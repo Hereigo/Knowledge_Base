@@ -12,10 +12,8 @@ namespace CoreMvcTG.TgBot
     {
         private static ITelegramBotClient _tClient { get; set; }
 
-        // private const long adminUid = 719542068;
-        // private const string token = "1328828756:AAFcrvtfg0uazEKIpMw3TPJUWfKLWMQCCvU";
-        private readonly long adminUid = GIT_IGNORE.adminUid;
-        private readonly string token = GIT_IGNORE.token;
+        private readonly long adminUid = GIT_IGNORE.PASSWORDS.adminUid;
+        private readonly string token = GIT_IGNORE.PASSWORDS.token;
         bool msgHandlerLocked = false;
         private readonly WeatherService weather = new WeatherService();
         private readonly CurrencyService currency = new CurrencyService();

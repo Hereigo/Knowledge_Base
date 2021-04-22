@@ -13,7 +13,7 @@ namespace Cino_Payments
 
         public FtpWorker(string password)
         {
-            credentials = new NetworkCredential(GIT_IGNORE.ftpUser, password);
+            credentials = new NetworkCredential(GIT_IGNORE.PASSWORDS.ftpUser, password);
         }
 
         internal string[] GetFilesListByExt(Uri remoteUri, string fileExtension)
@@ -21,7 +21,7 @@ namespace Cino_Payments
             List<string> filesList = new List<string>();
 
             // The serverUri parameter should start with the ftp:// scheme.
-            if (remoteUri.Scheme != Uri.UriSchemeFtp)
+            if(remoteUri.Scheme != Uri.UriSchemeFtp)
             {
                 Console.WriteLine($"Not valid FTP url : {remoteUri}");
             }
@@ -43,11 +43,11 @@ namespace Cino_Payments
                     response.Close();
 
                     // select zip-file name from the latest file record :
-                    foreach (var line in names.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries).ToArray())
+                    foreach(var line in names.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries).ToArray())
                     {
-                        foreach (var item in line.Split(' '))
+                        foreach(var item in line.Split(' '))
                         {
-                            if (item.EndsWith(fileExtension, StringComparison.OrdinalIgnoreCase))
+                            if(item.EndsWith(fileExtension, StringComparison.OrdinalIgnoreCase))
                             {
                                 filesList.Add(item);
                             }
@@ -56,7 +56,7 @@ namespace Cino_Payments
 
                     Console.WriteLine($"\r\nDirectory List Complete, status {response.StatusDescription}");
                 }
-                catch (WebException e)
+                catch(WebException e)
                 {
                     Console.WriteLine(e.ToString());
                 }
@@ -66,7 +66,7 @@ namespace Cino_Payments
 
         internal void DeleteFilesFromFtp(string[] filesList, Uri remoteUri)
         {
-            foreach (var file in filesList)
+            foreach(var file in filesList)
             {
                 try
                 {
@@ -77,7 +77,7 @@ namespace Cino_Payments
                     Console.WriteLine($"{file} - Delete status: {response.StatusDescription}");
                     response.Close();
                 }
-                catch (WebException e)
+                catch(WebException e)
                 {
                     Console.WriteLine(e.ToString());
                 }
@@ -86,7 +86,7 @@ namespace Cino_Payments
 
         internal void DownloadFileFromFtp(string fileName, Uri remoteUri, bool shouldToOpen)
         {
-            if (string.IsNullOrEmpty(fileName))
+            if(string.IsNullOrEmpty(fileName))
             {
                 Console.WriteLine("No files to download!");
                 return;
@@ -105,12 +105,12 @@ namespace Cino_Payments
 
                 Console.WriteLine($"File {fileName} Successfully Downloaded.");
 
-                if (shouldToOpen)
+                if(shouldToOpen)
                 {
                     Process.Start(fileName);
                 }
             }
-            catch (WebException e)
+            catch(WebException e)
             {
                 Console.WriteLine(e.ToString());
             }
