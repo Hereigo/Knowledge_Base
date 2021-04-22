@@ -366,3 +366,5 @@ MyExpenses_autobackup_*.BAK
 MyXpens.dat.old
 MyXpens.dll.old
 Web.Release.config
+2021_myXpens/wwwroot/css/site.min.css
+2021_myXpens/wwwroot/js/site.min.js

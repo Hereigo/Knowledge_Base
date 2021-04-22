@@ -44,7 +44,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="HashSet_use.cs" />
-    <Compile Include="StringOverride.cs" />
     <Compile Include="Use_Base.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
