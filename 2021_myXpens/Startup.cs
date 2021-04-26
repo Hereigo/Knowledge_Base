@@ -6,6 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using MyXpens.Data;
+using MyXpens.Middleware;
 using MyXpens.Models;
 
 namespace MyXpens
@@ -62,6 +63,9 @@ namespace MyXpens
 
             app.UseAuthentication();
             app.UseAuthorization();
+
+            // Custom Middleware to extend Authorization!
+            app.UseMiddleware<AuthorizationFilter>();
 
             app.UseEndpoints(endpoints =>
             {

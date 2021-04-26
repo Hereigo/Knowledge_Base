@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
 using MyXpens.Models;
 
 namespace MyXpens.Controllers
@@ -15,15 +14,12 @@ namespace MyXpens.Controllers
     public class PaymentsController : Controller
     {
         private const string _backupMarker = "shouldCreateBkp";
-        private readonly AppStaticValues _appStaticValues;
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly PaymentsContext _dbContext;
         private static DbContextOptions<PaymentsContext> _options;
 
-        public PaymentsController(
-            DbContextOptions<PaymentsContext> opt, PaymentsContext ctx, IOptions<AppStaticValues> stat, IHttpContextAccessor acc)
+        public PaymentsController(DbContextOptions<PaymentsContext> opt, PaymentsContext ctx, IHttpContextAccessor acc)
         {
-            _appStaticValues = stat.Value;
             _httpContextAccessor = acc;
             _options = opt;
             _dbContext = ctx;
@@ -49,9 +45,6 @@ namespace MyXpens.Controllers
         public ActionResult Index(int id = 1)
         {
             var currentUserEmail = _httpContextAccessor.HttpContext.User.Identity.Name;
-
-            if(!currentUserEmail.Equals(_appStaticValues.DefaultEmail, StringComparison.OrdinalIgnoreCase))
-                return RedirectToAction("Index", "Home");
 
             // When Redirect from Create-Action :
             if(bool.TryParse(TempData[_backupMarker]?.ToString(), out bool isNewCreated) && isNewCreated)
