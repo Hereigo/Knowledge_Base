@@ -1,50 +1,53 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8"/>
+    <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
-    <link rel="stylesheet" href="~/css/site.min.css"/>
+    <link rel="stylesheet" href="~/css/site.min.css" />
 </head>
 <body>
-<header>
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-        <div class="container">
-            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">MyXpens</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                <partial name="_LoginPartial"/>
-                <ul class="navbar-nav flex-grow-1">
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                    </li>
-                </ul>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">MyXpens</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                    <partial name="_LoginPartial" />
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Payments" asp-action="GetBkp">Info</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-        </div>
-    </nav>
-</header>
-<div class="container">
+        </nav>
+    </header>
+    <div class="container">
 
-    @RenderBody()
+        @RenderBody()
 
-    <hr/>
-    <footer class="text-center">
-        <p>
-            <a href="https://somee.com/DOKA/DOU/DOUserDefault.aspx">&copy;</a>
-            @DateTime.Now.Year - @Html.ActionLink("Somee.com", "Index", "Payments", new {id = 1}, null) Hosting Web Application
-        </p>
-    </footer>
-</div>
+        <hr />
+        <footer class="text-center">
+            <p>
+                <a href="https://somee.com/DOKA/DOU/DOUserDefault.aspx">&copy;</a>
+                @DateTime.Now.Year - @Html.ActionLink("Somee.com", "Index", "Payments", new { id = 1 }, null) Hosting Web Application
+            </p>
+        </footer>
+    </div>
 
-<script src="/js/site.min.js"></script>
+    <script src="/js/site.min.js"></script>
 
-@RenderSection("Scripts", required: false)
+    @RenderSection("Scripts", required: false)
 
 </body>
 </html>

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -24,6 +25,18 @@ namespace MyXpens.Controllers
             _options = opt;
             _dbContext = ctx;
         }
+
+        public ActionResult GetXpensBkp()
+        {
+            var bkp = _dbContext.Payments
+                .Include(p => p.Category)
+                .OrderByDescending(p => p.PayDate).ToArray();
+
+            var json = JsonSerializer.Serialize(bkp);
+
+            return Content(json, "application/json");
+        }
+
 
         // TODO:
         // USE THIS !!!
