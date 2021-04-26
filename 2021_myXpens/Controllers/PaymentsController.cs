@@ -1,27 +1,32 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
-using MyXpens.DataManager;
-using MyXpens.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
+using MyXpens.Models;
 
 namespace MyXpens.Controllers
 {
     [Authorize]
     public class PaymentsController : Controller
     {
-        private static DbContextOptions<PaymentsContext> _options;
-        const string backupMarker = "shouldCreateBkp";
+        private const string _backupMarker = "shouldCreateBkp";
+        private readonly AppStaticValues _appStaticValues;
+        private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly PaymentsContext _dbContext;
+        private static DbContextOptions<PaymentsContext> _options;
 
-        public PaymentsController(DbContextOptions<PaymentsContext> options, PaymentsContext dbContextContext)
+        public PaymentsController(
+            DbContextOptions<PaymentsContext> opt, PaymentsContext ctx, IOptions<AppStaticValues> stat, IHttpContextAccessor acc)
         {
-            _options = options;
-            _dbContext = dbContextContext;
+            _appStaticValues = stat.Value;
+            _httpContextAccessor = acc;
+            _options = opt;
+            _dbContext = ctx;
         }
 
         // TODO:
@@ -43,8 +48,13 @@ namespace MyXpens.Controllers
         // GET: Payments
         public ActionResult Index(int id = 1)
         {
+            var currentUserEmail = _httpContextAccessor.HttpContext.User.Identity.Name;
+
+            if(!currentUserEmail.Equals(_appStaticValues.DefaultEmail, StringComparison.OrdinalIgnoreCase))
+                return RedirectToAction("Index", "Home");
+
             // When Redirect from Create-Action :
-            if (bool.TryParse(TempData[backupMarker]?.ToString(), out bool isNewCreated) && isNewCreated)
+            if(bool.TryParse(TempData[_backupMarker]?.ToString(), out bool isNewCreated) && isNewCreated)
             {
                 // TODO:
                 // Make me async !!!
@@ -71,9 +81,9 @@ namespace MyXpens.Controllers
             ViewBag.alfa = payments.Where(p => p.CatogoryId == 2).Sum(p => p.Amount);
             ViewBag.prima = payments.Where(p => p.CatogoryId == 3).Sum(p => p.Amount);
 
-            if (payments.Any(p => p.CatogoryId == categoryBmo))
+            if(payments.Any(p => p.CatogoryId == categoryBmo))
             {
-                ViewBag.mono = (int) payments.Where(p => p.CatogoryId == categoryBmo).Sum(p => p.Amount);
+                ViewBag.mono = (int)payments.Where(p => p.CatogoryId == categoryBmo).Sum(p => p.Amount);
             }
 
             int csh = payments.Where(p => p.CatogoryId == 1).Sum(p => p.Amount);
@@ -115,7 +125,7 @@ namespace MyXpens.Controllers
 
             var stats = new List<StatistixView>();
 
-            foreach (KeyValuePair<int, string> categItem in categories)
+            foreach(KeyValuePair<int, string> categItem in categories)
             {
                 stats.Add(GetStatsRecord(categItem, yearAgo, startBeforeBefPrevM, startBeforePrevM, startPrevMonth,
                     startThisMonth));
@@ -163,7 +173,7 @@ namespace MyXpens.Controllers
 
             ViewBag.Today = DateTime.Now; //.ToString("MM/dd/yyyy");
 
-            Payment newPay = new Payment {PayDate = DateTime.Now.AddHours(10)}; // fix by UTC + TimeZone!
+            Payment newPay = new Payment { PayDate = DateTime.Now.AddHours(10) }; // fix by UTC + TimeZone!
 
             return View(newPay);
         }
@@ -175,20 +185,20 @@ namespace MyXpens.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(Payment payment, string payFrom)
         {
-            if (!ModelState.IsValid)
+            if(!ModelState.IsValid)
             {
-                return RedirectToAction("Index", "Home", new {errorMessage = "Invalid Model can't be save!"});
+                return RedirectToAction("Index", "Home", new { errorMessage = "Invalid Model can't be save!" });
             }
             else
             {
-                if (!payFrom.Equals("NONE", StringComparison.OrdinalIgnoreCase))
+                if(!payFrom.Equals("NONE", StringComparison.OrdinalIgnoreCase))
                 {
                     var paymentSourceCatId = _dbContext.Categories?.FirstOrDefault(c => c.Name == payFrom)?.ID ?? 0;
 
-                    if (paymentSourceCatId == 0 || paymentSourceCatId == payment.CatogoryId)
+                    if(paymentSourceCatId == 0 || paymentSourceCatId == payment.CatogoryId)
                     {
-                        return RedirectToAction("Index", "Home", 
-                            new {errorMessage = $"Invalid payment Source Category : {payFrom} and can't be save!"});
+                        return RedirectToAction("Index", "Home",
+                            new { errorMessage = $"Invalid payment Source Category : {payFrom} and can't be save!" });
                     }
                     else
                     {
@@ -206,9 +216,9 @@ namespace MyXpens.Controllers
                 _dbContext.Payments.Add(payment);
                 _dbContext.SaveChanges();
 
-                TempData[backupMarker] = true;
+                TempData[_backupMarker] = true;
 
-                return RedirectToAction("Index", new {id = 2});
+                return RedirectToAction("Index", new { id = 2 });
             }
 
             ViewBag.CatogoryId =
@@ -220,13 +230,13 @@ namespace MyXpens.Controllers
         // GET: Payments/Edit/5
         public ActionResult Edit(int? id)
         {
-            if (id == null)
+            if(id == null)
             {
                 return BadRequest();
             }
 
             Payment payment = _dbContext.Payments.Find(id);
-            if (payment == null)
+            if(payment == null)
             {
                 return NotFound();
             }
@@ -244,15 +254,15 @@ namespace MyXpens.Controllers
         public ActionResult Edit( // [Bind(Include = "ID,PayDate,Amount,Description,CatogoryId")]
             Payment payment)
         {
-            if (ModelState.IsValid)
+            if(ModelState.IsValid)
             {
                 _dbContext.Entry(payment).State = EntityState.Modified;
                 _dbContext.SaveChanges();
 
-                TempData[backupMarker] = true;
+                TempData[_backupMarker] = true;
 
                 // return RedirectToAction("Index/2");
-                return RedirectToAction("Index", new {id = 2});
+                return RedirectToAction("Index", new { id = 2 });
             }
 
             ViewBag.CatogoryId =
@@ -263,13 +273,13 @@ namespace MyXpens.Controllers
         // GET: Payments/Delete/5
         public ActionResult Delete(int? id)
         {
-            if (id == null)
+            if(id == null)
             {
                 return BadRequest();
             }
 
             Payment payment = _dbContext.Payments.Find(id);
-            if (payment == null)
+            if(payment == null)
             {
                 return NotFound();
             }
@@ -286,12 +296,12 @@ namespace MyXpens.Controllers
             _dbContext.Payments.Remove(payment);
             _dbContext.SaveChanges();
             //return RedirectToAction("Index/2");
-            return RedirectToAction("Index", new {id = 2});
+            return RedirectToAction("Index", new { id = 2 });
         }
 
         protected override void Dispose(bool disposing)
         {
-            if (disposing)
+            if(disposing)
             {
                 _dbContext.Dispose();
             }
