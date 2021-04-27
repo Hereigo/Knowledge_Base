@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using System.IO.Compression;
 using System.Linq;
+using System.Text;
 using System.Text.Json;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -26,7 +29,7 @@ namespace MyXpens.Controllers
             _dbContext = ctx;
         }
 
-        public ActionResult GetXpensBkp()
+        public ActionResult GetBkpJson()
         {
             var bkp = _dbContext.Payments
                 .Include(p => p.Category)
@@ -34,7 +37,20 @@ namespace MyXpens.Controllers
 
             var json = JsonSerializer.Serialize(bkp);
 
-            return Content(json, "application/json");
+            // Simple json response:
+            // return Content(json, "application/json");
+
+            // Zipped json response:
+            return File(ZipString(json), "application/octet-stream", $"{DateTime.Now:yy.MM.dd}_xPens_BKP.zip");
+
+            // If needed to response a raw json file:
+            var stream = new MemoryStream();
+            var sw = new StreamWriter(stream);
+            sw.Write(json);
+            sw.Flush();
+            stream.Position = 0;
+
+            return File(stream, "application/octet-stream");
         }
 
 
@@ -102,6 +118,27 @@ namespace MyXpens.Controllers
             result.StatistixVm = GetStats();
 
             return View(result);
+        }
+
+        private static byte[] ZipString(string str)
+        {
+            var bytes = Encoding.UTF8.GetBytes(str);
+
+            using(var msi = new MemoryStream(bytes))
+            using(var mso = new MemoryStream())
+            {
+                using(var gs = new GZipStream(mso, CompressionMode.Compress))
+                {
+                    byte[] bytesBuffer = new byte[4096];
+                    int cnt;
+                    while((cnt = msi.Read(bytesBuffer, 0, bytesBuffer.Length)) != 0)
+                    {
+                        gs.Write(bytesBuffer, 0, cnt);
+                    }
+                }
+
+                return mso.ToArray();
+            }
         }
 
         private List<StatistixView> GetStats()
