@@ -10,7 +10,7 @@ namespace MB_API
         {
             string uri = "https://api.monobank.ua/personal/client-info";
 
-            client.DefaultRequestHeaders.Add("X-Token", GIT_IGNORE.XToken);
+            client.DefaultRequestHeaders.Add("X-Token", GIT_IGNORE.PASSWORDS.XToken);
 
             string responseBody = await client.GetStringAsync(uri);
 

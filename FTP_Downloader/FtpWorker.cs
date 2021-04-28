@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net;
+using GIT_IGNORE;
 
 namespace FTP_Downloader
 {
@@ -13,7 +14,7 @@ namespace FTP_Downloader
 
         public FtpWorker(string password)
         {
-            credentials = new NetworkCredential(GIT_IGNORE.ftpUser, password);
+            credentials = new NetworkCredential(PASSWORDS.ftpUser, password);
         }
 
         internal string[] GetFilesListByExt(Uri remoteUri, string fileExtension)

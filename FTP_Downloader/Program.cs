@@ -1,35 +1,36 @@
 ﻿using System;
 using System.IO;
+using GIT_IGNORE;
 
 namespace FTP_Downloader
 {
     internal static class Program
     {
-        private static Uri uriArch = new Uri(GIT_IGNORE.ftpPath);
-        private static Uri uriDb = new Uri(GIT_IGNORE.ftpPathDb);
+        private static Uri uriArch = new Uri(PASSWORDS.ftpPath);
+        private static Uri uriDb = new Uri(PASSWORDS.ftpPathDb);
 
         private static void Main()
         {
             // Archiving previous :
 
-            if (File.Exists(GIT_IGNORE.zipOutputDB))
+            if (File.Exists(PASSWORDS.zipOutputDB))
             {
-                string oldFile = GIT_IGNORE.tempPathToStore + GIT_IGNORE.zipOutputDB;
+                string oldFile = PASSWORDS.tempPathToStore + PASSWORDS.zipOutputDB;
                 if (File.Exists(oldFile))
                 {
                     File.Delete(oldFile);
                 }
-                File.Move(GIT_IGNORE.zipOutputDB, oldFile);
+                File.Move(PASSWORDS.zipOutputDB, oldFile);
             }
 
-            if (File.Exists(GIT_IGNORE.zipOutput))
+            if (File.Exists(PASSWORDS.zipOutput))
             {
-                string oldFile = GIT_IGNORE.tempPathToStore + GIT_IGNORE.zipOutput;
+                string oldFile = PASSWORDS.tempPathToStore + PASSWORDS.zipOutput;
                 if (File.Exists(oldFile))
                 {
                     File.Delete(oldFile);
                 }
-                File.Move(GIT_IGNORE.zipOutput, oldFile);
+                File.Move(PASSWORDS.zipOutput, oldFile);
             }
 
             Console.WriteLine("\r\n - What would you like, my Lord? \r\n");
@@ -52,7 +53,7 @@ namespace FTP_Downloader
                 }
             }
 
-            zipper.CompressFile(ftpFilesBakLast, GIT_IGNORE.zipOutputDB);
+            zipper.CompressFile(ftpFilesBakLast, PASSWORDS.zipOutputDB);
 
             string[] archivesList = ftp.GetFilesListByExt(uriArch, ".zip");
 
@@ -62,9 +63,9 @@ namespace FTP_Downloader
 
                 ftp.DownloadFileFromFtp(latestArchiveName, uriArch, true);
 
-                zipper.CompressFile(latestArchiveName, GIT_IGNORE.zipOutput);
+                zipper.CompressFile(latestArchiveName, PASSWORDS.zipOutput);
 
-                FileInfo archive = new FileInfo(GIT_IGNORE.zipOutput);
+                FileInfo archive = new FileInfo(PASSWORDS.zipOutput);
 
                 if (archive.Exists)
                 {

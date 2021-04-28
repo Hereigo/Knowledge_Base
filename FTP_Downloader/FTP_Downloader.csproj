@@ -51,7 +51,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FtpWorker.cs" />
-    <Compile Include="GIT_IGNORE.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Zipper.cs" />
@@ -62,6 +61,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GIT_IGNORE\!!!__GIT_IGNORE__!!!.csproj">
+      <Project>{4f7f9e38-7294-4c29-82c7-11bc83fef450}</Project>
+      <Name>!!!__GIT_IGNORE__!!!</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
