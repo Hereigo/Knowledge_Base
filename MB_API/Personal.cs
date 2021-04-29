@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Net.Http;
 using System.Threading.Tasks;
+using GIT_IGNORE;
 
 namespace MB_API
 {
@@ -8,13 +9,11 @@ namespace MB_API
     {
         internal static async Task ClientInfo(HttpClient client)
         {
-            string uri = "https://api.monobank.ua/personal/client-info";
+            client.DefaultRequestHeaders.Add("X-Token", PASSWORDS.mbXToken);
 
-            client.DefaultRequestHeaders.Add("X-Token", GIT_IGNORE.PASSWORDS.XToken);
+            string responseBody = await client.GetStringAsync(PASSWORDS.mbUri);
 
-            string responseBody = await client.GetStringAsync(uri);
-
-            // File.WriteAllText("aaa.txt", responseBody);
+            // System.IO.File.WriteAllText("aaa.txt", responseBody);
 
             Console.WriteLine(responseBody);
         }

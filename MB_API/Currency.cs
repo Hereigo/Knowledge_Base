@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
+using GIT_IGNORE;
 using Newtonsoft.Json;
 
 namespace MB_API
@@ -10,10 +11,11 @@ namespace MB_API
     {
         internal static async Task ShowFirstCurrency(HttpClient client)
         {
-            HttpResponseMessage response = await client.GetAsync("https://api.monobank.ua/bank/currency");
+            HttpResponseMessage response = await client.GetAsync(PASSWORDS.mbApiPath);
             response.EnsureSuccessStatusCode();
             string responseBody = await response.Content.ReadAsStringAsync();
-            // Above three lines can be replaced with new helper method below
+
+            // Above three lines can be replaced with new helper method below.
             // string responseBody = await client.GetStringAsync(uri);
 
             List<CurrencyModel> currencyList = JsonConvert.DeserializeObject<List<CurrencyModel>>(responseBody);
