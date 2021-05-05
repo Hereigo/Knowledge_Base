@@ -1,23 +1,24 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
-    <PropertyGroup>
-        <TargetFramework>netcoreapp3.1</TargetFramework>
-        <UserSecretsId>aspnet-MyXpens-9C8CE320-C121-4CEA-B626-6775B97E2FCC</UserSecretsId>
-        <LangVersion>preview</LangVersion>
-    </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>netcoreapp3.1</TargetFramework>
+		<UserSecretsId>aspnet-MyXpens-9C8CE320-C121-4CEA-B626-6775B97E2FCC</UserSecretsId>
+		<LangVersion>preview</LangVersion>
+	</PropertyGroup>
 
-    <ItemGroup>
-        <None Update="app.db" CopyToOutputDirectory="PreserveNewest" ExcludeFromSingleFile="true" />
-    </ItemGroup>
+	<ItemGroup>
+		<None Update="app.db" CopyToOutputDirectory="Always" ExcludeFromSingleFile="true" />
+		<Content Include="node_modules\**" CopyToPublishDirectory="Always" />
+	</ItemGroup>
 
-    <ItemGroup>
-        <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.1.14" />
-        <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.14" />
-        <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.14" />
-        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.14" />
-        <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.14" />
-        <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.14" />
-        <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.14" />
-    </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.1.14" />
+		<PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.14" />
+		<PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.14" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.14" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.14" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.14" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.14" />
+	</ItemGroup>
 
 </Project>

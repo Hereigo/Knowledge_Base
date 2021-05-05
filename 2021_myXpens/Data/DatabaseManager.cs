@@ -10,9 +10,9 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using MyXpens.Models;
 
-namespace MyXpens.DataManager
+namespace MyXpens
 {
-    internal class DatabaseManager
+    public class DatabaseManager
     {
         private static DbContextOptions<PaymentsContext> _options;
         public DatabaseManager(DbContextOptions<PaymentsContext> options)

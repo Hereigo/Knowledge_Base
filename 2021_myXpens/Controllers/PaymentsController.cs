@@ -5,10 +5,13 @@ using System.IO.Compression;
 using System.Linq;
 using System.Text;
 using System.Text.Json;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
+using MyXpens.Data;
 using MyXpens.Models;
 
 namespace MyXpens.Controllers
@@ -16,13 +19,13 @@ namespace MyXpens.Controllers
     [Authorize]
     public class PaymentsController : Controller
     {
-        private readonly DbContextOptions<PaymentsContext> _options;
+        private readonly AppStaticValues _appValues;
         private readonly PaymentsContext _dbContext;
 
-        public PaymentsController(DbContextOptions<PaymentsContext> opt, PaymentsContext ctx)
+        public PaymentsController(IOptions<AppStaticValues> appValues, PaymentsContext context)
         {
-            _options = opt;
-            _dbContext = ctx;
+            _dbContext = context;
+            _appValues = appValues.Value;
         }
 
         public ActionResult GetBkpJson()
@@ -69,6 +72,8 @@ namespace MyXpens.Controllers
             int nonCsh = payments.Where(p => p.CatogoryId != 1)?.Sum(p => p.Amount) ?? 0;
 
             ViewBag.rest = csh - nonCsh;
+
+            ViewBag.test = GetTestData();
 
             result.PaymentsVm = payments
                 .Where(p => p.PayDate > minDate).OrderByDescending(p => p.PayDate).ToList();
@@ -161,7 +166,6 @@ namespace MyXpens.Controllers
                 _dbContext.Entry(payment).State = EntityState.Modified;
                 _dbContext.SaveChanges();
 
-                // return RedirectToAction("Index/2");
                 return RedirectToAction("Index", new { id = 2 });
             }
 
@@ -261,6 +265,14 @@ namespace MyXpens.Controllers
             }
 
             return stats;
+        }
+
+        private async Task<string> GetTestData()
+        {
+            var test = new MbClient(_appValues);
+            return await test
+                .GetTestData(
+                _dbContext.Categories.FirstOrDefault(c => c.ID.Equals(50)).Name + Converter.TestString);
         }
 
         private StatistixView GetStatsRecord(KeyValuePair<int, string> category, DateTime yearAgo,
