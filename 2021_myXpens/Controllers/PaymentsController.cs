@@ -54,6 +54,14 @@ namespace MyXpens.Controllers
 
         public ActionResult Index(int id = 1)
         {
+            // TODO:
+            // Multi Async Calls !!!
+
+            // TODO:
+            // MOVE this into manual running service!
+
+            var testData = -1m; //  GetTestData().Result;
+
             var result = new PaymentsWithStatVm();
 
             var minDate = DateTime.Now.AddDays((-1) * id);
@@ -62,23 +70,20 @@ namespace MyXpens.Controllers
 
             // TODO:
             // MAKE ME STORED IN DB !!!
-            // MAKE ME STORED IN DB !!!
-            // MAKE ME STORED IN DB !!!
-            ViewBag.alfa = payments.Where(p => p.CatogoryId == 2)?.Sum(p => p.Amount) ?? 0;
-            ViewBag.prima = payments.Where(p => p.CatogoryId == 3)?.Sum(p => p.Amount) ?? 0;
-            ViewBag.mono = payments.Where(p => p.CatogoryId == 43)?.Sum(p => p.Amount) ?? 0;
 
             int csh = payments.Where(p => p.CatogoryId == 1)?.Sum(p => p.Amount) ?? 0;
             int nonCsh = payments.Where(p => p.CatogoryId != 1)?.Sum(p => p.Amount) ?? 0;
-
-            ViewBag.rest = csh - nonCsh;
-
-            ViewBag.test = GetTestData();
-
-            result.PaymentsVm = payments
-                .Where(p => p.PayDate > minDate).OrderByDescending(p => p.PayDate).ToList();
+            var monoData = payments.Where(p => p.CatogoryId == 43)?.Sum(p => p.Amount) ?? 0;
+            ViewBag.alfa = payments.Where(p => p.CatogoryId == 2)?.Sum(p => p.Amount) ?? 0;
+            ViewBag.prima = payments.Where(p => p.CatogoryId == 3)?.Sum(p => p.Amount) ?? 0;
 
             result.StatistixVm = GetStats();
+
+            ViewBag.rest = csh - nonCsh;
+            ViewBag.mono = monoData;
+            ViewBag.test = testData < 0 ? "?" : Math.Round(monoData - testData).ToString();
+            result.PaymentsVm = payments
+                .Where(p => p.PayDate > minDate).OrderByDescending(p => p.PayDate).ToList();
 
             return View(result);
         }
@@ -267,7 +272,7 @@ namespace MyXpens.Controllers
             return stats;
         }
 
-        private async Task<string> GetTestData()
+        private async Task<decimal> GetTestData()
         {
             var test = new MbClient(_appValues);
             return await test

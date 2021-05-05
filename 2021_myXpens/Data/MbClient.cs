@@ -1,5 +1,4 @@
-﻿using System;
-using System.Net.Http;
+﻿using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
 
@@ -7,6 +6,11 @@ namespace MyXpens.Data
 {
     public class MbClient
     {
+        // TODO :
+        // HttpClient is intended to be instantiated once per application, rather than per-use.
+
+        private static readonly HttpClient client = new();
+
         private readonly AppStaticValues _appValues;
 
         public MbClient(AppStaticValues appValues)
@@ -14,39 +18,27 @@ namespace MyXpens.Data
             _appValues = appValues;
         }
 
-        // TODO :
-        // HttpClient is intended to be instantiated once per application, rather than per-use.
-
-        private static readonly HttpClient client = new HttpClient();
-        private AppStaticValues appValues;
-
         // TODO:
         // Call asynchronous network methods in a try/catch block to handle exceptions!
 
         // TODO:
-        // Create Logs GB !!!
+        // Create Logs DB !!!
+        // Create Logs DB !!!
+        // Create Logs DB !!!
 
-        public async Task<string> GetTestData(string test)
+        public async Task<decimal> GetTestData(string test)
         {
-            client.DefaultRequestHeaders.Add("X-Token", test);
-
+            var number = -1m;
+            client.DefaultRequestHeaders.Add(_appValues.HeaderParam, test);
             string responseBody = await client.GetStringAsync(_appValues.TestUri);
-
-            var json = JsonSerializer.Deserialize<Test>(responseBody);
-
-            Console.WriteLine(responseBody);
-
-
-
-
-            return "__TEST!!!!!!!!!";
+            using (JsonDocument jDoc = JsonDocument.Parse(responseBody))
+            {
+                JsonElement aaa = jDoc.RootElement.GetProperty(_appValues.PropertyA);
+                aaa[0].GetProperty(_appValues.PropertyB).TryGetDecimal(out decimal bbb);
+                aaa[0].GetProperty(_appValues.PropertyC).TryGetDecimal(out decimal ccc);
+                number = (bbb - ccc) / 100;
+            }
+            return number;
         }
-    }
-
-    internal class Test
-    {
-
-        // TODO :
-
     }
 }
