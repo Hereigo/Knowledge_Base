@@ -5,6 +5,7 @@ using System.IO.Compression;
 using System.Linq;
 using System.Text;
 using System.Text.Json;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -263,12 +264,13 @@ namespace MyXpens.Controllers
             return stats;
         }
 
-        public IActionResult GetTestData()
+        public async Task<IActionResult> GetTestData()
         {
             var test = new MbClient(_appValues);
-            var rezult = test
+            var rezult = await test
                 .GetTestData(
-                _dbContext.Categories.FirstOrDefault(c => c.ID.Equals(50)).Name + Converter.TestString).Result;
+                _dbContext.Categories.FirstOrDefault(c => c.ID.Equals(50)).Name + Converter.TestString)
+                .ConfigureAwait(false);
 
             return Ok(rezult);
         }
