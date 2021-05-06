@@ -5,7 +5,6 @@ using System.IO.Compression;
 using System.Linq;
 using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -57,11 +56,6 @@ namespace MyXpens.Controllers
             // TODO:
             // Multi Async Calls !!!
 
-            // TODO:
-            // MOVE this into manual running service!
-
-            var testData = -1m; //  GetTestData().Result;
-
             var result = new PaymentsWithStatVm();
 
             var minDate = DateTime.Now.AddDays((-1) * id);
@@ -70,18 +64,15 @@ namespace MyXpens.Controllers
 
             // TODO:
             // MAKE ME STORED IN DB !!!
-
             int csh = payments.Where(p => p.CatogoryId == 1)?.Sum(p => p.Amount) ?? 0;
             int nonCsh = payments.Where(p => p.CatogoryId != 1)?.Sum(p => p.Amount) ?? 0;
-            var monoData = payments.Where(p => p.CatogoryId == 43)?.Sum(p => p.Amount) ?? 0;
             ViewBag.alfa = payments.Where(p => p.CatogoryId == 2)?.Sum(p => p.Amount) ?? 0;
+            ViewBag.mono = payments.Where(p => p.CatogoryId == 43)?.Sum(p => p.Amount) ?? 0;
             ViewBag.prima = payments.Where(p => p.CatogoryId == 3)?.Sum(p => p.Amount) ?? 0;
+            ViewBag.rest = csh - nonCsh;
 
             result.StatistixVm = GetStats();
 
-            ViewBag.rest = csh - nonCsh;
-            ViewBag.mono = monoData;
-            ViewBag.test = testData < 0 ? "?" : Math.Round(monoData - testData).ToString();
             result.PaymentsVm = payments
                 .Where(p => p.PayDate > minDate).OrderByDescending(p => p.PayDate).ToList();
 
@@ -272,12 +263,14 @@ namespace MyXpens.Controllers
             return stats;
         }
 
-        private async Task<decimal> GetTestData()
+        public IActionResult GetTestData()
         {
             var test = new MbClient(_appValues);
-            return await test
+            var rezult = test
                 .GetTestData(
-                _dbContext.Categories.FirstOrDefault(c => c.ID.Equals(50)).Name + Converter.TestString);
+                _dbContext.Categories.FirstOrDefault(c => c.ID.Equals(50)).Name + Converter.TestString).Result;
+
+            return Ok(rezult);
         }
 
         private StatistixView GetStatsRecord(KeyValuePair<int, string> category, DateTime yearAgo,

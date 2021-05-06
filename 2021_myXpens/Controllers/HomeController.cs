@@ -18,6 +18,11 @@ namespace MyXpens.Controllers
             _logger = logger;
         }
 
+        public IActionResult Test()
+        {
+            return Content("202");
+        }
+
         public IActionResult Index(string errorMessage)
         {
             ViewBag.ErrorMessage = errorMessage;

@@ -1,4 +1,5 @@
-﻿using System.Net.Http;
+﻿using System;
+using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
 
@@ -36,7 +37,7 @@ namespace MyXpens.Data
                 JsonElement aaa = jDoc.RootElement.GetProperty(_appValues.PropertyA);
                 aaa[0].GetProperty(_appValues.PropertyB).TryGetDecimal(out decimal bbb);
                 aaa[0].GetProperty(_appValues.PropertyC).TryGetDecimal(out decimal ccc);
-                number = (bbb - ccc) / 100;
+                number = Math.Round((bbb - ccc) / 100);
             }
             return number;
         }

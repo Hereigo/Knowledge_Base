@@ -5,10 +5,11 @@
 }
 
 <style>
-    .rowHidden{
+    .rowHidden {
         display: none;
     }
-    .rowShown{
+
+    .rowShown {
         display: table-row;
     }
 </style>
@@ -18,39 +19,39 @@
 <div class="table-responsive">
     <table class="table table-striped">
         <thead>
-        <tr>
-            <th>...</th>
-            <th>@ViewBag.CurrMonth</th>
-            <th>@(--ViewBag.CurrMonth)</th>
-            <th>@(--ViewBag.CurrMonth)</th>
-            <th>@(--ViewBag.CurrMonth)</th>
-            <th>30</th>
-        </tr>
+            <tr>
+                <th>...</th>
+                <th>@ViewBag.CurrMonth</th>
+                <th>@(--ViewBag.CurrMonth)</th>
+                <th>@(--ViewBag.CurrMonth)</th>
+                <th>@(--ViewBag.CurrMonth)</th>
+                <th>30</th>
+            </tr>
         </thead>
         <tbody>
-        @foreach (var item in Model.StatistixVm)
-        {
-            <tr>
-                <td class="col-2" onclick="selectCateg('@item.CategoryName')">
-                    @Html.DisplayFor(modelItem => item.CategoryName)
-                </td>
-                <td class="col-2">
-                    @Html.DisplayFor(modelItem => item.CurrentMonth)
-                </td>
-                <td class="col-2">
-                    @Html.DisplayFor(modelItem => item.PreviousMonth)
-                </td>
-                <td class="col-2">
-                    @Html.DisplayFor(modelItem => item.B4PrevMonSummary)
-                </td>
-                <td class="col-2">
-                    @Html.DisplayFor(modelItem => item.B4B4PrevMonSummary)
-                </td>
-                <td class="col-2">
-                    @Html.DisplayFor(modelItem => item.YearAverage)
-                </td>
-            </tr>
-        }
+            @foreach (var item in Model.StatistixVm)
+            {
+                <tr>
+                    <td class="col-2" onclick="selectCateg('@item.CategoryName')">
+                        @Html.DisplayFor(modelItem => item.CategoryName)
+                    </td>
+                    <td class="col-2">
+                        @Html.DisplayFor(modelItem => item.CurrentMonth)
+                    </td>
+                    <td class="col-2">
+                        @Html.DisplayFor(modelItem => item.PreviousMonth)
+                    </td>
+                    <td class="col-2">
+                        @Html.DisplayFor(modelItem => item.B4PrevMonSummary)
+                    </td>
+                    <td class="col-2">
+                        @Html.DisplayFor(modelItem => item.B4B4PrevMonSummary)
+                    </td>
+                    <td class="col-2">
+                        @Html.DisplayFor(modelItem => item.YearAverage)
+                    </td>
+                </tr>
+            }
         </tbody>
     </table>
 </div>
@@ -58,49 +59,90 @@
 <div class="table-responsive">
     <table class="table table-striped">
         <thead>
-        <tr class="secondHeader">
-            <th>@ViewBag.alfa</th><th>@ViewBag.prima</th><th>@ViewBag.rest</th><th>@ViewBag.mono (@ViewBag.test)</th><th>@Html.ActionLink(" ", "Create", "Payments", null, new {@class = "fas fa-plus-square font-weight-bold"})</th>
-        </tr>
+            <tr class="secondHeader">
+                <th>@ViewBag.alfa</th>
+                <th>@ViewBag.prima</th>
+                <th>@ViewBag.rest</th>
+                <th>
+                    <input id="ajaxRequest" type="button" value="@ViewBag.mono" />
+                    ( <span id="ajaxResponse">?</span> )
+                <th>
+                    @Html.ActionLink(" ", "Create", "Payments", null, new { @class = "fas fa-plus-square font-weight-bold" })
+                </th>
+            </tr>
         </thead>
         <tbody>
-        @foreach (var item in Model.PaymentsVm)
-        {
-            var category = item.Category.Name;
-            <tr class="rawMain @category">
-                <td>
-                    @Html.DisplayFor(modelItem => item.PayDate)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Category.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Amount)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Description)
-                </td>
-                <td>
-                    @Html.ActionLink(" ", "Edit", new {id = item.ID}, new {@class = "fas fa-edit font-weight-bold"})
-                </td>
-            </tr>
-        }
+            @foreach (var item in Model.PaymentsVm)
+            {
+                var category = item.Category.Name;
+                <tr class="rawMain @category">
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PayDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Category.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Amount)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td>
+                        @Html.ActionLink(" ", "Edit", new { id = item.ID }, new { @class = "fas fa-edit font-weight-bold" })
+                    </td>
+                </tr>
+            }
         </tbody>
     </table>
 </div>
 
 <script>
-let selectCateg = function (categ) {
-    let categRowShow = document.querySelectorAll('.' + categ);
-    let categRowAll = document.querySelectorAll('.rawMain:not(.' + categ + ')');
-    categRowAll.forEach(hide);
-    categRowShow.forEach(show);
-}
-let hide = function (row) {
-    row.classList.remove('rowShown');
-    row.classList.add('rowHidden');    
-}
-let show = function (row) {
+    let selectCateg = function (categ) {
+        let categRowShow = document.querySelectorAll('.' + categ);
+        let categRowAll = document.querySelectorAll('.rawMain:not(.' + categ + ')');
+        categRowAll.forEach(hide);
+        categRowShow.forEach(show);
+    }
+    let hide = function (row) {
+        row.classList.remove('rowShown');
+        row.classList.add('rowHidden');
+    }
+    let show = function (row) {
         row.classList.remove('rowHidden');
         row.classList.add('rowShown');
-}
+    }
+
+    let httpRequest;
+    document.getElementById("ajaxRequest").addEventListener('click', makeRequest);
+
+    function makeRequest() {
+        httpRequest = new XMLHttpRequest();
+
+        if (!httpRequest) {
+            alert('Giving up :( Cannot create an XMLHTTP instance');
+            return false;
+        }
+
+        httpRequest.onreadystatechange = alertContents;
+        httpRequest.open('GET', '/Payments/GetTestData');
+
+        httpRequest.send();
+    }
+
+    function alertContents() {
+
+        let elem = document.getElementById('ajaxResponse');
+        let elem2 = document.getElementById('ajaxRequest');
+
+        if (httpRequest.readyState === XMLHttpRequest.DONE) {
+            if (httpRequest.status !== 200) {
+                alert('There was a problem with the request.');
+            }
+            else {
+                let rezult = elem2.value - httpRequest.responseText;
+                elem.innerHTML = rezult;
+            }
+        }
+    }
 </script>
