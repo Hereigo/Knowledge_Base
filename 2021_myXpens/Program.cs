@@ -12,12 +12,12 @@ namespace MyXpens
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
-                                .ConfigureWebHostDefaults(webBuilder =>
-                                {
-                                    webBuilder.UseStartup<Startup>();
-                                    // webBuilder.UseUrls("http://192.168.0.105:5003");
-                                    // To call from outside don't forget to switch firewall :
-                                    // sudo ufw [allow\deny] in 5003 
-                                });
+                .ConfigureWebHostDefaults(webBuilder =>
+                {
+                    webBuilder.UseStartup<Startup>();
+                    // webBuilder.UseUrls("http://192.168.0.105:5003");
+                    // To call from outside don't forget to switch firewall :
+                    // sudo ufw [allow\deny] in 5003 
+                });
     }
 }
