@@ -8,16 +8,16 @@ namespace MyXpens.Models
         public string CategoryName { get; set; }
 
         [DisplayName("Curr.M")]
-        public int CurrentMonth { get; set; }
+        public string CurrentMonth { get; set; }
 
         [DisplayName("Prev.M")]
-        public int PreviousMonth { get; set; }
+        public string PreviousMonth { get; set; }
 
         [DisplayName("AVG")]
-        public int YearAverage { get; set; }
+        public string YearAverage { get; set; }
 
-        public int B4PrevMonSummary { get; set; }
+        public string B4PrevMonSummary { get; set; }
 
-        public int B4B4PrevMonSummary { get; set; }
+        public string B4B4PrevMonSummary { get; set; }
     }
 }

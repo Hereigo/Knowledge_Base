@@ -246,11 +246,12 @@ namespace MyXpens.Controllers
                 new KeyValuePair<int, string>(13, "HLS"),
                 new KeyValuePair<int, string>(09, "KIU"),
                 new KeyValuePair<int, string>(08, "KID"),
-                new KeyValuePair<int, string>(11, "FOO"),
+                // new KeyValuePair<int, string>(11, "FOO"),
                 new KeyValuePair<int, string>(45, "HOL"),
                 new KeyValuePair<int, string>(07, "HOM"),
                 new KeyValuePair<int, string>(10, "QVN"),
-                new KeyValuePair<int, string>(48, "SCH"),
+                new KeyValuePair<int, string>(4, "CEX"),
+                // new KeyValuePair<int, string>(48, "SCH"),
             };
 
             var stats = new List<StatistixView>();
@@ -280,31 +281,38 @@ namespace MyXpens.Controllers
         {
             int currMonthSum = _dbContext.Payments
                 .Where(p => p.Category.ID == category.Key && p.PayDate > startThisMonth)
-                .Select(p => p.Amount).ToList().Sum();
+                .Select(p => p.Amount).Sum();
             int prevMonthSum = _dbContext.Payments.Where(p =>
                     p.Category.ID == category.Key && p.PayDate > startPrevMonth && p.PayDate < startThisMonth)
-                .Select(p => p.Amount).ToList().Sum();
+                .Select(p => p.Amount).Sum();
             int b4PrevMonSum = _dbContext.Payments.Where(p =>
                     p.Category.ID == category.Key && p.PayDate > startBeforePrevM && p.PayDate < startPrevMonth)
-                .Select(p => p.Amount).ToList().Sum();
+                .Select(p => p.Amount).Sum();
             int b4b4PrevMonSum = _dbContext.Payments.Where(p =>
                     p.Category.ID == category.Key && p.PayDate > startBeforeBefPrevM && p.PayDate < startPrevMonth)
-                .Select(p => p.Amount).ToList().Sum();
+                .Select(p => p.Amount).Sum();
             int prevYearSum = _dbContext.Payments.Where(p =>
                     p.Category.ID == category.Key && p.PayDate > yearAgo && p.PayDate < startThisMonth)
-                .Select(p => p.Amount).ToList().Sum();
+                .Select(p => p.Amount).Sum();
 
             ViewBag.CurrMonth = DateTime.Now.Month;
 
             return new StatistixView
             {
+                B4B4PrevMonSummary = SimplifyNumberForView(b4b4PrevMonSum),
+                B4PrevMonSummary = SimplifyNumberForView(b4PrevMonSum),
                 CategoryName = category.Value,
-                B4PrevMonSummary = b4PrevMonSum,
-                B4B4PrevMonSummary = b4b4PrevMonSum,
-                CurrentMonth = currMonthSum,
-                PreviousMonth = prevMonthSum,
-                YearAverage = prevYearSum / 12,
+                CurrentMonth = SimplifyNumberForView(currMonthSum),
+                PreviousMonth = SimplifyNumberForView(prevMonthSum),
+                YearAverage = SimplifyNumberForView(prevYearSum / 12)
             };
+        }
+
+        private string SimplifyNumberForView(int decimalNumber)
+        {
+            return
+               string.Format("{0:G29}",
+                    Math.Round(Convert.ToDecimal(decimalNumber) / 1000, 1));
         }
     }
 }

@@ -75,6 +75,7 @@
             @foreach (var item in Model.PaymentsVm)
             {
                 var category = item.Category.Name;
+
                 <tr class="rawMain @category">
                     <td>
                         @Html.DisplayFor(modelItem => item.PayDate)
