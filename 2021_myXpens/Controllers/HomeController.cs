@@ -30,10 +30,11 @@ namespace MyXpens.Controllers
 
             var payments = _dbContext.Payments.ToArray();
 
-            ViewBag.mono = payments.Where(p => p.CatogoryId == 43)?.Sum(p => p.Amount) ?? 0;
             int csh = payments.Where(p => p.CatogoryId == 1)?.Sum(p => p.Amount) ?? 0;
             int nonCsh = payments.Where(p => p.CatogoryId != 1)?.Sum(p => p.Amount) ?? 0;
-            ViewBag.rest = csh - nonCsh;
+            ViewBag.rest = SimplifyNumberForView(csh - nonCsh);
+            ViewBag.mono = SimplifyNumberForView(payments.Where(p => p.CatogoryId == 43)?.Sum(p => p.Amount) ?? 0);
+            ViewBag.alfa = SimplifyNumberForView(payments.Where(p => p.CatogoryId == 2)?.Sum(p => p.Amount) ?? 0);
 
             return View();
         }
@@ -47,6 +48,14 @@ namespace MyXpens.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+
+        private string SimplifyNumberForView(int decimalNumber)
+        {
+            return
+               string.Format("{0:G29}",
+                    Math.Round(Convert.ToDecimal(decimalNumber) / 1000, 1));
         }
     }
 }

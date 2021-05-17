@@ -9,8 +9,7 @@ namespace MyXpens.Controllers
     [Authorize]
     public class CategoriesController : Controller
     {
-        private static DbContextOptions<PaymentsContext> _options;
-        
+        private readonly DbContextOptions<PaymentsContext> _options;
         private readonly PaymentsContext _dbContext;
 
         public CategoriesController(DbContextOptions<PaymentsContext> options, PaymentsContext dbContext)
@@ -18,7 +17,7 @@ namespace MyXpens.Controllers
             _options = options;
             _dbContext = dbContext;
         }
-        
+
         // GET: Categories
         public ActionResult Index()
         {

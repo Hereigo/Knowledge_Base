@@ -82,7 +82,7 @@ namespace MyXpens.Controllers
 
         public ActionResult Create()
         {
-            ViewBag.CatogoryId = new SelectList(_dbContext.Categories.OrderBy(c => c.Name), "ID", "Name");
+            ViewBag.CatogoryId = new SelectList(_dbContext.Categories.Where(c => c.IsActive).OrderBy(c => c.Name), "ID", "Name");
             ViewBag.Today = DateTime.Now;
             Payment newPay = new Payment { PayDate = DateTime.Now.AddHours(10) }; // fix by UTC + TimeZone!
 
@@ -131,7 +131,7 @@ namespace MyXpens.Controllers
             }
 
             ViewBag.CatogoryId =
-                new SelectList(_dbContext.Categories.OrderBy(c => c.Name), "ID", "Name", payment.CatogoryId);
+                new SelectList(_dbContext.Categories.Where(c => c.IsActive).OrderBy(c => c.Name), "ID", "Name", payment.CatogoryId);
 
             return View(payment);
         }
@@ -150,7 +150,8 @@ namespace MyXpens.Controllers
             }
 
             ViewBag.CatogoryId =
-                new SelectList(_dbContext.Categories.OrderBy(c => c.Name), "ID", "Name", payment.CatogoryId);
+                new SelectList(_dbContext.Categories.Where(c => c.IsActive).OrderBy(c => c.Name), "ID", "Name", payment.CatogoryId);
+
             return View(payment);
         }
 
@@ -167,7 +168,8 @@ namespace MyXpens.Controllers
             }
 
             ViewBag.CatogoryId =
-                new SelectList(_dbContext.Categories.OrderBy(c => c.Name), "ID", "Name", payment.CatogoryId);
+                new SelectList(_dbContext.Categories.Where(c => c.IsActive).OrderBy(c => c.Name), "ID", "Name", payment.CatogoryId);
+
             return View(payment);
         }
 
