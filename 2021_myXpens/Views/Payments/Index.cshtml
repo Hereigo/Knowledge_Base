@@ -65,7 +65,9 @@
                 <th>@ViewBag.rest</th>
                 <th>
                     <input id="ajaxRequest" type="button" value="@ViewBag.mono" />
-                    ( <span id="ajaxResponse">?</span> )
+
+                    @*( <span id="ajaxResponse">?</span> )*@
+
                 <th>
                     @Html.ActionLink(" ", "Create", "Payments", null, new { @class = "fas fa-plus-square font-weight-bold" })
                 </th>
@@ -133,7 +135,6 @@
 
     function alertContents() {
 
-        let elem = document.getElementById('ajaxResponse');
         let elem2 = document.getElementById('ajaxRequest');
 
         if (httpRequest.readyState === XMLHttpRequest.DONE) {
@@ -142,7 +143,13 @@
             }
             else {
                 let rezult = elem2.value - httpRequest.responseText;
-                elem.innerHTML = rezult;
+
+                if (rezult > -2 && rezult < 2) {
+                    elem2.classList.add('btn-success');
+                } else {
+                    elem2.value = rezult;
+                    elem2.classList.add('btn-warning');
+                }
             }
         }
     }
