@@ -43,6 +43,7 @@ namespace MyXpens.Controllers
             return File(ZipString(json), "application/octet-stream", $"{DateTime.Now:yy.MM.dd}_xPens_BKP.zip");
 
             // C: If needed to response a raw JSON FILE:
+#pragma warning disable CS0162
             var stream = new MemoryStream();
             var sw = new StreamWriter(stream);
             sw.Write(json);
@@ -50,6 +51,7 @@ namespace MyXpens.Controllers
             stream.Position = 0;
 
             return File(stream, "application/octet-stream");
+#pragma warning restore CS0162
         }
 
         public ActionResult Index(int id = 1)
@@ -130,8 +132,8 @@ namespace MyXpens.Controllers
                 return RedirectToAction("Index", new { id = 2 });
             }
 
-            ViewBag.CatogoryId =
-                new SelectList(_dbContext.Categories.Where(c => c.IsActive).OrderBy(c => c.Name), "ID", "Name", payment.CatogoryId);
+            // ViewBag.CatogoryId =
+            //     new SelectList(_dbContext.Categories.Where(c => c.IsActive).OrderBy(c => c.Name), "ID", "Name", payment.CatogoryId);
 
             return View(payment);
         }

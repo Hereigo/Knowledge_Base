@@ -62,8 +62,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoreMvcTG", "CoreMvcTG\Core
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WsdlCore", "wsdl_core\src\WsdlCore\WsdlCore.csproj", "{D1E8FEEA-5F01-47C2-A066-67CDE1B0DB22}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cino_Payments", "Cino_Payments\Cino_Payments.csproj", "{9C384687-1CDA-4567-950F-54DFBCE5E469}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xpression_Net46", "Xpression_Net46\Xpression_Net46.csproj", "{09B1D87B-A5CF-4509-B216-9A2653CFA00A}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XML_Parse_Console", "XML_Parse_Console\XML_Parse_Console.csproj", "{479858BE-FAD7-480D-B3F8-CFDCB38F5A28}"
@@ -188,10 +186,6 @@ Global
 		{D1E8FEEA-5F01-47C2-A066-67CDE1B0DB22}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D1E8FEEA-5F01-47C2-A066-67CDE1B0DB22}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D1E8FEEA-5F01-47C2-A066-67CDE1B0DB22}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9C384687-1CDA-4567-950F-54DFBCE5E469}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9C384687-1CDA-4567-950F-54DFBCE5E469}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9C384687-1CDA-4567-950F-54DFBCE5E469}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9C384687-1CDA-4567-950F-54DFBCE5E469}.Release|Any CPU.Build.0 = Release|Any CPU
 		{09B1D87B-A5CF-4509-B216-9A2653CFA00A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{09B1D87B-A5CF-4509-B216-9A2653CFA00A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{09B1D87B-A5CF-4509-B216-9A2653CFA00A}.Release|Any CPU.ActiveCfg = Release|Any CPU
