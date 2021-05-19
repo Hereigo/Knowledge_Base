@@ -1,5 +1,3 @@
-using System;
-
 namespace MyXpens.Models
 {
     public class ErrorViewModel

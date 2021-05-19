@@ -21,7 +21,7 @@ namespace MyXpens.Middleware
         {
             var currentUserEmail = httpContext.User.FindFirst(ClaimTypes.Name);
 
-            if(currentUserEmail?.Value?.Equals(_appStaticValues.DefaultEmail, StringComparison.OrdinalIgnoreCase) == false)
+            if (currentUserEmail?.Value?.Equals(_appStaticValues.DefaultEmail, StringComparison.OrdinalIgnoreCase) == false)
             {
                 await httpContext.Response.WriteAsync("500 Internal Server Error");
             }
