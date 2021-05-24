@@ -131,11 +131,6 @@ namespace MyXpens.Controllers
 
                 return RedirectToAction("Index", new { id = 2 });
             }
-
-            // ViewBag.CatogoryId =
-            //     new SelectList(_dbContext.Categories.Where(c => c.IsActive).OrderBy(c => c.Name), "ID", "Name", payment.CatogoryId);
-
-            return View(payment);
         }
 
         public ActionResult Edit(int? id)
@@ -216,20 +211,18 @@ namespace MyXpens.Controllers
         {
             var bytes = Encoding.UTF8.GetBytes(str);
 
-            using (var msi = new MemoryStream(bytes))
-            using (var mso = new MemoryStream())
+            using var msi = new MemoryStream(bytes);
+            using var mso = new MemoryStream();
+            using (var gs = new GZipStream(mso, CompressionMode.Compress))
             {
-                using (var gs = new GZipStream(mso, CompressionMode.Compress))
+                byte[] bytesBuffer = new byte[4096];
+                int cnt;
+                while ((cnt = msi.Read(bytesBuffer, 0, bytesBuffer.Length)) != 0)
                 {
-                    byte[] bytesBuffer = new byte[4096];
-                    int cnt;
-                    while ((cnt = msi.Read(bytesBuffer, 0, bytesBuffer.Length)) != 0)
-                    {
-                        gs.Write(bytesBuffer, 0, cnt);
-                    }
+                    gs.Write(bytesBuffer, 0, cnt);
                 }
-                return mso.ToArray();
             }
+            return mso.ToArray();
         }
 
         private List<StatistixView> GetStats()
@@ -312,7 +305,7 @@ namespace MyXpens.Controllers
             };
         }
 
-        private string SimplifyNumberForView(int decimalNumber)
+        private static string SimplifyNumberForView(int decimalNumber)
         {
             return
                string.Format("{0:G29}",

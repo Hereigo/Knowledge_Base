@@ -16,7 +16,8 @@ namespace MyXpens.Models
         public DateTime PayDate { get; set; }
 
         [Required]
-        [RegularExpression("^-?[0-9]{1,}", ErrorMessage = "Numbers only!")]
+        //[RegularExpression("^-?[0-9]{1,}", ErrorMessage = "Numbers only!")]
+        [Range(int.MinValue, int.MaxValue, ErrorMessage = "Numbers only!")]
         public int Amount { get; set; }
 
         [Required]

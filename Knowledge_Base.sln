@@ -72,6 +72,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyXpens", "2021_myXpens\MyX
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNet_4x_BasicAuthHttp", "AspNet_4x_BasicAuthHttp\AspNet_4x_BasicAuthHttp.csproj", "{EFD8E112-C18E-40B0-9868-82F43E9E7504}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyXpens.Tests", "MyXpens.Tests\MyXpens.Tests.csproj", "{99AE806B-46CE-4F35-A7D4-408AF33D25FC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -206,6 +208,10 @@ Global
 		{EFD8E112-C18E-40B0-9868-82F43E9E7504}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EFD8E112-C18E-40B0-9868-82F43E9E7504}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EFD8E112-C18E-40B0-9868-82F43E9E7504}.Release|Any CPU.Build.0 = Release|Any CPU
+		{99AE806B-46CE-4F35-A7D4-408AF33D25FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99AE806B-46CE-4F35-A7D4-408AF33D25FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99AE806B-46CE-4F35-A7D4-408AF33D25FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99AE806B-46CE-4F35-A7D4-408AF33D25FC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
