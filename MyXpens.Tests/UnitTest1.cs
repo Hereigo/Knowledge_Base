@@ -9,6 +9,18 @@ namespace MyXpens.Tests
 {
     public class UnitTest1
     {
+        [Fact]
+        public void Fixture_with_AutoMoqCustomization()
+        {
+            var fixture = new Fixture().Customize(new AutoMoqCustomization());
+
+            var sut = fixture.Create<Payment>();
+
+            var description = sut.Description;
+
+            Assert.True(!string.IsNullOrWhiteSpace(description));
+        }
+
         [Theory]
         [InlineData(1, "2021-01-01")]
         public void Fixture_Simple(int amount, string payDate)
