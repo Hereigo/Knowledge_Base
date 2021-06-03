@@ -1,14 +1,14 @@
 ﻿namespace Mediator_Use
 {
-    internal class ManagerMediator : AbsMediator
+    internal class ManagerMediator : AbstractMediator
     {
-        public AbsColleague Customer { get; set; }
+        public AbstractPerson Customer { get; set; }
 
-        public AbsColleague Programmer { get; set; }
+        public AbstractPerson Programmer { get; set; }
 
-        public AbsColleague Tester { get; set; }
+        public AbstractPerson Tester { get; set; }
 
-        public override void Send(string msg, AbsColleague colleague)
+        public override void Send(string msg, AbstractPerson colleague)
         {
             // Message from Customer to Programmer :
 

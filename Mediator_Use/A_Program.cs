@@ -8,11 +8,11 @@ namespace Mediator_Use
         {
             ManagerMediator mediator = new ManagerMediator();
 
-            AbsColleague customer = new CustomerColleague(mediator);
+            AbstractPerson customer = new CustomerColleague(mediator);
 
-            AbsColleague programmer = new ProgrammerColleague(mediator);
+            AbstractPerson programmer = new ProgrammerColleague(mediator);
 
-            AbsColleague tester = new TesterColleague(mediator);
+            AbstractPerson tester = new TesterColleague(mediator);
 
             mediator.Customer = customer;
             mediator.Programmer = programmer;

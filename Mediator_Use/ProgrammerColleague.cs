@@ -2,9 +2,9 @@
 
 namespace Mediator_Use
 {
-    internal class ProgrammerColleague : AbsColleague
+    internal class ProgrammerColleague : AbstractPerson
     {
-        public ProgrammerColleague(AbsMediator mediator)
+        public ProgrammerColleague(AbstractMediator mediator)
             : base(mediator)
         { }
 

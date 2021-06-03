@@ -1,12 +1,12 @@
 ﻿namespace Mediator_Use
 {
-    class AnMediator : AbsMediator
+    internal class AnMediator : AbstractMediator
     {
         public CustomerColleague Colleague1 { get; set; }
 
         public ProgrammerColleague Colleague2 { get; set; }
 
-        public override void Send(string msg, AbsColleague colleague)
+        public override void Send(string msg, AbstractPerson colleague)
         {
             if (Colleague1 == colleague)
                 Colleague2.Notify(msg);
