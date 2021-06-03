@@ -2,15 +2,15 @@
 
 namespace Mediator_Use
 {
-    class CustomerColleague : Colleague
+    internal class CustomerColleague : AbsColleague
     {
-        public CustomerColleague(Mediator mediator)
+        public CustomerColleague(AbsMediator mediator)
             : base(mediator)
         { }
 
         public override void Notify(string message)
         {
-            Console.WriteLine("Сообщение заказчику: " + message);
+            Console.WriteLine("Message for Customer : " + message);
         }
     }
 }

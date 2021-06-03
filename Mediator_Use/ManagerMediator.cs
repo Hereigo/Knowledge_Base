@@ -1,27 +1,27 @@
 ﻿namespace Mediator_Use
 {
-    class ManagerMediator : Mediator
+    internal class ManagerMediator : AbsMediator
     {
-        public Colleague Customer { get; set; }
+        public AbsColleague Customer { get; set; }
 
-        public Colleague Programmer { get; set; }
+        public AbsColleague Programmer { get; set; }
 
-        public Colleague Tester { get; set; }
+        public AbsColleague Tester { get; set; }
 
-        public override void Send(string msg, Colleague colleague)
+        public override void Send(string msg, AbsColleague colleague)
         {
-            // если отправитель - заказчик, значит есть новый заказ
-            // отправляем сообщение программисту - выполнить заказ
+            // Message from Customer to Programmer :
+
             if (Customer == colleague)
                 Programmer.Notify(msg);
 
-            // если отправитель - программист, то можно приступать к тестированию
-            // отправляем сообщение тестеру
+            // Message from Programmer to Tester :
+
             else if (Programmer == colleague)
                 Tester.Notify(msg);
 
-            // если отправитель - тест, значит продукт готов
-            // отправляем сообщение заказчику
+            // Message from Tester to Customer :
+
             else if (Tester == colleague)
                 Customer.Notify(msg);
         }

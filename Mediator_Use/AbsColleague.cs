@@ -1,10 +1,10 @@
 ﻿namespace Mediator_Use
 {
-    abstract class Colleague
+    abstract class AbsColleague
     {
-        protected Mediator mediator;
+        protected AbsMediator mediator;
 
-        public Colleague(Mediator mediator)
+        protected AbsColleague(AbsMediator mediator)
         {
             this.mediator = mediator;
         }

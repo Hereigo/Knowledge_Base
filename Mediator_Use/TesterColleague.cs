@@ -2,15 +2,15 @@
 
 namespace Mediator_Use
 {
-    class TesterColleague : Colleague
+    class TesterColleague : AbsColleague
     {
-        public TesterColleague(Mediator mediator)
+        public TesterColleague(AbsMediator mediator)
             : base(mediator)
         { }
 
         public override void Notify(string message)
         {
-            Console.WriteLine("Сообщение тестеру: " + message);
+            Console.WriteLine("Message for Tester : " + message);
         }
     }
 }

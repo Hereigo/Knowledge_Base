@@ -2,15 +2,15 @@
 
 namespace Mediator_Use
 {
-    class ProgrammerColleague : Colleague
+    internal class ProgrammerColleague : AbsColleague
     {
-        public ProgrammerColleague(Mediator mediator)
+        public ProgrammerColleague(AbsMediator mediator)
             : base(mediator)
         { }
 
         public override void Notify(string message)
         {
-            Console.WriteLine("Сообщение программисту: " + message);
+            Console.WriteLine("Message for Programmer : " + message);
         }
     }
 }
