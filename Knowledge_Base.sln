@@ -72,7 +72,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyXpens", "2021_myXpens\MyX
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNet_4x_BasicAuthHttp", "AspNet_4x_BasicAuthHttp\AspNet_4x_BasicAuthHttp.csproj", "{EFD8E112-C18E-40B0-9868-82F43E9E7504}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyXpens.Tests", "MyXpens.Tests\MyXpens.Tests.csproj", "{99AE806B-46CE-4F35-A7D4-408AF33D25FC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyXpens.Tests", "MyXpens.Tests\MyXpens.Tests.csproj", "{99AE806B-46CE-4F35-A7D4-408AF33D25FC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mediator_Use", "Mediator_Use\Mediator_Use.csproj", "{A7344A63-AF15-427F-96C5-2A62DFE5925B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -212,6 +214,10 @@ Global
 		{99AE806B-46CE-4F35-A7D4-408AF33D25FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{99AE806B-46CE-4F35-A7D4-408AF33D25FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{99AE806B-46CE-4F35-A7D4-408AF33D25FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A7344A63-AF15-427F-96C5-2A62DFE5925B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7344A63-AF15-427F-96C5-2A62DFE5925B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7344A63-AF15-427F-96C5-2A62DFE5925B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7344A63-AF15-427F-96C5-2A62DFE5925B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
