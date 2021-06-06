@@ -13,6 +13,7 @@
         {
             mediator.Send(message, this);
         }
+
         public abstract void Notify(string message);
     }
 }
