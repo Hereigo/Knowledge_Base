@@ -76,7 +76,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyXpens.Tests", "MyXpens.Te
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mediator_Use", "Mediator_Use\Mediator_Use.csproj", "{A7344A63-AF15-427F-96C5-2A62DFE5925B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediatR_CQRS", "MediatR_CQRS\MediatR_CQRS.csproj", "{A524C08B-7F58-48A1-8FCC-48BEDADB89DD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MediatR_CQRS", "MediatR_CQRS\MediatR_CQRS.csproj", "{A524C08B-7F58-48A1-8FCC-48BEDADB89DD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

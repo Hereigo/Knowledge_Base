@@ -4,11 +4,11 @@ using MediatR;
 
 namespace MediatR_CQRS
 {
-    class Program
+    class A_Program
     {
         private readonly IMediator _mediator;
 
-        public Program(IMediator mediator)
+        public A_Program(IMediator mediator)
         {
             _mediator = mediator;
         }
