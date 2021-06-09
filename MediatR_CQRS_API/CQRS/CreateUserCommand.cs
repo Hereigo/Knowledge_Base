@@ -1,4 +1,4 @@
-﻿namespace MediatR_CQRS
+﻿namespace MediatR_CQRS_API.CQRS
 {
     public class CreateUserCommand : ICommand<string>
     {

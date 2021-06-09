@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using MediatR;
 
-namespace MediatR_CQRS
+namespace MediatR_CQRS_API.CQRS
 {
     public class CreateUserCommandHandler : IRequestHandler<CreateUserCommand, string>
     {
