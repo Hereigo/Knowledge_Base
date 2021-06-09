@@ -8,7 +8,7 @@ namespace MediatR_CQRS
     {
         public Task<User> Handle(GetUserQuery request, CancellationToken cancellationToken)
         {
-            throw new System.NotImplementedException();
+            return Task.FromResult(new User() { id = "123", Name = "Aivengo" });
         }
     }
 }
