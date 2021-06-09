@@ -1,47 +1,40 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+using MediatR;
+using MediatR_CQRS_API.CommandsQueries;
+using MediatR_CQRS_API.Models;
 using Microsoft.AspNetCore.Mvc;
-
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+using Microsoft.Extensions.Logging;
+using Swashbuckle.AspNetCore.Annotations;
 
 namespace MediatR_CQRS_API.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
+    [Route("[controller]")]
     public class HomeController : ControllerBase
     {
-        // GET: api/<HomeController>
+        private readonly ILogger<HomeController> _logger;
+        private readonly IMediator _mediator;
+
+        public HomeController(ILogger<HomeController> logger, IMediator mediator)
+        {
+            _logger = logger;
+            _mediator = mediator;
+        }
+
         [HttpGet]
-        public IEnumerable<string> Get()
+        [Route("Users/{id}")]
+        [SwaggerOperation(Summary = "Create User", Description = "Create User action by Command")]
+        public async Task<User> GetUserAsync(int id)
         {
-            return new string[] { "value1", "value2" };
+            return await _mediator.Send(new GetUserQuery { id = id.ToString() });
         }
 
-        // GET api/<HomeController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
-        }
-
-        // POST api/<HomeController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        [Route("Users/Create")]
+        [SwaggerOperation(Summary = "Create User", Description = "Create User action by Command")]
+        public async Task<string> CreateUserAsync(CreateUserCommand command)
         {
-        }
-
-        // PUT api/<HomeController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/<HomeController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
+            return await _mediator.Send(command);
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace MediatR_CQRS_API
+﻿namespace MediatR_CQRS_API.Models
 {
     public class User
     {
