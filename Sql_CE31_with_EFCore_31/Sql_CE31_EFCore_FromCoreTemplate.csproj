@@ -1,0 +1,49 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net48</TargetFramework>
+    <PlatformTarget>x86</PlatformTarget>
+    <AssemblyName>Sql_CE31_EFCore_FromCoreTemplate</AssemblyName>
+    <RootNamespace>Sql_CE31_EFCore_FromCoreTemplate</RootNamespace>
+  </PropertyGroup>
+
+  <!--<ItemGroup>
+    <None Remove="sqlceme30.dll" />
+  </ItemGroup>-->
+
+  <ItemGroup>
+    <PackageReference Include="EntityFrameworkCore.SqlServerCompact35" Version="2.2.0.7" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.2.0" />
+    <!--<PackageReference Include="Microsoft.EntityFrameworkCore.Abstractions" Version="2.1.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Analyzers" Version="2.1.0" />-->
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Caching.Abstractions" version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Caching.Memory" version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging" version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Options" version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Primitives" version="2.2.0" />
+    <PackageReference Include="Remotion.Linq" version="2.2.0" />
+    <PackageReference Include="System.Buffers" version="4.4.0" />
+    <PackageReference Include="System.Collections.Immutable" version="1.5.0" />
+    <PackageReference Include="System.ComponentModel.Annotations" version="4.5.0" />
+    <PackageReference Include="System.Diagnostics.DiagnosticSource" version="4.5.0" />
+    <PackageReference Include="System.Interactive.Async" version="3.2.0" />
+    <PackageReference Include="System.Memory" version="4.5.1" />
+    <PackageReference Include="System.Numerics.Vectors" version="4.4.0" />
+    <PackageReference Include="System.Runtime.CompilerServices.Unsafe" version="4.7.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="System.Data.SqlServerCe">
+      <HintPath>..\..\..\..\..\Program Files (x86)\Microsoft SQL Server Compact Edition\v3.1\System.Data.SqlServerCe.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

@@ -78,7 +78,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mediator_Use", "Mediator_Us
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MediatR_CQRS_API", "MediatR_CQRS_API\MediatR_CQRS_API.csproj", "{4F1BAF9E-20D1-427D-895E-AD4261882FAD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sql_CE31_with_EFCore", "Sql_CE31_with_EFCore\Sql_CE31_with_EFCore.csproj", "{D6CFE251-E7A8-4D48-BFA2-1579E8C83194}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sql_CE31_EFCore_FromCoreTemplate", "Sql_CE31_with_EFCore_31\Sql_CE31_EFCore_FromCoreTemplate.csproj", "{59E7E475-2571-4F2A-8EE4-1280124FD1AA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -226,10 +226,10 @@ Global
 		{4F1BAF9E-20D1-427D-895E-AD4261882FAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4F1BAF9E-20D1-427D-895E-AD4261882FAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4F1BAF9E-20D1-427D-895E-AD4261882FAD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D6CFE251-E7A8-4D48-BFA2-1579E8C83194}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D6CFE251-E7A8-4D48-BFA2-1579E8C83194}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D6CFE251-E7A8-4D48-BFA2-1579E8C83194}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D6CFE251-E7A8-4D48-BFA2-1579E8C83194}.Release|Any CPU.Build.0 = Release|Any CPU
+		{59E7E475-2571-4F2A-8EE4-1280124FD1AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59E7E475-2571-4F2A-8EE4-1280124FD1AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59E7E475-2571-4F2A-8EE4-1280124FD1AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59E7E475-2571-4F2A-8EE4-1280124FD1AA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

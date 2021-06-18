@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Sql_CE31_with_EFCore
+namespace Sql_CE31_EFCore_FromCoreTemplate
 {
     public class BarCode
     {

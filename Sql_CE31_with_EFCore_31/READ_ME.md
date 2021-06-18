@@ -11,4 +11,6 @@
 
 4. Add reference to __C:\Program Files (x86)\Microsoft SQL Server Compact Edition\v3.1\System.Data.SqlServerCe.dll__ in the project.
 
-5. 
+5. All Microsoft.Exteneions.xxx & Microsoft.EntityFrameworkCore.xxx Packages must be __NOT higher than version 2.2.0 !__
+
+6. ...

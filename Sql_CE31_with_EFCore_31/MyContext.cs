@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace Sql_CE31_with_EFCore
+namespace Sql_CE31_EFCore_FromCoreTemplate
 {
     public class MyContext : DbContext
     {

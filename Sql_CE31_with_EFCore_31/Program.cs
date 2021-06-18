@@ -2,9 +2,9 @@
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 
-namespace Sql_CE31_with_EFCore
+namespace Sql_CE31_EFCore_FromCoreTemplate
 {
-    static class Program
+    class Program
     {
         const string sqlCeConnectionString = @"Data Source=C:\intel\terminal.sdf";
 
