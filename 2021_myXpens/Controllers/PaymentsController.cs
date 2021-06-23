@@ -1,10 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
-using System.IO.Compression;
 using System.Linq;
-using System.Text;
-using System.Text.Json;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -26,32 +22,6 @@ namespace MyXpens.Controllers
         {
             _dbContext = context;
             _appValues = appValues.Value;
-        }
-
-        public ActionResult GetBkpJson()
-        {
-            var bkp = _dbContext.Payments
-                .Include(p => p.Category)
-                .OrderByDescending(p => p.PayDate).ToArray();
-
-            var json = JsonSerializer.Serialize(bkp);
-
-            // A: Simple JSON response:
-            // return Content(json, "application/json");
-
-            // B: ZIPPED json response:
-            return File(ZipString(json), "application/octet-stream", $"{DateTime.Now:yy.MM.dd}_xPens_BKP.zip");
-
-            // C: If needed to response a raw JSON FILE:
-#pragma warning disable CS0162
-            var stream = new MemoryStream();
-            var sw = new StreamWriter(stream);
-            sw.Write(json);
-            sw.Flush();
-            stream.Position = 0;
-
-            return File(stream, "application/octet-stream");
-#pragma warning restore CS0162
         }
 
         public ActionResult Index(int id = 1)
@@ -207,26 +177,10 @@ namespace MyXpens.Controllers
             base.Dispose(disposing);
         }
 
-        private static byte[] ZipString(string str)
-        {
-            var bytes = Encoding.UTF8.GetBytes(str);
-
-            using var msi = new MemoryStream(bytes);
-            using var mso = new MemoryStream();
-            using (var gs = new GZipStream(mso, CompressionMode.Compress))
-            {
-                byte[] bytesBuffer = new byte[4096];
-                int cnt;
-                while ((cnt = msi.Read(bytesBuffer, 0, bytesBuffer.Length)) != 0)
-                {
-                    gs.Write(bytesBuffer, 0, cnt);
-                }
-            }
-            return mso.ToArray();
-        }
-
         private List<StatistixView> GetStats()
         {
+            var stats = new List<StatistixView>();
+
             var today = DateTime.Now;
             var startThisMonth = new DateTime(today.Year, today.Month, 1).AddMinutes(-1); // 23:59 of Previous Day.
             var startPrevMonth = new DateTime(today.Year, today.AddMonths(-1).Month, 1).AddMinutes(-1);
@@ -236,22 +190,20 @@ namespace MyXpens.Controllers
 
             var categories = new List<KeyValuePair<int, string>>()
             {
-                // new KeyValuePair<int, string>(16,"ENJ"),
-                // new KeyValuePair<int, string>(43,"BMO"),
+                new KeyValuePair<int, string>(07, "HOM"),
+                new KeyValuePair<int, string>(08, "KID"),
+                new KeyValuePair<int, string>(09, "KIU"),
+                new KeyValuePair<int, string>(10, "QVN"),
+                // new KeyValuePair<int, string>(11, "FOO"), //
+                new KeyValuePair<int, string>(13, "HLS"),
+                // new KeyValuePair<int, string>(16,"ENJ"), //
                 new KeyValuePair<int, string>(18, "VLG"),
                 new KeyValuePair<int, string>(19, "KSH"),
-                new KeyValuePair<int, string>(13, "HLS"),
-                new KeyValuePair<int, string>(09, "KIU"),
-                new KeyValuePair<int, string>(08, "KID"),
-                // new KeyValuePair<int, string>(11, "FOO"),
-                new KeyValuePair<int, string>(45, "HOL"),
-                new KeyValuePair<int, string>(07, "HOM"),
-                new KeyValuePair<int, string>(10, "QVN"),
                 new KeyValuePair<int, string>(4, "CEX"),
-                // new KeyValuePair<int, string>(48, "SCH"),
+                // new KeyValuePair<int, string>(43,"BMO"), //
+                new KeyValuePair<int, string>(45, "HOL"),
+                // new KeyValuePair<int, string>(48, "SCH"), //
             };
-
-            var stats = new List<StatistixView>();
 
             foreach (KeyValuePair<int, string> categItem in categories)
             {
