@@ -59,7 +59,7 @@
 <div class="table-responsive">
     <table class="table table-striped">
         <thead>
-            <tr class="secondHeader">
+            <tr class="secondHeader" onclick="selectCateg(999)">
                 <th>@ViewBag.alfa</th>
                 <th>@ViewBag.prima</th>
                 <th>@ViewBag.rest</th>
@@ -102,16 +102,21 @@
 
 <script>
     let selectCateg = function (categ) {
-        let categRowShow = document.querySelectorAll('.' + categ);
-        let categRowAll = document.querySelectorAll('.rawMain:not(.' + categ + ')');
-        categRowAll.forEach(hide);
-        categRowShow.forEach(show);
+        if(categ===999){
+            let categAllHidden = document.querySelectorAll('.rowHidden');
+            categAllHidden.forEach(showRow);
+        }else{
+            let categRowShow = document.querySelectorAll('.' + categ);
+            let categRowAll = document.querySelectorAll('.rawMain:not(.' + categ + ')');
+            categRowAll.forEach(hideRow);
+            categRowShow.forEach(showRow);
+        }
     }
-    let hide = function (row) {
+    let hideRow = function (row) {
         row.classList.remove('rowShown');
         row.classList.add('rowHidden');
     }
-    let show = function (row) {
+    let showRow = function (row) {
         row.classList.remove('rowHidden');
         row.classList.add('rowShown');
     }

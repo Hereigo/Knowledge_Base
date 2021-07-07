@@ -90,7 +90,7 @@ namespace MyXpens.Controllers
                             Amount = payment.Amount * (-1),
                             CatogoryId = paymentSourceCatId,
                             Description = payment.Description,
-                            PayDate = payment.PayDate
+                            PayDate = DateTime.UtcNow.AddHours(3)
                         });
                         _dbContext.SaveChanges();
                     }
