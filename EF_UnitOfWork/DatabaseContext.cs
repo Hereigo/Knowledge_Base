@@ -4,8 +4,8 @@ namespace EF_UnitOfWork
 {
     public class DatabaseContext : DbContext
     {
-        public DbSet<EntityOne> EntityOne { get; set; }
+        public DbSet<EntityA> EntityA { get; set; }
 
-        public DbSet<EntityTwo> EntityTwo { get; set; }
+        public DbSet<EntityB> EntityB { get; set; }
     }
 }

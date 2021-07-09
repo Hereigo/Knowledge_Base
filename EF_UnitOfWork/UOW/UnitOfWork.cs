@@ -6,22 +6,22 @@ namespace EF_UnitOfWork
     {
         private readonly DatabaseContext db = new DatabaseContext();
 
-        private EntityOneRepository GetEntityOneRepo { get; }
-        private EntityTwoRepository GetEntityTwoRepo { get; }
+        private RepositoryA GetRepoA { get; }
+        private RepositoryB GetRepoB { get; }
 
-        public EntityOneRepository OneRepository
+        public RepositoryA OneRepository
         {
             get
             {
-                return GetEntityOneRepo ?? new EntityOneRepository(db);
+                return GetRepoA ?? new RepositoryA(db);
             }
         }
 
-        public EntityTwoRepository TwoRepository
+        public RepositoryB TwoRepository
         {
             get
             {
-                return GetEntityTwoRepo ?? new EntityTwoRepository(db);
+                return GetRepoB ?? new RepositoryB(db);
             }
         }
 
