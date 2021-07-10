@@ -7,8 +7,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{230FB578-34FD-41E1-816C-3148BAF2AFF5}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>EF_UnitOfWork_Repository_2</RootNamespace>
-    <AssemblyName>EF_UnitOfWork_Repository_2</AssemblyName>
+    <RootNamespace>EF_UnitOfWork_Repository</RootNamespace>
+    <AssemblyName>EF_UnitOfWork_Repository</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -54,12 +54,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BizTwoEntity.cs" />
-    <Compile Include="BizOneEntity.cs" />
-    <Compile Include="DatabaseContext.cs" />
-    <Compile Include="RepositoryGeneral.cs" />
-    <Compile Include="IRepository.cs" />
-    <Compile Include="IUnitOfWork.cs" />
+    <Compile Include="EntityB.cs" />
+    <Compile Include="EntityA.cs" />
+    <Compile Include="GeneralRepository.cs" />
     <Compile Include="App_Start.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UnitOfWork.cs" />

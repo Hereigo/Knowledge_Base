@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29613.14
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31423.177
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DI_Service_Lifetimes", "DI_Service_Lifetimes\DI_Service_Lifetimes.csproj", "{9E30E64E-7985-41FD-9A3F-38145C61AC99}"
 EndProject
@@ -26,13 +26,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Log4net_use", "Log4net_use\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EF_MultipleDbContext", "EF_MultipleDbContext\EF_MultipleDbContext.csproj", "{1227678E-4BEF-4D82-8D14-40198D257612}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EF_UnitOfWork", "EF_UnitOfWork\EF_UnitOfWork.csproj", "{FABBD278-50B4-46E2-940B-5855F2722EC5}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EF_Repository_UnitOfWork", "EF_Repository_UnitOfWork\EF_Repository_UnitOfWork.csproj", "{82FC7EFE-8682-4FF8-B71B-8ED60FDA93D8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EF_UnitOfWork_Repository", "EF_UnitOfWork_Repository\EF_UnitOfWork_Repository.csproj", "{56901DBE-FF87-4512-B09B-FBA6659F687D}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EF_UnitOfWork_Repository_2", "EF_UnitOfWork_Repository_2\EF_UnitOfWork_Repository_2.csproj", "{230FB578-34FD-41E1-816C-3148BAF2AFF5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EF_UnitOfWork_Repository", "EF_UnitOfWork_Repository_2\EF_UnitOfWork_Repository.csproj", "{230FB578-34FD-41E1-816C-3148BAF2AFF5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AngularJS_ASPNet_MVC_4", "AngularJS_ASPNet_MVC_4\AngularJS_ASPNet_MVC_4.csproj", "{C04BC438-70F4-4829-A05B-4C935CC4C45C}"
 EndProject
@@ -122,18 +118,10 @@ Global
 		{1227678E-4BEF-4D82-8D14-40198D257612}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1227678E-4BEF-4D82-8D14-40198D257612}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1227678E-4BEF-4D82-8D14-40198D257612}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FABBD278-50B4-46E2-940B-5855F2722EC5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FABBD278-50B4-46E2-940B-5855F2722EC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FABBD278-50B4-46E2-940B-5855F2722EC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FABBD278-50B4-46E2-940B-5855F2722EC5}.Release|Any CPU.Build.0 = Release|Any CPU
 		{82FC7EFE-8682-4FF8-B71B-8ED60FDA93D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{82FC7EFE-8682-4FF8-B71B-8ED60FDA93D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{82FC7EFE-8682-4FF8-B71B-8ED60FDA93D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{82FC7EFE-8682-4FF8-B71B-8ED60FDA93D8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{56901DBE-FF87-4512-B09B-FBA6659F687D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{56901DBE-FF87-4512-B09B-FBA6659F687D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{56901DBE-FF87-4512-B09B-FBA6659F687D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{56901DBE-FF87-4512-B09B-FBA6659F687D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{230FB578-34FD-41E1-816C-3148BAF2AFF5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{230FB578-34FD-41E1-816C-3148BAF2AFF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{230FB578-34FD-41E1-816C-3148BAF2AFF5}.Release|Any CPU.ActiveCfg = Release|Any CPU

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace EF_UnitOfWork
+namespace EF_UnitOfWork.UOW
 {
     public class RepositoryA : IRepository<EntityA>
     {

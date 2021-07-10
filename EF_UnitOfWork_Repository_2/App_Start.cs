@@ -1,4 +1,4 @@
-﻿namespace EF_UnitOfWork_Repository_2
+﻿namespace EF_UnitOfWork_Repository
 {
     internal static class App_Start
     {
@@ -8,10 +8,10 @@
 
             UnitOfWork unitOfWork = new UnitOfWork(databaseContext);
 
-            unitOfWork.RepositoryOne.Add(new BizOneEntity { Text = "Some text.", BizOneSpecial = "Biz One Prop." });
+            unitOfWork.RepositoryA.Add(new EntityA { Text = "Some text.", BizOneSpecial = "Biz One Prop." });
             unitOfWork.Commit();
 
-            foreach (BizOneEntity i in unitOfWork.RepositoryOne.GetAll())
+            foreach (EntityA i in unitOfWork.RepositoryA.GetAll())
             {
                 System.Console.WriteLine($"{i.Id} - {i.Text} - {i.BizOneSpecial}");
             }

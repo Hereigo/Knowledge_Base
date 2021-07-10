@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace EF_UnitOfWork_Repository_2
+namespace EF_UnitOfWork_Repository
 {
-    public class BizTwoEntity
+    public class EntityB
     {
         public int Id { get; set; }
 

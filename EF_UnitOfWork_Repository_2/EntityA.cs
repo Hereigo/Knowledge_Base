@@ -1,6 +1,6 @@
-﻿namespace EF_UnitOfWork_Repository_2
+﻿namespace EF_UnitOfWork_Repository
 {
-    public class BizOneEntity
+    public class EntityA
     {
         public int Id { get; set; }
 

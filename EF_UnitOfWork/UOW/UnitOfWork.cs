@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace EF_UnitOfWork
+namespace EF_UnitOfWork.UOW
 {
     public class UnitOfWork : IDisposable
     {
@@ -9,7 +9,7 @@ namespace EF_UnitOfWork
         private RepositoryA GetRepoA { get; }
         private RepositoryB GetRepoB { get; }
 
-        public RepositoryA OneRepository
+        public RepositoryA RepositoryA
         {
             get
             {
@@ -17,7 +17,7 @@ namespace EF_UnitOfWork
             }
         }
 
-        public RepositoryB TwoRepository
+        public RepositoryB RepositoryB
         {
             get
             {

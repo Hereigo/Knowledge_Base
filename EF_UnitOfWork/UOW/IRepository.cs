@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace EF_UnitOfWork
+namespace EF_UnitOfWork.UOW
 {
     internal interface IRepository<T> where T : class
     {

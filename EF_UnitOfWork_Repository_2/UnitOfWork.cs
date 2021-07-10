@@ -2,8 +2,18 @@
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 
-namespace EF_UnitOfWork_Repository_2
+namespace EF_UnitOfWork_Repository
 {
+    public interface IUnitOfWork
+    {
+        IRepository<EntityA> RepositoryA { get; }
+        IRepository<EntityB> RepositoryB { get; }
+        void Commit();
+        // Discards all changes that has not been commited.
+        void RejectChanges();
+        void Dispose();
+    }
+
     internal class UnitOfWork : IUnitOfWork
     {
         private readonly DatabaseContext _dbCtx;
@@ -13,8 +23,8 @@ namespace EF_UnitOfWork_Repository_2
             _dbCtx = dbCtx;
         }
 
-        public IRepository<BizOneEntity> RepositoryOne => new RepositoryGeneral<BizOneEntity>(_dbCtx);
-        public IRepository<BizTwoEntity> RepositoryTwo => new RepositoryGeneral<BizTwoEntity>(_dbCtx);
+        public IRepository<EntityA> RepositoryA => new GeneralRepository<EntityA>(_dbCtx);
+        public IRepository<EntityB> RepositoryB => new GeneralRepository<EntityB>(_dbCtx);
 
         public void Commit()
         {
