@@ -76,6 +76,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MediatR_CQRS_API", "MediatR
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sql_CE31_EFCore_FromCoreTemplate", "Sql_CE31_with_EFCore_31\Sql_CE31_EFCore_FromCoreTemplate.csproj", "{59E7E475-2571-4F2A-8EE4-1280124FD1AA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RawSqlCommandsGenerator", "RowSqlCommandsGenerator\RawSqlCommandsGenerator.csproj", "{8F3CC1FC-E0D8-4767-AEB4-8C73316CCBD0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -218,6 +220,10 @@ Global
 		{59E7E475-2571-4F2A-8EE4-1280124FD1AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{59E7E475-2571-4F2A-8EE4-1280124FD1AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{59E7E475-2571-4F2A-8EE4-1280124FD1AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8F3CC1FC-E0D8-4767-AEB4-8C73316CCBD0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F3CC1FC-E0D8-4767-AEB4-8C73316CCBD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F3CC1FC-E0D8-4767-AEB4-8C73316CCBD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F3CC1FC-E0D8-4767-AEB4-8C73316CCBD0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
