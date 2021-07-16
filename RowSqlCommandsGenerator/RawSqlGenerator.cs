@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
 namespace RawSqlCommandsGenerator
 {
@@ -10,28 +9,12 @@ namespace RawSqlCommandsGenerator
             var resultFirst = $" INSERT INTO [{entity.GetType().Name}] (";
             var resultSecond = ") VALUES (";
 
-            var _attrDict = new Dictionary<string, string>();
-
-            var properties = entity.GetType().GetProperties();
-
-            foreach (var property in properties)
+            foreach (var property in entity.GetType().GetProperties())
             {
-                foreach (var attr in property.GetCustomAttributes(true))
-                {
-                    if (attr is ColumnAttribute authAttr)
-                    {
-                        var propName = property.Name;
-                        var auth = authAttr.Name;
+                var columnAttribute = System.Array.Find(property.GetCustomAttributes(true), a => a is ColumnAttribute);
 
-                        _attrDict.Add(propName, auth);
-                    }
-                }
-            }
-
-            foreach (var property in properties)
-            {
-                resultFirst += _attrDict.ContainsKey(property.Name)
-                    ? $" {_attrDict[property.Name]},"
+                resultFirst += columnAttribute != null
+                    ? $" {((ColumnAttribute)columnAttribute).Name},"
                     : $" {property.Name},";
 
                 resultSecond += property.PropertyType.Equals(typeof(string))
