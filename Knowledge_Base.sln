@@ -78,7 +78,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RawSqlCommandsGenerator", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "COMMON_HELPER", "CommonHelper\COMMON_HELPER.csproj", "{8AF79FF9-6488-417E-992F-EFEDA4C1DC7D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EF_Repository", "EF_Repository\EF_Repository.csproj", "{C9B5FE4B-DEDF-473E-B6B9-CFC0C1CD181D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EF_Repository", "EF_Repository\EF_Repository.csproj", "{C9B5FE4B-DEDF-473E-B6B9-CFC0C1CD181D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EF_Repository_UoW", "EF_Repository_UoW\EF_Repository_UoW.csproj", "{D6332FE5-08CD-4D1E-876C-AC5E90EF661D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -230,6 +232,10 @@ Global
 		{C9B5FE4B-DEDF-473E-B6B9-CFC0C1CD181D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C9B5FE4B-DEDF-473E-B6B9-CFC0C1CD181D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C9B5FE4B-DEDF-473E-B6B9-CFC0C1CD181D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D6332FE5-08CD-4D1E-876C-AC5E90EF661D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6332FE5-08CD-4D1E-876C-AC5E90EF661D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6332FE5-08CD-4D1E-876C-AC5E90EF661D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6332FE5-08CD-4D1E-876C-AC5E90EF661D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
