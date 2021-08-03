@@ -12,12 +12,13 @@ namespace CoreMvcTG.TgBot
     {
         private static ITelegramBotClient _tClient { get; set; }
 
+        private bool msgHandlerLocked;
+        private readonly CurrencyService currency = new();
         private readonly long adminUid = GIT_IGNORE.PASSWORDS.adminUid;
         private readonly string token = GIT_IGNORE.PASSWORDS.token;
-        bool msgHandlerLocked = false;
-        private readonly WeatherService weather = new WeatherService();
-        private readonly CurrencyService currency = new CurrencyService();
+        private readonly WeatherService weather = new();
 
+        [Obsolete]
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
             while (!stoppingToken.IsCancellationRequested)
@@ -27,7 +28,7 @@ namespace CoreMvcTG.TgBot
                     Timeout = TimeSpan.FromSeconds(10)
                 };
 
-                var me = _tClient.GetMeAsync().Result;
+                var me = _tClient.GetMeAsync(stoppingToken).Result;
 
                 // bot answers anti-duplication:
                 if (!msgHandlerLocked)
@@ -105,7 +106,7 @@ namespace CoreMvcTG.TgBot
                     }
                 }
 
-                _tClient.StartReceiving();
+                _tClient.StartReceiving(cancellationToken: stoppingToken);
 
                 await Task.Delay(TimeSpan.FromSeconds(10), stoppingToken);
             }
