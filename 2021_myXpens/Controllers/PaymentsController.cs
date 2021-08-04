@@ -15,6 +15,7 @@ namespace MyXpens.Controllers
     [Authorize]
     public class PaymentsController : Controller
     {
+        private const int timezonesCorrection = 10; // fix by UTC + TimeZone!
         private readonly AppStaticValues _appValues;
         private readonly PaymentsContext _dbContext;
 
@@ -26,13 +27,8 @@ namespace MyXpens.Controllers
 
         public ActionResult Index(int id = 1)
         {
-            // TODO:
-            // Multi Async Calls !!!
-
             var result = new PaymentsWithStatVm();
-
             var minDate = DateTime.Now.AddDays((-1) * id);
-
             var payments = _dbContext.Payments.Include(p => p.Category);
 
             // TODO:
@@ -55,8 +51,10 @@ namespace MyXpens.Controllers
         public ActionResult Create()
         {
             ViewBag.CatogoryId = new SelectList(_dbContext.Categories.Where(c => c.IsActive).OrderBy(c => c.Name), "ID", "Name");
-            ViewBag.Today = DateTime.Now;
-            Payment newPay = new Payment { PayDate = DateTime.Now.AddHours(10) }; // fix by UTC + TimeZone!
+
+            //ViewBag.Today = DateTime.Now; - ???
+
+            Payment newPay = new() { PayDate = DateTime.Now.AddHours(timezonesCorrection) };
 
             return View(newPay);
         }
@@ -90,7 +88,9 @@ namespace MyXpens.Controllers
                             Amount = payment.Amount * (-1),
                             CatogoryId = paymentSourceCatId,
                             Description = payment.Description,
-                            PayDate = DateTime.UtcNow.AddHours(3)
+                            PayDate = payment.PayDate == default
+                                    ? DateTime.UtcNow.AddHours(timezonesCorrection)
+                                    : payment.PayDate.AddHours(timezonesCorrection)
                         });
                         _dbContext.SaveChanges();
                     }
