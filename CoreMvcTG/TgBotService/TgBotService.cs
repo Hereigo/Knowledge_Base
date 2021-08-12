@@ -18,7 +18,6 @@ namespace CoreMvcTG.TgBot
         private readonly string token = GIT_IGNORE.PASSWORDS.token;
         private readonly WeatherService weather = new();
 
-        [Obsolete]
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
             while (!stoppingToken.IsCancellationRequested)

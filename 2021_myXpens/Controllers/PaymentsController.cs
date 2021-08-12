@@ -15,7 +15,7 @@ namespace MyXpens.Controllers
     [Authorize]
     public class PaymentsController : Controller
     {
-        private const int timezonesCorrection = 10; // fix by UTC + TimeZone!
+        private const int timezonesCorrection = 3; // fix by UTC + TimeZone!
         private readonly AppStaticValues _appValues;
         private readonly PaymentsContext _dbContext;
 
