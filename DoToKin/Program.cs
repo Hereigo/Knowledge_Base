@@ -6,7 +6,9 @@ namespace DoToKin
 {
     internal static class Program
     {
-        const string addressConstant = "https://...";
+        private const string addressConstant = "https://...";
+        private static readonly string savePath = Path.Combine(
+            Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "DOWNLOADED.txt");
 
         private static void Main()
         {
@@ -23,14 +25,14 @@ namespace DoToKin
 
             try
             {
-                var fs = new FileStream("COMMENTS.txt", FileMode.OpenOrCreate, FileAccess.Write);
+                var fs = new FileStream(savePath, FileMode.OpenOrCreate, FileAccess.Write);
                 var sw = new StreamWriter(fs);
                 sw.WriteLine(title);
                 sw.WriteLine("\r\n ========================================================= \r\n");
 
                 for (int i = 0; i < comments.Count - 1; i++)
                 {
-                    var comment = comments[i].NextSibling.InnerText.Split('\n'); //.Replace("\n", "\t").Trim()
+                    var comment = comments[i].NextSibling.InnerText.Split('\n');
 
                     foreach (var line in comment)
                     {
