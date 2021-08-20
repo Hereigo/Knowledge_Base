@@ -1,30 +1,35 @@
-﻿using System;
-using Quartz.Logging;
+﻿//using System;
+//using Quartz.Logging;
 
-namespace QuartzNet_Use
-{
-    public class ConsoleLogProvider : ILogProvider
-    {
-        public Logger GetLogger(string name)
-        {
-            return (level, func, exception, parameters) =>
-            {
-                if (level >= LogLevel.Info && func != null)
-                {
-                    Console.WriteLine("[" + DateTime.Now.ToLongTimeString() + "] [" + level + "] " + func(), parameters);
-                }
-                return true;
-            };
-        }
+//namespace QuartzNet_Use
+//{
 
-        public IDisposable OpenNestedContext(string message)
-        {
-            throw new NotImplementedException();
-        }
+//    // Inside Scheduler START() :
 
-        public IDisposable OpenMappedContext(string key, object value, bool destructure = false)
-        {
-            throw new NotImplementedException();
-        }
-    }
-}
+//    // LogProvider.SetCurrentLogProvider(new ConsoleLogProvider());
+
+//    public class ConsoleLogProvider : ILogProvider
+//    {
+//        public Logger GetLogger(string name)
+//        {
+//            return (level, func, exception, parameters) =>
+//            {
+//                if (level >= LogLevel.Info && func != null)
+//                {
+//                    Console.WriteLine("[" + DateTime.Now.ToLongTimeString() + "] [" + level + "] " + func(), parameters);
+//                }
+//                return true;
+//            };
+//        }
+
+//        public IDisposable OpenNestedContext(string message)
+//        {
+//            throw new NotImplementedException();
+//        }
+
+//        public IDisposable OpenMappedContext(string key, object value, bool destructure = false)
+//        {
+//            throw new NotImplementedException();
+//        }
+//    }
+//}
