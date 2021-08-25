@@ -10,8 +10,8 @@ namespace QuartzNet_Use
 {
     public class QuartzHostedService : IHostedService
     {
-        const int startHour = 10;
-        const int startMinute = 04;
+        const int startHour = 11;
+        const int startMinute = 53;
         const int repeatEveryHours = 10;
 
         private readonly IEnumerable<JobSchedule> _jobSchedules;

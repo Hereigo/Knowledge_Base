@@ -82,7 +82,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EF_Repository_UoW", "EF_Rep
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DoToKin", "DoToKin\DoToKin.csproj", "{CB6FEDB7-3826-462E-B389-38803B5FC0E4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuartzNet_Use", "QuartzNet_Use\QuartzNet_Use.csproj", "{850F4B57-C31A-4ADA-8851-4D7B577036EE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QuartzNet_Use", "QuartzNet_Use\QuartzNet_Use.csproj", "{850F4B57-C31A-4ADA-8851-4D7B577036EE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCoreBase", "AspNetCoreBase\AspNetCoreBase.csproj", "{7A230997-99A2-4669-BBFE-C3B62E45813F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediatR_Runner", "MediatR_Runner\MediatR_Runner.csproj", "{B21D9EF2-BD19-4EDA-AE2F-2343635715E2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediatR_Runner_Ext", "MediatR_Runner_Ext\MediatR_Runner_Ext.csproj", "{24BD1DC1-1D2F-4AD4-98CC-4F999B561979}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -242,6 +248,18 @@ Global
 		{850F4B57-C31A-4ADA-8851-4D7B577036EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{850F4B57-C31A-4ADA-8851-4D7B577036EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{850F4B57-C31A-4ADA-8851-4D7B577036EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A230997-99A2-4669-BBFE-C3B62E45813F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A230997-99A2-4669-BBFE-C3B62E45813F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A230997-99A2-4669-BBFE-C3B62E45813F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A230997-99A2-4669-BBFE-C3B62E45813F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B21D9EF2-BD19-4EDA-AE2F-2343635715E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B21D9EF2-BD19-4EDA-AE2F-2343635715E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B21D9EF2-BD19-4EDA-AE2F-2343635715E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B21D9EF2-BD19-4EDA-AE2F-2343635715E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{24BD1DC1-1D2F-4AD4-98CC-4F999B561979}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24BD1DC1-1D2F-4AD4-98CC-4F999B561979}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24BD1DC1-1D2F-4AD4-98CC-4F999B561979}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24BD1DC1-1D2F-4AD4-98CC-4F999B561979}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
