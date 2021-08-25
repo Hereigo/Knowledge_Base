@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using MediatR;
+using MediatR_Runner.TestCommands;
 using MediatR_Runner_Ext;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;

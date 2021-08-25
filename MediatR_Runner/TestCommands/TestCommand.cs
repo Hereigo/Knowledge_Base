@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace MediatR_Runner
+namespace MediatR_Runner.TestCommands
 {
     public class TestCommand : IRequest
     {
