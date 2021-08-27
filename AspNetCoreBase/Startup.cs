@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
@@ -19,14 +19,35 @@ namespace AspNetCoreBase
             // app.Run...
             // app.Use...
 
-            if (env.IsDevelopment())
+            // app.UseAuthentication()
+            // app.UseAuthorization()
+            // app.UseCookiePolicy()
+            // app.UseCORS()
+            // app.UseDiagnostics() - add diag. status pages for dev.
+            // app.UseForwardedHeaders()
+            // app.UseHeaderPropagation()
+            // app.UseHealthCheck()
+            // app.UseHsts() -  Strict Transport Security(HSTS) add some headers for more security
+            // app.UseHttpMethodOverride()
+            // app.UseHttpsRedirection() - forward http to https
+            // app.UseMVC()
+            // app.UseRequestLocalization()
+            // app.UseResponseCaching()
+            // app.UseResponseCompression()
+            // app.UseRewriter()
+            // app.UseRouting()
+            // app.UseSession()
+            // app.UseStaticFiles()
+            // app.UseWebSockets()
+
+            if (env.IsDevelopment()) // in launchSettings.json or machine ENVs
             {
                 app.UseDeveloperExceptionPage();
             }
 
             app.UseRouting();
 
-            // To Create Middleware :
+            // To Create Middleware using:
             // public delegate Task RequestDelegate(HttpContext httpContext);
             app.UseEndpoints(endpoints =>
             {
