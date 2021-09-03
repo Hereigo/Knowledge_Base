@@ -8,6 +8,8 @@ namespace AspNetCoreBase
 {
     public class Startup
     {
+        static int x = 0;
+
         public void ConfigureServices(IServiceCollection services)
         {
         }
@@ -15,9 +17,7 @@ namespace AspNetCoreBase
         // Pipeline Configure (..., IWebHostEnvironment - optional):
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            // app.Map...
-            // app.Run...
-            // app.Use...
+            // app.Map... // app.Run... // app.Use...
 
             // app.UseAuthentication()
             // app.UseAuthorization()
@@ -53,9 +53,18 @@ namespace AspNetCoreBase
             {
                 endpoints.MapGet("/", async httpContext =>
                 {
-                    await httpContext.Response.WriteAsync($"Current HostingEnvironment is - {env.EnvironmentName}");
+                    await httpContext.Response.WriteAsync(
+                        $"Current HostingEnvironment is - {env.EnvironmentName}.\r\n\r\n" +
+                        $"RequestsCounter: {x++}");
                 });
             });
+            // OR :
+            // int y = 2;
+            // app.Run(async (context) =>
+            // {
+            //     y = y * 2;  //  2 * 2 = 4
+            //     await context.Response.WriteAsync($"Result: {y}");
+            // });
         }
     }
 }

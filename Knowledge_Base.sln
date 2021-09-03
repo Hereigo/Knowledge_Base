@@ -88,7 +88,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MediatR_Runner", "MediatR_R
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MediatR_Runner_Ext", "MediatR_Runner_Ext\MediatR_Runner_Ext.csproj", "{24BD1DC1-1D2F-4AD4-98CC-4F999B561979}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetCoreBase", "AspNetCoreBase\AspNetCoreBase.csproj", "{6C1F09CC-B524-47A4-BC61-23684610EE00}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCoreBase", "AspNetCoreBase\AspNetCoreBase.csproj", "{6C1F09CC-B524-47A4-BC61-23684610EE00}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
