@@ -90,6 +90,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MediatR_Runner_Ext", "Media
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCoreBase", "AspNetCoreBase\AspNetCoreBase.csproj", "{6C1F09CC-B524-47A4-BC61-23684610EE00}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yield_Measure", "Yield_Measure\Yield_Measure.csproj", "{CC05202A-9DEA-476F-8969-A346C1734A9F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -260,6 +262,10 @@ Global
 		{6C1F09CC-B524-47A4-BC61-23684610EE00}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6C1F09CC-B524-47A4-BC61-23684610EE00}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6C1F09CC-B524-47A4-BC61-23684610EE00}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC05202A-9DEA-476F-8969-A346C1734A9F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC05202A-9DEA-476F-8969-A346C1734A9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC05202A-9DEA-476F-8969-A346C1734A9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC05202A-9DEA-476F-8969-A346C1734A9F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
