@@ -7,8 +7,10 @@ namespace Xtra_Tests
         private static void Main()
         {
             Delegates_Basic.Test();
-            // HumaniserUse.Test();
-            // Recursion.Test();
+
+            HumaniserUse.Test();
+
+            Recursion.Test();
 
             Console.ReadKey();
         }
