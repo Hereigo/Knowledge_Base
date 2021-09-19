@@ -42,8 +42,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AngularJS_ASPnet48_XML", "A
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dapper_use", "Dapper_use\Dapper_use.csproj", "{A54502C8-9199-492E-9033-44F5ED856C6F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AsyncAwait_use", "AsyncAwait_use\AsyncAwait_use.csproj", "{F05BE9FA-F513-4B51-9861-3870B28312BD}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Swagger_FluentValidation", "Swagger_FluentValidation\Swagger_FluentValidation.csproj", "{2FCA01D0-F750-45F7-B4C0-8E96131AEEB0}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Log_SeriLog", "Log_SeriLog\Log_SeriLog.csproj", "{8F1BFF4B-7788-4F2B-895E-894C6FD6AE21}"
@@ -164,10 +162,6 @@ Global
 		{A54502C8-9199-492E-9033-44F5ED856C6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A54502C8-9199-492E-9033-44F5ED856C6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A54502C8-9199-492E-9033-44F5ED856C6F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F05BE9FA-F513-4B51-9861-3870B28312BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F05BE9FA-F513-4B51-9861-3870B28312BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F05BE9FA-F513-4B51-9861-3870B28312BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F05BE9FA-F513-4B51-9861-3870B28312BD}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2FCA01D0-F750-45F7-B4C0-8E96131AEEB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2FCA01D0-F750-45F7-B4C0-8E96131AEEB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2FCA01D0-F750-45F7-B4C0-8E96131AEEB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
