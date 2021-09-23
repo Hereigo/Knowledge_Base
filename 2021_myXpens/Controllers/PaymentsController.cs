@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -12,7 +11,7 @@ using MyXpens.Models;
 
 namespace MyXpens.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class PaymentsController : Controller
     {
         private const int timezonesCorrection = 3; // fix by UTC + TimeZone!

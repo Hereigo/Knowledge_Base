@@ -6,6 +6,8 @@ namespace Xtra_Tests
     {
         private static void Main()
         {
+            Override_Inheritance.Test();
+
             Delegates_Basic.Test();
 
             HumaniserUse.Test();

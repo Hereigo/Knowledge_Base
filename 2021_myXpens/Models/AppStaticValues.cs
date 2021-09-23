@@ -1,4 +1,4 @@
-﻿namespace MyXpens
+﻿namespace MyXpens.Models
 {
     public class AppStaticValues
     {

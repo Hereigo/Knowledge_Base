@@ -11,7 +11,7 @@ namespace MyXpens.Models
 
         [Required]
         [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:d.M}")]
+        [DisplayFormat(DataFormatString = "{0:[ d ] HH:mm}")]
         //[DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}")]
         public DateTime PayDate { get; set; }
 
