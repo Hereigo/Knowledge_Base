@@ -20,7 +20,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.PayDate, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.TextBoxFor(model => model.PayDate, "{0:yyyy-MM-dd}", new { @class = "form-control", @id="datetimepicker" })
+                @Html.TextBoxFor(model => model.PayDate, "{0:yyyy-MM-dd HH:mm}", new { @class = "form-control", @id="datetimepicker" })
                 @Html.ValidationMessageFor(model => model.PayDate, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -69,10 +69,7 @@
         // window.addEventListener('load', function () {
         document.addEventListener("DOMContentLoaded", () => {
 
-            $('#datetimepicker').datetimepicker({
-                mask: '9999/19/39 29:59',
-                value: Date.now()
-            });
+            $('#datetimepicker').datetimepicker();
 
         });
     </script>

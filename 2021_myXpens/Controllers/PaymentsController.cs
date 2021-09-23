@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -11,7 +12,7 @@ using MyXpens.Models;
 
 namespace MyXpens.Controllers
 {
-    //[Authorize]
+    [Authorize]
     public class PaymentsController : Controller
     {
         private const int timezonesCorrection = 3; // fix by UTC + TimeZone!
@@ -51,8 +52,6 @@ namespace MyXpens.Controllers
         {
             ViewBag.CatogoryId = new SelectList(_dbContext.Categories.Where(c => c.IsActive).OrderBy(c => c.Name), "ID", "Name");
 
-            //ViewBag.Today = DateTime.Now; - ???
-
             Payment newPay = new() { PayDate = DateTime.Now.AddHours(timezonesCorrection) };
 
             return View(newPay);
@@ -88,8 +87,8 @@ namespace MyXpens.Controllers
                             CatogoryId = paymentSourceCatId,
                             Description = payment.Description,
                             PayDate = payment.PayDate == default
-                                    ? DateTime.UtcNow.AddHours(timezonesCorrection)
-                                    : payment.PayDate.AddHours(timezonesCorrection)
+                                    ? DateTime.UtcNow
+                                    : payment.PayDate
                         });
                         _dbContext.SaveChanges();
                     }
