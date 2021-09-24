@@ -4,15 +4,14 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
-
     <link rel="stylesheet" href="~/css/site.min.css" />
     <link rel="stylesheet" href="~/font-awesome/css/all.min.css" />
     <link rel="stylesheet" href="~/font-awesome/css/fontawesome.css" />    
     <link rel="stylesheet" href="/datetime/jquery.datetimepicker.min.css" />
-
     <script src="/js/jquery-1.10.2.js"></script>
     <script src="/datetime/jquery.datetimepicker.full.min.js"></script>
 </head>
+
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
@@ -42,6 +41,7 @@
             </div>
         </nav>
     </header>
+
     <div class="container">
 
         @RenderBody()
@@ -56,16 +56,16 @@
     </div>
 
     
-    
     @* 
         GULP NEEDED !!! 
         <script src="/js/site.min.js"></script>
     *@
+
+
     <script src="/js/site.js"></script>
 
 
     @RenderSection("Scripts", required: false)
-
 
 
 </body>
