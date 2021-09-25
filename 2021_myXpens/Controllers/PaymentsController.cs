@@ -43,7 +43,19 @@ namespace MyXpens.Controllers
             result.StatistixVm = GetStats();
 
             result.PaymentsVm = payments
-                .Where(p => p.PayDate > minDate).OrderByDescending(p => p.PayDate).ToList();
+                .Where(p => p.PayDate > minDate)
+                .OrderByDescending(p => p.PayDate)
+                .Select(x => new PaymentVM
+                {
+                    Amount = x.Amount,
+                    Category = x.Category,
+                    CatogoryId = x.CatogoryId,
+                    Description = x.Description,
+                    ID = x.ID,
+                    PayDate = x.PayDate,
+                    PayDay = x.PayDate.Day
+                })
+                .ToList();
 
             return View(result);
         }

@@ -74,11 +74,27 @@
             </tr>
         </thead>
         <tbody>
+
+            @{
+                int prevDay = 0;
+                string colored = string.Empty;
+                string isColored = "table-active";
+            }
+
             @foreach (var item in Model.PaymentsVm)
             {
+                prevDay = prevDay == 0 ? item.PayDay : prevDay;
+
+                if(prevDay != item.PayDay)
+                {
+                    colored = colored == isColored ? string.Empty : isColored;
+                }
+
+                prevDay = item.PayDay;
+
                 var category = item.Category.Name;
 
-                <tr class="rawMain @category">
+                <tr class="rawMain @category @colored">
                     <td>
                         @Html.DisplayFor(modelItem => item.PayDate)
                     </td>
@@ -99,6 +115,7 @@
         </tbody>
     </table>
 </div>
+
 
 <script>
     let selectCateg = function (categ) {
