@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using System.Threading.Tasks;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
@@ -8,7 +9,7 @@ namespace AspNetCoreBase
 {
     public class Startup
     {
-        static int x = 0;
+        static int startupStaticX = 0;
 
         public void ConfigureServices(IServiceCollection services)
         {
@@ -17,7 +18,11 @@ namespace AspNetCoreBase
         // Pipeline Configure (..., IWebHostEnvironment - optional):
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            // app.Map... // app.Run... // app.Use...
+            // app.Map("/index", ProcessAnonimous);
+            // app.Map("/about", ProcessAuthorized);
+            // app.MapWhen( Func<HttpContext, bool> );
+            // app.Use... - Use and path request to Next.
+            // app.Run... - just Run, not call Next.
 
             // app.UseAuthentication()
             // app.UseAuthorization()
@@ -47,15 +52,19 @@ namespace AspNetCoreBase
 
             app.UseRouting();
 
-            // To Create Middleware using:
+            app.UseMiddleware<MyTokenMiddleware>();
+
+            // To Create Middleware is using:
+            //
             // public delegate Task RequestDelegate(HttpContext httpContext);
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapGet("/", async httpContext =>
                 {
                     await httpContext.Response.WriteAsync(
                         $"Current HostingEnvironment is - {env.EnvironmentName}.\r\n\r\n" +
-                        $"RequestsCounter: {x++}");
+                        $"RequestsCounter: {startupStaticX++}");
                 });
             });
             // OR :
@@ -65,6 +74,30 @@ namespace AspNetCoreBase
             //     y = y * 2;  //  2 * 2 = 4
             //     await context.Response.WriteAsync($"Result: {y}");
             // });
+        }
+    }
+
+    internal class MyTokenMiddleware
+    {
+        private readonly RequestDelegate requestDelegate;
+
+        public MyTokenMiddleware(RequestDelegate next)
+        {
+            requestDelegate = next;
+        }
+
+        public async Task InvokeAsync(HttpContext context)
+        {
+            var token = context.Request.Headers["token"];
+            if (token == "12345678")
+            {
+                context.Response.StatusCode = 403;
+                await context.Response.WriteAsync("Token is invalid.");
+            }
+            else
+            {
+                await requestDelegate.Invoke(context);
+            }
         }
     }
 }

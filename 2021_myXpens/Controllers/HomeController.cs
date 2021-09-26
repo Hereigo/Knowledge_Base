@@ -50,12 +50,11 @@ namespace MyXpens.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-
         private string SimplifyNumberForView(int decimalNumber)
         {
             return
-               string.Format("{0:G29}",
-                    Math.Round(Convert.ToDecimal(decimalNumber) / 1000, 1));
+               string.Format("{0:N}", // G29}",
+                    Math.Round(Convert.ToDecimal(decimalNumber) / 1000, 2));
         }
     }
 }
