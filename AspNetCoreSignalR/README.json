@@ -1,0 +1,18 @@
+{
+  "connectionId": "wS4eeYfZP6FO_TZkcda-IA",
+  "availableTransports": [
+    {
+      "transport": "WebSockets",
+      "transferFormats": [ "Text", "Binary" ]
+    },
+    {
+      "transport": "ServerSentEvents",
+      "transferFormats": [ "Text" ]
+    },
+    {
+      "transport": "LongPolling",
+      "transferFormats": [ "Text", "Binary" ]
+    }
+  ]
+}
+// This is POST responsed from server "negotiate" file.
