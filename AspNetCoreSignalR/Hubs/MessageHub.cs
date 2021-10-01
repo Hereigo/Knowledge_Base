@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.SignalR;
 
 namespace AspNetCoreSignalR.Hubs
 {
+    // [Authorize]
     public class MessageHub : Hub
     {
         const string receiveMsgMethodName = "ReceiveMessage";

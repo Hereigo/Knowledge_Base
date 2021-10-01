@@ -1,7 +1,9 @@
 "use strict";
 
 var connection = new signalR.HubConnectionBuilder()
-    .withUrl("/messages")
+    .withUrl("/messages", {
+        accessTokenFactory: () => "testing"
+    })
     .build();
 
 connection.on("ReceiveMessage", function (message) {

@@ -1,4 +1,6 @@
+using System.Threading.Tasks;
 using AspNetCoreSignalR.Hubs;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -19,6 +21,23 @@ namespace AspNetCoreSignalR
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddAuthentication()
+                .AddJwtBearer(options =>
+                {
+                    options.Events = new JwtBearerEvents
+                    {
+                        OnMessageReceived = context =>
+                        {
+                            var accessToken = context.Request.Query["access_token"];
+                            if (!string.IsNullOrEmpty(accessToken))
+                            {
+                                context.Token = accessToken;
+                            }
+                            return Task.CompletedTask;
+                        }
+                    };
+                });
+
             //services.Configure<CookiePolicyOptions>(options =>
             //{
             //    // This lambda determines whether user consent for non-essential cookies is needed for a given request.
@@ -27,7 +46,12 @@ namespace AspNetCoreSignalR
             //});
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-            services.AddSignalR();
+
+            services.AddSignalR(); //.AddRedis(options =>
+            // {
+            //     options.Configuration.ClientName = "SignalR";
+            // });
+            // ... TO USE REDIS.
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
