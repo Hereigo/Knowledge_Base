@@ -1,4 +1,4 @@
-# XpnsApp
+# Just NG XpnsApp.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.8.
 
@@ -35,6 +35,8 @@ npm install -g @angular/cli
 
 ng new my-app-name
 npm start (# runs ng serve -o  -  see package.json)
+
+ng g c aaa-name --skipTests
 ```
 
 ## The Main Basic Elements are :
@@ -74,8 +76,37 @@ import { Component } from '@angular/core';
   templateUrl: './app.component.html',
   styleUrls: []
 })
-export class AppComponent { 
+export class AppComponent implements OnInit { 
   constructor() { }
   ngOnInit(): void { }
 }
+```
+----------------------------------------------------------------
+
+# NG Routing:
+
+### app-routing.module.ts
+
+```
+import { Routes, RouterModule } from '@angular/router';
+
+const routes: Routes = [
+  { path: '', component: HomeComponent },
+  { path: 'about', component: AboutComponent }
+];
+
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
+})
+```
+
+### app.component.ts
+
+```
+  <nav>
+    <a routerLink="/" routerLinkActive="active home" [routerLinkActiveOptions]="{exact:true}">HOME</a>
+    <a routerLink="/about" routerLinkActive="active about">ABOUT</a>
+  </nav>
+  <router-outlet></router-outlet>
 ```

@@ -6,7 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
   aaaProperty = 'Component-Property';
+  
   constructor() { }
+  
   ngOnInit(): void { }
+  
 }
