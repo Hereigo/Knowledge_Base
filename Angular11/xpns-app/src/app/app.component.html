@@ -1,15 +1,20 @@
 <div>
+    <h2> I am an App UI Component. </h2>
+    <p>
+        This is the Component's Counter :
+        <input type="radio" name="triple" [checked]="isChecked"> {{ counter }}
+        <input type="radio" name="triple" [checked]="!isChecked"> &nbsp;
+        <br /><br />
+        <input type="text" #myTestInput (keyup.enter)="grabTextInput(myTestInput.value)" />
+        <span #myTextSpan [innerHTML]="myTextSpanValue"></span>
+    </p>
 
-  <h2> I am an App UI Component. </h2>
+    <nav>
+        <a routerLink="/" routerLinkActive="active aaa" [routerLinkActiveOptions]="{exact:true}">AAA</a>
+        <a routerLink="/bbb" routerLinkActive="active bbb">BBB</a>
+        <a routerLink="/ccc" routerLinkActive="active ccc">CCC</a>
+    </nav>
 
-  <p> This is the component prop - " {{ aaaProperty }} "</p>
-
-  <nav>
-    <a routerLink="/" routerLinkActive="active aaa" [routerLinkActiveOptions]="{exact:true}">AAA</a>
-    <a routerLink="/bbb" routerLinkActive="active bbb">BBB</a>
-    <a routerLink="/ccc" routerLinkActive="active ccc">CCC</a>
-  </nav>
-
-  <router-outlet></router-outlet>
+    <router-outlet></router-outlet>
 
 </div>
