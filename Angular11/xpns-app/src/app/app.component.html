@@ -5,10 +5,11 @@
         <input type="radio" name="triple" [checked]="isChecked"> {{ counter }}
         <input type="radio" name="triple" [checked]="!isChecked"> &nbsp;
         <br /><br />
-        <input type="text" #myTestInput (keyup.enter)="grabTextInput(myTestInput.value)" />
+        <input #myTestInput type="text" (keyup.enter)="grabTextInput(myTestInput.value)" />
         <span #myTextSpan [innerHTML]="myTextSpanValue"></span>
+        <br /><br />
+        <button (click)="toggle = !toggle" [style.background-color]="toggle ? 'pink' : 'yellow'">Colorize!</button>
     </p>
-
     <nav>
         <a routerLink="/" routerLinkActive="active aaa" [routerLinkActiveOptions]="{exact:true}">AAA</a>
         <a routerLink="/bbb" routerLinkActive="active bbb">BBB</a>

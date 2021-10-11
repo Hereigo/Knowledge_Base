@@ -18,6 +18,7 @@ export class AppComponent {
   isChecked = true;
   isCounterOn = true;
   myTextSpanValue = ' - Type and press Enter.';
+  toggle = true;
 
   startInterval() {
     setInterval(() => {
