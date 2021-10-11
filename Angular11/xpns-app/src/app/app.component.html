@@ -10,6 +10,7 @@
         <br /><br />
         <button (click)="toggle = !toggle" [style.background-color]="toggle ? 'pink' : 'yellow'">Colorize!</button>
     </p>
+
     <nav>
         <a routerLink="/" routerLinkActive="active aaa" [routerLinkActiveOptions]="{exact:true}">AAA</a>
         <a routerLink="/bbb" routerLinkActive="active bbb">BBB</a>
@@ -17,5 +18,39 @@
     </nav>
 
     <router-outlet></router-outlet>
+
+    <button (click)="switchCase()">Switch Case</button>
+    <div [ngSwitch]="switchChoice">
+        <div *ngSwitchCase="1">Case One</div>
+        <div *ngSwitchCase="2">Case Two</div>
+        <div *ngSwitchDefault>Default Case</div>
+    </div>
+
+    <p></p>
+
+    <button (click)="addToList()">Add 2 list</button>
+    <div>
+        <ul>
+            <li *ngFor="let ln of linesList; let i = index; let ev = even; let lst = last"
+                [class.isEven]="ev ? true : false" [class.isLast]="lst ? true : false">
+                {{ ln }} - {{ i+1 }}
+            </li>
+        </ul>
+    </div>
+
+    <p>
+        Section A : <span *ngTemplateOutlet="logoSpan"></span>
+    </p>
+    <p>
+        Section B : <span *ngTemplateOutlet="logoSpan;  context: { brand: '[ Company Co. ]' }"></span>
+    </p>
+    <p>
+        Section C : <span *ngTemplateOutlet="logoSpan"></span>
+    </p>
+
+    <ng-template #logoSpan let-name="brand">
+        @#_LOGO_#@
+        <span *ngIf="name">{{ name }}</span>
+    </ng-template>
 
 </div>

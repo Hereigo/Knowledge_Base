@@ -17,7 +17,9 @@ export class AppComponent {
   counter: number = 0;
   isChecked = true;
   isCounterOn = true;
+  linesList = ['11111', '22222', '33333'];
   myTextSpanValue = ' - Type and press Enter.';
+  switchChoice = 1;
   toggle = true;
 
   startInterval() {
@@ -38,4 +40,15 @@ export class AppComponent {
     this.myTextSpanValue = ' - ' + text.toString();
   }
 
+  addToList() {
+    this.linesList.push('abcde');
+  }
+
+  switchCase() {
+    if (this.switchChoice > 3) {
+      this.switchChoice = 1;
+    } else {
+      this.switchChoice++;
+    }
+  }
 }

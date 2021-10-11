@@ -1,0 +1,9 @@
+.isEven {
+    background-color: aqua;
+}
+
+.isLast {
+    background-color: cornflowerblue;
+    font-weight: 700;
+    color: white;
+}
