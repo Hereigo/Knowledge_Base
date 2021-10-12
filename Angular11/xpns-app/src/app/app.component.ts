@@ -11,16 +11,9 @@ export class AppComponent {
     this.startInterval();
   }
 
-  ngOnInit(): void { }
-
-  aaaProperty = 'Component-Property';
   counter: number = 0;
   isChecked = true;
   isCounterOn = true;
-  linesList = ['11111', '22222', '33333'];
-  myTextSpanValue = ' - Type and press Enter.';
-  switchChoice = 1;
-  toggle = true;
 
   startInterval() {
     setInterval(() => {
@@ -36,19 +29,4 @@ export class AppComponent {
     this.isCounterOn = !this.isCounterOn;
   }
 
-  grabTextInput(text: { toString: () => any; }) {
-    this.myTextSpanValue = ' - ' + text.toString();
-  }
-
-  addToList() {
-    this.linesList.push('abcde');
-  }
-
-  switchCase() {
-    if (this.switchChoice > 3) {
-      this.switchChoice = 1;
-    } else {
-      this.switchChoice++;
-    }
-  }
 }

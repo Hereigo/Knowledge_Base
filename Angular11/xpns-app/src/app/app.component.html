@@ -1,56 +1,16 @@
 <div>
-    <h2> I am an App UI Component. </h2>
-    <p>
-        This is the Component's Counter :
+    <b>Application has reloaded
         <input type="radio" name="triple" [checked]="isChecked"> {{ counter }}
-        <input type="radio" name="triple" [checked]="!isChecked"> &nbsp;
-        <br /><br />
-        <input #myTestInput type="text" (keyup.enter)="grabTextInput(myTestInput.value)" />
-        <span #myTextSpan [innerHTML]="myTextSpanValue"></span>
-        <br /><br />
-        <button (click)="toggle = !toggle" [style.background-color]="toggle ? 'pink' : 'yellow'">Colorize!</button>
-    </p>
-
+        <input type="radio" name="triple" [checked]="!isChecked"> seconds ago.</b>
+    <br />
+    <br />
     <nav>
-        <a routerLink="/" routerLinkActive="active aaa" [routerLinkActiveOptions]="{exact:true}">AAA</a>
-        <a routerLink="/bbb" routerLinkActive="active bbb">BBB</a>
-        <a routerLink="/ccc" routerLinkActive="active ccc">CCC</a>
+        <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Binds Routes</a>
+        <a routerLink="/ccc" routerLinkActive="active">CCC</a>
     </nav>
 
-    <router-outlet></router-outlet>
-
-    <button (click)="switchCase()">Switch Case</button>
-    <div [ngSwitch]="switchChoice">
-        <div *ngSwitchCase="1">Case One</div>
-        <div *ngSwitchCase="2">Case Two</div>
-        <div *ngSwitchDefault>Default Case</div>
-    </div>
-
-    <p></p>
-
-    <button (click)="addToList()">Add 2 list</button>
-    <div>
-        <ul>
-            <li *ngFor="let ln of linesList; let i = index; let ev = even; let lst = last"
-                [class.isEven]="ev ? true : false" [class.isLast]="lst ? true : false">
-                {{ ln }} - {{ i+1 }}
-            </li>
-        </ul>
-    </div>
-
     <p>
-        Section A : <span *ngTemplateOutlet="logoSpan"></span>
+        <router-outlet></router-outlet>
     </p>
-    <p>
-        Section B : <span *ngTemplateOutlet="logoSpan;  context: { brand: '[ Company Co. ]' }"></span>
-    </p>
-    <p>
-        Section C : <span *ngTemplateOutlet="logoSpan"></span>
-    </p>
-
-    <ng-template #logoSpan let-name="brand">
-        @#_LOGO_#@
-        <span *ngIf="name">{{ name }}</span>
-    </ng-template>
 
 </div>

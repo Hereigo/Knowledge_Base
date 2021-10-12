@@ -1,9 +1,12 @@
-.isEven {
-    background-color: aqua;
+.outlet {
+    border-top: 1px solid;
+    padding: .5em;
 }
 
-.isLast {
-    background-color: cornflowerblue;
-    font-weight: 700;
-    color: white;
+a {
+    border-radius: .5em;
+}
+
+p {
+    border-radius: .5em;
 }
