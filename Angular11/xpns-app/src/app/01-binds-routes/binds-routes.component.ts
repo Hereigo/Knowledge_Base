@@ -17,15 +17,15 @@ export class BindsRoutesComponent implements OnInit {
   switchChoice = 1;
   toggle = true;
 
+  addToList(): void {
+    this.linesList.push('abcde');
+  }
+
   grabTextInput(text: { toString: () => any; }) {
     this.myTextSpanValue = ' - ' + text.toString();
   }
 
-  addToList() {
-    this.linesList.push('abcde');
-  }
-
-  switchCase() {
+  switchCase(): void {
     if (this.switchChoice > 3) {
       this.switchChoice = 1;
     } else {

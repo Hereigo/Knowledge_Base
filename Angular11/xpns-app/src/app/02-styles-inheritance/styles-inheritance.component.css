@@ -1,0 +1,13 @@
+p {
+    background-color: lightcyan;
+    margin: .3em;
+}
+
+::ng-deep p {
+    background-color: rgb(245, 243, 243);
+}
+
+:host {
+    display: block;
+    background-color: rgb(199, 236, 205);
+}

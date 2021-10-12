@@ -1,12 +1,12 @@
-.outlet {
-    border-top: 1px solid;
-    padding: .5em;
-}
-
 a {
     border-radius: .5em;
 }
 
 p {
     border-radius: .5em;
+}
+
+.outlet {
+    border-top: 1px solid;
+    padding: .5em;
 }

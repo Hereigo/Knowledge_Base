@@ -1,12 +1,13 @@
 <div>
-    <b>Application has reloaded
+    <h4>
+        Application has reloaded
         <input type="radio" name="triple" [checked]="isChecked"> {{ counter }}
-        <input type="radio" name="triple" [checked]="!isChecked"> seconds ago.</b>
-    <br />
-    <br />
+        <input type="radio" name="triple" [checked]="!isChecked"> seconds ago.
+    </h4>
+
     <nav>
         <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Binds Routes</a>
-        <a routerLink="/ccc" routerLinkActive="active">CCC</a>
+        <a routerLink="/styles" routerLinkActive="active">Styles Inherit.</a>
     </nav>
 
     <p>
