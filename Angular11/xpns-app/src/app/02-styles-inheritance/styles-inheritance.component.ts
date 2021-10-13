@@ -5,11 +5,14 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './styles-inheritance.component.html',
   styleUrls: ['./styles-inheritance.component.css']
 })
-export class StylesInheritanceComponent implements OnInit {
+export class StylesInheritanceComponent {
 
-  constructor() { }
+  parentProperty = 777;
 
-  ngOnInit(): void {
+  parentText = '';
+
+  parentHandler(value: string) {
+    this.parentText = value;
   }
 
 }

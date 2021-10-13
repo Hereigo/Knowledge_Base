@@ -34,15 +34,15 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 npm install -g @angular/cli
 
 ng new my-app-name
-npm start (# runs ng serve -o  -  see package.json)
-
+ng g m aaa-name
 ng g c aaa-name --skipTests
+
+npm start (# runs ng serve -o  -  see package.json)
 ```
 
 ## The Main Basic Elements are :
 
 ### main.ts
-
 ```
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { AppModule } from './app/app.module';
@@ -51,7 +51,6 @@ platformBrowserDynamic().bootstrapModule(AppModule)
 ```
 
 ### app.module.ts
-
 ```
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -67,7 +66,6 @@ export class AppModule { }
 ```
 
 ### app.component.ts
-
 ```
 import { Component } from '@angular/core';
 
@@ -86,7 +84,6 @@ export class AppComponent implements OnInit {
 # NG Routing:
 
 ### app-routing.module.ts
-
 ```
 import { Routes, RouterModule } from '@angular/router';
 
@@ -102,11 +99,47 @@ const routes: Routes = [
 ```
 
 ### app.component.ts
-
 ```
   <nav>
     <a routerLink="/" routerLinkActive="active home" [routerLinkActiveOptions]="{exact:true}">HOME</a>
     <a routerLink="/about" routerLinkActive="active about">ABOUT</a>
   </nav>
   <router-outlet></router-outlet>
+```
+----------------------------------------------------------------
+
+# Inheritance (parent to child).
+
+### parent.component.html
+```
+ <app-child [childProperty]="parentProperty"></app-child>
+```
+
+### child.component.ts
+```
+@Input() childProperty;
+```
+
+# Inheritance (child to parent).
+
+### child.component.ts
+```
+  @Output()
+  childEvent: EventEmitter<string> = new EventEmitter();
+
+  textType() {
+    this.childEvent.emit(this.textInput);
+  }
+```
+
+### parent.component.html
+```
+<app-child (childEvent)="parentEventHandler($event)"></app-child>
+```
+
+### parent.component.ts
+```
+  parentEventHandler(value: someType!) {
+    // process value;
+  }
 ```

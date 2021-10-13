@@ -1,15 +1,16 @@
 <div>
 
-    <h4>Styles-inheritance Component</h4>
+    <h4>Parent Component </h4>
+    &nbsp; ... with data from Child : <span class="green">{{ parentText }}</span>
 
-    <app-child></app-child>
+    <app-child [childProperty]="parentProperty" (parentEvent)="parentHandler($event)"></app-child>
 
     <p>
         <span class="blue">Blue</span> - &lt;P&gt; inside Component.
         <br /><br />
         <span class="grey">Grey</span> - ::NG-DEEP P (exposed to all! &lt;P&gt; in the App.).
         <br /><br />
-        <span class="green">Green</span> - :HOST (The body of Component).
+        <span class="green">Green</span> - :HOST (Body of Component).
     </p>
 
 </div>

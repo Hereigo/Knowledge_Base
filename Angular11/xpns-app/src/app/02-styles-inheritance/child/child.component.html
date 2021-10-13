@@ -1,8 +1,9 @@
-<div>
-    <hr />
-    &nbsp; I am a Child Component.
+<div class="child">
+    &nbsp; I am a <b>Child</b> Component. <br />
+    &nbsp; With data from Parent's property = <span class="blue">
+        {{ childProperty }}</span>
     <p>
         &lt;P&gt; inside Child Component.
     </p>
-    <hr />
+    &nbsp; <input #childInput type="text" (input)="textType(childInput.value)" />
 </div>
