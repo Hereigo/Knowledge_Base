@@ -15,9 +15,14 @@ a.active {
     color: red;
 }
 
+h4 {
+    padding-left: 1em;
+}
+
 p {
     border: 1px solid;
     padding: .5em;
+    
 }
 
 #app-wrapper {

@@ -4,7 +4,7 @@ p {
 }
 
 ::ng-deep p {
-    background-color: rgb(245, 243, 243);
+    background-color: rgb(240, 240, 240);
 }
 
 :host {
