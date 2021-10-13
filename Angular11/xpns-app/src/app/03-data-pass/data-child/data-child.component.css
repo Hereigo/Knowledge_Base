@@ -1,0 +1,11 @@
+p {
+    background-color: lightcyan;
+    border-radius: .5em;
+    border-top: 1px solid black;
+    margin: .5em;
+    padding: .5em;
+}
+
+.bg {
+    background-color: lightgreen;
+}

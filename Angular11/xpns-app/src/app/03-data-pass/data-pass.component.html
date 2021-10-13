@@ -1,0 +1,30 @@
+<p>
+    I am a Parent Component.
+    Transferring my data to child.
+
+    <app-data-child>
+        <!-- ng-content tag needed in child to get this text. -->
+        <b>String 1 from Parent.</b>
+    </app-data-child>
+
+    <app-data-child>
+        <b>String 2 from Parent.</b>
+    </app-data-child>
+
+    <app-data-child #selectedChildFIRST>
+        <b>String 3 from Parent.</b>
+    </app-data-child>
+
+    <app-data-child #selectedChild_2>
+        <b>String 4 from Parent.</b>
+    </app-data-child>
+
+    <app-data-child #selectedChild_2>
+        <b>String 4 from Parent.</b>
+    </app-data-child>
+
+    &nbsp; <button (click)="switchBg1()">1st Child</button>
+    &nbsp; <button (click)="switchBg2()">1st Child by # (parent f)</button>
+    &nbsp; <button (click)="selectedChild_2.childsSwitchBg()">1st Ch. by # (child f)</button>
+
+</p>

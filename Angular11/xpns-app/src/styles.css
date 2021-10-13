@@ -5,14 +5,16 @@ body {
 }
 
 a {
+    background-color: rgb(240, 240, 240);
     border: 1px solid;
-    padding: .5em;
     margin-right: .5em;
+    padding: .5em;
     text-decoration: none;
 }
 
 a.active {
     color: red;
+    background-color: white;
 }
 
 h4 {

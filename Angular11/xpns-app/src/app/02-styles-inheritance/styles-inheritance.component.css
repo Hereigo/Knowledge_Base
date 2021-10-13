@@ -22,7 +22,7 @@ p {
     font-weight: 600;
 }
 
-.grey {
+::ng-deep .grey {
     color: dimgray;
     font-weight: 600;
 }
