@@ -30,7 +30,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 # Start work.
 
-```
+```bsh
 npm install -g @angular/cli
 
 ng new my-app-name
@@ -43,7 +43,8 @@ npm start (# runs ng serve -o  -  see package.json)
 ## The Main Basic Elements are :
 
 ### main.ts
-```
+
+```ts
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { AppModule } from './app/app.module';
 
@@ -51,7 +52,8 @@ platformBrowserDynamic().bootstrapModule(AppModule)
 ```
 
 ### app.module.ts
-```
+
+```ts
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
@@ -66,7 +68,8 @@ export class AppModule { }
 ```
 
 ### app.component.ts
-```
+
+```ts
 import { Component } from '@angular/core';
 
 @Component({
@@ -84,7 +87,8 @@ export class AppComponent implements OnInit {
 # NG Routing:
 
 ### app-routing.module.ts
-```
+
+```ts
 import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
@@ -99,7 +103,8 @@ const routes: Routes = [
 ```
 
 ### app.component.ts
-```
+
+```html
   <nav>
     <a routerLink="/" routerLinkActive="active home" [routerLinkActiveOptions]="{exact:true}">HOME</a>
     <a routerLink="/about" routerLinkActive="active about">ABOUT</a>
@@ -111,19 +116,22 @@ const routes: Routes = [
 # Inheritance (parent to child).
 
 ### parent.component.html
-```
+
+```html
  <app-child [childProperty]="parentProperty"></app-child>
 ```
 
 ### child.component.ts
-```
+
+```ts
 @Input() childProperty;
 ```
 
 # Inheritance (child to parent).
 
 ### child.component.ts
-```
+
+```ts
   @Output()
   childEvent: EventEmitter<string> = new EventEmitter();
 
@@ -133,12 +141,14 @@ const routes: Routes = [
 ```
 
 ### parent.component.html
-```
+
+```html
 <app-child (childEvent)="parentEventHandler($event)"></app-child>
 ```
 
 ### parent.component.ts
-```
+
+```ts
   parentEventHandler(value: someType!) {
     // process value;
   }
