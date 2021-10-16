@@ -23,8 +23,14 @@
         <b>String 4 from Parent.</b>
     </app-data-child>
 
-    &nbsp; <button (click)="switchBg1()">1st Child</button>
-    &nbsp; <button (click)="switchBg2()">1st Child by # (parent f)</button>
-    &nbsp; <button (click)="selectedChild_2.childsSwitchBg()">1st Ch. by # (child f)</button>
+    &nbsp; <button (click)="switchOne()">1st Child</button>
+    &nbsp; <button (click)="switchTwo()">1st Child by # (parent fn)</button>
+    &nbsp; <button (click)="selectedChild_2.childsSwitchBg()">1st Ch. by # (child fn)</button>
 
+</p>
+<hr />
+<p>
+    <input type="text" #parentTextInput /> &nbsp;
+    <input type="button" value="Take Inputs Focus" (click)="takeFocus()"/>&nbsp;
+    - using <span class="blue"> @ViewChild</span> decorator.
 </p>

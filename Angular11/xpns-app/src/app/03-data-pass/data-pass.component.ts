@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { DataChildComponent } from './data-child/data-child.component';
 
 @Component({
@@ -9,15 +9,22 @@ import { DataChildComponent } from './data-child/data-child.component';
 export class DataPassComponent {
 
   // Find FIRST! 'DataChildComponent'-block :
-  @ViewChild(DataChildComponent) child1: DataChildComponent = new DataChildComponent;
-  switchBg1() {
-    this.child1.childsSwitchBg();
+  @ViewChild(DataChildComponent) firstDCComponent: DataChildComponent = new DataChildComponent;
+  switchOne() {
+    this.firstDCComponent.childsSwitchBg();
   }
 
   // Find FIRST! 'DataChildComponent' by #selectedChildFIRST tag :
-  @ViewChild('selectedChildFIRST') child2: DataChildComponent = new DataChildComponent;
-  switchBg2() {
-    this.child2.childsSwitchBg();
+  @ViewChild('selectedChildFIRST') firstSelectedDCComp: DataChildComponent = new DataChildComponent;
+  switchTwo() {
+    this.firstSelectedDCComp.childsSwitchBg();
+  }
+
+  @ViewChild('parentTextInput')
+  textInputRef !: ElementRef;
+
+  takeFocus() {
+    this.textInputRef.nativeElement.focus();
   }
 
 }
