@@ -3,7 +3,7 @@
     Transferring my data to child.
 
     <app-data-child>
-        <!-- ng-content tag needed in child to get this text. -->
+        <!-- NG-CONTENT tag needed in child to get this text. -->
         <b>String 1 from Parent.</b>
     </app-data-child>
 
@@ -11,26 +11,30 @@
         <b>String 2 from Parent.</b>
     </app-data-child>
 
-    <app-data-child #selectedChildFIRST>
+    <app-data-child #taggedChild>
         <b>String 3 from Parent.</b>
     </app-data-child>
 
-    <app-data-child #selectedChild_2>
+    <app-data-child #taggedChildren>
         <b>String 4 from Parent.</b>
     </app-data-child>
 
-    <app-data-child #selectedChild_2>
-        <b>String 4 from Parent.</b>
+    <app-data-child #taggedChildren>
+        <b>String 5 from Parent.</b>
     </app-data-child>
 
-    &nbsp; <button (click)="switchOne()">1st Child</button>
-    &nbsp; <button (click)="switchTwo()">1st Child by # (parent fn)</button>
-    &nbsp; <button (click)="selectedChild_2.childsSwitchBg()">1st Ch. by # (child fn)</button>
+    <app-data-child #taggedChildren>
+        <b>String 6 from Parent.</b>
+    </app-data-child>
 
+    <button (click)="switchFirstChild()">1st Child</button>
+    <button (click)="switchFirstChildByTag()">1st Child by # (parent fn)</button>
+    <button (click)="taggedChildren.childSwitchMethod()">1st Ch. by # (child fn)</button>
+    <button (click)="switchAllTaggedChildren()">All Children by #</button>
 </p>
 <hr />
 <p>
-    <input type="text" #parentTextInput /> &nbsp;
-    <input type="button" value="Take Inputs Focus" (click)="takeFocus()"/>&nbsp;
+    <input type="text" #inputForElementRef /> &nbsp;
+    <input type="button" value="Take Inputs Focus" (click)="takeFocus()" />&nbsp;
     - using <span class="blue"> @ViewChild</span> decorator.
 </p>

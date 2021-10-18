@@ -9,7 +9,7 @@ export class DataChildComponent {
 
   isBgActive = false;
 
-  childsSwitchBg() {
+  childSwitchMethod() {
     this.isBgActive = !this.isBgActive;
   }
 

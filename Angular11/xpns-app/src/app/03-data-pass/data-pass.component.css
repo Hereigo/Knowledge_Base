@@ -1,8 +1,13 @@
-.blue {
-    color: blue;
-    font-weight: 600;
+button {
+    margin-left: .5em;
+    padding: .3em .5em;
 }
 
 p {
     padding: 1em;
+}
+
+.blue {
+    color: blue;
+    font-weight: 600;
 }

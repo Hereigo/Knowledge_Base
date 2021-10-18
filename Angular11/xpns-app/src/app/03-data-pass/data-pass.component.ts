@@ -1,4 +1,5 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, QueryList, ViewChild, ViewChildren } from '@angular/core';
+import { Data } from '@angular/router';
 import { DataChildComponent } from './data-child/data-child.component';
 
 @Component({
@@ -10,21 +11,29 @@ export class DataPassComponent {
 
   // Find FIRST! 'DataChildComponent'-block :
   @ViewChild(DataChildComponent) firstDCComponent: DataChildComponent = new DataChildComponent;
-  switchOne() {
-    this.firstDCComponent.childsSwitchBg();
+
+  switchFirstChild() {
+    this.firstDCComponent.childSwitchMethod();
   }
 
-  // Find FIRST! 'DataChildComponent' by #selectedChildFIRST tag :
-  @ViewChild('selectedChildFIRST') firstSelectedDCComp: DataChildComponent = new DataChildComponent;
-  switchTwo() {
-    this.firstSelectedDCComp.childsSwitchBg();
+  // Find FIRST! 'DataChildComponent' by #taggedChild tag :
+  @ViewChild('taggedChild') firstTaggedDCComp: DataChildComponent = new DataChildComponent;
+
+  switchFirstChildByTag() {
+    this.firstTaggedDCComp.childSwitchMethod();
   }
 
-  @ViewChild('parentTextInput')
+  @ViewChild('inputForElementRef')
   textInputRef !: ElementRef;
 
   takeFocus() {
     this.textInputRef.nativeElement.focus();
+  }
+
+  @ViewChildren('taggedChildren') children!: QueryList<any>;
+
+  switchAllTaggedChildren() {
+    this.children.forEach(ch => ch.childSwitchMethod());
   }
 
 }
