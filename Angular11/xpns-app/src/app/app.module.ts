@@ -9,6 +9,7 @@ import { ChildComponent } from './02-styles-inheritance/child/child.component';
 import { DataChildComponent } from './03-data-pass/data-child/data-child.component';
 import { DataPassComponent } from './03-data-pass/data-pass.component';
 import { StylesInheritanceComponent } from './02-styles-inheritance/styles-inheritance.component';
+import { DataSubChildComponent } from './03-data-pass/data-child/data-sub-child/data-sub-child.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { StylesInheritanceComponent } from './02-styles-inheritance/styles-inher
     DataChildComponent,
     DataPassComponent,
     StylesInheritanceComponent,
+    DataSubChildComponent,
   ],
   imports: [
     AppRoutingModule,

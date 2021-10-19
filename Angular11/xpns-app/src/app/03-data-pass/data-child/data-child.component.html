@@ -1,8 +1,9 @@
 <p [class.bg]="isBgActive">
 
-    I am data-child Component with &lt;ng-content&gt; tag :
-
+    Child Component with &lt;ng-content&gt; tag & input.
+    <br /><br />
     <!-- NG-CONTENT - To recieve content from Parent IN PLACE of a tag. -->
     <ng-content></ng-content>
-
+    &nbsp;
+    <input type="button" value="Change Color IF #" (click)="changeMyColor()" />
 </p>

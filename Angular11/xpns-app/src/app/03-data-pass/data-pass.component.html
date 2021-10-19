@@ -8,11 +8,11 @@
     </app-data-child>
 
     <app-data-child #taggedChild>
-        <b>String 2 from Parent.</b>
+        <b #strInsideAppChildTag>String 2 from Parent.</b>
     </app-data-child>
 
     <app-data-child #taggedChild>
-        <b>String 3 from Parent.</b>
+        <b #strInsideAppChildTag>String 3 from Parent.</b>
     </app-data-child>
 
     <app-data-child #taggedChild>
@@ -28,4 +28,5 @@
     <input type="text" #inputForElementRef /> &nbsp;
     <input type="button" value="Take Inputs Focus" (click)="takeFocus()" />&nbsp;
     - using <span class="blue"> @ViewChild</span> decorator.
+
 </p>

@@ -157,21 +157,50 @@ const routes: Routes = [
 ```
 ----------------------------------------------------------------
 
-# ................
+# @ViewChild, @ViewChildren, @ContentChild
 
 ### child.component.html
 
 ```html
   <!-- To recieve content from Parent IN PLACE of a tag. -->
   <ng-content></ng-content>
+  <input type="button" value="Change Color IF #" (click)="changeMyColor()" />
+```
+
+### child.component.ts
+
+```ts
+  @ContentChild('strInsideAppChildTag') childComponentRef!: ElementRef;
+
+  changeMyColor() {
+    if (this.childComponentRef) {
+      this.childComponentRef.nativeElement.style.color = 'red';
+    }
+  }
+
+  isBgActive = false;
+  childSwitchMethod() {
+    this.isBgActive = !this.isBgActive;
+  }
 ```
 
 ### parent.component.html
 
 ```html
-      <app-data-child> Bla-Bla-Bla-Html... </app-data-child>
-      <app-data-child #taggedChild> Bla-Bla-Bla-Html... </app-data-child>
-      <input type="text" #inputForElementRef /> 
+  <app-data-child> 
+      <b #insideAppTag>Inside Child Tag.</b>
+  </app-data-child>
+
+  <app-data-child #taggedChild>
+      <b>Inside Child Tag.</b>
+  </app-data-child>
+  
+  <input type="text" #inputForElementRef /> 
+
+
+
+
+  
 ```
 
 ### parent.component.ts
@@ -193,3 +222,4 @@ const routes: Routes = [
     this.textInputRef.nativeElement.focus();
   }
 ```
+----------------------------------------------------------------
