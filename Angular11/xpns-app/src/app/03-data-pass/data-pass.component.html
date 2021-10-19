@@ -2,21 +2,21 @@
     I am a Parent Component.
     Transferring my data to child.
 
-    <app-data-child>
+    <app-data-child #taggedChild>
         <!-- NG-CONTENT tag needed in child to get this text. -->
-        <b>String 1 from Parent.</b>
+        <b>{{ text }}</b>
+    </app-data-child>
+
+    <app-data-child>
+        <b #strInsideAppChildTag>{{ text }}</b>
     </app-data-child>
 
     <app-data-child #taggedChild>
-        <b #strInsideAppChildTag>String 2 from Parent.</b>
+        <b #strInsideAppChildTag>{{ text }}</b>
     </app-data-child>
 
     <app-data-child #taggedChild>
-        <b #strInsideAppChildTag>String 3 from Parent.</b>
-    </app-data-child>
-
-    <app-data-child #taggedChild>
-        <b>String 4 from Parent.</b>
+        <b>{{ text }}</b>
     </app-data-child>
 
     <button (click)="switchFirstChild()">1st Child (parent fn)</button>

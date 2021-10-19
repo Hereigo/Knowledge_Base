@@ -12,7 +12,7 @@ export class DataChildComponent {
   changeMyColor() {
     if (this.childComponentRef) {
       var color = this.childComponentRef.nativeElement.style.color;
-      this.childComponentRef.nativeElement.style.color = color == 'black' ? 'red' : 'black';
+      this.childComponentRef.nativeElement.style.color = color == 'red' ? 'black' : 'red';
     }
   }
 

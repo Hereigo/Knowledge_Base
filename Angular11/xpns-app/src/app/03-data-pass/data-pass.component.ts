@@ -1,4 +1,4 @@
-import { Component, ContentChild, ElementRef, QueryList, ViewChild, ViewChildren } from '@angular/core';
+import { Component, ElementRef, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { DataChildComponent } from './data-child/data-child.component';
 
 @Component({
@@ -8,11 +8,15 @@ import { DataChildComponent } from './data-child/data-child.component';
 })
 export class DataPassComponent {
 
+  text: string = "Inside App-Child Tag Data for Child's <NG-CONTENT>.";
+
   // Find FIRST! 'DataChildComponent'-block :
-  @ViewChild(DataChildComponent) firstDCComponent: DataChildComponent = new DataChildComponent;
+  @ViewChild(DataChildComponent) firstDCComponent = new DataChildComponent;
   // OR
-  @ViewChild('taggedChild') firstTaggedDCComp: DataChildComponent = new DataChildComponent;
+  @ViewChild('taggedChild') firstTaggedDCComp = new DataChildComponent;
+  
   @ViewChild('inputForElementRef') textInputRef !: ElementRef;
+  
   @ViewChildren('taggedChild') children!: QueryList<any>;
 
   switchFirstChild() {

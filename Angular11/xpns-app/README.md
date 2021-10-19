@@ -162,15 +162,17 @@ const routes: Routes = [
 ### child.component.html
 
 ```html
-  <!-- To recieve content from Parent IN PLACE of a tag. -->
+<p [class.bg]="isBgActive">
+  <!-- NG-CONTENT - to recieve content from Parent IN PLACE of a tag. -->
   <ng-content></ng-content>
   <input type="button" value="Change Color IF #" (click)="changeMyColor()" />
+</p>  
 ```
 
 ### child.component.ts
 
 ```ts
-  @ContentChild('strInsideAppChildTag') childComponentRef!: ElementRef;
+  @ContentChild('INSIDE_CHILD') childComponentRef!: ElementRef;
 
   changeMyColor() {
     if (this.childComponentRef) {
@@ -179,7 +181,8 @@ const routes: Routes = [
   }
 
   isBgActive = false;
-  childSwitchMethod() {
+
+  childsMethod() {
     this.isBgActive = !this.isBgActive;
   }
 ```
@@ -187,39 +190,29 @@ const routes: Routes = [
 ### parent.component.html
 
 ```html
-  <app-data-child> 
-      <b #insideAppTag>Inside Child Tag.</b>
-  </app-data-child>
+<app-data-child #CHILDTAG>
+   <!-- Data INSIDE App-Child will send to Child's NG-CONTENT -->
+   <b>Inside Child Tag.</b>
+</app-data-child>
 
-  <app-data-child #taggedChild>
-      <b>Inside Child Tag.</b>
-  </app-data-child>
-  
-  <input type="text" #inputForElementRef /> 
-
-
-
-
-  
+<app-data-child> 
+    <b #INSIDE_CHILD>Inside Child Tag.</b>
+</app-data-child>
 ```
 
 ### parent.component.ts
 
 ```ts
   // Find FIRST! 'DataChildComponent'-block :
-  @ViewChild(DataChildComponent) firstDCComponent: DataChildComponent = new DataChildComponent;
-  @ViewChild('taggedChild') firstDCComponent: DataChildComponent = new DataChildComponent;
-  @ViewChildren('taggedChild') allDCComponents!: QueryList<any>;
-  @ViewChild('inputForElementRef') textInputRef !: ElementRef;
+  @ViewChild(DataChildComponent) firstDCComponent = new DataChildComponent;
+  @ViewChild('CHILDTAG') firstDCComponent = new DataChildComponent;
+  @ViewChildren('CHILDTAG') allDCComponents!: QueryList<any>;
 
   callFirstChild() {
-    this.firstDCComponent.childSwitchMethod();
+    this.firstDCComponent.childsMethod();
   }
   callAllChildren() {
-    this.allDCComponents.forEach(ch => ch.childSwitchMethod());
-  }
-  takeInputsFocus() {
-    this.textInputRef.nativeElement.focus();
+    this.allDCComponents.forEach(ch => ch.childsMethod());
   }
 ```
 ----------------------------------------------------------------
