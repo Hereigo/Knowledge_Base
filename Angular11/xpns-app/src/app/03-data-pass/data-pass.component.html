@@ -8,15 +8,17 @@
     </app-data-child>
 
     <app-data-child>
-        <b #strInsideAppChildTag>{{ text }}</b>
+        <b #insideAppChildTag>{{ text }}</b>
     </app-data-child>
 
     <app-data-child #taggedChild>
-        <b #strInsideAppChildTag>{{ text }}</b>
+        <b #insideAppChildTag>{{ text }}</b>
     </app-data-child>
 
     <app-data-child #taggedChild>
         <b>{{ text }}</b>
+        <app-data-sub-child></app-data-sub-child>
+        <app-data-sub-child></app-data-sub-child>
     </app-data-child>
 
     <button (click)="switchFirstChild()">1st Child (parent fn)</button>

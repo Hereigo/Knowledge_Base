@@ -5,11 +5,12 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './data-sub-child.component.html',
   styleUrls: ['./data-sub-child.component.css']
 })
-export class DataSubChildComponent implements OnInit {
+export class DataSubChildComponent {
 
-  constructor() { }
+  subChildBG: string = "lightcyan";
 
-  ngOnInit(): void {
+  subChildMethod() {
+    this.subChildBG = this.subChildBG == "lightcyan" ? "yellow" : "lightcyan";
   }
 
 }
