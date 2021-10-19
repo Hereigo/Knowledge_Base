@@ -11,15 +11,11 @@ export class DataPassComponent {
 
   // Find FIRST! 'DataChildComponent'-block :
   @ViewChild(DataChildComponent) firstDCComponent: DataChildComponent = new DataChildComponent;
-
-  switchFirstChild() {
-    this.firstDCComponent.childSwitchMethod();
-  }
-
+  // OR
   // Find FIRST! 'DataChildComponent' by #taggedChild tag :
   @ViewChild('taggedChild') firstTaggedDCComp: DataChildComponent = new DataChildComponent;
 
-  switchFirstChildByTag() {
+  switchFirstChild() {
     this.firstTaggedDCComp.childSwitchMethod();
   }
 
@@ -30,7 +26,7 @@ export class DataPassComponent {
     this.textInputRef.nativeElement.focus();
   }
 
-  @ViewChildren('taggedChildren') children!: QueryList<any>;
+  @ViewChildren('taggedChild') children!: QueryList<any>;
 
   switchAllTaggedChildren() {
     this.children.forEach(ch => ch.childSwitchMethod());

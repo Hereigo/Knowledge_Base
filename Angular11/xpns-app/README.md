@@ -114,7 +114,7 @@ const routes: Routes = [
 ```
 ----------------------------------------------------------------
 
-# Inheritance (parent to child).
+# @Input - Child's Property from Parent.
 
 ### parent.component.html
 
@@ -127,8 +127,9 @@ const routes: Routes = [
 ```ts
 @Input() childProperty;
 ```
+----------------------------------------------------------------
 
-# Inheritance (child to parent).
+# @Output Child's Event to Parent.
 
 ### child.component.ts
 
@@ -136,7 +137,7 @@ const routes: Routes = [
   @Output()
   childEvent: EventEmitter<string> = new EventEmitter();
 
-  textType() {
+  textTyping() {
     this.childEvent.emit(this.textInput);
   }
 ```
@@ -144,7 +145,7 @@ const routes: Routes = [
 ### parent.component.html
 
 ```html
-<app-child (childEvent)="parentEventHandler($event)"></app-child>
+  <app-child (childEvent)="parentEventHandler($event)"></app-child>
 ```
 
 ### parent.component.ts
@@ -152,5 +153,43 @@ const routes: Routes = [
 ```ts
   parentEventHandler(value: someType!) {
     // process value;
+  }
+```
+----------------------------------------------------------------
+
+# ................
+
+### child.component.html
+
+```html
+  <!-- To recieve content from Parent IN PLACE of a tag. -->
+  <ng-content></ng-content>
+```
+
+### parent.component.html
+
+```html
+      <app-data-child> Bla-Bla-Bla-Html... </app-data-child>
+      <app-data-child #taggedChild> Bla-Bla-Bla-Html... </app-data-child>
+      <input type="text" #inputForElementRef /> 
+```
+
+### parent.component.ts
+
+```ts
+  // Find FIRST! 'DataChildComponent'-block :
+  @ViewChild(DataChildComponent) firstDCComponent: DataChildComponent = new DataChildComponent;
+  @ViewChild('taggedChild') firstDCComponent: DataChildComponent = new DataChildComponent;
+  @ViewChildren('taggedChild') allDCComponents!: QueryList<any>;
+  @ViewChild('inputForElementRef') textInputRef !: ElementRef;
+
+  callFirstChild() {
+    this.firstDCComponent.childSwitchMethod();
+  }
+  callAllChildren() {
+    this.allDCComponents.forEach(ch => ch.childSwitchMethod());
+  }
+  takeInputsFocus() {
+    this.textInputRef.nativeElement.focus();
   }
 ```

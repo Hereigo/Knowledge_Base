@@ -7,7 +7,7 @@
         <b>String 1 from Parent.</b>
     </app-data-child>
 
-    <app-data-child>
+    <app-data-child #taggedChild>
         <b>String 2 from Parent.</b>
     </app-data-child>
 
@@ -15,21 +15,12 @@
         <b>String 3 from Parent.</b>
     </app-data-child>
 
-    <app-data-child #taggedChildren>
+    <app-data-child #taggedChild>
         <b>String 4 from Parent.</b>
     </app-data-child>
 
-    <app-data-child #taggedChildren>
-        <b>String 5 from Parent.</b>
-    </app-data-child>
-
-    <app-data-child #taggedChildren>
-        <b>String 6 from Parent.</b>
-    </app-data-child>
-
-    <button (click)="switchFirstChild()">1st Child</button>
-    <button (click)="switchFirstChildByTag()">1st Child by # (parent fn)</button>
-    <button (click)="taggedChildren.childSwitchMethod()">1st Ch. by # (child fn)</button>
+    <button (click)="switchFirstChild()">1st Child (parent fn)</button>
+    <button (click)="taggedChild.childSwitchMethod()">1st Child (child fn)</button>
     <button (click)="switchAllTaggedChildren()">All Children by #</button>
 </p>
 <hr />
