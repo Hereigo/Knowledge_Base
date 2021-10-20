@@ -6,13 +6,13 @@ namespace Xtra_Tests
     {
         private static void Main()
         {
-            Override_Inheritance.Test();
+            // HumaniserUse.Test();
+            // Override_Inheritance.Test();
+            // Delegates_Basic.Test();
+            // Recursion.Test();
 
-            Delegates_Basic.Test();
-
-            HumaniserUse.Test();
-
-            Recursion.Test();
+            var pmbd = new PrivateMethodByDelegate();
+            pmbd.Test();
 
             Console.ReadKey();
         }
