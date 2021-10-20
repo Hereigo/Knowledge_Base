@@ -221,6 +221,39 @@ childsMethod() {
 ```
 ----------------------------------------------------------------
 
-# AAA
+# Services
 
-### aaaa
+### svc.component.html
+
+```html
+    <b> {{ componentCounter }} </b>
+    &nbsp;
+    <input type="button" value="Plus" (click)="plus()" />
+```
+
+### svc.component.ts
+
+```ts
+  constructor(private mySvc: MyServicesService) { }
+
+  componentCounter: number = 0;
+
+  plus() {
+    this.mySvc.svcIncrement();
+    this.componentCounter = this.mySvc.serviceCounter;
+  }
+```
+
+### svc.service.ts
+
+```ts
+@Injectable()
+export class MyServicesService {
+
+  serviceCounter: number = 0;
+
+  svcIncrement() {
+    this.serviceCounter++;
+  }
+```
+----------------------------------------------------------------
