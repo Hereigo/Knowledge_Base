@@ -14,9 +14,9 @@ export class DataPassComponent {
   @ViewChild(DataChildComponent) firstDCComponent = new DataChildComponent;
   // OR
   @ViewChild('taggedChild') firstTaggedDCComp = new DataChildComponent;
-  
+
   @ViewChild('inputForElementRef') textInputRef !: ElementRef;
-  
+
   @ViewChildren('taggedChild') children!: QueryList<any>;
 
   switchFirstChild() {
@@ -28,5 +28,8 @@ export class DataPassComponent {
   takeFocus() {
     this.textInputRef.nativeElement.focus();
   }
+
+  // To set Child's @Input-decorated Property:
+  subChildBG: string = "lightgrey";
 
 }

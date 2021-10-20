@@ -18,7 +18,7 @@
     <app-data-child #taggedChild>
         <b>{{ text }}</b>
         <app-data-sub-child></app-data-sub-child>
-        <app-data-sub-child></app-data-sub-child>
+        <app-data-sub-child [subChildBG]="subChildBG"></app-data-sub-child>
     </app-data-child>
 
     <button (click)="switchFirstChild()">1st Child (parent fn)</button>
