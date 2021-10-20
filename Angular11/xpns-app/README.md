@@ -163,8 +163,10 @@ const routes: Routes = [
 
 ```html
 <p [class.bg]="isBgActive">
+  
   <!-- NG-CONTENT - to recieve content from Parent IN PLACE of a tag. -->
   <ng-content></ng-content>
+
   <input type="button" value="Change Color IF #" (click)="changeMyColor()" />
 </p>  
 ```
@@ -172,31 +174,31 @@ const routes: Routes = [
 ### child.component.ts
 
 ```ts
-  @ContentChild('INSIDE_CHILD') childComponentRef!: ElementRef;
+@ContentChild('INSIDE_CHILD') childComponentRef!: ElementRef;
 
-  changeMyColor() {
-    if (this.childComponentRef) {
-      this.childComponentRef.nativeElement.style.color = 'red';
-    }
+changeMyColor() {
+  if (this.childComponentRef) {
+    this.childComponentRef.nativeElement.style.color = 'red';
   }
+}
 
-  isBgActive = false;
+isBgActive = false;
 
-  childsMethod() {
-    this.isBgActive = !this.isBgActive;
-  }
+childsMethod() {
+   this.isBgActive = !this.isBgActive;
+}
 ```
 
 ### parent.component.html
 
 ```html
-<app-data-child #CHILDTAG>
-   <!-- Data INSIDE App-Child will send to Child's NG-CONTENT -->
+<app-data-child #CHILDTAG> <!-- @ViewChild to access from Parent -->
    <b>Inside Child Tag.</b>
 </app-data-child>
 
-<app-data-child> 
-    <b #INSIDE_CHILD>Inside Child Tag.</b>
+<app-data-child>
+    <!-- will send to Child's NG-CONTENT -->
+    <b #INSIDE_CHILD>Inside Child Tag.</b> <!-- @ContentChild to access from Child -->
 </app-data-child>
 ```
 
@@ -205,7 +207,9 @@ const routes: Routes = [
 ```ts
   // Find FIRST! 'DataChildComponent'-block :
   @ViewChild(DataChildComponent) firstDCComponent = new DataChildComponent;
+
   @ViewChild('CHILDTAG') firstDCComponent = new DataChildComponent;
+  
   @ViewChildren('CHILDTAG') allDCComponents!: QueryList<any>;
 
   callFirstChild() {
@@ -216,3 +220,7 @@ const routes: Routes = [
   }
 ```
 ----------------------------------------------------------------
+
+# AAA
+
+### aaaa
