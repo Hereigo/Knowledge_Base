@@ -2,6 +2,13 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.8.
 
+## Useful links :
+
+> - [Angular security best practices.](https://snyk.io/blog/angular-security-best-practices)
+> 
+> - [To learn about tsconfig.json file.](https://angular.io/config/tsconfig.)
+> 
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
@@ -255,5 +262,17 @@ export class AaaSvcService {
   svcIncrement() {
     this.serviceCounter++;
   }
+```
+
+## Services Registration :
+
+```ts
+providers: [ SomeService ] // in APP.MODULE - Globally
+
+providers: [ SomeService ] // in COMPONENT - Locally
+
+@Injectable({providedIn: 'root'}) // in SERVICE - Globally
+
+@Injectable({providedIn: SomeModule}) // in SERVICE - for Whole Module
 ```
 ----------------------------------------------------------------

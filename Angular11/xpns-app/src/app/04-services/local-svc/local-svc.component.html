@@ -2,3 +2,9 @@
 <ul>
     <li *ngFor="let item of listItems">{{item}}</li>
 </ul>
+
+<input type="button" value=" - Minus - " (click)="minus()" />
+&nbsp;
+<b> {{ componentCounter }} </b>
+&nbsp;
+<input type="button" value=" + Plus + " (click)="plus()" />

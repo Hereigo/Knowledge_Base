@@ -13,8 +13,9 @@ import { DataPassComponent } from './03-data-pass/data-pass.component';
 import { DataSubChildComponent } from './03-data-pass/data-child/data-sub-child/data-sub-child.component';
 
 import { AaaSvcComponent } from './04-services/aaa-service/aaa-svc.component';
-import { AaaSvcService } from './04-services/aaa-service/aaa-svc.service';
+import { AaaSvcService } from './04-services/Services/aaa-svc.service';
 import { LocalSvcComponent } from './04-services/local-svc/local-svc.component';
+import { MySvcComponent } from './04-services/my-svc.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { LocalSvcComponent } from './04-services/local-svc/local-svc.component';
     StylesInheritanceComponent,
     AaaSvcComponent,
     LocalSvcComponent,
+    MySvcComponent,
   ],
   imports: [
     AppRoutingModule,
@@ -33,8 +35,8 @@ import { LocalSvcComponent } from './04-services/local-svc/local-svc.component';
     BrowserModule,
   ],
   providers: [
-    AaaSvcService,
-    // LocalSvcService - Registered IN Component!
+    AaaSvcService, // - also CAN be registered in SERVICE
+    // OR Registered in a COMPONENT if use LOCALLY.
   ],
   bootstrap: [
     AppComponent
