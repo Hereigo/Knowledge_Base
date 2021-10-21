@@ -16,6 +16,7 @@ import { AaaSvcComponent } from './04-services/aaa-service/aaa-svc.component';
 import { AaaSvcService } from './04-services/Services/aaa-svc.service';
 import { LocalSvcComponent } from './04-services/local-svc/local-svc.component';
 import { MySvcComponent } from './04-services/my-svc.component';
+import { DemoComponent } from './05-demo/demo.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { MySvcComponent } from './04-services/my-svc.component';
     AaaSvcComponent,
     LocalSvcComponent,
     MySvcComponent,
+    DemoComponent,
   ],
   imports: [
     AppRoutingModule,

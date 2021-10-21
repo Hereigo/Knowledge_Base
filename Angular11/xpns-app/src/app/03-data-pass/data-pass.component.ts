@@ -1,6 +1,8 @@
 import { Component, ElementRef, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { DataChildComponent } from './data-child/data-child.component';
 
+const constText: string = "Inside App-Child Tag Data for Child's <NG-CONTENT>.";
+
 @Component({
   selector: 'app-data-pass',
   templateUrl: './data-pass.component.html',
@@ -8,7 +10,7 @@ import { DataChildComponent } from './data-child/data-child.component';
 })
 export class DataPassComponent {
 
-  text: string = "Inside App-Child Tag Data for Child's <NG-CONTENT>.";
+  text: string = constText;
 
   // Find FIRST! 'DataChildComponent'-block :
   @ViewChild(DataChildComponent) firstDCComponent = new DataChildComponent;
