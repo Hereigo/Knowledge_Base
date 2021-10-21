@@ -234,7 +234,7 @@ childsMethod() {
 ### svc.component.ts
 
 ```ts
-  constructor(private mySvc: MyServicesService) { }
+  constructor(private mySvc: AaaSvcService) { }
 
   componentCounter: number = 0;
 
@@ -248,7 +248,7 @@ childsMethod() {
 
 ```ts
 @Injectable()
-export class MyServicesService {
+export class AaaSvcService {
 
   serviceCounter: number = 0;
 

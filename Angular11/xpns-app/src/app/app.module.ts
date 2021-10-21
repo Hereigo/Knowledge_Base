@@ -12,9 +12,9 @@ import { DataChildComponent } from './03-data-pass/data-child/data-child.compone
 import { DataPassComponent } from './03-data-pass/data-pass.component';
 import { DataSubChildComponent } from './03-data-pass/data-child/data-sub-child/data-sub-child.component';
 
-
-import { MyServicesComponent } from './04-my-services/my-services.component';
-import { MyServicesService } from './04-my-services/my-services.service';
+import { AaaSvcComponent } from './04-services/aaa-service/aaa-svc.component';
+import { AaaSvcService } from './04-services/aaa-service/aaa-svc.service';
+import { LocalSvcComponent } from './04-services/local-svc/local-svc.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +24,8 @@ import { MyServicesService } from './04-my-services/my-services.service';
     DataPassComponent,
     DataSubChildComponent,
     StylesInheritanceComponent,
-    MyServicesComponent,
+    AaaSvcComponent,
+    LocalSvcComponent,
   ],
   imports: [
     AppRoutingModule,
@@ -32,7 +33,7 @@ import { MyServicesService } from './04-my-services/my-services.service';
     BrowserModule,
   ],
   providers: [
-    MyServicesService
+    AaaSvcService
   ],
   bootstrap: [
     AppComponent

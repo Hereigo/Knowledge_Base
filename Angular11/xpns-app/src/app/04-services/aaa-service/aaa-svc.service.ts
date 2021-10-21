@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 @Injectable({ providedIn: 'root' })
-export class MyServicesService {
+export class AaaSvcService {
 
   serviceCounter: number = 0;
 

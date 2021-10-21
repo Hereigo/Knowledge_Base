@@ -1,15 +1,15 @@
 import { Component } from '@angular/core';
-import { MyServicesService } from './my-services.service';
+import { AaaSvcService } from './aaa-svc.service';
 
 @Component({
-  selector: 'app-my-services',
-  templateUrl: './my-services.component.html',
-  styleUrls: ['./my-services.component.css']
+  selector: 'app-aaa-service',
+  templateUrl: './aaa-svc.component.html',
+  styleUrls: ['./aaa-svc.component.css']
 })
-export class MyServicesComponent {
+export class AaaSvcComponent {
 
   // Inject Service in Ctor.
-  constructor(private mySvc: MyServicesService) { }
+  constructor(private mySvc: AaaSvcService) { }
 
   componentCounter: number = 0;
 
