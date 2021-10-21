@@ -33,7 +33,8 @@ import { LocalSvcComponent } from './04-services/local-svc/local-svc.component';
     BrowserModule,
   ],
   providers: [
-    AaaSvcService
+    AaaSvcService,
+    // LocalSvcService - Registered IN Component!
   ],
   bootstrap: [
     AppComponent
