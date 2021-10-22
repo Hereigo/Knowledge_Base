@@ -1,1 +1,15 @@
-<p>demo works!</p>
+<b>
+    Demo works!
+</b>
+
+<div>
+    <app-box-view *ngFor="let box of boxes" [boxItem]="box">
+
+        <input type="button" value="Inc. {{box.name}} ++" (click)="incrementByName(box.name)" />
+
+    </app-box-view>
+</div>
+
+<p>
+    <b>Sum : {{totalSum}} </b>
+</p>

@@ -276,3 +276,38 @@ providers: [ SomeService ] // in COMPONENT - Locally
 @Injectable({providedIn: SomeModule}) // in SERVICE - for Whole Module
 ```
 ----------------------------------------------------------------
+
+## Service Using in Component:
+
+```ts
+@Component({
+  // ...
+  providers: [SomeService]
+})
+export class SomeComponent implements OnInit, AfterViewChecked {
+
+  totalSum: number = 0;
+  boxes { num: number, name: string } [] = [];
+
+  constructor(
+    private service: SomeService,
+    private chngDetectRef: ChangeDetectorRef // For ngAfterViewChecked()
+  ) { }
+
+  incrementByName(boxName: string) {
+    this.service.svcIncrement(boxName);
+  }
+
+  ngOnInit(): void {
+    // Bind to Service data for process by Service.
+    this.service.svcBoxesStorage = this.boxes;
+  }
+
+  ngAfterViewChecked(): void {
+    this.totalSum = this.service.countUp();
+    // To prevent - Expression has changed after it was checked error.
+    this.chngDetectRef.detectChanges();
+  }
+}
+```
+----------------------------------------------------------------
