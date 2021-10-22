@@ -1,5 +1,7 @@
 <p>
-    <b>Interval Component.</b>
-     &nbsp;
-    <button (click)="goInterval()">Go Interval</button>
+    <b>RxJS Component.</b>
+    &nbsp;
+    <button (click)="toggle = !toggle">Toggle Child Component</button>
+    &nbsp;
+    <app-interval *ngIf="toggle"></app-interval>
 </p>

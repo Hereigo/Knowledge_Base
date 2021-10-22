@@ -19,6 +19,7 @@ import { MySvcComponent } from './04-services/my-svc.component';
 import { DemoComponent } from './05-demo/demo-boxes.component';
 import { BoxViewComponent } from './05-demo/box-view/box-view.component';
 import { RxJSComponent } from './06-rx-js/rx-js.component';
+import { IntervalComponent } from './06-rx-js/interval/interval.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { RxJSComponent } from './06-rx-js/rx-js.component';
     DemoComponent,
     BoxViewComponent,
     RxJSComponent,
+    IntervalComponent,
   ],
   imports: [
     AppRoutingModule,
