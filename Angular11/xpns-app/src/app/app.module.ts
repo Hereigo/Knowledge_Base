@@ -16,7 +16,7 @@ import { AaaSvcComponent } from './04-services/aaa-service/aaa-svc.component';
 import { AaaSvcService } from './04-services/Services/aaa-svc.service';
 import { LocalSvcComponent } from './04-services/local-svc/local-svc.component';
 import { MySvcComponent } from './04-services/my-svc.component';
-import { DemoComponent } from './05-demo/demo.component';
+import { DemoComponent } from './05-demo/demo-boxes.component';
 import { BoxViewComponent } from './05-demo/box-view/box-view.component';
 
 @NgModule({

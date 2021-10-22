@@ -5,7 +5,7 @@ import { BindsRoutesComponent } from './01-binds-routes/binds-routes.component';
 import { StylesInheritanceComponent } from './02-styles-inheritance/styles-inheritance.component';
 import { DataPassComponent } from './03-data-pass/data-pass.component';
 import { MySvcComponent } from './04-services/my-svc.component';
-import { DemoComponent } from './05-demo/demo.component';
+import { DemoComponent } from './05-demo/demo-boxes.component';
 
 const routes: Routes = [
   { path: '', component: BindsRoutesComponent },

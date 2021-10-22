@@ -2,4 +2,6 @@
     {{boxItem.name}} - [ {{boxItem.quantity}} ]
     &nbsp;
     <ng-content></ng-content> <!-- To pass smth. from Parent. -->
+    &nbsp;
+    <input type="button" value="++ By Local svc." (click)="incrementByLocalSvc()" />
 </p>

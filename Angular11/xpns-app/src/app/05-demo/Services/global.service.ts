@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 
-@Injectable()
-export class SomeSvcService {
+@Injectable({
+  providedIn: 'root' // Global!
+})
+export class GlobalService {
 
   svcBoxesStorage: { name: string, quantity: number }[] = [];
 

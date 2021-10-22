@@ -1,11 +1,11 @@
 <b>
-    Demo works!
+    Demo Boxes works!
 </b>
 
 <div>
     <app-box-view *ngFor="let box of boxes" [boxItem]="box">
 
-        <input type="button" value="Inc. {{box.name}} ++" (click)="incrementByName(box.name)" />
+        <input type="button" value="++ By Name (Global svc.)" (click)="incrementByName(box.name)" />
 
     </app-box-view>
 </div>

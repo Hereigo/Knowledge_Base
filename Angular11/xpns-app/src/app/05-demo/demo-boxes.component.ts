@@ -1,5 +1,5 @@
 import { Component, OnInit, AfterViewChecked, ChangeDetectorRef } from '@angular/core';
-import { SomeSvcService } from './Services/some-svc.service';
+import { GlobalService } from './Services/global.service';
 
 const boxesArray = [
   {
@@ -13,9 +13,8 @@ const boxesArray = [
 
 @Component({
   selector: 'app-demo',
-  templateUrl: './demo.component.html',
-  styleUrls: ['./demo.component.css'],
-  providers: [SomeSvcService]
+  templateUrl: './demo-boxes.component.html',
+  styleUrls: ['./demo-boxes.component.css'],
 })
 export class DemoComponent implements OnInit, AfterViewChecked {
 
@@ -23,22 +22,23 @@ export class DemoComponent implements OnInit, AfterViewChecked {
   boxes = boxesArray;
 
   constructor(
-    private service: SomeSvcService,
+    private globalService: GlobalService,
     private chngDetectRef: ChangeDetectorRef // For ngAfterViewChecked()
   ) { }
 
   incrementByName(boxName: string) {
-    this.service.svcIncrement(boxName);
+    this.globalService.svcIncrement(boxName);
   }
 
   ngOnInit(): void {
     // Bind to Service data for process by Service.
-    this.service.svcBoxesStorage = this.boxes;
+    this.globalService.svcBoxesStorage = this.boxes;
   }
 
   ngAfterViewChecked(): void {
-    this.totalSum = this.service.countUp();
+    this.totalSum = this.globalService.countUp();
     // To prevent - Expression has changed after it was checked error.
     this.chngDetectRef.detectChanges();
   }
+
 }
