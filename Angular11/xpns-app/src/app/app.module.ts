@@ -18,6 +18,7 @@ import { LocalSvcComponent } from './04-services/local-svc/local-svc.component';
 import { MySvcComponent } from './04-services/my-svc.component';
 import { DemoComponent } from './05-demo/demo-boxes.component';
 import { BoxViewComponent } from './05-demo/box-view/box-view.component';
+import { RxJSComponent } from './06-rx-js/rx-js.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { BoxViewComponent } from './05-demo/box-view/box-view.component';
     MySvcComponent,
     DemoComponent,
     BoxViewComponent,
+    RxJSComponent,
   ],
   imports: [
     AppRoutingModule,

@@ -4,9 +4,11 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Useful links :
 
+> - [To learn about tsconfig.json file.](https://angular.io/config/tsconfig.)
+> 
 > - [Angular security best practices.](https://snyk.io/blog/angular-security-best-practices)
 > 
-> - [To learn about tsconfig.json file.](https://angular.io/config/tsconfig.)
+> - [DON'T Call Functions Inside The Template Anymore.](https://javascript.plainenglish.io/angular-dont-call-a-function-inside-the-template-anymore-e74ebf499bb8)
 > 
 
 ## Development server
@@ -311,3 +313,7 @@ export class SomeComponent implements OnInit, AfterViewChecked {
 }
 ```
 ----------------------------------------------------------------
+
+# RxJS included.
+
+### ...
