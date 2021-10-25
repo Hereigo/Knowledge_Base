@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { interval } from 'rxjs';
+import { interval, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-interval',
@@ -8,27 +8,30 @@ import { interval } from 'rxjs';
 })
 export class IntervalComponent implements OnDestroy {
 
-  threeSecondsInterval;
+  oneSecondsInterval;
+  threeSecondsInterval: Subscription | undefined;
 
   constructor() {
 
+    // Why need it here ???
     interval(500)
 
-    interval(1000).subscribe((value) => {
-      console.log("ONE second", value);
-    });
-
-    this.threeSecondsInterval = interval(3000);
+    this.oneSecondsInterval =
+      interval(1000).subscribe((value) => {
+        console.log("ONE second", value);
+      });
   }
 
   goInterval() {
-    this.threeSecondsInterval.subscribe((value) => {
+    this.threeSecondsInterval= interval(3000).subscribe((value) => {
       console.log("THREE second", value);
     });
   }
 
   ngOnDestroy() {
-
+    this.oneSecondsInterval.unsubscribe();
+    if(this.threeSecondsInterval)
+      this.threeSecondsInterval.unsubscribe();
   }
 
 }
