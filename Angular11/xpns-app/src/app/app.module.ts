@@ -20,6 +20,7 @@ import { DemoComponent } from './05-demo/demo-boxes.component';
 import { BoxViewComponent } from './05-demo/box-view/box-view.component';
 import { RxJSComponent } from './06-rx-js/rx-js.component';
 import { IntervalComponent } from './06-rx-js/interval/interval.component';
+import { OperatorsComponent } from './06-rx-js/operators/operators.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { IntervalComponent } from './06-rx-js/interval/interval.component';
     BoxViewComponent,
     RxJSComponent,
     IntervalComponent,
+    OperatorsComponent,
   ],
   imports: [
     AppRoutingModule,

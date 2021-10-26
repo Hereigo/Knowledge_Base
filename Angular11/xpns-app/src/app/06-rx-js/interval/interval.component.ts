@@ -12,10 +12,6 @@ export class IntervalComponent implements OnDestroy {
   threeSecondsInterval: Subscription | undefined;
 
   constructor() {
-
-    // Why need it here ???
-    interval(500)
-
     this.oneSecondsInterval =
       interval(1000).subscribe((value) => {
         console.log("ONE second", value);
