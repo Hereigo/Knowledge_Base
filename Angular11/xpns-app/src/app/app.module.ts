@@ -21,6 +21,12 @@ import { BoxViewComponent } from './05-demo/box-view/box-view.component';
 import { RxJSComponent } from './06-rx-js/rx-js.component';
 import { IntervalComponent } from './06-rx-js/interval/interval.component';
 import { OperatorsComponent } from './06-rx-js/operators/operators.component';
+import { HttpClientComponent } from './07-http-client/http-client.component';
+import { HttpReq1Component } from './07-http-client/http-req1/http-req1.component';
+import { HttpClientModule } from '@angular/common/http';
+import { HttpReq2Component } from './07-http-client/http-req2/http-req2.component';
+import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { BackendSvcService } from './07-http-client/http-req2/backend-svc.service';
 
 @NgModule({
   declarations: [
@@ -38,11 +44,18 @@ import { OperatorsComponent } from './06-rx-js/operators/operators.component';
     RxJSComponent,
     IntervalComponent,
     OperatorsComponent,
+    HttpClientComponent,
+    HttpReq1Component,
+    HttpReq2Component,
   ],
   imports: [
     AppRoutingModule,
     BindsRoutesModule,
     BrowserModule,
+    HttpClientModule,
+    // npm install --save angular-in-memory-web-api
+    // The package abowe is necessary for InMemoryWebApiModule.
+    InMemoryWebApiModule.forRoot(BackendSvcService, { delay: 700 }),
   ],
   providers: [
     AaaSvcService, // - also CAN be registered in SERVICE

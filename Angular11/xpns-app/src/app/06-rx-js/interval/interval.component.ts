@@ -19,14 +19,14 @@ export class IntervalComponent implements OnDestroy {
   }
 
   goInterval() {
-    this.threeSecondsInterval= interval(3000).subscribe((value) => {
+    this.threeSecondsInterval = interval(3000).subscribe((value) => {
       console.log("THREE second", value);
     });
   }
 
   ngOnDestroy() {
     this.oneSecondsInterval.unsubscribe();
-    if(this.threeSecondsInterval)
+    if (this.threeSecondsInterval)
       this.threeSecondsInterval.unsubscribe();
   }
 
