@@ -1,1 +1,19 @@
-<p>http-req2 works!</p>
+<h2>Todo list with Fake Backend.</h2>
+
+<input #txtField type="text">
+&nbsp;
+<button (click)="editFinish(txtField.value)">Save Edited</button>
+<br />
+<button (click)="addTodo(txtField.value)">Add Todo</button>
+
+<ul>
+    <li *ngFor="let todo of todoList">
+
+        <span (click)="editStart(todo, txtField)">&#9998;</span>
+        &nbsp;
+        <span (click)="deleteTask(todo.id)">[&times;]</span>
+        &nbsp;
+        {{ todo.name }}
+
+    </li>
+</ul>

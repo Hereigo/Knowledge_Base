@@ -26,7 +26,7 @@ import { HttpReq1Component } from './07-http-client/http-req1/http-req1.componen
 import { HttpClientModule } from '@angular/common/http';
 import { HttpReq2Component } from './07-http-client/http-req2/http-req2.component';
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { BackendSvcService } from './07-http-client/http-req2/backend-svc.service';
+import { BackendSvcService } from './07-http-client/http-req2/services/backend-svc.service';
 
 @NgModule({
   declarations: [
@@ -53,9 +53,9 @@ import { BackendSvcService } from './07-http-client/http-req2/backend-svc.servic
     BindsRoutesModule,
     BrowserModule,
     HttpClientModule,
-    // npm install --save angular-in-memory-web-api
-    // The package abowe is necessary for InMemoryWebApiModule.
+    // npm install --save angular-in-memory-web-api (is necessary for InMemoryWebApiModule).
     InMemoryWebApiModule.forRoot(BackendSvcService, { delay: 700 }),
+    // To use "GetDataService" - Comment the line above.
   ],
   providers: [
     AaaSvcService, // - also CAN be registered in SERVICE

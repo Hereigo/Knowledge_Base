@@ -3,8 +3,7 @@ import { InMemoryDbService } from 'angular-in-memory-web-api';
 
 // To use FAKE backend :
 // npm install --save angular-in-memory-web-api
-// @NgModule({ imports:
-// [ 
+// Add into @NgModule({ imports: [ 
 // ............., InMemoryWebApiModule.forRoot(BackendSvcService, { delay:700 }),
 // Fake-Backend will be at - /api/todos
 
