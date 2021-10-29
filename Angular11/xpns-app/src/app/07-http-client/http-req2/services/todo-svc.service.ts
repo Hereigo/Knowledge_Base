@@ -16,11 +16,11 @@ export class TodoSvcService {
     return this.http.post('api/todos', { name: task });
   }
 
-  editItems(task: { id: any; }) {
-    return this.http.put(`api/todos/${task.id}`, task);
+  editItems(changedTask: { id: any; }) {
+    return this.http.put(`api/todos/${changedTask.id}`, changedTask);
   }
 
-  deleteItem(id: any) {
+  deleteItem(id: number) {
     return this.http.delete(`api/todos/${id}`);
   }
 

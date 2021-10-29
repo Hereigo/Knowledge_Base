@@ -1,19 +1,22 @@
-<h2>Todo list with Fake Backend.</h2>
-
+<b>Todo list with Fake Backend.</b>
+<br />
+To make this block working correctly - Enable FAKE BE in App-Module!
+<br />
+<br />
 <input #txtField type="text">
 &nbsp;
 <button (click)="editFinish(txtField.value)">Save Edited</button>
-<br />
+&nbsp;
 <button (click)="addTodo(txtField.value)">Add Todo</button>
 
-<ul>
+<ol>
     <li *ngFor="let todo of todoList">
 
-        <span (click)="editStart(todo, txtField)">&#9998;</span>
-        &nbsp;
         <span (click)="deleteTask(todo.id)">[&times;]</span>
         &nbsp;
         {{ todo.name }}
+        &nbsp;
+        <span (click)="editStart(todo, txtField)">[&#9998;]</span>
 
     </li>
-</ul>
+</ol>

@@ -28,6 +28,7 @@ export class HttpReq2Component implements OnInit {
     this.todoSvc.addItems(newTodoText).subscribe(result => {
       console.log(result);
       this.todoList.push(result);
+      // this.getTodoTasks();
     })
   }
 
@@ -40,6 +41,7 @@ export class HttpReq2Component implements OnInit {
     this.editingTasks.name = newText;
     this.todoSvc.editItems(this.editingTasks).subscribe(result => {
       console.log(result);
+      // Removing the Reference to our Task.
       this.editingTasks = null;
     });
   }
