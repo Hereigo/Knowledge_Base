@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace LINQ_46
+namespace LINQ
 {
     public static class MergeCollectionsByPrio
     {

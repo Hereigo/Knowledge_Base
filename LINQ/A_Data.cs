@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace LINQ_46
+namespace LINQ
 {
     public class A_Data
     {
