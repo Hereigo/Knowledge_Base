@@ -28,6 +28,7 @@ import { HttpReq2Component } from './07-http-client/http-req2/http-req2.componen
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { BackendSvcService } from './07-http-client/http-req2/services/backend-svc.service';
 import { HttpReq3Component } from './07-http-client/http-req3/http-req3.component';
+import { RxJsComponent } from './06-rx-js-NEW/rx-js.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { HttpReq3Component } from './07-http-client/http-req3/http-req3.componen
     HttpReq1Component,
     HttpReq2Component,
     HttpReq3Component,
+    RxJsComponent,
   ],
   imports: [
     AppRoutingModule,

@@ -40,6 +40,10 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 # Start work.
 
 ```bsh
+cd ~
+curl -sL https://deb.nodesource.com/setup_14.x -o nodesource_setup.sh
+sudo bash nodesource_setup.sh
+sudo apt install nodejs
 npm install
 npm install -g @angular/cli
 
