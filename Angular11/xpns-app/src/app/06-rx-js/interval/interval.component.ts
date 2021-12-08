@@ -25,6 +25,8 @@ export class IntervalComponent implements OnDestroy {
 
   ngOnDestroy() {
     this.oneSecObservableObject.unsubscribe();
+    
+    // Unsubscribed ONLY FIRST created subscription!!!
     if (this.threeSecObservableObject)
       this.threeSecObservableObject.unsubscribe();
   }

@@ -26,7 +26,7 @@ import { HttpReq1Component } from './07-http-client/http-req1/http-req1.componen
 import { HttpClientModule } from '@angular/common/http';
 import { HttpReq2Component } from './07-http-client/http-req2/http-req2.component';
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api'; // SEE IMPORTS!
-import { BackendSvcService } from './07-http-client/http-req2/services/backend-svc.service';
+import { FakeBackendService } from './07-http-client/http-req2/services/fake-backend.service';
 import { HttpReq3Component } from './07-http-client/http-req3/http-req3.component';
 
 @NgModule({
@@ -55,10 +55,10 @@ import { HttpReq3Component } from './07-http-client/http-req3/http-req3.componen
     BindsRoutesModule,
     BrowserModule,
     HttpClientModule,
-    // npm install --save angular-in-memory-web-api (is necessary for InMemoryWebApiModule).
-    // That paclage is necessary for - InMemoryWebApiModule.
-    // To use FAKE BACKEND ONLY !!! in "GetDataService" uncomment the line below.
-    // InMemoryWebApiModule.forRoot(BackendSvcService, { delay: 700 }),
+    // npm install --save angular-in-memory-web-api
+    // This package is necessary for - InMemoryWebApiModule.
+    // To use FAKE BACKEND ONLY !!! in "GetDataService" UnComment the line below.
+    InMemoryWebApiModule.forRoot(FakeBackendService, { delay: 700 }),
   ],
   providers: [
     AaaSvcService, // - also CAN be registered in SERVICE

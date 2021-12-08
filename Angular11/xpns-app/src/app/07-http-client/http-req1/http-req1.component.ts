@@ -14,10 +14,10 @@ export class HttpReq1Component implements OnInit {
   constructor(private dataService: GetDataService) { }
 
   ngOnInit(): void {
-    // Subscribe to Observable response of Service.
-    this.dataService.getDataFromService().subscribe(res => {
-      console.log(res);
-      this.users = res;
+    // Subscribe to Observable object of Service's response.
+    this.dataService.getDataFromService().subscribe(resp => {
+      console.log(resp);
+      this.users = resp;
     });
   }
 

@@ -21,12 +21,12 @@ export class ServerDataService {
     // asyncronous work.
     return of(data) // Stream created here.
       .pipe(
-        delay(3000),
+        delay(2000),
         map(text => {
           console.log("\r\n Method map() works in the ServerDataService before return Collection.");
           return text.concat("This item added in the Service - (see console).")
         }),
-        delay(3000)
+        delay(2000)
       );
   }
 }

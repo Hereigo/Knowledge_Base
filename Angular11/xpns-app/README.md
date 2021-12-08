@@ -39,7 +39,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 # Start work.
 
-```bsh
+```sh
 cd ~
 curl -sL https://deb.nodesource.com/setup_14.x -o nodesource_setup.sh
 sudo bash nodesource_setup.sh
@@ -389,4 +389,112 @@ export class OperatorsComponent implements OnInit {
 
 ----------------------------------------------------------------
 
-# Http
+# HttpClient.
+
+### AppModule.ts
+
+```ts
+@NgModule({ imports: [ HttpClientModule, ... ] from '@angular/common/http';
+```
+
+### Data.Service.ts
+
+```ts
+// Register in AppModule REQUIRED! (see above).
+import { HttpClient } from '@angular/common/http';
+
+@Injectable({ providedIn: 'root' })
+export class GetDataService {
+  constructor(private http: HttpClient) { }
+  getDataFromService() {
+    // returns Observable object (to wait for response).
+    return this.http.get('https://jsonplaceholder.typicode.com/users');
+```
+
+# HttpClient (Fake WebAPI)
+
+### AppModule.ts
+
+```ts
+import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
+@NgModule({
+  imports: [
+    // npm install --save angular-in-memory-web-api (REQUIRED!)
+    InMemoryWebApiModule.forRoot(BackendSvcService, { delay: 700 }),
+```
+
+### FakeBackend.Service.ts
+
+```ts
+import { InMemoryDbService } from 'angular-in-memory-web-api';
+// Fake-Backend will be accessible at - /api/todos
+@Injectable({ /*...*/ })
+export class FakeBackendService implements InMemoryDbService {
+  createDb() {
+    let todos = [
+      { id: 1, name: "Task 1" },
+      { id: 2, name: "Task 2" },
+      { id: 3, name: "Task 3" },
+      { id: 4, name: "Task 4" }
+    ];
+  return { todos: todos };
+```
+
+### Todo.Service.ts (FakeBackend consumer)
+
+```ts
+import { HttpClient } from '@angular/common/http';
+
+@Injectable({/*...*/})
+export class TodoSvcService {
+  constructor(private http: HttpClient) { }
+  getItems() {
+    return this.http.get('api/todos');
+  }
+  addItems(task: any) {
+    return this.http.post('api/todos', { name: task });
+  }
+  editItems(changedTask: { id: any; }) {
+    return this.http.put(`api/todos/${changedTask.id}`, changedTask);
+  }
+```
+
+### Todo.Component.ts (Todod.Service consumer)
+
+```ts
+import { TodoSvcService } from './services/todo-svc.service';
+
+@Component({/*...*/})
+export class HttpReq2Component implements OnInit {
+  todoList: any;
+  editingTasks: any;
+  constructor(private todoSvc: TodoSvcService) { }
+  ngOnInit(): void {
+    this.getTodoTasks();
+  }
+  getTodoTasks(): any {
+    this.todoSvc.getItems().subscribe(todos => {
+      console.log(todos);
+      this.todoList = todos;
+    });
+  }
+  addTodo(newTodoText: string) {
+    this.todoSvc.addItems(newTodoText).subscribe(result => {
+      console.log(result);
+      this.todoList.push(result);
+    })
+  }
+  editStart(task: any, input: any) {
+    this.editingTasks = task;
+    input.value = task.name;
+  }
+  editFinish(newText: string) {
+    this.editingTasks.name = newText;
+    this.todoSvc.editItems(this.editingTasks).subscribe(result => {
+      console.log(result);
+      // Removing the Reference to our Task.
+      this.editingTasks = null;
+    });
+  }
+```
+

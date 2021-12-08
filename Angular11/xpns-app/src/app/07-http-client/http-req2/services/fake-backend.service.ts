@@ -10,9 +10,7 @@ import { InMemoryDbService } from 'angular-in-memory-web-api';
 @Injectable({
   providedIn: 'root'
 })
-export class BackendSvcService implements InMemoryDbService {
-
-  constructor() { }
+export class FakeBackendService implements InMemoryDbService {
 
   createDb() {
     let todos = [
@@ -21,7 +19,6 @@ export class BackendSvcService implements InMemoryDbService {
       { id: 3, name: "Task 3" },
       { id: 4, name: "Task 4" }
     ];
-
     // return { todos: todos };
     return { todos };
   }
