@@ -8,26 +8,25 @@ import { interval, Subscription } from 'rxjs';
 })
 export class IntervalComponent implements OnDestroy {
 
-  oneSecondsInterval;
-  threeSecondsInterval: Subscription | undefined;
+  oneSecObservableObject;
+  threeSecObservableObject: Subscription | undefined;
 
   constructor() {
-    this.oneSecondsInterval =
-      interval(1000).subscribe((value) => {
-        console.log("ONE second", value);
-      });
+    this.oneSecObservableObject = interval(1000).subscribe((value) => {
+      console.log("ONE second", value);
+    });
   }
 
   toggleAnotherInterval() {
-    this.threeSecondsInterval = interval(3000).subscribe((value) => {
+    this.threeSecObservableObject = interval(3000).subscribe((value) => {
       console.log("+ THREE seconds", value);
     });
   }
 
   ngOnDestroy() {
-    this.oneSecondsInterval.unsubscribe();
-    if (this.threeSecondsInterval)
-      this.threeSecondsInterval.unsubscribe();
+    this.oneSecObservableObject.unsubscribe();
+    if (this.threeSecObservableObject)
+      this.threeSecObservableObject.unsubscribe();
   }
 
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { GetDataService } from './get-data.service';
+import { GetDataService } from './services/get-data.service';
 
 @Component({
   selector: 'app-http-req1',
@@ -10,9 +10,11 @@ export class HttpReq1Component implements OnInit {
 
   users: any;
 
+  // Service injection:
   constructor(private dataService: GetDataService) { }
 
   ngOnInit(): void {
+    // Subscribe to Observable response of Service.
     this.dataService.getDataFromService().subscribe(res => {
       console.log(res);
       this.users = res;

@@ -25,7 +25,7 @@ import { HttpClientComponent } from './07-http-client/http-client.component';
 import { HttpReq1Component } from './07-http-client/http-req1/http-req1.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpReq2Component } from './07-http-client/http-req2/http-req2.component';
-import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { InMemoryWebApiModule } from 'angular-in-memory-web-api'; // SEE IMPORTS!
 import { BackendSvcService } from './07-http-client/http-req2/services/backend-svc.service';
 import { HttpReq3Component } from './07-http-client/http-req3/http-req3.component';
 

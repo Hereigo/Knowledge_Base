@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+// In Module registration REQUIRED !!!
+// @NgModule({ imports: [ HttpClientModule, ... ] from '@angular/common/http';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
@@ -6,15 +8,14 @@ import { HttpClient } from '@angular/common/http';
 })
 export class GetDataService {
 
-  // In Module registration REQUIRED !!!
-  // @NgModule({ imports: [ HttpClientModule, ... ] from '@angular/common/http';
   constructor(private http: HttpClient) { }
-  
-  // Comment in the AppModule the line as below one to WORK THIS SERVICE !!!
+
+  // Comment in AppModule the FAKE-svc Module as a line below to let THIS srv work!!!
   // InMemoryWebApiModule.forRoot(BackendSvcService, { delay: 700 }),
 
   getDataFromService() {
-    // Json parsed automatically!
+    // returns Observable object (to wait for response).
     return this.http.get('https://jsonplaceholder.typicode.com/users');
+    // Json parsed automatically!
   }
 }

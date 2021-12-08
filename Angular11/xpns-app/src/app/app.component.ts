@@ -8,14 +8,14 @@ import { Component } from '@angular/core';
 export class AppComponent {
 
   constructor() {
-    this.startInterval();
+    this.startCounterInterval();
   }
 
   counter: number = 0;
   isChecked = true;
   isCounterOn = true;
 
-  startInterval() {
+  startCounterInterval() {
     setInterval(() => {
       if (this.isCounterOn) {
         this.counter++;
