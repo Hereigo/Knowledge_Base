@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { interval, Subscription } from 'rxjs';
 
 @Component({
@@ -18,9 +18,9 @@ export class IntervalComponent implements OnDestroy {
       });
   }
 
-  goInterval() {
+  toggleAnotherInterval() {
     this.threeSecondsInterval = interval(3000).subscribe((value) => {
-      console.log("THREE second", value);
+      console.log("+ THREE seconds", value);
     });
   }
 

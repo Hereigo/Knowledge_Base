@@ -8,12 +8,11 @@ import { ServerDataService } from '../services/server-data.service';
 })
 export class OperatorsComponent implements OnInit {
 
-  list: any; // string[];
+  list: any;
 
   constructor(private dbService: ServerDataService) { }
 
   ngOnInit(): void {
-    // this.list = this.dbService.getData();
     this.dbService.getData().subscribe(data => this.list = data);
   }
 

@@ -11,22 +11,22 @@ export class ServerDataService {
 
   constructor() { }
 
-  // syncronous work.
   getData() {
+    // syncronous work.
     let data = [];
     for (let i = 0; i < 6; i++) {
       ++i;
       data.push('A-' + i + i + i);
-    }
+    };
     // asyncronous work.
-    return of(data) // Stream created.
+    return of(data) // Stream created here.
       .pipe(
-        delay(2000),
+        delay(3000),
         map(text => {
-          console.log("Method map() works.");
-          return text.concat("new content ")
+          console.log("\r\n Method map() works in the ServerDataService before return Collection.");
+          return text.concat("This item added in the Service - (see console).")
         }),
-        delay(2000)
+        delay(3000)
       );
   }
 }
