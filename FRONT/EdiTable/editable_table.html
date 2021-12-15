@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <script src="/CDN_LOCAL/jquery-1.4.4.min.js"></script>
+        <style>
+            td {
+                margin: 0;
+                padding: .5em;
+            }
+
+        </style>
+    </head>
+
+    <body>
+        <div class="driver_info full">
+            <table id="tblComments" examineeId="@Model"
+                class="table table-bordered table-striped table-responsive table-hover">
+                <thead>
+                    <tr>
+                        <th align="left">Comments</th>
+                        <th align="left">Modified</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+            <a href="#" onclick='addNewCommentArea()' style='margin:.2em 1em;float:right'>
+                Add new comment
+            </a>
+        </div>
+
+        <script type="text/javascript">
+            $(function () {
+                ReloadComments();
+            });
+            function ReloadComments() {
+                $("#tblComments tbody").empty();
+                let examineeId = $("#tblComments").attr("examineeId");
+                $.ajax({
+                    type: 'GET',
+                    // url: '@Url.Action("GetComments", "Comments")',
+                    url: 'https://jsonplaceholder.typicode.com/posts?userId=1',
+                    dataType: 'json',
+                    data: { examineeId: examineeId },
+                    success: function (data) {
+                        console.log(data.length);
+                        console.log(data);
+                        $.each(data, function (i, item) {
+                            // let modifiedDate = dateParseAndFormat(item.CommDLC, item.CommDate);
+                            let modifiedDate = '31/12/2021';
+                            let style = i % 2 == 0 ? '' : "style='background-color:#e9e0e0'";
+                            let rows = "<tr " + style + ">"
+                                + "<td id='cvTableCmntsTextId" + item.id + "'>" + item.title + "</td>"
+                                + "<td id='cvTableEdtCol" + item.id + "'><span style='font-size:.8em'>" + modifiedDate + "</span></td>"
+                                + "<td>"
+                                + "<a href='#' class='cvTableCmntsBtn' onclick='editComment(" + item.id + ")' style='display:block'>Edit</a>"
+                                + "</td><td>"
+                                + "<a href='#' class='cvTableCmntsBtn' onclick='deleteComment(" + item.id + ")' style='display:block'>Delete</a>"
+                                + "</td>"
+                                + "</tr>";
+                            $('#tblComments tbody').append(rows);
+                        });
+                    },
+                    error: function (ex) {
+                        console.log(ex);
+                        let r = jQuery.parseJSON(response.responseText);
+                        alert("Message: " + r.Message);
+                    }
+                });
+            }
+            function dateParseAndFormat(dateModified, dateCreated) {
+                let stringDate = dateModified ? dateModified : dateCreated;
+                let parsedDate = new Date(parseInt(stringDate.replace("/Date(", "").replace(")/", ""), 10));
+                return withLeadingZero(parsedDate.getDate()) + "/" +
+                    withLeadingZero(parsedDate.getMonth()) + "/" + parsedDate.getFullYear();
+            }
+            function withLeadingZero(dayOrMonth) {
+                return dayOrMonth > 9 ? dayOrMonth : '0' + dayOrMonth;
+            }
+            function addNewCommentArea() {
+                ReloadComments();
+                let row = "<tr>"
+                    + "<td colspan=2>"
+                    + "<textarea id='cvTableCmntsNewTxArea' rows=2 style='width:100%'></textarea>"
+                    + "</td><td>"
+                    + "<a href='#' class='cvTableCmntsBtn' onclick='saveNewComment()' style='display:none'>Save</a>"
+                    + "<div class='cvTableCmntsBtn' style='display:none;font-size:.8em'>255.max</div>"
+                    + "<div class='cvTableCmntsBtn' style='display:none;font-size:.8em' id='cvTableCmntsTxAreaCnt'>...</div>"
+                    + "<a href='#' class='cvTableCmntsBtn' onclick='cancelEdit()' style='display:none'>Cancel</a>"
+                    + "</td>"
+                    + "</tr>";
+                $('#tblComments tbody').append(row);
+                handleTxAreaTextLength('cvTableCmntsNewTxArea');
+            }
+            function saveNewComment() {
+                let newComment = {
+                    CommText: preventScripts($('#cvTableCmntsNewTxArea').val()),
+                    CommExamineeID: $("#tblComments").attr("examineeId")
+                };
+                if (newComment.CommText.length < 3) {
+                    alert("Not possible to save comments less then 3 characters!");
+                } else if (newComment.CommText.length > 255) {
+                    alert("Not possible to save comments more then 255 characters!");
+                } else {
+                    sendPostAsync("AddComment", newComment);
+                }
+            }
+            function handleTxAreaTextLength(id) {
+                switchButtons();
+                document.getElementById(id).addEventListener('input', function () {
+                    var txAreaCmntText = document.getElementById(id);
+                    var counter = document.getElementById('cvTableCmntsTxAreaCnt');
+                    var length = txAreaCmntText.value.length;
+                    counter.innerText = length;
+                    if (length > 255) {
+                        counter.style = 'font-weight:bold;display:block;font-size:.8em;color:red';
+                    } else {
+                        counter.style = 'font-weight:bold;display:block;font-size:.8em;color:black';
+                    }
+                });
+            }
+            function switchButtons() {
+                let allButtons = Array.from(document.getElementsByClassName('cvTableCmntsBtn'));
+                allButtons.forEach(function (btn) {
+                    if (btn.style.display == "block")
+                        btn.style.display = "none";
+                    else
+                        btn.style.display = "block";
+                });
+            }
+            function editComment(cmntId) {
+                let buttonsColumn = document.getElementById('cvTableEdtCol' + cmntId);
+                buttonsColumn.innerHTML =
+                    "<a href='#' class='cvTableCmntsBtn' onclick='saveEditedComment(" + cmntId + ")' style='display:none'>Save</a>"
+                    + "<div class='cvTableCmntsBtn' style='display:none;font-size:.8em'>(255 max)</div>"
+                    + "<div class='cvTableCmntsBtn' style='display:none;font-size:.8em' id='cvTableCmntsTxAreaCnt'>...</div>"
+                    + "<a href='#' class='cvTableCmntsBtn' onclick='cancelEdit()' style='display:none'>Cancel</a>";
+                let comment = selectComment(cmntId);
+                let textAreaId = 'cvTableCmntsEditTxArea' + cmntId;
+                let cmntText = comment.innerText;
+                comment.innerText = "";
+                let txtArea = document.createElement("textarea");
+                txtArea.setAttribute('id', textAreaId);
+                txtArea.rows = 2;
+                txtArea.style.width = "100%";
+                txtArea.value = cmntText;
+                comment.appendChild(txtArea);
+                handleTxAreaTextLength(textAreaId);
+            }
+            function saveEditedComment(id) {
+                let comment = selectComment(id).firstChild.value;
+                let commentViewText = {
+                    CommID: id,
+                    CommText: preventScripts(comment),
+                    CommULC: ""
+                };
+                if (commentViewText.CommText.length < 3) {
+                    alert("Not possible to save comments less then 3 characters!");
+                } else if (commentViewText.CommText.length > 255) {
+                    alert("Not possible to save comments more then 255 characters!");
+                } else {
+                    sendPostAsync("UpdateComment", commentViewText);
+                }
+            }
+            function cancelEdit() {
+                ReloadComments();
+            }
+            function deleteComment(id) {
+                let commentPart = selectComment(id).innerText.substring(0, 30);
+                if (confirm('Do you want to DELETE comment "' + commentPart + '..."?')) {
+                    let data = { id: id };
+                    sendPostAsync("DeleteComment", data);
+                }
+            }
+            function selectComment(id) {
+                return document.getElementById('cvTableCmntsTextId' + id);
+            }
+            function preventScripts(text) {
+                return text.replaceAll('<', ' < ').replaceAll('>', ' > ');
+            }
+            function sendPostAsync(actionName, data) {
+                $.ajax({
+                    url: '../Comments/' + actionName,
+                    type: 'POST',
+                    data: data,
+                    error: function (ex) {
+                        console.log(ex);
+                        let r = jQuery.parseJSON(response.responseText);
+                        alert("Message: " + r.Message);
+                    },
+                    success: function () {
+                        ReloadComments();
+                    }
+                });
+            } 
+        </script>
+    </body>
+
+</html>
