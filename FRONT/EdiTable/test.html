@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <title>Document</title>
+        <script src="/CDN_LOCAL/jquery-1.4.4.min.js"></script>
+        <style>
+            .abc {
+                background-color: #d7d9f2;
+            }
+
+            .def {
+                background-color: #ffe8d4;
+            }
+
+            table {
+                border-collapse: collapse;
+                border: 2px solid rgb(100, 100, 100);
+                letter-spacing: 1px;
+            }
+
+            td,
+            th {
+                border: 1px solid rgb(100, 100, 100);
+                padding: 10px 10px;
+            }
+
+            td {
+                text-align: center;
+            }
+
+            button {
+                margin-top: .5em;
+                padding: .4em .7em;
+            }
+
+        </style>
+    </head>
+
+    <body>
+
+        <table id='id_of_table_A'>
+            <colgroup>
+                <col>
+                <col span="2" class="abc">
+                <col span="2" class="def">
+            </colgroup>
+            <thead>
+                <tr>
+                    <td></td>
+                    <th scope="col">Abc_11</th>
+                    <th scope="col">Abc_22</th>
+                    <th scope="col">Def_11</th>
+                    <th scope="col">Def_22</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>aaa 111</td>
+                    <td>aaa 222</td>
+                    <td>aaa 333</td>
+                    <td>aaa 444</td>
+                </tr>
+                <tr>
+                    <th scope="row">2</th>
+                    <td>bbb 111</td>
+                    <td>bbb 222</td>
+                    <td>bbb 333</td>
+                    <td>bbb 444</td>
+                </tr>
+                <tr>
+                    <th scope="row">3</th>
+                    <td>ccc 111</td>
+                    <td>ccc 222</td>
+                    <td>ccc 333</td>
+                    <td>ccc 444</td>
+                </tr>
+
+            </tbody>
+        </table>
+
+        <br />
+        <table id='id_of_table' border=1>
+            <col />
+            <col />
+            <col />
+            <col />
+
+            <tr>
+                <td> 2</td>
+                <td> two</td>
+                <td> deux</td>
+                <td> zwei</td>
+            </tr>
+            <tr>
+                <td> 3</td>
+                <td> three</td>
+                <td> trois</td>
+                <td> drei</td>
+            </tr>
+            <tr>
+                <td> 4</td>
+                <td> four</td>
+                <td>quattre</td>
+                <td> vier</td>
+            </tr>
+        </table>
+
+        <button onclick="btnFunc()">PUSH</button>
+
+        <script>
+            function btnFunc() {
+                var tbl = document.getElementById('id_of_table');
+
+                var myArr = Array.from(tbl.getElementsByTagName('col'));
+                myArr.forEach(function (item, i) {
+                    console.log(i, item);
+                    if (i % 2 == 0) {
+                        item.style.visibility = 'collapse';
+                    }
+                });
+
+                var colTwo = tbl.getElementsByTagName('col')[3];
+                colTwo.style.backgroundColor = 'lightgrey';
+            }
+        </script>
+    </body>
+
+</html>

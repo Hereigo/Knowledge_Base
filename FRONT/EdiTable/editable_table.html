@@ -5,12 +5,21 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
         <title>Document</title>
         <script src="/CDN_LOCAL/jquery-1.4.4.min.js"></script>
         <style>
             td {
                 margin: 0;
                 padding: .5em;
+            }
+
+            .aaa {
+                color: red;
+            }
+
+            .bbb {
+                color: green;
             }
 
         </style>
@@ -20,12 +29,19 @@
         <div class="driver_info full">
             <table id="tblComments" examineeId="@Model"
                 class="table table-bordered table-striped table-responsive table-hover">
+
+                <colgroup>
+                    <col>
+                    <col class="aaa">
+                    <col span="2" class="bbb">
+                </colgroup>
+
                 <thead>
                     <tr>
-                        <th align="left">Comments</th>
-                        <th align="left">Modified</th>
-                        <th></th>
-                        <th></th>
+                        <th scope="col" align="left">Comments</th>
+                        <th scope="col" align="left">Modified</th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
                     </tr>
                 </thead>
                 <tbody></tbody>
@@ -49,8 +65,6 @@
                     dataType: 'json',
                     data: { examineeId: examineeId },
                     success: function (data) {
-                        console.log(data.length);
-                        console.log(data);
                         $.each(data, function (i, item) {
                             // let modifiedDate = dateParseAndFormat(item.CommDLC, item.CommDate);
                             let modifiedDate = '31/12/2021';
@@ -88,15 +102,16 @@
                 let row = "<tr>"
                     + "<td colspan=2>"
                     + "<textarea id='cvTableCmntsNewTxArea' rows=2 style='width:100%'></textarea>"
-                    + "</td><td>"
+                    + "</td><td class='cvTableCmntsBtn' style='display:none'>"
                     + "<a href='#' class='cvTableCmntsBtn' onclick='saveNewComment()' style='display:none'>Save</a>"
                     + "<div class='cvTableCmntsBtn' style='display:none;font-size:.8em'>255.max</div>"
                     + "<div class='cvTableCmntsBtn' style='display:none;font-size:.8em' id='cvTableCmntsTxAreaCnt'>...</div>"
-                    + "<a href='#' class='cvTableCmntsBtn' onclick='cancelEdit()' style='display:none'>Cancel</a>"
+                    + "<a href='#' class='cvTableCmntsBtn' onclick='ReloadComments()' style='display:none'>Cancel</a>"
                     + "</td>"
                     + "</tr>";
                 $('#tblComments tbody').append(row);
                 handleTxAreaTextLength('cvTableCmntsNewTxArea');
+                switchButtons();
             }
             function saveNewComment() {
                 let newComment = {
@@ -112,7 +127,7 @@
                 }
             }
             function handleTxAreaTextLength(id) {
-                switchButtons();
+
                 document.getElementById(id).addEventListener('input', function () {
                     var txAreaCmntText = document.getElementById(id);
                     var counter = document.getElementById('cvTableCmntsTxAreaCnt');
@@ -124,9 +139,19 @@
                         counter.style = 'font-weight:bold;display:block;font-size:.8em;color:black';
                     }
                 });
+
             }
             function switchButtons() {
-                let allButtons = Array.from(document.getElementsByClassName('cvTableCmntsBtn'));
+
+                var TEST = document.getElementsByClassName('cvTableCmntsBtn');
+                console.log(TEST);
+
+                var TEST2 = document.querySelectorAll('.cvTableCmntsBtn');
+                console.log(TEST2);
+
+                let allButtons = Array.from(TEST);
+                console.log(allButtons);
+
                 allButtons.forEach(function (btn) {
                     if (btn.style.display == "block")
                         btn.style.display = "none";
@@ -140,7 +165,7 @@
                     "<a href='#' class='cvTableCmntsBtn' onclick='saveEditedComment(" + cmntId + ")' style='display:none'>Save</a>"
                     + "<div class='cvTableCmntsBtn' style='display:none;font-size:.8em'>(255 max)</div>"
                     + "<div class='cvTableCmntsBtn' style='display:none;font-size:.8em' id='cvTableCmntsTxAreaCnt'>...</div>"
-                    + "<a href='#' class='cvTableCmntsBtn' onclick='cancelEdit()' style='display:none'>Cancel</a>";
+                    + "<a href='#' class='cvTableCmntsBtn' onclick='ReloadComments()' style='display:none'>Cancel</a>";
                 let comment = selectComment(cmntId);
                 let textAreaId = 'cvTableCmntsEditTxArea' + cmntId;
                 let cmntText = comment.innerText;
@@ -152,6 +177,7 @@
                 txtArea.value = cmntText;
                 comment.appendChild(txtArea);
                 handleTxAreaTextLength(textAreaId);
+                switchButtons();
             }
             function saveEditedComment(id) {
                 let comment = selectComment(id).firstChild.value;
@@ -167,9 +193,6 @@
                 } else {
                     sendPostAsync("UpdateComment", commentViewText);
                 }
-            }
-            function cancelEdit() {
-                ReloadComments();
             }
             function deleteComment(id) {
                 let commentPart = selectComment(id).innerText.substring(0, 30);
