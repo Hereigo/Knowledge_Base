@@ -1,0 +1,63 @@
+<html>
+
+  <head>
+  </head>
+
+  <body>
+    <div id="wrapper">
+
+
+      <table id="employee_table" cellpadding=10>
+        <tr>
+          <th>S.no</th>
+          <th class="name_col">Name</th>
+          <th class="age_col">Age</th>
+          <th class="city_col">City</th>
+        </tr>
+
+        <tr>
+          <td>1</td>
+          <td class="name_col">Andrii</td>
+          <td class="age_col">26</td>
+          <td class="city_col">Detroit</td>
+        </tr>
+
+        <tr>
+          <td>2</td>
+          <td class="name_col">Anna</td>
+          <td class="age_col">22</td>
+          <td class="city_col">Dnipro</td>
+        </tr>
+
+        <tr>
+          <td>3</td>
+          <td class="name_col">Artem</td>
+          <td class="age_col">31</td>
+          <td class="city_col">Delhi</td>
+        </tr>
+
+        <tr>
+          <td>4</td>
+          <td class="name_col">Artur</td>
+          <td class="age_col">25</td>
+          <td class="city_col">Donetsk</td>
+        </tr>
+
+      </table>
+    </div>
+
+    <button onclick="hideColumn('name_col')">Hide Name</button>
+    <button onclick="hideColumn('city_col')">Hide City</button>
+    <button onclick="window.location.reload()">Reload</button>
+
+    <script type="text/javascript">
+      function hideColumn(col_name) {
+        var all_col = document.getElementsByClassName(col_name);
+        for (var i = 0; i < all_col.length; i++) {
+          all_col[i].style.display = "none";
+        }
+      }
+    </script>
+  </body>
+
+</html>

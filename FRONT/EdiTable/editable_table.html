@@ -2,24 +2,10 @@
 <html lang="en">
 
     <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="icon" type="image/x-icon" href="favicon.ico">
-        <title>Document</title>
-        <script src="/CDN_LOCAL/jquery-1.4.4.min.js"></script>
+        <script src="../CDN_LOCAL/jquery-1.4.4.min.js"></script>
         <style>
             td {
-                margin: 0;
-                padding: .5em;
-            }
-
-            .aaa {
-                color: red;
-            }
-
-            .bbb {
-                color: green;
+                border: 1px solid rgb(100, 100, 100);
             }
 
         </style>
@@ -29,24 +15,18 @@
         <div class="driver_info full">
             <table id="tblComments" examineeId="@Model"
                 class="table table-bordered table-striped table-responsive table-hover">
-
-                <colgroup>
-                    <col>
-                    <col class="aaa">
-                    <col span="2" class="bbb">
-                </colgroup>
-
                 <thead>
                     <tr>
-                        <th scope="col" align="left">Comments</th>
-                        <th scope="col" align="left">Modified</th>
-                        <th scope="col"></th>
-                        <th scope="col"></th>
+                        <th class='col_cmnt' align="left">Comments</th>
+                        <th class='col_date' align="left">Modified</th>
+                        <th class='col_btn'> TEST </th>
+                        <th class='col_btn'> TEST </th>
                     </tr>
                 </thead>
                 <tbody></tbody>
             </table>
-            <a href="#" onclick='addNewCommentArea()' style='margin:.2em 1em;float:right'>
+            <a href="#" id='cvTableCmntsBtnNew' onclick='addNewCommentArea()'
+                style='display:block;margin:.2em 1em;float:right'>
                 Add new comment
             </a>
         </div>
@@ -70,12 +50,12 @@
                             let modifiedDate = '31/12/2021';
                             let style = i % 2 == 0 ? '' : "style='background-color:#e9e0e0'";
                             let rows = "<tr " + style + ">"
-                                + "<td id='cvTableCmntsTextId" + item.id + "'>" + item.title + "</td>"
-                                + "<td id='cvTableEdtCol" + item.id + "'><span style='font-size:.8em'>" + modifiedDate + "</span></td>"
-                                + "<td>"
-                                + "<a href='#' class='cvTableCmntsBtn' onclick='editComment(" + item.id + ")' style='display:block'>Edit</a>"
-                                + "</td><td>"
-                                + "<a href='#' class='cvTableCmntsBtn' onclick='deleteComment(" + item.id + ")' style='display:block'>Delete</a>"
+                                + "<td class='col_cmnt' id='cvTableCmntsTextId" + item.id + "'>" + item.title + "</td>"
+                                + "<td class='col_date' id='cvTableEdtCol" + item.id + "'><span style='font-size:.8em'>" + modifiedDate + "</span></td>"
+                                + "<td class='col_btn'>"
+                                + "<a href='#' onclick='editComment(" + item.id + ")' style=''>Edit</a>"
+                                + "</td><td class='col_btn'>"
+                                + "<a href='#' onclick='deleteComment(" + item.id + ")' style=''>Delete</a>"
                                 + "</td>"
                                 + "</tr>";
                             $('#tblComments tbody').append(rows);
@@ -87,6 +67,8 @@
                         alert("Message: " + r.Message);
                     }
                 });
+                var btnNew = document.querySelector("#cvTableCmntsBtnNew");
+                btnNew.style.display = "block";
             }
             function dateParseAndFormat(dateModified, dateCreated) {
                 let stringDate = dateModified ? dateModified : dateCreated;
@@ -98,15 +80,14 @@
                 return dayOrMonth > 9 ? dayOrMonth : '0' + dayOrMonth;
             }
             function addNewCommentArea() {
-                ReloadComments();
                 let row = "<tr>"
-                    + "<td colspan=2>"
+                    + "<td>"
                     + "<textarea id='cvTableCmntsNewTxArea' rows=2 style='width:100%'></textarea>"
-                    + "</td><td class='cvTableCmntsBtn' style='display:none'>"
-                    + "<a href='#' class='cvTableCmntsBtn' onclick='saveNewComment()' style='display:none'>Save</a>"
-                    + "<div class='cvTableCmntsBtn' style='display:none;font-size:.8em'>255.max</div>"
-                    + "<div class='cvTableCmntsBtn' style='display:none;font-size:.8em' id='cvTableCmntsTxAreaCnt'>...</div>"
-                    + "<a href='#' class='cvTableCmntsBtn' onclick='ReloadComments()' style='display:none'>Cancel</a>"
+                    + "</td><td style=''>"
+                    + "<a href='#' onclick='saveNewComment()' style=''>Save</a>"
+                    + "<div style=';font-size:.8em'>255.max</div>"
+                    + "<div style=';font-size:.8em' id='cvTableCmntsTxAreaCnt'>...</div>"
+                    + "<a href='#' onclick='ReloadComments()' style=''>Cancel</a>"
                     + "</td>"
                     + "</tr>";
                 $('#tblComments tbody').append(row);
@@ -134,38 +115,47 @@
                     var length = txAreaCmntText.value.length;
                     counter.innerText = length;
                     if (length > 255) {
-                        counter.style = 'font-weight:bold;display:block;font-size:.8em;color:red';
+                        counter.style = 'font-weight:bold;font-size:.8em;color:red';
                     } else {
-                        counter.style = 'font-weight:bold;display:block;font-size:.8em;color:black';
+                        counter.style = 'font-weight:bold;font-size:.8em;color:black';
                     }
                 });
 
             }
+
             function switchButtons() {
+                var btnColumns = document.getElementsByClassName('col_btn');
+                for (var i = 0; i < btnColumns.length; i++) {
+                    btnColumns[i].style.display = "none";
+                }
 
-                var TEST = document.getElementsByClassName('cvTableCmntsBtn');
-                console.log(TEST);
+                var btnNew = document.querySelector("#cvTableCmntsBtnNew");
+                btnNew.style.display = "none";
 
-                var TEST2 = document.querySelectorAll('.cvTableCmntsBtn');
-                console.log(TEST2);
 
-                let allButtons = Array.from(TEST);
-                console.log(allButtons);
+                // var TEST = document.getElementsByClassName('cvTableCmntsBtn');
+                // console.log(TEST);
 
-                allButtons.forEach(function (btn) {
-                    if (btn.style.display == "block")
-                        btn.style.display = "none";
-                    else
-                        btn.style.display = "block";
-                });
+                // var TEST2 = document.querySelectorAll('.cvTableCmntsBtn');
+                // console.log(TEST2);
+
+                // let allButtons = Array.from(TEST);
+                // console.log(allButtons);
+
+                // allButtons.forEach(function (btn) {
+                //     if (btn.style.display == "block")
+                //         btn.style.display = "none";
+                //     else
+                //         btn.style.display = "block";
+                // });
             }
             function editComment(cmntId) {
                 let buttonsColumn = document.getElementById('cvTableEdtCol' + cmntId);
                 buttonsColumn.innerHTML =
-                    "<a href='#' class='cvTableCmntsBtn' onclick='saveEditedComment(" + cmntId + ")' style='display:none'>Save</a>"
-                    + "<div class='cvTableCmntsBtn' style='display:none;font-size:.8em'>(255 max)</div>"
-                    + "<div class='cvTableCmntsBtn' style='display:none;font-size:.8em' id='cvTableCmntsTxAreaCnt'>...</div>"
-                    + "<a href='#' class='cvTableCmntsBtn' onclick='ReloadComments()' style='display:none'>Cancel</a>";
+                    "<a href='#' onclick='saveEditedComment(" + cmntId + ")' style=''>Save</a>"
+                    + "<div style='font-size:.8em'>(255 max)</div>"
+                    + "<div style='font-size:.8em' id='cvTableCmntsTxAreaCnt'>...</div>"
+                    + "<a href='#' onclick='ReloadComments()' style=''>Cancel</a>";
                 let comment = selectComment(cmntId);
                 let textAreaId = 'cvTableCmntsEditTxArea' + cmntId;
                 let cmntText = comment.innerText;
