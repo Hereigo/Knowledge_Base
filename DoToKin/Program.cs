@@ -7,8 +7,8 @@ namespace DoToKin
     internal static class Program
     {
         private const string addressConstant = "https://...";
-        private static readonly string savePath = Path.Combine(
-            Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "DOWNLOADED.txt");
+        private static readonly string saveDir =
+            Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
 
         private static void Main()
         {
@@ -25,7 +25,7 @@ namespace DoToKin
 
             try
             {
-                var fs = new FileStream(savePath, FileMode.OpenOrCreate, FileAccess.Write);
+                var fs = new FileStream(Path.Combine(saveDir,$"{title}.txt"), FileMode.OpenOrCreate, FileAccess.Write);
                 var sw = new StreamWriter(fs);
                 sw.WriteLine(title);
                 sw.WriteLine("\r\n ========================================================= \r\n");
