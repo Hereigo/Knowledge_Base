@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Xtra_Tests
+namespace EXAMPLES
 {
     internal static class Override_Inheritance
     {

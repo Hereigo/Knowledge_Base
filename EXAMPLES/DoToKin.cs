@@ -1,11 +1,13 @@
 using System;
 using System.IO;
+using System.Linq;
 using HtmlAgilityPack;
 
-namespace Xtra_Tests
+namespace EXAMPLES
 {
-    internal class DoToKin
+    internal static class DoToKin
     {
+        private static readonly string[] excludedWords = new string[] { "Ответить", "Поддержать", "Відповісти", "Підтримати" };
         private static readonly string saveDir =
             Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
 
@@ -24,7 +26,7 @@ namespace Xtra_Tests
 
             try
             {
-                var fs = new FileStream(Path.Combine(saveDir,$"{title}.txt"), FileMode.OpenOrCreate, FileAccess.Write);
+                var fs = new FileStream(Path.Combine(saveDir, $"{title}.txt"), FileMode.OpenOrCreate, FileAccess.Write);
                 var sw = new StreamWriter(fs);
                 sw.WriteLine(title);
                 sw.WriteLine("\r\n ========================================================= \r\n");
@@ -37,7 +39,10 @@ namespace Xtra_Tests
                     {
                         var aline = line.Trim();
 
-                        if (!string.IsNullOrWhiteSpace(aline) && aline != "Ответить" && aline != "Поддержать")
+                        // TODO
+                        // implement sort by time inMemoryDb
+
+                        if (aline.Length > 2 && !excludedWords.Contains(aline))
                         {
                             sw.WriteLine(aline);
                         }

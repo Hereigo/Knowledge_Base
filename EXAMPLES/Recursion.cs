@@ -1,6 +1,6 @@
 using System;
 
-namespace Xtra_Tests
+namespace EXAMPLES
 {
     internal static class Recursion
     {
@@ -30,7 +30,7 @@ namespace Xtra_Tests
         {
             Console.WriteLine($"inp = {n}");
 
-            int result = (n == 0 || n == 1)
+            int result = n == 0 || n == 1
                 ? n
                 : Fibonacci(n - 1) + Fibonacci(n - 2);
 

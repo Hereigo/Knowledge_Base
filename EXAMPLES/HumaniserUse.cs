@@ -1,7 +1,7 @@
 using System;
 using Humanizer;
 
-namespace Xtra_Tests
+namespace EXAMPLES
 {
     internal class HumaniserUse
     {

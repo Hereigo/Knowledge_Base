@@ -1,4 +1,4 @@
-﻿namespace Xtra_Tests
+﻿namespace EXAMPLES
 {
     // 2. - Declare (create) Delegate-Type for our method.
     delegate void MyDelegateType(int number);
