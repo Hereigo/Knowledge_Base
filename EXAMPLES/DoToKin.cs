@@ -1,16 +1,15 @@
-﻿using System;
+using System;
 using System.IO;
 using HtmlAgilityPack;
 
-namespace DoToKin
+namespace Xtra_Tests
 {
-    internal static class Program
+    internal class DoToKin
     {
-        private const string addressConstant = "https://...";
         private static readonly string saveDir =
             Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
 
-        private static void Main()
+        public static void Test(string addressConstant)
         {
             Console.WriteLine("Wich address?");
             var address = Console.ReadLine();
