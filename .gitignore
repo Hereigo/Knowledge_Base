@@ -349,23 +349,16 @@ MigrationBackup/
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
 
-# MY OWN RULES :
+# Additional Rules :
 *.Development.json
 */Content
 */Fonts
-*/GIT_IGNORE/*
 */Scripts
 */app.db
 */wwwroot/lib/
 *GIT_IGNORE*
-.idea/
-/Payments_Net462/webfonts
-Credentials.json
-MB_API/GIT_IGNORE.cs
-MyExpenses_autobackup_*.BAK
-MyXpens.dat.old
-MyXpens.dll.old
-Web.Release.config
+2021_myXpens/Converter.cs
 2021_myXpens/wwwroot/css/site.min.css
 2021_myXpens/wwwroot/js/site.min.js
-2021_myXpens/Converter.cs
+Credentials.json
+Web.Release.config
