@@ -86,7 +86,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCoreSignalR", "AspNet
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RedirectMiddleware", "RedirectMiddleware\RedirectMiddleware.csproj", "{89F3BB49-CB33-4C9F-9C8F-44309E84D1F6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EXAMPLES", "EXAMPLES\EXAMPLES.csproj", "{2DCF70DD-5C13-4032-A128-19D596B4E100}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CS_EXAMPLES", "EXAMPLES\CS_EXAMPLES.csproj", "{2DCF70DD-5C13-4032-A128-19D596B4E100}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

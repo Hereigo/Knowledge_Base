@@ -1,29 +1,32 @@
 using System;
 
-public class PrivateMethodByDelegate
+namespace CS_EXAMPLES
 {
-    public delegate void MyPublicDelegate(string text);
-
-    private void PrivateMethod(string text)
+    public class PrivateMethodByDelegate
     {
-        Console.WriteLine(text);
-    }
+        public delegate void MyPublicDelegate(string text);
 
-    public void GetPrivateMethod(out MyPublicDelegate linkToPrivateMethod)
-    {
-        linkToPrivateMethod = PrivateMethod;
-    }
-    
-    public void Test()
-    {
-        MyPublicDelegate linkToPrivateMethod;
+        private void PrivateMethod(string text)
+        {
+            Console.WriteLine(text);
+        }
 
-        var pmbd = new PrivateMethodByDelegate();
-        
-        pmbd.GetPrivateMethod(out linkToPrivateMethod);
+        public void GetPrivateMethod(out MyPublicDelegate linkToPrivateMethod)
+        {
+            linkToPrivateMethod = PrivateMethod;
+        }
 
-        linkToPrivateMethod("Hello");
+        public void Test()
+        {
+            MyPublicDelegate linkToPrivateMethod;
 
-        Console.WriteLine(" World!");
+            var pmbd = new PrivateMethodByDelegate();
+
+            pmbd.GetPrivateMethod(out linkToPrivateMethod);
+
+            linkToPrivateMethod("Hello");
+
+            Console.WriteLine(" World!");
+        }
     }
 }

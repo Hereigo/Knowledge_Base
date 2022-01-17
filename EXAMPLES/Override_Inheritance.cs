@@ -1,6 +1,7 @@
 ﻿using System;
+using CS_EXAMPLES;
 
-namespace EXAMPLES
+namespace CS_EXAMPLES
 {
     internal static class Override_Inheritance
     {

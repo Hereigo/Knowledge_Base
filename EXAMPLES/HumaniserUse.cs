@@ -1,7 +1,7 @@
 using System;
 using Humanizer;
 
-namespace EXAMPLES
+namespace CS_EXAMPLES
 {
     internal class HumaniserUse
     {

@@ -1,6 +1,6 @@
 using System;
 
-namespace EXAMPLES
+namespace CS_EXAMPLES
 {
     internal static class Recursion
     {

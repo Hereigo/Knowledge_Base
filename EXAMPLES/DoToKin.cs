@@ -3,7 +3,7 @@ using System.IO;
 using System.Linq;
 using HtmlAgilityPack;
 
-namespace EXAMPLES
+namespace CS_EXAMPLES
 {
     internal static class DoToKin
     {
