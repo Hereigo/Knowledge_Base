@@ -5,7 +5,7 @@ BEGIN
 	DECLARE @SUM INT;
     SET @SUM = (SELECT sum(Amount) from Payments where CatogoryId = @Counter);
 
-	IF(@SUM>0)
+	IF(@SUM > 0)
 		INSERT into PaysSummary (ID, CategoryId, Amount, LastUpdated)
     	VALUES (@Counter, @Counter, @SUM, GETDATE())
     ELSE

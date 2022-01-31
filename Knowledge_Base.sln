@@ -11,9 +11,18 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IO_SubDirectories", "IO_Sub
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SQL_EF_Autofac_Net462", "SQL_EF_Autofac_Net462\SQL_EF_Autofac_Net462.csproj", "{864A7358-5743-4DDF-8930-296C5D8DB6C0}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F12C7229-D12B-4739-8207-32BF3687AC81}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SQL", "SQL", "{F12C7229-D12B-4739-8207-32BF3687AC81}"
 	ProjectSection(SolutionItems) = preProject
+		SQL\A_EXAMPLES.md = SQL\A_EXAMPLES.md
 		SQL\CATEGORIES.sql = SQL\CATEGORIES.sql
+		SQL\CROSS_APPLY.sql = SQL\CROSS_APPLY.sql
+		SQL\FUNCTIONS.sql = SQL\FUNCTIONS.sql
+		SQL\MsSqlTips.com_201905.SQL = SQL\MsSqlTips.com_201905.SQL
+		SQL\Payments_Net462_Restore_DB.sql = SQL\Payments_Net462_Restore_DB.sql
+		SQL\SQL_FOR_LOOP.sql = SQL\SQL_FOR_LOOP.sql
+		SQL\Unprocessed_TF_TFH.sql = SQL\Unprocessed_TF_TFH.sql
+		SQL\VAR_TABLES_TEMP.sql = SQL\VAR_TABLES_TEMP.sql
+		SQL\WITH_CTE_AS.sql = SQL\WITH_CTE_AS.sql
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XSLTransformations", "XSLTransformations\XSLTransformations.csproj", "{D96ABCD7-651E-4B0B-9A38-AFBB3B34994D}"
