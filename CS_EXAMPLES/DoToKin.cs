@@ -28,8 +28,8 @@ namespace CS_EXAMPLES
             {
                 var fs = new FileStream(Path.Combine(saveDir, $"{title}.txt"), FileMode.OpenOrCreate, FileAccess.Write);
                 var sw = new StreamWriter(fs);
-                sw.WriteLine(title);
-                sw.WriteLine("\r\n ========================================================= \r\n");
+                sw.WriteLine(string.IsNullOrEmpty(address) ? addressConstant : address);
+                sw.WriteLine("\r\n" + title + "\r\n ========================================================= \r\n");
 
                 for (int i = 0; i < comments.Count - 1; i++)
                 {
