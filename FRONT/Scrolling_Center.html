@@ -1,77 +1,114 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script>
-        function OpenModal() {
-            alert('aaaa');
-        }
-    </script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
-    <style>
-        .largebox {
-            height: 1500px;
-        }
-        
-        .box {
-            height: 400px;
-        }
-    </style>
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <script>
+            function OpenModal() {
+                alert('aaaa');
+            }
+        </script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
+        <style>
+            .largebox {
+                height: 1500px;
+            }
 
-<body>
-    <div style="margin: 1em;">
-        <h1>AAA</h1>
-        <p>
-            The New Way : Using Intersection Observer API The Intersection Observer API makes it possible to know when an element enters or exits the browser viewport. There is no need to attach any event handlers. Furthermore, this API is asynchronous — monitoring
-            element for visibility is not done on the main thread. This is a major performance boost. The Intersection Observer API can calculate intersection between a target element and the browser viewport. In simple terms it can tell whether the target
-            element and the screen overlap (through isIntersecting property), and by how much percentage they overlap (through a intersectionRatio property). You can create a new IntersectionObserver object, and set a threshold. threshold is a number
-            between 0 and 1, that represents the viewable area of the target element in the screen. For example, 0 represents no area of element is visible. A value of 0.10 represents about 10% area is viewable in screen. Value of 1 means element is fully
-            viewable in screen. You can even specify multiple thresholds. Intersection Observer will fire a callback function, once the threshold is passed in either direction. For example if you have set threshold to 0.10, callback function will be invoked
-            everytime when viewable area becomes greater than 10% or becomes less than 10%. In the current case where we just want to know when element becomes viewable in screen, the Javascript code will be : var observer = new IntersectionObserver(function(entries)
-            { // isIntersecting is true when element and viewport are overlapping // isIntersecting is false when element and viewport don't overlap if(entries[0].isIntersecting === true) console.log('Element has just become visible in screen'); }, {
-            threshold: [0] }); observer.observe(document.querySelector("#main-container")); If we want to know when element becomes fully visible in screen : var observer = new IntersectionObserver(function(entries) { if(entries[0].isIntersecting ===
-            true) console.log('Element is fully visible in screen'); }, { threshold: [1] }); observer.observe(document.querySelector("#main-container")); The Intersection Observer API has more features, but further details are not discussed here. You
-            can checkout Intersection Observer API Tutorial for more.
+            .box {
+                height: 400px;
+            }
+
+        </style>
+    </head>
+
+    <body>
+        <div style="margin: 1em;">
+            <h1>AAA</h1>
+            <p>
+                The New Way : Using Intersection Observer API The Intersection Observer API makes it possible to know
+                when an element enters or exits the browser viewport. There is no need to attach any event handlers.
+                Furthermore, this API is asynchronous — monitoring
+                element for visibility is not done on the main thread. This is a major performance boost. The
+                Intersection Observer API can calculate intersection between a target element and the browser viewport.
+                In simple terms it can tell whether the target
+                element and the screen overlap (through isIntersecting property), and by how much percentage they
+                overlap (through a intersectionRatio property). You can create a new IntersectionObserver object, and
+                set a threshold. threshold is a number
+                between 0 and 1, that represents the viewable area of the target element in the screen. For example, 0
+                represents no area of element is visible. A value of 0.10 represents about 10% area is viewable in
+                screen. Value of 1 means element is fully
+                viewable in screen. You can even specify multiple thresholds. Intersection Observer will fire a callback
+                function, once the threshold is passed in either direction. For example if you have set threshold to
+                0.10, callback function will be invoked
+                everytime when viewable area becomes greater than 10% or becomes less than 10%. In the current case
+                where we just want to know when element becomes viewable in screen, the Javascript code will be : var
+                observer = new IntersectionObserver(function(entries)
+                { // isIntersecting is true when element and viewport are overlapping // isIntersecting is false when
+                element and viewport don't overlap if(entries[0].isIntersecting === true) console.log('Element has just
+                become visible in screen'); }, {
+                threshold: [0] }); observer.observe(document.querySelector("#main-container")); If we want to know when
+                element becomes fully visible in screen : var observer = new IntersectionObserver(function(entries) {
+                if(entries[0].isIntersecting ===
+                true) console.log('Element is fully visible in screen'); }, { threshold: [1] });
+                observer.observe(document.querySelector("#main-container")); The Intersection Observer API has more
+                features, but further details are not discussed here. You
+                can checkout Intersection Observer API Tutorial for more.
             <h4>Adfuyigaourgy</h4>
             <input type="button" value="sss" onclick="OpenModal()"></br>
             </br>
-            </br>The New Way : Using Intersection Observer API The Intersection Observer API makes it possible to know when an element enters or exits the browser viewport. There is no need to attach any event handlers. Furthermore, this API is asynchronous
-            — monitoring element for visibility is not done on the main thread. This is a major performance boost. The Intersection Observer API can calculate intersection between a target element and the browser viewport. In simple terms it can tell
-            whether the target element and the screen overlap (through isIntersecting property), and by how much percentage they overlap (through a intersectionRatio property). You can create a new IntersectionObserver object, and set a threshold. threshold
-            is a number between 0 and 1, that represents the viewable area of the target element in the screen. For example, 0 represents no area of element is visible. A value of 0.10 represents about 10% area is viewable in screen. Value of 1 means
-            element is fully viewable in screen. You can even specify multiple thresholds. Intersection Observer will fire a callback function, once the threshold is passed in either direction. For example if you have set threshold to 0.10, callback function
-            will be invoked everytime when viewable area becomes greater than 10% or becomes less than 10%. In the current case where we just want to know when element becomes viewable in screen, the Javascript code will be : var observer=n ew IntersectionObserver(function(entries)
-            { // isIntersecting is true when element and viewport are overlapping // isIntersecting is false when element and viewport don 't overlap if(entries[0].isIntersecting === true) console.log('Element has just become visible in screen '); },
-            { threshold: [0] }); observer.observe(document.querySelector("#main-container")); If we want to know when element becomes fully visible in screen : var observer = new IntersectionObserver(function(entries) { if(entries[0].isIntersecting ===
-            true) console.log('Element is fully visible in screen '); }, { threshold: [1] }); observer.observe(document.querySelector("#main-container")); The Intersection Observer API has more features, but further details are not discussed here. You
+            </br>The New Way : Using Intersection Observer API The Intersection Observer API makes it possible to know
+            when an element enters or exits the browser viewport. There is no need to attach any event handlers.
+            Furthermore, this API is asynchronous
+            — monitoring element for visibility is not done on the main thread. This is a major performance boost. The
+            Intersection Observer API can calculate intersection between a target element and the browser viewport. In
+            simple terms it can tell
+            whether the target element and the screen overlap (through isIntersecting property), and by how much
+            percentage they overlap (through a intersectionRatio property). You can create a new IntersectionObserver
+            object, and set a threshold. threshold
+            is a number between 0 and 1, that represents the viewable area of the target element in the screen. For
+            example, 0 represents no area of element is visible. A value of 0.10 represents about 10% area is viewable
+            in screen. Value of 1 means
+            element is fully viewable in screen. You can even specify multiple thresholds. Intersection Observer will
+            fire a callback function, once the threshold is passed in either direction. For example if you have set
+            threshold to 0.10, callback function
+            will be invoked everytime when viewable area becomes greater than 10% or becomes less than 10%. In the
+            current case where we just want to know when element becomes viewable in screen, the Javascript code will be
+            : var observer=n ew IntersectionObserver(function(entries)
+            { // isIntersecting is true when element and viewport are overlapping // isIntersecting is false when
+            element and viewport don 't overlap if(entries[0].isIntersecting === true) console.log('Element has just
+            become visible in screen '); },
+            { threshold: [0] }); observer.observe(document.querySelector("#main-container")); If we want to know when
+            element becomes fully visible in screen : var observer = new IntersectionObserver(function(entries) {
+            if(entries[0].isIntersecting ===
+            true) console.log('Element is fully visible in screen '); }, { threshold: [1] });
+            observer.observe(document.querySelector("#main-container")); The Intersection Observer API has more
+            features, but further details are not discussed here. You
             can checkout Intersection Observer API Tutorial for more.
-        </p>
-    </div>
-    <div class="largebox">
-        <div id="msg" style="position:fixed;left:30%;"></div>
-        <div class="box">First box</div>
-        <div id="box1" class="box1">Second box</div>
-    </div>
-    <script>
-        function isVisible($el) {
-            let docViewTop = $(window).scrollTop();
-            let docViewBottom = docViewTop + $(window).height();
-            let elTop = $el.offset().top;
-            let elBottom = elTop + $el.height();
-            return ((elBottom <= docViewBottom) && (elTop >= docViewTop));
-        }
-        $(function() {
-            $("#msg").text("#Second box  visible=" + isVisible($("#box1")));
-            $(window).scroll(function() {
-                $("#msg").text("Second box visible=" + isVisible($("#box1")));
+            </p>
+        </div>
+        <div class="largebox">
+            <div id="msg" style="position:fixed;left:10%;top:30%;font-size:larger;background-color:gold"></div>
+            <div class="box">First box</div>
+            <div id="box1" class="box1">Second box</div>
+        </div>
+        <script>
+            function isVisible($el) {
+                let docViewTop = $(window).scrollTop();
+                let docViewBottom = docViewTop + $(window).height();
+                let elTop = $el.offset().top;
+                let elBottom = elTop + $el.height();
+                return ((elBottom <= docViewBottom) && (elTop >= docViewTop));
+            }
+            $(function () {
+                $("#msg").text("#Second box  visible=" + isVisible($("#box1")));
+                $(window).scroll(function () {
+                    $("#msg").text("Second box visible=" + isVisible($("#box1")));
+                });
             });
-        });
-    </script>
-</body>
+        </script>
+    </body>
 
 </html>
