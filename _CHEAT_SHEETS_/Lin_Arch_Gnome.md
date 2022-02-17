@@ -41,8 +41,8 @@ yay -Rns $(yay -Qtdq)
 yay -Yc
 
 # See Installed Apps:
-pacman -Qe 
-pacman -Qe | grep abc
+yay -Qe 
+yay -Qe | grep abc
 
 # If necessary to test Microphone and Camera:
 sudo pacman -S pavucontrol
