@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>If element is visible in the viewport</title>
+        <style>
+            .wrapper {
+                margin: 0 auto;
+            }
+
+            body {
+                height: 200vh;
+            }
+
+            .box {
+                width: 200px;
+                height: 200px;
+                background-color: rgb(230, 243, 200);
+            }
+
+        </style>
+    </head>
+
+    <body>
+        <div class="wrapper">
+            <p>
+                sdFSGHASDF HJGUYfdg uyfgd suiyaFAGSDUYA GSDFUYG UIFYDG SUDFYGUAIYF DGUAVF
+                SDGUaisfg iafdgasoisfg hasiofugaoiusf dgiasgfd sifughfigu hfgiuagbfb iafygb
+                sdFSGHASDF HJGUYfdg uyfgd suiyaFAGSDUYA GSDFUYG UIFYDG SUDFYGUAIYF DGUAVF
+                SDGUaisfg iafdgasoisfg hasiofugaoiusf dgiasgfd sifughfigu hfgiuagbfb iafygb
+            </p>
+
+            <div class="box">AddAA</div>
+
+            <div id="message">
+                Please scroll to check if the box is visible
+            </div>
+
+        </div>
+        <script>
+            window.addEventListener('load', function () {
+                console.log("It's loaded!");
+
+                function popwin(url) {
+                    window.open('', url, 'height=800, width=1000, top=500, left=200, scrollable=yes, menubar=yes, resizable=yes');
+                    url.target = url;
+                }
+            });
+
+        </script>
+    </body>
+
+</html>
