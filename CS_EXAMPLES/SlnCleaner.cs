@@ -6,7 +6,7 @@ namespace CS_EXAMPLES
     {
         public static void Test()
         {
-            Console.WriteLine("Not implemented yet!");
+            Console.WriteLine("SlnCleaner - Not implemented yet!");
         }
     }
 }
