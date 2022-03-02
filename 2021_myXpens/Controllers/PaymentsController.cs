@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using GIT_IGNORE;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -229,7 +230,7 @@ namespace MyXpens.Controllers
             var test = new MbClient(_appValues);
             var rezult = await test
                 .GetTestData(
-                _dbContext.Categories.FirstOrDefault(c => c.ID.Equals(50)).Name + Converter.TestString)
+                _dbContext.Categories.FirstOrDefault(c => c.ID.Equals(50)).Name + Convertor.TestString)
                 .ConfigureAwait(false);
 
             return Ok(rezult);

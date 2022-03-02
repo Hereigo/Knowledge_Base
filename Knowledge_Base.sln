@@ -97,6 +97,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RedirectMiddleware", "Redir
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CS_EXAMPLES", "CS_EXAMPLES\CS_EXAMPLES.csproj", "{2DCF70DD-5C13-4032-A128-19D596B4E100}"
 EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "SQL_Srv_Db_Proj", "SQL_Srv_Db_Proj\SQL_Srv_Db_Proj.sqlproj", "{CEC0C0E3-01EE-4283-9CEA-19CD87890F86}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -263,6 +265,12 @@ Global
 		{2DCF70DD-5C13-4032-A128-19D596B4E100}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2DCF70DD-5C13-4032-A128-19D596B4E100}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2DCF70DD-5C13-4032-A128-19D596B4E100}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CEC0C0E3-01EE-4283-9CEA-19CD87890F86}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CEC0C0E3-01EE-4283-9CEA-19CD87890F86}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CEC0C0E3-01EE-4283-9CEA-19CD87890F86}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{CEC0C0E3-01EE-4283-9CEA-19CD87890F86}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CEC0C0E3-01EE-4283-9CEA-19CD87890F86}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CEC0C0E3-01EE-4283-9CEA-19CD87890F86}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

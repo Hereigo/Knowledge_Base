@@ -28,4 +28,8 @@
 	  <Folder Include="wwwroot\datetime\" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <ProjectReference Include="..\GIT_IGNORE\!!!__GIT_IGNORE__!!!.csproj" />
+	</ItemGroup>
+
 </Project>
