@@ -23,7 +23,7 @@ sudo systemctl start fstrim.timer
 sudo systemctl status fstrim.timer
 
 # Install Packages:
-yay -S remmina megasync gnome-system-monitor lollypop dropbox telegram-desktop visual-studio-code-bin skypeforlinux-stable-bin tlp tlpui keepassxc viber doublecmd-gtk2 kooha # =ScreenRec 4 Wayland
+yay -S remmina remmina-plugin-rdesktop megasync gnome-system-monitor lollypop dropbox telegram-desktop visual-studio-code-bin tlp tlpui keepassxc doublecmd-gtk2 kooha # =ScreenRec 4 Wayland
 
 # TLP:
 sudo tlp start
