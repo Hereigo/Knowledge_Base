@@ -23,11 +23,14 @@ CREATE TABLE [dbo].[Users]
 	CONSTRAINT [FK_DepNum_Departments] FOREIGN KEY (DepartmentNum) REFERENCES [Departments]([DepNum])
 )
 GO
-INSERT INTO [dbo].[Users] (DepartmentNum, Balance, UserName)
-OUTPUT inserted.Id, inserted.UserName
+INSERT INTO [dbo].[Users] (DepartmentNum, Balance, Registered, UserName)
 VALUES
-	(1, 0, 'Alex'),
-	(2, 0, 'Felix'),
-	(2, 0, 'Max'),
-	(3, 0, 'Zeus')
+	(1, 0, DATEADD(MONTH, -1, GETDATE()), 'Alex'),
+	(2, 0, DATEADD(MONTH, -2, GETDATE()), 'Felix'),
+	(2, 0, DATEADD(MONTH, -3, GETDATE()), 'Max'),
+	(3, 0, DATEADD(MONTH, -4, GETDATE()), 'Zeus')
 GO
+SELECT * FROM [dbo].[Users] ORDER BY UserName OFFSET 1 ROWS;
+
+SELECT DISTINCT DepartmentNum, UserName FROM [dbo].[Users];
+
