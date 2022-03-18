@@ -7,14 +7,17 @@ namespace CS_EXAMPLES
         private static void Main()
         {
             // DoToKin.Test("https://..../");
-
+            
             SlnCleaner.Test();
-
-            TCP_Client.Test();
-
+            
+            // TCP_Client.Test();
+            
             // HumaniserUse.Test();
-            // Override_Inheritance.Test();
+            
+            Override_Inheritance.Test();
+            
             // Delegates_Basic.Test();
+            
             // Recursion.Test();
 
             // var pmbd = new PrivateMethodByDelegate();

@@ -1,5 +1,4 @@
 ﻿using System;
-using CS_EXAMPLES;
 
 namespace CS_EXAMPLES
 {
@@ -7,38 +6,35 @@ namespace CS_EXAMPLES
     {
         class A
         {
-            public virtual void Print()
-            {
-                Console.WriteLine(" A ");
-            }
+            public virtual void Print() { Console.WriteLine(" A "); }
         }
 
         class B : A
         {
-            public override void Print()
-            {
-                Console.WriteLine(" B ");
-            }
+            public override void Print() { Console.WriteLine(" B "); }
         }
 
         class C : B
         {
-            public new void Print()
-            {
-                base.Print();
-                Console.WriteLine(" C ");
-            }
+            // Will Not Call for (A\B = new C();) - Overriden!
+            public new void Print() { Console.WriteLine(" C "); }
         }
 
         internal static void Test()
         {
-            A a = new A();
-            A b = new B();
-            A c = new C();
+            A aa = new A(); // A
+            A ab = new B(); // B
+            A ac = new C(); // B
+            B bb = new B(); // B
+            B bc = new C(); // B
+            C cc = new C(); // C
 
-            a.Print();
-            b.Print();
-            c.Print();
+            aa.Print();
+            ab.Print();
+            ac.Print(); 
+            bb.Print();
+            bc.Print();
+            cc.Print();
         }
     }
 }
