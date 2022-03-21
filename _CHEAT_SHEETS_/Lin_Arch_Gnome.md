@@ -23,13 +23,17 @@ sudo systemctl start fstrim.timer
 sudo systemctl status fstrim.timer
 
 # Install Packages:
-yay -S remmina remmina-plugin-rdesktop megasync gnome-system-monitor lollypop dropbox telegram-desktop visual-studio-code-bin tlp tlpui keepassxc doublecmd-gtk2 kooha # =ScreenRec 4 Wayland
+yay -S remmina remmina-plugin-rdesktop megasync gnome-system-monitor nomacs dropbox visual-studio-code-bin tlp tlpui keepassxc doublecmd-gtk2 
+
+kooha # = ScreenRecord for Wayland
+simplescreenrecorder # for X11
+deepin-screenshot # for X11
 
 # TLP:
 sudo tlp start
 sudo systemctl enable tlp.service
 sudo systemctl start tlp.service
-sudo systemctl status tlp.service
+sudo systemctl status tlp.servicey
 
 # Remove Package:
 yay -Rns [package-name]
@@ -41,7 +45,6 @@ yay -Rns $(yay -Qtdq)
 yay -Yc
 
 # See Installed Apps:
-yay -Qe 
 yay -Qe | grep abc
 
 # If necessary to test Microphone and Camera:
