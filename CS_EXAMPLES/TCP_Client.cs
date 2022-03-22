@@ -1,5 +1,5 @@
 using System;
-using System.Net.Http;
+using System.Text;
 using System.Net.Sockets;
 
 namespace CS_EXAMPLES
@@ -17,7 +17,7 @@ namespace CS_EXAMPLES
 
                 string response = "Slava Ukraini!!!";
 
-                byte[] data = System.Text.Encoding.UTF8.GetBytes(response);
+                byte[] data = Encoding.UTF8.GetBytes(response);
 
                 netStream.Write(data, 0, data.Length);
 

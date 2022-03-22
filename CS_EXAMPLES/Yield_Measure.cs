@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using BenchmarkDotNet.Attributes;
 using BenchmarkDotNet.Running;
 
-namespace Yield_Measure
+namespace CS_EXAMPLES
 {
     public class Student
     {
@@ -11,9 +11,9 @@ namespace Yield_Measure
         public string Name { get; set; }
     }
 
-    internal static class Program
+    internal static class Yield_Measure
     {
-        private static void Main()
+        internal static void Test()
         {
             // To Use Benchmark should run in Release mode!
             // Benchmark will run while 2-3 minutes.
