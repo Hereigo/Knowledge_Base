@@ -2,7 +2,13 @@
 
 https://extensions.gnome.org/extension/1160/dash-to-panel/
 
-https://github.com/ubuntu/gnome-shell-extension-appindicator
+https://extensions.gnome.org/extension/615/appindicator-support/
+
+https://extensions.gnome.org/extension/906/sound-output-device-chooser/
+
+https://extensions.gnome.org/extension/779/clipboard-indicator/
+
+https://extensions.gnome.org/extension/4684/useless-gaps/
 
 https://extensions.gnome.org/extension/1634/resource-monitor/
 
