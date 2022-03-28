@@ -1,5 +1,7 @@
 # GNOME EXTENSIONS
 
+https://wiki.gnome.org/Projects/GnomeShellIntegrationForChrome/Installation -- possibly needed
+
 https://extensions.gnome.org/extension/1160/dash-to-panel/
 
 https://extensions.gnome.org/extension/615/appindicator-support/
@@ -11,8 +13,6 @@ https://extensions.gnome.org/extension/779/clipboard-indicator/
 https://extensions.gnome.org/extension/4684/useless-gaps/
 
 https://extensions.gnome.org/extension/1634/resource-monitor/
-
-https://extensions.gnome.org/extension/4684/useless-gaps/
 
 https://extensions.gnome.org/extension/3843/just-perfection/
 

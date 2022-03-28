@@ -23,7 +23,9 @@ sudo systemctl start fstrim.timer
 sudo systemctl status fstrim.timer
 
 # Install Packages:
-yay -S remmina remmina-plugin-rdesktop megasync gnome-system-monitor nomacs dropbox visual-studio-code-bin tlp tlpui keepassxc doublecmd-gtk2 
+yay -S remmina freerdp megasync gnome-system-monitor chrome-gnome-shell nomacs dropbox visual-studio-code-bin tlp tlpui keepassxc doublecmd-gtk2 skype 
+
+remmina-plugin-rdesktop # possibly needed
 
 kooha # = ScreenRecord for Wayland
 simplescreenrecorder # for X11
