@@ -1,10 +1,16 @@
 https://9to5linux.com
+https://archlinux.org/news/
+https://archlinux.org/planet/
 https://bleepingcomputer.com
 https://debugpoint.com
 https://distrowatch.com
 https://geeksforgeeks.org
 https://itsfoss.com
+https://komyounity.com
 https://linux.com
+https://linuxcompatible.org/news/
+https://linuxiac.com/category/news/
 https://omgubuntu.co.uk
 https://phoronix.com
+https://ubuntu.com/blog/desktop/
 https://zdnet.com/blog/open-source/
