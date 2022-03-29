@@ -1,8 +1,10 @@
 https://9to5linux.com
+https://bleepingcomputer.com
+https://debugpoint.com
 https://distrowatch.com
+https://geeksforgeeks.org
 https://itsfoss.com
-https://www.bleepingcomputer.com
-https://www.debugpoint.com
-https://www.geeksforgeeks.org
-https://www.omgubuntu.co.uk
-https://www.phoronix.com
+https://linux.com
+https://omgubuntu.co.uk
+https://phoronix.com
+https://zdnet.com/blog/open-source/
