@@ -8,7 +8,7 @@ sudo grub-mkconfig -o /boot/grub/grub.cfg
 sudo pacman-mirrors --fasttrack && sudo pacman -Syyu
 
 # Install Packages:
-yay -S ufw gufw remmina freerdp megasync gnome-system-monitor chrome-gnome-shell nomacs dropbox visual-studio-code-bin tlp tlpui keepassxc doublecmd-gtk2 skype simplescreenrecorder deepin-screenshot qmmp #Qmmp: simple music
+yay -S ufw gufw p7zip gnome-system-monitor chrome-gnome-shell nomacs megasync dropbox visual-studio-code-bin tlp tlpui keepassxc doublecmd-gtk2 skype simplescreenrecorder deepin-screenshot remmina freerdp qmmp #Qmmp: simple music
 
 # Additionals packages:
 remmina-plugin-rdesktop # possibly needed
