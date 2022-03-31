@@ -42,4 +42,15 @@ yay -Qe | grep abc
 
 # If necessary to test Microphone and Camera:
 sudo pacman -S pavucontrol
+
+# To update FONTS cache:
+fc-cache -fvh
+# -f     Force re-generation of apparently up-to-date cache files, overriding the  timestamp checking.
+# -r     Erase all existing cache files and rescan.
+# -v     Display status information while busy.
+# -h     Show summary of options.
+
+# To disable 10 min. lock after 3 failed login.
+sudo nano /etc/security/faillock.conf
+# SET -> deny = 0
 ```
