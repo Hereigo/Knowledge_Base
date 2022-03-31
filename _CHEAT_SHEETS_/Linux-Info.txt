@@ -4,6 +4,7 @@ https://archlinux.org/planet
 https://bleepingcomputer.com
 https://debugpoint.com
 https://distrowatch.com
+https://fedoramagazine.org
 https://fosslinux.com/category/news
 https://foundation.gnome.org/news
 https://geeksforgeeks.org
@@ -11,6 +12,7 @@ https://itsfoss.com
 https://komyounity.com
 https://linux.com
 https://linuxcompatible.org/news
+https://linuxfoundation.org/blog
 https://linuxiac.com/category/news
 https://omgubuntu.co.uk
 https://phoronix.com
