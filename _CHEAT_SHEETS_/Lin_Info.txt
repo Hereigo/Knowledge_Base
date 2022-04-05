@@ -11,9 +11,11 @@ https://geeksforgeeks.org
 https://itsfoss.com
 https://komyounity.com
 https://linux.com
+https://linuxandubuntu.com
 https://linuxcompatible.org/news
 https://linuxfoundation.org/blog
 https://linuxiac.com/category/news
+https://linuxseb.hashnode.dev
 https://omgubuntu.co.uk
 https://phoronix.com
 https://ubuntu.com/blog/desktop
