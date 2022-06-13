@@ -11,6 +11,7 @@ namespace CS_EXAMPLES
         const string searchPattern = "*";
         const string excludeDirName = "Music";
         static readonly string rootDir = Environment.GetFolderPath(Environment.SpecialFolder.MyMusic);
+        static readonly string destinationPath = rootDir + "/AAA/";
 
         public static void Test()
         {
@@ -24,15 +25,16 @@ namespace CS_EXAMPLES
             foreach (var item in allDirsToProc)
                 files.AddRange(Directory.GetFiles(item));
 
-            foreach (var item in files)
+            foreach (var sourceFile in files)
             {
-                var fi = new FileInfo(item);
+                var fi = new FileInfo(sourceFile);
                 var fn = fi.Name;
                 var path = fi.DirectoryName;
                 var pathParts = path.Split(dirsPathSeparator);
+                var destination = $"{destinationPath}{pathParts[pathParts.Length - 1]} - {fn}";
 
-                // File.Copy(item)
-                System.Console.WriteLine($"{item} ===> {pathParts[pathParts.Length - 1]} - {fn}");
+                System.Console.WriteLine($"{sourceFile} ===> {destination}");
+                File.Move(sourceFile, destination, true);
             }
         }
     }
