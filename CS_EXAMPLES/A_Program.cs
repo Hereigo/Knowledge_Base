@@ -25,6 +25,8 @@ namespace CS_EXAMPLES
             // var pmbd = new PrivateMethodByDelegate();
             // pmbd.Test();
 
+            FileRenamer.Test();
+
             Console.ReadKey();
         }
     }

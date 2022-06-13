@@ -15,7 +15,7 @@ namespace CS_EXAMPLES
 
                 NetworkStream netStream = tcpClient.GetStream();
 
-                string response = "Slava Ukraini!!!";
+                string response = "Glory Ukraine!";
 
                 byte[] data = Encoding.UTF8.GetBytes(response);
 
