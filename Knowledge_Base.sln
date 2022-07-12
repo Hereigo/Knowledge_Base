@@ -89,8 +89,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MediatR_Runner_Ext", "Media
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCoreBase", "AspNetCoreBase\AspNetCoreBase.csproj", "{6C1F09CC-B524-47A4-BC61-23684610EE00}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Yield_Measure", "Yield_Measure\Yield_Measure.csproj", "{CC05202A-9DEA-476F-8969-A346C1734A9F}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCoreSignalR", "AspNetCoreSignalR\AspNetCoreSignalR.csproj", "{D1326A4C-B400-4C81-9AEB-6F616717313B}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RedirectMiddleware", "RedirectMiddleware\RedirectMiddleware.csproj", "{89F3BB49-CB33-4C9F-9C8F-44309E84D1F6}"
@@ -249,10 +247,6 @@ Global
 		{6C1F09CC-B524-47A4-BC61-23684610EE00}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6C1F09CC-B524-47A4-BC61-23684610EE00}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6C1F09CC-B524-47A4-BC61-23684610EE00}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CC05202A-9DEA-476F-8969-A346C1734A9F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CC05202A-9DEA-476F-8969-A346C1734A9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CC05202A-9DEA-476F-8969-A346C1734A9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CC05202A-9DEA-476F-8969-A346C1734A9F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D1326A4C-B400-4C81-9AEB-6F616717313B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D1326A4C-B400-4C81-9AEB-6F616717313B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D1326A4C-B400-4C81-9AEB-6F616717313B}.Release|Any CPU.ActiveCfg = Release|Any CPU

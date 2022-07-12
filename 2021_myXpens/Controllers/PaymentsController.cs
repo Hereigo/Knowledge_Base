@@ -230,7 +230,7 @@ namespace MyXpens.Controllers
             var test = new MbClient(_appValues);
             var rezult = await test
                 .GetTestData(
-                _dbContext.Categories.FirstOrDefault(c => c.ID.Equals(50)).Name + Convertor.TestString)
+                _dbContext.Categories.FirstOrDefault(c => c.ID.Equals(50)).Name + Convertor._WARNING_)
                 .ConfigureAwait(false);
 
             return Ok(rezult);

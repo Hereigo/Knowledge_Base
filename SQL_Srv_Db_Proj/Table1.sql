@@ -1,4 +1,6 @@
-﻿ALTER TABLE [dbo].[Users] DROP CONSTRAINT [FK_DepNum_Departments]
+﻿USE NON_EXISTED_DB;
+GO
+ALTER TABLE [dbo].[Users] DROP CONSTRAINT [FK_DepNum_Departments]
 GO
 DROP TABLE [dbo].[Departments]
 DROP TABLE [dbo].[Users]

@@ -6,17 +6,17 @@ namespace CS_EXAMPLES
     {
         private static void Main()
         {
-            // DoToKin.Test("https://..../");
+            DoToKin.Test("https://..../");
 
             // Yield_Measure.Test(); // MUST BE RUN IN RELEASE-MODE!
 
-            SlnCleaner.Test();
+            // SlnCleaner.Test();
 
             // TCP_Client.Test();
 
             // HumaniserUse.Test();
 
-            Override_Inheritance.Test();
+            // Override_Inheritance.Test();
 
             // Delegates_Basic.Test();
 
@@ -25,7 +25,7 @@ namespace CS_EXAMPLES
             // var pmbd = new PrivateMethodByDelegate();
             // pmbd.Test();
 
-            FileRenamer.Test();
+            // FileRenamer.Test();
 
             Console.ReadKey();
         }
