@@ -2,12 +2,10 @@
 
 namespace CS_EXAMPLES
 {
-    internal static class A_Program
+    internal static class A_RUNNNER
     {
         private static void Main()
         {
-            DoToKin.Test("https://..../");
-
             // Yield_Measure.Test(); // MUST BE RUN IN RELEASE-MODE!
 
             // SlnCleaner.Test();

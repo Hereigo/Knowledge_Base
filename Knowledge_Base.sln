@@ -97,6 +97,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CS_EXAMPLES", "CS_EXAMPLES\
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "SQL_Srv_Db_Proj", "SQL_Srv_Db_Proj\SQL_Srv_Db_Proj.sqlproj", "{CEC0C0E3-01EE-4283-9CEA-19CD87890F86}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DoToKin", "DoToKin\DoToKin.csproj", "{FA3C3003-BA6B-4CDB-973F-EF6A47F59DA6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -265,6 +267,10 @@ Global
 		{CEC0C0E3-01EE-4283-9CEA-19CD87890F86}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CEC0C0E3-01EE-4283-9CEA-19CD87890F86}.Release|Any CPU.Build.0 = Release|Any CPU
 		{CEC0C0E3-01EE-4283-9CEA-19CD87890F86}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{FA3C3003-BA6B-4CDB-973F-EF6A47F59DA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA3C3003-BA6B-4CDB-973F-EF6A47F59DA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA3C3003-BA6B-4CDB-973F-EF6A47F59DA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA3C3003-BA6B-4CDB-973F-EF6A47F59DA6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
