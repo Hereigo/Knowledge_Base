@@ -61,7 +61,7 @@ namespace CoreMvcTG.TgBot
                             _tClient.SendTextMessageAsync(uid, "Not implemented yet. :)");
                             break;
                         case STR.CmdAdmin:
-                            _tClient.SendTextMessageAsync(uid, "Admin has received your conseravtion!");
+                            _tClient.SendTextMessageAsync(uid, "Admin has received your conservation!");
                             _tClient.SendTextMessageAsync(adminUid, $"@{userName} is calling help!");
                             break;
                         case STR.AskHelp:
